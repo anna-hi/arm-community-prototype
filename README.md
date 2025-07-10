@@ -1,4 +1,4 @@
-# ARM Community Platform Prototyp
+# ARM Community Platform Prototype
 
 *Automatically synced with your [v0.dev](https://v0.dev) deployments*
 
