@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Bell, ChevronDown } from "lucide-react"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { Bell, ChevronDown, ArrowRight, Plus, FileText, Clock } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -30,27 +32,58 @@ export default function ProjectProposal() {
               <Link href="/project-calls" className="text-gray-900 hover:text-orange-500 font-medium text-base">
                 Project Calls
               </Link>
-              <Link
-                href="/project-proposal"
-                className="text-gray-900 hover:text-orange-500 font-medium text-base border-b-2 border-orange-500"
-              >
+              <Link href="/project-proposal" className="text-orange-500 hover:text-orange-600 font-medium text-base">
                 Project Proposal
               </Link>
-              <Link href="#" className="text-gray-900 hover:text-orange-500 font-medium text-base">
+              <Link href="/all-projects" className="text-gray-900 hover:text-orange-500 font-medium text-base">
                 All Projects
               </Link>
-              <div className="flex items-center space-x-1">
-                <Link href="#" className="text-gray-900 hover:text-orange-500 font-medium text-base">
+              <DropdownMenu>
+                <DropdownMenuTrigger className="flex items-center space-x-1 text-gray-900 hover:text-orange-500 font-medium text-base">
                   Community
-                </Link>
-                <ChevronDown className="w-4 h-4 text-gray-600" />
-              </div>
-              <div className="flex items-center space-x-1">
-                <Link href="#" className="text-gray-900 hover:text-orange-500 font-medium text-base">
+                  <ChevronDown className="w-4 h-4 text-gray-600" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem>
+                    <Link href="/community/events" className="w-full">
+                      Events
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Link href="/community/members" className="w-full">
+                      Members
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Link href="/community/organizations" className="w-full">
+                      Organizations
+                    </Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              <DropdownMenu>
+                <DropdownMenuTrigger className="flex items-center space-x-1 text-gray-900 hover:text-orange-500 font-medium text-base">
                   Resource Center
-                </Link>
-                <ChevronDown className="w-4 h-4 text-gray-600" />
-              </div>
+                  <ChevronDown className="w-4 h-4 text-gray-600" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem>
+                    <Link href="/resource-center/arm-member-guide" className="w-full">
+                      ARM Member Guide
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Link href="/resource-center/webinars" className="w-full">
+                      Webinars
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Link href="/resource-center/articles" className="w-full">
+                      Articles
+                    </Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </nav>
           </div>
 
@@ -65,48 +98,195 @@ export default function ProjectProposal() {
         </div>
       </header>
 
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-12">Project Proposal</h1>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {/* New Proposal */}
-          <Card className="border-gray-200">
-            <CardHeader>
-              <CardTitle className="text-xl font-semibold text-gray-900">New Proposal</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <p className="text-gray-600">Submit your Proposal for open Project Calls here.</p>
-              <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-3">
-                Submit Proposal
-              </Button>
-            </CardContent>
-          </Card>
-
-          {/* Current Proposals */}
-          <Card className="border-gray-200">
-            <CardHeader>
-              <CardTitle className="text-xl font-semibold text-gray-900">Current Proposals</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600">You are not currently associated with any Proposals.</p>
-            </CardContent>
-          </Card>
-
-          {/* Current Reviews */}
-          <Card className="border-gray-200">
-            <CardHeader>
-              <CardTitle className="text-xl font-semibold text-gray-900">Current Reviews</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600">You are not currently associated with any Reviews.</p>
-            </CardContent>
-          </Card>
+      {/* Hero Section */}
+      <section className="relative bg-gray-900 text-white py-16">
+        <div className="absolute inset-0 bg-black/50"></div>
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('/placeholder.svg?height=400&width=1200')",
+          }}
+        ></div>
+        <div className="relative max-w-7xl mx-auto px-6">
+          <h1 className="text-4xl font-bold mb-6">Project Proposal</h1>
+          <p className="text-xl text-gray-200 max-w-3xl">
+            Submit and manage your project proposals for ARM Institute funding opportunities. Track your submissions and
+            collaborate with team members throughout the proposal process.
+          </p>
         </div>
+      </section>
+
+      <div className="max-w-7xl mx-auto px-6 py-12 space-y-12">
+        {/* Quick Actions */}
+        <section className="grid md:grid-cols-3 gap-6">
+          <Card className="border-2 border-dashed border-gray-300 hover:border-orange-500 transition-colors cursor-pointer">
+            <CardContent className="flex flex-col items-center justify-center p-8 text-center">
+              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4">
+                <Plus className="w-8 h-8 text-orange-500" />
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">New Proposal</h3>
+              <p className="text-gray-600 text-sm mb-4">Start a new project proposal for an active project call</p>
+              <Button className="bg-orange-500 hover:bg-orange-600">Create Proposal</Button>
+            </CardContent>
+          </Card>
+
+          <Card className="border border-gray-200">
+            <CardContent className="flex flex-col items-center justify-center p-8 text-center">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                <FileText className="w-8 h-8 text-blue-500" />
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Current Proposals</h3>
+              <p className="text-gray-600 text-sm mb-4">View and edit your active proposal submissions</p>
+              <Button variant="outline">View Proposals</Button>
+            </CardContent>
+          </Card>
+
+          <Card className="border border-gray-200">
+            <CardContent className="flex flex-col items-center justify-center p-8 text-center">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                <Clock className="w-8 h-8 text-green-500" />
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Current Reviews</h3>
+              <p className="text-gray-600 text-sm mb-4">Track the status of proposals under review</p>
+              <Button variant="outline">View Reviews</Button>
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* Recent Activity */}
+        <section>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Recent Activity</h2>
+          <div className="space-y-4">
+            <Card>
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
+                      <FileText className="w-5 h-5 text-orange-500" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900">Robotic Assembly System Proposal</h3>
+                      <p className="text-sm text-gray-600">Draft saved • 25-01 Core Tech Project Call</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-4">
+                    <Badge variant="secondary" className="bg-yellow-100 text-yellow-800">
+                      Draft
+                    </Badge>
+                    <Button size="sm" variant="outline">
+                      Continue Editing
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                      <Clock className="w-5 h-5 text-blue-500" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900">AI Manufacturing Integration</h3>
+                      <p className="text-sm text-gray-600">Submitted • 2024 AI Data Foundry Tech Project Call</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-4">
+                    <Badge variant="secondary" className="bg-blue-100 text-blue-800">
+                      Under Review
+                    </Badge>
+                    <Button size="sm" variant="outline">
+                      View Status
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                      <ArrowRight className="w-5 h-5 text-green-500" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900">Smart Factory Automation</h3>
+                      <p className="text-sm text-gray-600">Approved • Recircled RFI Opportunity</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-4">
+                    <Badge variant="secondary" className="bg-green-100 text-green-800">
+                      Approved
+                    </Badge>
+                    <Button size="sm" variant="outline">
+                      View Project
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* Active Project Calls */}
+        <section>
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold text-gray-900">Active Project Calls</h2>
+            <Button variant="ghost" className="text-orange-500 hover:text-orange-600">
+              View All Calls
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">25-01 Core Tech Draft Project Call</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600 mb-4">
+                  The ARM Institute is soliciting submissions that respond to technology needs of the manufacturing
+                  industry and the Department of Defense (DoD).
+                </p>
+                <div className="flex items-center justify-between">
+                  <Badge variant="secondary" className="bg-green-100 text-green-800">
+                    Active
+                  </Badge>
+                  <Button size="sm" className="bg-orange-500 hover:bg-orange-600">
+                    Submit Proposal
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">2024 AI Data Foundry Tech Project Call</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600 mb-4">
+                  Focus on AI and data-driven solutions for advanced manufacturing processes and automation systems.
+                </p>
+                <div className="flex items-center justify-between">
+                  <Badge variant="secondary" className="bg-green-100 text-green-800">
+                    Active
+                  </Badge>
+                  <Button size="sm" className="bg-orange-500 hover:bg-orange-600">
+                    Submit Proposal
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 mt-16">
+      <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-8">
             <div>

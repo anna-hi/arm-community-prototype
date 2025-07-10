@@ -5,6 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Bell, ChevronDown, ArrowRight, Play, Calendar, MapPin, Clock, ExternalLink } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 
 export default function Homepage() {
   return (
@@ -37,18 +38,52 @@ export default function Homepage() {
               <Link href="/all-projects" className="text-gray-900 hover:text-orange-500 font-medium text-base">
                 All Projects
               </Link>
-              <div className="flex items-center space-x-1">
-                <Link href="#" className="text-gray-900 hover:text-orange-500 font-medium text-base">
+              <DropdownMenu>
+                <DropdownMenuTrigger className="flex items-center space-x-1 text-gray-900 hover:text-orange-500 font-medium text-base">
                   Community
-                </Link>
-                <ChevronDown className="w-4 h-4 text-gray-600" />
-              </div>
-              <div className="flex items-center space-x-1">
-                <Link href="#" className="text-gray-900 hover:text-orange-500 font-medium text-base">
+                  <ChevronDown className="w-4 h-4 text-gray-600" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem>
+                    <Link href="/community/events" className="w-full">
+                      Events
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Link href="/community/members" className="w-full">
+                      Members
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Link href="/community/organizations" className="w-full">
+                      Organizations
+                    </Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              <DropdownMenu>
+                <DropdownMenuTrigger className="flex items-center space-x-1 text-gray-900 hover:text-orange-500 font-medium text-base">
                   Resource Center
-                </Link>
-                <ChevronDown className="w-4 h-4 text-gray-600" />
-              </div>
+                  <ChevronDown className="w-4 h-4 text-gray-600" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem>
+                    <Link href="/resource-center/arm-member-guide" className="w-full">
+                      ARM Member Guide
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Link href="/resource-center/webinars" className="w-full">
+                      Webinars
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Link href="/resource-center/articles" className="w-full">
+                      Articles
+                    </Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </nav>
           </div>
 
