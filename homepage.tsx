@@ -28,13 +28,13 @@ export default function Homepage() {
 
             {/* Main Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
-              <Link href="#" className="text-gray-900 hover:text-orange-500 font-medium text-base">
+              <Link href="/project-calls" className="text-gray-900 hover:text-orange-500 font-medium text-base">
                 Project Calls
               </Link>
               <Link href="/project-proposal" className="text-gray-900 hover:text-orange-500 font-medium text-base">
                 Project Proposal
               </Link>
-              <Link href="#" className="text-gray-900 hover:text-orange-500 font-medium text-base">
+              <Link href="/all-projects" className="text-gray-900 hover:text-orange-500 font-medium text-base">
                 All Projects
               </Link>
               <div className="flex items-center space-x-1">

@@ -27,7 +27,7 @@ export default function ProjectProposal() {
 
             {/* Main Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
-              <Link href="/" className="text-gray-900 hover:text-orange-500 font-medium text-base">
+              <Link href="/project-calls" className="text-gray-900 hover:text-orange-500 font-medium text-base">
                 Project Calls
               </Link>
               <Link
