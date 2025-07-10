@@ -6,6 +6,26 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.orange-button {
+  background: var(--Secondary-Orange, #ef7100);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.main-button {
+  border-radius: 4px;
+  background: var(--ARM-Yellow, #ffb621);
+}
+
+h1 {
+  font-family: var(--font-montserrat);
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 2rem;
+  font-style: normal;
+  color: black
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

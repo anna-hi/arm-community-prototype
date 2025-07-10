@@ -1,11 +1,26 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Bell, ChevronDown, ArrowRight, Play, Calendar, MapPin, Clock, ExternalLink } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Bell,
+  ChevronDown,
+  ArrowRight,
+  Play,
+  Calendar,
+  MapPin,
+  Clock,
+  ExternalLink,
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { OrangeButton } from "./components/OrangeButton";
 
 export default function Homepage() {
   return (
@@ -189,13 +204,7 @@ export default function Homepage() {
                   >
                     Active
                   </Badge>
-                  <Button
-                    size="sm"
-                    className="bg-orange-500 hover:bg-orange-600"
-                  >
-                    Go to Project Call
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
+                  <OrangeButton text="Go to Project Call" />
                 </div>
               </CardContent>
             </Card>
@@ -213,10 +222,9 @@ export default function Homepage() {
             Members. You can expect three days of networking, knowledge sharing,
             collaboration, robotics demonstrations, project updates, and more!
           </p>
-          <Button className="bg-orange-500 hover:bg-orange-600">
-            Register Here
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
+          <div className="flex justify-end">
+            <OrangeButton text="Register here" />
+          </div>
         </section>
 
         {/* Member Spotlight */}
