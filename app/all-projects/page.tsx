@@ -1,5 +1,5 @@
 import AllProjects from "./all-projects"
 
-export default function AllProjectsPage() {
+export default function Page() {
   return <AllProjects />
 }

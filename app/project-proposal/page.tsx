@@ -1,5 +1,5 @@
 import ProjectProposal from "./project-proposal"
 
-export default function ProjectProposalPage() {
+export default function Page() {
   return <ProjectProposal />
 }
