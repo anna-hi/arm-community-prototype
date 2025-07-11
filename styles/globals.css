@@ -15,6 +15,7 @@ body {
 .main-button {
   border-radius: 4px;
   background: var(--ARM-Yellow, #ffb621);
+  font-weight: 600;
 }
 
 h1 {
@@ -23,7 +24,29 @@ h1 {
   font-size: 30px;
   line-height: 2rem;
   font-style: normal;
-  color: black
+  color: black;
+}
+
+h2 {
+  font-family: var(--font-montserrat);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: normal;
+  font-style: normal;
+  color: black;
+}
+
+body {
+  font-family: var(--font-roboto), sans-serif;
+  line-height: 24px;
+  font-size: 16px;
+}
+
+.card {
+    background-color: #F5F5F5;
+    height: 344px;
+    display: flex;
+    flex-direction: column;
 }
 
 @layer utilities {

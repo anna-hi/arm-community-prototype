@@ -21,6 +21,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { OrangeButton } from "./components/OrangeButton";
+import { MainButton } from "./components/MainButton";
 
 export default function Homepage() {
   return (
@@ -153,70 +154,66 @@ export default function Homepage() {
       <div className="max-w-7xl mx-auto px-6 py-12 space-y-12">
         {/* ARM Announcements */}
         <section>
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            ARM Announcements
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
+          <h1 className="mb-8">ARM Announcements</h1>
+          <div className="grid md:grid-cols-2 gap-8">
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">
+                <CardTitle className="">
                   25-01 Core Tech Draft Project Call is Out
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600 mb-4">
+                <p>
                   The ARM Institute is soliciting submissions that respond to
                   technology needs of the manufacturing industry and the
                   Department of Defense (DoD). This project call is seeking
                   projects to make focused investments in the Special Topic
                   Areas (STAs).
                 </p>
-                <div className="flex items-center justify-between">
-                  <Badge
-                    variant="secondary"
-                    className="bg-green-100 text-green-800"
-                  >
-                    Active
-                  </Badge>
-                  <OrangeButton text="Go to Project Call" />
-                </div>
               </CardContent>
+              <div className="flex items-center justify-between">
+                <Badge
+                  variant="secondary"
+                  className="bg-green-100 text-green-800"
+                >
+                  Active
+                </Badge>
+                <OrangeButton text="Go to Project Call" />
+              </div>
             </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">
+                <CardTitle className="">
                   2024 AI Data Foundry Tech Project Call
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600 mb-4">
+                <p>
                   Join us for our 2024 Annual Member Meeting taking place Sept.
                   3-5 in Pittsburgh! This event is free to attend and open only
                   to ARM Members. You can expect three days of networking,
                   knowledge sharing, collaboration, robotics demonstrations,
                   project updates, and more!
                 </p>
-                <div className="flex items-center justify-between">
-                  <Badge
-                    variant="secondary"
-                    className="bg-green-100 text-green-800"
-                  >
-                    Active
-                  </Badge>
-                  <OrangeButton text="Go to Project Call" />
-                </div>
               </CardContent>
+              <div className="flex items-center justify-between">
+                <Badge
+                  variant="secondary"
+                  className="bg-green-100 text-green-800"
+                >
+                  Active
+                </Badge>
+                <OrangeButton text="Go to Project Call" />
+              </div>
             </Card>
           </div>
         </section>
 
         {/* Member Meeting Registration */}
-        <section className="bg-gray-50 rounded-lg p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            Member Meeting Registration Now Open!
-          </h2>
-          <p className="text-gray-600 mb-6">
+        <section className="bg-neutral-100 rounded-lg p-8">
+          <h2 className="mb-4">Member Meeting Registration Now Open!</h2>
+          <p className="mb-6">
             Join us for our 2024 Annual Member Meeting taking place Sept. 3-5 in
             Pittsburgh! This event is free to attend and open only to ARM
             Members. You can expect three days of networking, knowledge sharing,
@@ -229,9 +226,7 @@ export default function Homepage() {
 
         {/* Member Spotlight */}
         <section>
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            Member Spotlight
-          </h2>
+          <h1 className="mb-6">Member Spotlight</h1>
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="relative">
               <Image
@@ -258,10 +253,10 @@ export default function Homepage() {
                 Watch HEBI Robotics Inc. & impact work on driving smart
                 manufacturing through AI automation.
               </p>
-              <Button className="bg-orange-500 hover:bg-orange-600">
-                View Profile
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
+              <MainButton
+                text="View Profile"
+                icon={<ArrowRight className="w-4 h-4" />}
+              ></MainButton>
             </div>
           </div>
         </section>
@@ -269,7 +264,7 @@ export default function Homepage() {
         {/* News */}
         <section>
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">News</h2>
+            <h1 className="">News</h1>
             <Button
               variant="ghost"
               className="text-orange-500 hover:text-orange-600"
@@ -346,9 +341,7 @@ export default function Homepage() {
         {/* Featured Events */}
         <section>
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">
-              Featured Events
-            </h2>
+            <h1 className="">Featured Events</h1>
             <Button
               variant="ghost"
               className="text-orange-500 hover:text-orange-600"
@@ -459,9 +452,9 @@ export default function Homepage() {
         {/* Featured Projects */}
         <section>
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">
+            <h1 className="">
               Featured Projects
-            </h2>
+            </h1>
             <Button
               variant="ghost"
               className="text-orange-500 hover:text-orange-600"
