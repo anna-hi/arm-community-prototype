@@ -3,14 +3,17 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
   ArrowRight,
-  Play
+  Play,
+  Calendar,
+  MapPin,
+  Clock,
+  ExternalLink,
 } from "lucide-react";
 import Image from "next/image";
 
 import { OrangeButton } from "./components/OrangeButton";
 import { MainButton } from "./components/MainButton";
 import NavBar from "./components/NavBar";
-import NewsEventCard from "./components/ui/news-event-card";
 
 export default function Homepage() {
   return (
@@ -28,7 +31,7 @@ export default function Homepage() {
           }}
         ></div>
         <div className="relative max-w-7xl mx-auto px-6">
-          <h1 className="mb-6">
+          <h1 className="text-4xl font-bold mb-6">
             Welcome to the ARM Member Community, Michael!
           </h1>
           <div className="flex space-x-4">
@@ -168,24 +171,63 @@ export default function Homepage() {
             ARM community
           </p>
           <div className="grid md:grid-cols-3 gap-6">
-            <NewsEventCard
-              imagePath="/placeholder.svg?height=200&width=300"
-              imageAlt="SWORD Robotics"
-              title="Soft Demonstrates SWORD™ Robotics Programming Software"
-              newsInfo={{ date: "May 30, 2024" }}
-            />
-            <NewsEventCard
-              imagePath="/placeholder.svg?height=200&width=300"
-              imageAlt="Manufacturing Meet-Up"
-              title="Join the AMT Meet-Up to Connect to Your Local Manufacturing Network"
-              newsInfo={{ date: "May 15, 2024" }}
-            />
-            <NewsEventCard
-              imagePath="/placeholder.svg?height=200&width=300"
-              imageAlt="AI Agents"
-              title="Siemens Introduces AI Agents for Industrial Automation"
-              newsInfo={{ date: "May 12, 2024" }}
-            />
+            <Card>
+              <Image
+                src="/placeholder.svg?height=200&width=300"
+                alt="SWORD Robotics"
+                width={300}
+                height={200}
+                className="w-full h-48 object-cover rounded-t-lg"
+              />
+              <CardContent className="p-4">
+                <Badge variant="secondary" className="mb-2">
+                  Member News
+                </Badge>
+                <h3 className="font-semibold mb-2">
+                  Soft Demonstrates SWORD™ Robotics Programming Software
+                </h3>
+                <p className="text-sm text-gray-500">May 30, 2024</p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <Image
+                src="/placeholder.svg?height=200&width=300"
+                alt="Manufacturing Meet-Up"
+                width={300}
+                height={200}
+                className="w-full h-48 object-cover rounded-t-lg"
+              />
+              <CardContent className="p-4">
+                <Badge variant="secondary" className="mb-2">
+                  Member News
+                </Badge>
+                <h3 className="font-semibold mb-2">
+                  Join the AMT Meet-Up to Connect to Your Local Manufacturing
+                  Network
+                </h3>
+                <p className="text-sm text-gray-500">May 15, 2024</p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <Image
+                src="/placeholder.svg?height=200&width=300"
+                alt="AI Agents"
+                width={300}
+                height={200}
+                className="w-full h-48 object-cover rounded-t-lg"
+              />
+              <CardContent className="p-4">
+                <Badge variant="secondary" className="mb-2">
+                  Member News
+                </Badge>
+                <h3 className="font-semibold mb-2">
+                  Siemens Introduces AI Agents for Industrial Automation
+                </h3>
+                <p className="text-sm text-gray-500">May 12, 2024</p>
+              </CardContent>
+            </Card>
           </div>
         </section>
 
@@ -206,45 +248,106 @@ export default function Homepage() {
             manufacturing
           </p>
           <div className="grid md:grid-cols-3 gap-6">
-            <NewsEventCard
-              imagePath="/placeholder.svg?height=200&width=300"
-              imageAlt="ARM Event"
-              caption="ARM Event"
-              title="2025 Annual ARM Institute Member Meeting"
-              eventInfo={{
-                date: "Sep 3-5 | Sep 3, 2024",
-                time: "08:00 AM - 17:00 PM",
-                location: "Pittsburgh Manufacturing Department",
-              }}
-            />
-            <NewsEventCard
-              imagePath="/placeholder.svg?height=200&width=300"
-              imageAlt="AI Webinar"
-              caption="AI ARM Event | Webinar"
-              title="AI in Manufacturing: The Basics"
-              eventInfo={{
-                date: "Jun 19, 2024",
-                time: "12:00 PM - 01:00 PM",
-                location: "Remote",
-              }}
-            />
-            <NewsEventCard
-              imagePath="/placeholder.svg?height=200&width=300"
-              imageAlt="Skills Conference"
-              caption="ARM Event"
-              title="Skills USA National Leadership & Skills Conference"
-              eventInfo={{
-                date: "Jun 24 - Jun 27, 2024",
-                location: "Atlanta, GA",
-              }}
-            />
+            <Card>
+              <Image
+                src="/placeholder.svg?height=200&width=300"
+                alt="ARM Event"
+                width={300}
+                height={200}
+                className="w-full h-48 object-cover rounded-t-lg"
+              />
+              <CardContent className="p-4">
+                <Badge variant="secondary" className="mb-2">
+                  ARM Event
+                </Badge>
+                <h3 className="font-semibold mb-2">
+                  2025 Annual ARM Institute Member Meeting
+                </h3>
+                <div className="space-y-1 text-sm text-gray-600">
+                  <div className="flex items-center">
+                    <Calendar className="w-4 h-4 mr-2" />
+                    Sep 3-5 | Sep 3, 2024
+                  </div>
+                  <div className="flex items-center">
+                    <Clock className="w-4 h-4 mr-2" />
+                    08:00 AM - 17:00 PM
+                  </div>
+                  <div className="flex items-center">
+                    <MapPin className="w-4 h-4 mr-2" />
+                    Pittsburgh Manufacturing Department
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <Image
+                src="/placeholder.svg?height=200&width=300"
+                alt="AI Webinar"
+                width={300}
+                height={200}
+                className="w-full h-48 object-cover rounded-t-lg"
+              />
+              <CardContent className="p-4">
+                <Badge variant="secondary" className="mb-2">
+                  AI ARM Event | Webinar
+                </Badge>
+                <h3 className="font-semibold mb-2">
+                  AI in Manufacturing: The Basics
+                </h3>
+                <div className="space-y-1 text-sm text-gray-600">
+                  <div className="flex items-center">
+                    <Calendar className="w-4 h-4 mr-2" />
+                    Jun 19, 2024
+                  </div>
+                  <div className="flex items-center">
+                    <Clock className="w-4 h-4 mr-2" />
+                    12:00 PM - 01:00 PM
+                  </div>
+                  <div className="flex items-center">
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    Remote
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <Image
+                src="/placeholder.svg?height=200&width=300"
+                alt="Skills Conference"
+                width={300}
+                height={200}
+                className="w-full h-48 object-cover rounded-t-lg"
+              />
+              <CardContent className="p-4">
+                <Badge variant="secondary" className="mb-2">
+                  ARM Event
+                </Badge>
+                <h3 className="font-semibold mb-2">
+                  Skills USA National Leadership & Skills Conference
+                </h3>
+                <div className="space-y-1 text-sm text-gray-600">
+                  <div className="flex items-center">
+                    <Calendar className="w-4 h-4 mr-2" />
+                    Jun 24 - Jun 27, 2024
+                  </div>
+                  <div className="flex items-center">
+                    <MapPin className="w-4 h-4 mr-2" />
+                    Atlanta, GA
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </section>
 
         {/* Featured Projects */}
         <section>
           <div className="flex items-center justify-between mb-6">
-            <h1 className="">Featured Projects</h1>
+            <h1 className="">
+              Featured Projects
+            </h1>
             <Button
               variant="ghost"
               className="text-orange-500 hover:text-orange-600"

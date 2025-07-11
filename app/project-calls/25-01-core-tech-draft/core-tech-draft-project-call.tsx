@@ -13,10 +13,10 @@ import { useState, useEffect, useRef } from "react"
 import { OrangeButton } from "@/components/OrangeButton"
 
 export default function CoreTechDraftProjectCall() {
-  const [eligibilityOpen, setEligibilityOpen] = useState(true)
-  const [fundingOpen, setFundingOpen] = useState(true)
+  const [eligibilityOpen, setEligibilityOpen] = useState(false)
+  const [fundingOpen, setFundingOpen] = useState(false)
   const [participateOpen, setParticipateOpen] = useState(true)
-  const [resourcesOpen, setResourcesOpen] = useState(true)
+  const [resourcesOpen, setResourcesOpen] = useState(false)
   const [specialTopicAreasOpen, setSpecialTopicAreasOpen] = useState(true)
 
   const [activeSection, setActiveSection] = useState("special-topic-areas")
@@ -182,14 +182,14 @@ export default function CoreTechDraftProjectCall() {
 
             {/* Scrollspy Navigation */}
             <div className="w-full">
-              <div className="sticky top-0 bg-white z-10 border-gray-200 mb-4 pt-8 pb-4">
+              <div className="sticky top-4 bg-white z-10 border-b border-gray-200 mb-8 pt-4">
                 <div className="flex space-x-8 overflow-x-auto">
                   <a
                     href="#special-topic-areas"
                     className={`text-sm font-medium pb-2 whitespace-nowrap transition-colors ${
                       activeSection === "special-topic-areas"
-                        ? "text-gray-950 border-b-2 border-armYellow"
-                        : "text-gray-600 hover:text-gray-950"
+                        ? "text-orange-500 border-b-2 border-orange-500"
+                        : "text-gray-600 hover:text-orange-500"
                     }`}
                   >
                     Special Topic Areas
@@ -198,8 +198,8 @@ export default function CoreTechDraftProjectCall() {
                     href="#eligibility"
                     className={`text-sm font-medium pb-2 whitespace-nowrap transition-colors ${
                       activeSection === "eligibility"
-                        ? "text-gray-950 border-b-2 border-armYellow"
-                        : "text-gray-600 hover:text-gray-950"
+                        ? "text-orange-500 border-b-2 border-orange-500"
+                        : "text-gray-600 hover:text-orange-500"
                     }`}
                   >
                     Eligibility
@@ -208,8 +208,8 @@ export default function CoreTechDraftProjectCall() {
                     href="#funding"
                     className={`text-sm font-medium pb-2 whitespace-nowrap transition-colors ${
                       activeSection === "funding"
-                        ? "text-gray-950 border-b-2 border-armYellow"
-                        : "text-gray-600 hover:text-gray-950"
+                        ? "text-orange-500 border-b-2 border-orange-500"
+                        : "text-gray-600 hover:text-orange-500"
                     }`}
                   >
                     Funding
@@ -218,8 +218,8 @@ export default function CoreTechDraftProjectCall() {
                     href="#how-to-participate"
                     className={`text-sm font-medium pb-2 whitespace-nowrap transition-colors ${
                       activeSection === "how-to-participate"
-                        ? "text-gray-950 border-b-2 border-armYellow"
-                        : "text-gray-600 hover:text-gray-950"
+                        ? "text-orange-500 border-b-2 border-orange-500"
+                        : "text-gray-600 hover:text-orange-500"
                     }`}
                   >
                     How to Participate
@@ -228,8 +228,8 @@ export default function CoreTechDraftProjectCall() {
                     href="#resources"
                     className={`text-sm font-medium pb-2 whitespace-nowrap transition-colors ${
                       activeSection === "resources"
-                        ? "text-gray-950 border-b-2 border-armYellow"
-                        : "text-gray-600 hover:text-gray-950"
+                        ? "text-orange-500 border-b-2 border-orange-500"
+                        : "text-gray-600 hover:text-orange-500"
                     }`}
                   >
                     Resources
