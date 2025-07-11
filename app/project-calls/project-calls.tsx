@@ -63,31 +63,33 @@ export default function ProjectCalls() {
               </Card>
             </Link>
 
-            <Card>
-              <CardHeader>
-                <CardTitle className="">
-                  2024 AI Data Foundry Tech Project Call
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>
-                  Join us for our 2024 Annual Member Meeting taking place Sept.
-                  3-5 in Pittsburgh! This event is free to attend and open only
-                  to ARM Members. You can expect three days of networking,
-                  knowledge sharing, collaboration, robotics demonstrations,
-                  project updates, and more!
-                </p>
-              </CardContent>
-              <div className="flex items-center justify-between">
-                <Badge
-                  variant="secondary"
-                  className="bg-green-100 text-green-800"
-                >
-                  Active
-                </Badge>
-                <OrangeButton text="Go to Project Call" />
-              </div>
-            </Card>
+            <Link href="/project-calls/ai-data-foundry-tech-project-call">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="">
+                    2024 AI Data Foundry Tech Project Call
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>
+                    Join us for our 2024 Annual Member Meeting taking place Sept.
+                    3-5 in Pittsburgh! This event is free to attend and open only
+                    to ARM Members. You can expect three days of networking,
+                    knowledge sharing, collaboration, robotics demonstrations,
+                    project updates, and more!
+                  </p>
+                </CardContent>
+                <div className="flex items-center justify-between">
+                  <Badge
+                    variant="secondary"
+                    className="bg-green-100 text-green-800"
+                  >
+                    Active
+                  </Badge>
+                  <OrangeButton text="Go to Project Call" />
+                </div>
+              </Card>
+            </Link>
           </div>
         </section>
 
