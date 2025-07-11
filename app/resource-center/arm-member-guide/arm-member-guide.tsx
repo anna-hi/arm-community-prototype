@@ -1,101 +1,13 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Bell, ChevronDown, Users, FileText, Newspaper, Play, ChevronLeft, ChevronRight } from "lucide-react"
+import { Users, FileText, Newspaper, Play, ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
-import Link from "next/link"
+import NavBar from "@/components/NavBar"
 
 export default function ArmMemberGuide() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200 px-6 py-3">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-12">
-            {/* Logo */}
-            <div className="flex items-center space-x-2">
-              <div className="w-12 h-12 flex items-center justify-center">
-                <Image
-                  src="/placeholder.svg?height=48&width=120"
-                  alt="ARM Institute"
-                  width={120}
-                  height={48}
-                  className="h-12 w-auto"
-                />
-              </div>
-            </div>
-
-            {/* Main Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
-              <Link href="/project-calls" className="text-gray-900 hover:text-orange-500 font-medium text-base">
-                Project Calls
-              </Link>
-              <Link href="/project-proposal" className="text-gray-900 hover:text-orange-500 font-medium text-base">
-                Project Proposal
-              </Link>
-              <Link href="/all-projects" className="text-gray-900 hover:text-orange-500 font-medium text-base">
-                All Projects
-              </Link>
-              <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center space-x-1 text-gray-900 hover:text-orange-500 font-medium text-base">
-                  Community
-                  <ChevronDown className="w-4 h-4 text-gray-600" />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  <DropdownMenuItem>
-                    <Link href="/community/events" className="w-full">
-                      Events
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <Link href="/community/members" className="w-full">
-                      Members
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <Link href="/community/organizations" className="w-full">
-                      Organizations
-                    </Link>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-              <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center space-x-1 text-gray-900 hover:text-orange-500 font-medium text-base border-b-2 border-orange-500">
-                  Resource Center
-                  <ChevronDown className="w-4 h-4 text-gray-600" />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  <DropdownMenuItem>
-                    <Link href="/resource-center/arm-member-guide" className="w-full">
-                      ARM Member Guide
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <Link href="/resource-center/webinars" className="w-full">
-                      Webinars
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <Link href="/resource-center/articles" className="w-full">
-                      Articles
-                    </Link>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </nav>
-          </div>
-
-          {/* Right side icons */}
-          <div className="flex items-center space-x-4">
-            <Bell className="w-5 h-5 text-gray-600 hover:text-gray-900 cursor-pointer" />
-            <Avatar className="w-8 h-8">
-              <AvatarImage src="/placeholder.svg?height=32&width=32" />
-              <AvatarFallback className="bg-blue-500 text-white">M</AvatarFallback>
-            </Avatar>
-          </div>
-        </div>
-      </header>
+      <NavBar />
 
       {/* Hero Section */}
       <section className="bg-white py-16">
