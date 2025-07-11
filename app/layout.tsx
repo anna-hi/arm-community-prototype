@@ -1,7 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Montserrat, Roboto } from "next/font/google"
-import "./globals.css"
+import "@/styles/globals.css"
 
 const montserrat = Montserrat({
   subsets: ["latin"],

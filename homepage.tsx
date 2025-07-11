@@ -1,16 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  ArrowRight,
-  Play
-} from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 import Image from "next/image";
 
 import { OrangeButton } from "./components/OrangeButton";
 import { MainButton } from "./components/MainButton";
 import NavBar from "./components/NavBar";
 import NewsEventCard from "./components/ui/news-event-card";
+import CDIPCard from "./components/ui/cdip-card";
 
 export default function Homepage() {
   return (
@@ -41,7 +39,7 @@ export default function Homepage() {
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-6 py-12 space-y-12">
+      <div className="md:mx-[100px] px-6 py-12 space-y-12">
         {/* ARM Announcements */}
         <section>
           <h1 className="mb-8">ARM Announcements</h1>
@@ -155,13 +153,7 @@ export default function Homepage() {
         <section>
           <div className="flex items-center justify-between mb-6">
             <h1 className="">News</h1>
-            <Button
-              variant="ghost"
-              className="text-orange-500 hover:text-orange-600"
-            >
-              See More
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
+            <OrangeButton text="See More" />
           </div>
           <p className="text-gray-600 mb-6">
             Follow up on the latest industry trends and opportunities from the
@@ -193,13 +185,7 @@ export default function Homepage() {
         <section>
           <div className="flex items-center justify-between mb-6">
             <h1 className="">Featured Events</h1>
-            <Button
-              variant="ghost"
-              className="text-orange-500 hover:text-orange-600"
-            >
-              See More
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
+            <OrangeButton text="See More" />
           </div>
           <p className="text-gray-600 mb-6">
             Explore transformative project outcomes shaping the future of
@@ -245,108 +231,40 @@ export default function Homepage() {
         <section>
           <div className="flex items-center justify-between mb-6">
             <h1 className="">Featured Projects</h1>
-            <Button
-              variant="ghost"
-              className="text-orange-500 hover:text-orange-600"
-            >
-              See More
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
+            <OrangeButton text="See More" />
           </div>
           <p className="text-gray-600 mb-6">
             Explore transformative project outcomes shaping the future of
             manufacturing
           </p>
-          <div className="grid md:grid-cols-3 gap-6">
-            <Card>
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <Badge variant="outline">Completed</Badge>
-                  <Badge variant="outline">In Strategy</Badge>
-                </div>
-                <div className="w-16 h-16 bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
-                  <div className="w-8 h-8 bg-gray-300 rounded"></div>
-                </div>
-                <div className="text-sm text-gray-600 mb-2">T3-04-01-16</div>
-                <h3 className="font-semibold mb-2">
-                  Futureless Robotic Workcell for Manufacturing Environments 2.0
-                </h3>
-                <div className="space-y-2 text-sm">
-                  <div>
-                    <span className="font-medium">Automotive</span>{" "}
-                    <span className="font-medium">Technology</span>
-                  </div>
-                  <div className="text-gray-600">Human-Robot Interaction</div>
-                  <div className="text-gray-600">
-                    Lead Organization: Siemens Mentor Corporation
-                  </div>
-                  <div className="text-gray-600">
-                    Principal Investigator: Frank Richardson
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <Badge variant="outline">Completed</Badge>
-                  <Badge variant="outline">In Strategy</Badge>
-                </div>
-                <div className="w-16 h-16 bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
-                  <div className="w-8 h-8 bg-gray-300 rounded"></div>
-                </div>
-                <div className="text-sm text-gray-600 mb-2">T3-04-01-01</div>
-                <h3 className="font-semibold mb-2">
-                  Automatic T-Shirt Assembly System
-                </h3>
-                <div className="space-y-2 text-sm">
-                  <div>
-                    <span className="font-medium">Textiles</span>{" "}
-                    <span className="font-medium">Cobots</span>{" "}
-                    <span className="font-medium">Modeling</span>
-                  </div>
-                  <div className="text-gray-600">
-                    Intelligent Robotic Systems
-                  </div>
-                  <div className="text-gray-600">
-                    Lead Organization: SoftWear Automation Machine Co., Inc.
-                  </div>
-                  <div className="text-gray-600">
-                    Principal Investigator: Frank Richardson
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <Badge variant="outline">Completed</Badge>
-                </div>
-                <div className="w-16 h-16 bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
-                  <div className="w-8 h-8 bg-gray-300 rounded"></div>
-                </div>
-                <div className="text-sm text-gray-600 mb-2">T3-04-DEC-1-01</div>
-                <h3 className="font-semibold mb-2">
-                  Robotic Non-Contact 3D Inspection Replacing Hard Gaging
-                </h3>
-                <div className="space-y-2 text-sm">
-                  <div>
-                    <span className="font-medium">Technology</span>
-                  </div>
-                  <div className="text-gray-600">
-                    Intelligent Robotic Systems
-                  </div>
-                  <div className="text-gray-600">
-                    Lead Organization: ARM Technology LLC
-                  </div>
-                  <div className="text-gray-600">
-                    Principal Investigator: Meng Wang
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+          <div className="grid md:grid-cols-3 gap-8">
+            <CDIPCard
+              status="Completed"
+              title="Fixtureless Robotic Workcell for Manufacturing Environments 2.0"
+              imageSrc="/placeholder-logo.png" // or your actual image path
+              tags={["Automotive", "Technology", "Human-Robot Interaction"]}
+              code="T3-04-01-16"
+              leadOrg="Siemens Corporation"
+              principalInvestigator="Frank Richardson"
+            ></CDIPCard>
+            <CDIPCard
+              status="Completed"
+              title="Automatic T-Shirt Assembly System"
+              imageSrc="/placeholder-logo.png" // or your actual image path
+              tags={["Textiles", "Cobots", "Modeling"]}
+              code="T3-04-01-01"
+              leadOrg="Henderson Sewing Machine Co."
+              principalInvestigator="Frank Richardson"
+            ></CDIPCard>
+            <CDIPCard
+              status="Performing"
+              title="Robotic Non-Contact 3D Inspection Replacing Hard Gaging"
+              imageSrc="/placeholder-logo.png" // or your actual image path
+              tags={["Automotive", "Inspection", "Robotics"]}
+              code="T3-04-DEC-1-01"
+              leadOrg="ARM Technology LLC"
+              principalInvestigator="Meng Wang"
+            ></CDIPCard>
           </div>
         </section>
       </div>
