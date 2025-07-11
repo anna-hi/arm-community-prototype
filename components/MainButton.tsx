@@ -10,10 +10,5 @@ interface MainButtonProps {
 }
 
 export function MainButton({ text, icon, className = "" }: MainButtonProps) {
-  return (
-    <Button className={`main-button text-black ${className}`}>
-      {text}
-      {icon && <span className="ml-2">{icon}</span>}
-    </Button>
-  );
+  return <Button className="main-button text-black">Start Here</Button>;
 }

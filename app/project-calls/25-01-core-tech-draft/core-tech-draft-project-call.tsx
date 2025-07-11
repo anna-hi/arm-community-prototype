@@ -5,12 +5,11 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 import { Bell, ChevronDown, ChevronUp, Users, FileText } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { OrangeButton } from "@/components/OrangeButton"
 
 export default function CoreTechDraftProjectCall() {
@@ -18,6 +17,35 @@ export default function CoreTechDraftProjectCall() {
   const [fundingOpen, setFundingOpen] = useState(false)
   const [participateOpen, setParticipateOpen] = useState(true)
   const [resourcesOpen, setResourcesOpen] = useState(false)
+  const [specialTopicAreasOpen, setSpecialTopicAreasOpen] = useState(true)
+
+  const [activeSection, setActiveSection] = useState("special-topic-areas")
+  const sectionRefs = useRef({
+    "special-topic-areas": null,
+    eligibility: null,
+    funding: null,
+    "how-to-participate": null,
+    resources: null,
+  })
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 200 // Offset for sticky header
+
+      const sections = Object.keys(sectionRefs.current)
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i]
+        const element = document.getElementById(section)
+        if (element && element.offsetTop <= scrollPosition) {
+          setActiveSection(section)
+          break
+        }
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   return (
     <div className="min-h-screen bg-white">
@@ -152,108 +180,197 @@ export default function CoreTechDraftProjectCall() {
               </div>
             </div>
 
-            {/* Tabs */}
-            <Tabs defaultValue="special-topic-areas" className="w-full">
-              <TabsList className="grid w-full grid-cols-5 mb-8">
-                <TabsTrigger value="special-topic-areas" className="text-sm">
-                  Special Topic Areas
-                </TabsTrigger>
-                <TabsTrigger value="eligibility" className="text-sm">
-                  Eligibility
-                </TabsTrigger>
-                <TabsTrigger value="funding" className="text-sm">
-                  Funding
-                </TabsTrigger>
-                <TabsTrigger value="how-to-participate" className="text-sm">
-                  How to Participate
-                </TabsTrigger>
-                <TabsTrigger value="resources" className="text-sm">
-                  Resources
-                </TabsTrigger>
-              </TabsList>
-
-              <TabsContent value="special-topic-areas">
-                <div className="space-y-6">
-                  <h3 className="text-2xl font-bold text-gray-900">Special Topic Areas</h3>
-
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <Card className="relative overflow-hidden">
-                      <div className="aspect-video bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                        <h4 className="text-white text-xl font-semibold text-center px-4">
-                          Rapid Re-Tasking and Robot Agility
-                        </h4>
-                      </div>
-                    </Card>
-
-                    <Card className="relative overflow-hidden">
-                      <div className="aspect-video bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
-                        <h4 className="text-white text-xl font-semibold text-center px-4">
-                          Multi-modal Inputs for All Robotics in Manufacturing
-                        </h4>
-                      </div>
-                    </Card>
-
-                    <Card className="relative overflow-hidden">
-                      <div className="aspect-video bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
-                        <h4 className="text-white text-xl font-semibold text-center px-4">
-                          Adaptive Real-Time Path Planning and Control
-                        </h4>
-                      </div>
-                    </Card>
-
-                    <Card className="relative overflow-hidden">
-                      <div className="aspect-video bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
-                        <h4 className="text-white text-xl font-semibold text-center px-4">
-                          Multi-Robot, Multi-Human Collaboration
-                        </h4>
-                      </div>
-                    </Card>
-                  </div>
+            {/* Scrollspy Navigation */}
+            <div className="w-full">
+              <div className="sticky top-4 bg-white z-10 border-b border-gray-200 mb-8 pt-4">
+                <div className="flex space-x-8 overflow-x-auto">
+                  <a
+                    href="#special-topic-areas"
+                    className={`text-sm font-medium pb-2 whitespace-nowrap transition-colors ${
+                      activeSection === "special-topic-areas"
+                        ? "text-orange-500 border-b-2 border-orange-500"
+                        : "text-gray-600 hover:text-orange-500"
+                    }`}
+                  >
+                    Special Topic Areas
+                  </a>
+                  <a
+                    href="#eligibility"
+                    className={`text-sm font-medium pb-2 whitespace-nowrap transition-colors ${
+                      activeSection === "eligibility"
+                        ? "text-orange-500 border-b-2 border-orange-500"
+                        : "text-gray-600 hover:text-orange-500"
+                    }`}
+                  >
+                    Eligibility
+                  </a>
+                  <a
+                    href="#funding"
+                    className={`text-sm font-medium pb-2 whitespace-nowrap transition-colors ${
+                      activeSection === "funding"
+                        ? "text-orange-500 border-b-2 border-orange-500"
+                        : "text-gray-600 hover:text-orange-500"
+                    }`}
+                  >
+                    Funding
+                  </a>
+                  <a
+                    href="#how-to-participate"
+                    className={`text-sm font-medium pb-2 whitespace-nowrap transition-colors ${
+                      activeSection === "how-to-participate"
+                        ? "text-orange-500 border-b-2 border-orange-500"
+                        : "text-gray-600 hover:text-orange-500"
+                    }`}
+                  >
+                    How to Participate
+                  </a>
+                  <a
+                    href="#resources"
+                    className={`text-sm font-medium pb-2 whitespace-nowrap transition-colors ${
+                      activeSection === "resources"
+                        ? "text-orange-500 border-b-2 border-orange-500"
+                        : "text-gray-600 hover:text-orange-500"
+                    }`}
+                  >
+                    Resources
+                  </a>
                 </div>
-              </TabsContent>
+              </div>
 
-              <TabsContent value="eligibility">
+              {/* Special Topic Areas Section */}
+              <section id="special-topic-areas" className="mb-8">
+                <Collapsible open={specialTopicAreasOpen} onOpenChange={setSpecialTopicAreasOpen}>
+                  <CollapsibleTrigger className="flex items-center justify-between w-full p-6 bg-gray-50 rounded-lg hover:bg-gray-100">
+                    <h3 className="text-2xl font-bold text-gray-900">Special Topic Areas</h3>
+                    <ChevronUp className="w-5 h-5" />
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="mt-4 p-6 bg-gray-50 rounded-lg">
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <Card className="relative overflow-hidden">
+                        <Image
+                          src="/images/special-topic-area/rapid-re-tasking-and-robot-agility.png"
+                          alt="Rapid Re-Tasking and Robot Agility"
+                          width={400}
+                          height={225}
+                          className="w-full aspect-video object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                          <h4 className="text-white text-xl font-semibold p-4">Rapid Re-Tasking and Robot Agility</h4>
+                        </div>
+                      </Card>
+
+                      <Card className="relative overflow-hidden">
+                        <Image
+                          src="/images/special-topic-area/multi-modal-inputs-for-ai-robotics-in-manufacturing.png"
+                          alt="Multi-modal Inputs for All Robotics in Manufacturing"
+                          width={400}
+                          height={225}
+                          className="w-full aspect-video object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                          <h4 className="text-white text-xl font-semibold p-4">
+                            Multi-modal Inputs for AI Robotics in Manufacturing
+                          </h4>
+                        </div>
+                      </Card>
+
+                      <Card className="relative overflow-hidden">
+                        <Image
+                          src="/images/special-topic-area/adaptive-real-time-path-planning-and-control.png"
+                          alt="Adaptive Real-Time Path Planning and Control"
+                          width={400}
+                          height={225}
+                          className="w-full aspect-video object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                          <h4 className="text-white text-xl font-semibold p-4">
+                            Adaptive Real-Time Path Planning and Control
+                          </h4>
+                        </div>
+                      </Card>
+
+                      <Card className="relative overflow-hidden">
+                        <Image
+                          src="/images/special-topic-area/multirobot-multihuman-collaboration.png"
+                          alt="Multi-Robot, Multi-Human Collaboration"
+                          width={400}
+                          height={225}
+                          className="w-full aspect-video object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                          <h4 className="text-white text-xl font-semibold p-4">
+                            Multi-Robot, Multi-Human Collaboration
+                          </h4>
+                        </div>
+                      </Card>
+                    </div>
+                  </CollapsibleContent>
+                </Collapsible>
+              </section>
+
+              {/* Eligibility Section */}
+              <section id="eligibility" className="mb-8">
                 <Collapsible open={eligibilityOpen} onOpenChange={setEligibilityOpen}>
-                  <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-gray-50 rounded-lg hover:bg-gray-100">
-                    <h3 className="text-xl font-semibold text-gray-900">Eligibility</h3>
+                  <CollapsibleTrigger className="flex items-center justify-between w-full p-6 bg-gray-50 rounded-lg hover:bg-gray-100">
+                    <h3 className="text-2xl font-bold text-gray-900">Eligibility</h3>
                     {eligibilityOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
                   </CollapsibleTrigger>
-                  <CollapsibleContent className="mt-4 p-4 border rounded-lg">
-                    <p className="text-gray-700">
+                  <CollapsibleContent className="mt-4 p-6 bg-gray-50 rounded-lg">
+                    <p className="text-gray-900 text-lg leading-relaxed mb-6">
                       To address this Project call, ARM Institute encourages proposers to work cooperatively in
-                      presenting integrated solutions...
+                      presenting integrated solutions.
+                    </p>
+                    <p className="text-gray-900 text-lg font-semibold leading-relaxed mb-6">
+                      The lead proposer (or prime) on the project submission is a current Platinum, Gold, Silver or
+                      University/Non-Profit Core ARM Institute member in good standing.
+                    </p>
+                    <p className="text-gray-900 text-lg font-semibold leading-relaxed">
+                      Teams are required to submit an appendix with their concept paper (not included in page limit)
+                      that lists prior ARM projects and describes the status of technology transition for each.
                     </p>
                   </CollapsibleContent>
                 </Collapsible>
-              </TabsContent>
+              </section>
 
-              <TabsContent value="funding">
+              {/* Funding Section */}
+              <section id="funding" className="mb-8">
                 <Collapsible open={fundingOpen} onOpenChange={setFundingOpen}>
-                  <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-gray-50 rounded-lg hover:bg-gray-100">
-                    <h3 className="text-xl font-semibold text-gray-900">Funding</h3>
+                  <CollapsibleTrigger className="flex items-center justify-between w-full p-6 bg-gray-50 rounded-lg hover:bg-gray-100">
+                    <h3 className="text-2xl font-bold text-gray-900">Funding</h3>
                     {fundingOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
                   </CollapsibleTrigger>
-                  <CollapsibleContent className="mt-4 p-4 border rounded-lg">
-                    <p className="text-gray-700 mb-4">
+                  <CollapsibleContent className="mt-4 p-6 bg-gray-50 rounded-lg">
+                    <p className="text-gray-900 text-lg leading-relaxed mb-4">
                       <strong>
                         Individual project budgets must not exceed $500K requested from ARM (smaller budget, shorter
                         duration projects are also welcome).
                       </strong>{" "}
-                      ARM expects...
+                      ARM expects that successful proposers will provide cost share of at least 50% of the total project
+                      cost.
+                    </p>
+                    <p className="text-gray-900 text-lg leading-relaxed mb-4">
+                      Cost share may include direct costs, indirect costs, and in-kind contributions. In-kind
+                      contributions should be valued at fair market rates and must be directly related to the project
+                      objectives.
+                    </p>
+                    <p className="text-gray-900 text-lg leading-relaxed">
+                      Projects are expected to have a duration of 12-18 months from the start date. Longer duration
+                      projects may be considered if adequately justified.
                     </p>
                   </CollapsibleContent>
                 </Collapsible>
-              </TabsContent>
+              </section>
 
-              <TabsContent value="how-to-participate">
+              {/* How to Participate Section */}
+              <section id="how-to-participate" className="mb-8">
                 <Collapsible open={participateOpen} onOpenChange={setParticipateOpen}>
-                  <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-gray-50 rounded-lg hover:bg-gray-100">
-                    <h3 className="text-xl font-semibold text-gray-900">How to Participate</h3>
+                  <CollapsibleTrigger className="flex items-center justify-between w-full p-6 bg-gray-50 rounded-lg hover:bg-gray-100">
+                    <h3 className="text-2xl font-bold text-gray-900">How to Participate</h3>
                     {participateOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
                   </CollapsibleTrigger>
-                  <CollapsibleContent className="mt-4 space-y-8">
+                  <CollapsibleContent className="mt-4 p-6 bg-gray-50 rounded-lg space-y-8">
                     {/* Step 1 */}
-                    <div className="border rounded-lg p-6">
+                    <div className="border border-gray-200 rounded-lg p-6 bg-white">
                       <h4 className="text-lg font-semibold text-gray-900 mb-4">Step 1: Find Potential Collaborators</h4>
                       <p className="text-gray-700 mb-4">
                         The first step to entering the project call is building a team. Take a look through our
@@ -272,7 +389,7 @@ export default function CoreTechDraftProjectCall() {
                     </div>
 
                     {/* Step 2 */}
-                    <div className="border rounded-lg p-6">
+                    <div className="border border-gray-200 rounded-lg p-6 bg-white">
                       <h4 className="text-lg font-semibold text-gray-900 mb-4">Step 2: Concept Paper & Quad Chart</h4>
                       <p className="text-gray-700 mb-4">
                         After finding potential collaborators, write your concept paper together. Take a look at the
@@ -310,7 +427,7 @@ export default function CoreTechDraftProjectCall() {
                     </div>
 
                     {/* Step 3 */}
-                    <div className="border rounded-lg p-6">
+                    <div className="border border-gray-200 rounded-lg p-6 bg-white">
                       <h4 className="text-lg font-semibold text-gray-900 mb-4">
                         Step 3: Presentation Process (Invitation only)
                       </h4>
@@ -355,16 +472,17 @@ export default function CoreTechDraftProjectCall() {
                     </div>
                   </CollapsibleContent>
                 </Collapsible>
-              </TabsContent>
+              </section>
 
-              <TabsContent value="resources">
+              {/* Resources Section */}
+              <section id="resources" className="mb-8">
                 <Collapsible open={resourcesOpen} onOpenChange={setResourcesOpen}>
-                  <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-gray-50 rounded-lg hover:bg-gray-100">
-                    <h3 className="text-xl font-semibold text-gray-900">Resources</h3>
+                  <CollapsibleTrigger className="flex items-center justify-between w-full p-6 bg-gray-50 rounded-lg hover:bg-gray-100">
+                    <h3 className="text-2xl font-bold text-gray-900">Resources</h3>
                     {resourcesOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
                   </CollapsibleTrigger>
-                  <CollapsibleContent className="mt-4">
-                    <div className="bg-gray-50 p-4 rounded-lg">
+                  <CollapsibleContent className="mt-4 p-6 bg-gray-50 rounded-lg">
+                    <div className="bg-white p-4 rounded-lg">
                       <div className="flex items-center justify-between mb-2">
                         <h5 className="font-semibold text-gray-900">Reference Materials (6)</h5>
                         <Button variant="ghost" size="sm" className="text-blue-600">
@@ -378,12 +496,40 @@ export default function CoreTechDraftProjectCall() {
                             Template - Statement of Work
                           </span>
                         </div>
+                        <div className="flex items-center space-x-2">
+                          <FileText className="w-4 h-4 text-blue-600" />
+                          <span className="text-blue-600 hover:underline cursor-pointer">
+                            ARM Institute Technology Roadmap
+                          </span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <FileText className="w-4 h-4 text-blue-600" />
+                          <span className="text-blue-600 hover:underline cursor-pointer">
+                            Intellectual Property Guidelines
+                          </span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <FileText className="w-4 h-4 text-blue-600" />
+                          <span className="text-blue-600 hover:underline cursor-pointer">
+                            Project Reporting Requirements
+                          </span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <FileText className="w-4 h-4 text-blue-600" />
+                          <span className="text-blue-600 hover:underline cursor-pointer">Cost Share Guidelines</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <FileText className="w-4 h-4 text-blue-600" />
+                          <span className="text-blue-600 hover:underline cursor-pointer">
+                            Project Evaluation Criteria
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </CollapsibleContent>
                 </Collapsible>
-              </TabsContent>
-            </Tabs>
+              </section>
+            </div>
           </div>
 
           {/* Timeline Sidebar */}
