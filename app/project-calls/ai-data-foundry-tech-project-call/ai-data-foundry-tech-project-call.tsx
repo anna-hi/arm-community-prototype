@@ -472,9 +472,9 @@ export default function CoreTechDraftProjectCall() {
                   {/* Orange Arrow */}
                   <div className="flex flex-col items-center">
                     {/* Vertical line */}
-                    <div className="w-0.5 h-8 bg-orange-500"></div>
+                    <div className="w-0.5 h-8 bg-armYellow"></div>
                     {/* Downward arrow */}
-                    <div className="w-0 h-0 border-l-[6px] border-r-[6px] border-t-[9px] border-l-transparent border-r-transparent border-t-orange-500"></div>
+                    <div className="w-0 h-0 border-l-[6px] border-r-[6px] border-t-[9px] border-l-transparent border-r-transparent border-t-armYellow"></div>
                   </div>
 
                   <div className="flex items-center space-x-4 bg-white p-4 rounded-lg border border-gray-200">
@@ -494,9 +494,9 @@ export default function CoreTechDraftProjectCall() {
                   {/* Orange Arrow */}
                   <div className="flex flex-col items-center">
                     {/* Vertical line */}
-                    <div className="w-0.5 h-8 bg-orange-500"></div>
+                    <div className="w-0.5 h-8 bg-armYellow"></div>
                     {/* Downward arrow */}
-                    <div className="w-0 h-0 border-l-[6px] border-r-[6px] border-t-[9px] border-l-transparent border-r-transparent border-t-orange-500"></div>
+                    <div className="w-0 h-0 border-l-[6px] border-r-[6px] border-t-[9px] border-l-transparent border-r-transparent border-t-armYellow"></div>
                   </div>
 
                   <div className="flex items-center space-x-4 bg-white p-4 rounded-lg border border-gray-200">
@@ -516,9 +516,9 @@ export default function CoreTechDraftProjectCall() {
                   {/* Orange Arrow */}
                   <div className="flex flex-col items-center">
                     {/* Vertical line */}
-                    <div className="w-0.5 h-8 bg-orange-500"></div>
+                    <div className="w-0.5 h-8 bg-armYellow"></div>
                     {/* Downward arrow */}
-                    <div className="w-0 h-0 border-l-[6px] border-r-[6px] border-t-[9px] border-l-transparent border-r-transparent border-t-orange-500"></div>
+                    <div className="w-0 h-0 border-l-[6px] border-r-[6px] border-t-[9px] border-l-transparent border-r-transparent border-t-armYellow"></div>
                   </div>
 
                   <div className="flex items-center space-x-4 bg-white p-4 rounded-lg border border-gray-200">
