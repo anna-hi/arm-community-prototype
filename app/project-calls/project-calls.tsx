@@ -141,10 +141,12 @@ export default function ProjectCalls() {
                     <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
                     Active
                   </Badge>
-                  <Button className="bg-orange-500 hover:bg-orange-600 text-white">
-                    Go to Project Call
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
+                  <Link href="/project-calls/25-01-core-tech-draft">
+                    <Button className="bg-orange-500 hover:bg-orange-600 text-white">
+                      Go to Project Call
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </Link>
                 </div>
               </CardContent>
             </Card>
