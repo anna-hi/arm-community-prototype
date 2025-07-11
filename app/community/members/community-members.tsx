@@ -8,10 +8,11 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import NavBar from "@/components/NavBar"
 import MemberCard from "@/components/ui/member-card"
+import Link from "next/link"
 
 const members = [
 	{
-		id: 1,
+		id: "aaron-prather",
 		name: "Aaron Prather",
 		organization: "ASTM",
 		role: "Director, Robotics & Autonomous Systems Programs",
@@ -106,6 +107,11 @@ export default function CommunityMembers() {
 	const [searchTerm, setSearchTerm] = useState("")
 	const [interestedInProjects, setInterestedInProjects] = useState(false)
 
+	// Filter members based on checkbox
+	const filteredMembers = interestedInProjects
+		? members.filter((member) => member.name === "Aaron Prather")
+		: members
+
 	return (
 		<div className="min-h-screen bg-white">
 			<NavBar />
@@ -132,11 +138,11 @@ export default function CommunityMembers() {
 					<h2 className="text-lg font-semibold text-gray-900 mb-4">Filters</h2>
 
 					{/* Interested in projects checkbox */}
-					<div className="flex items-center space-x-2 mb-4">
+					<div className="flex justify-end items-center space-x-2 mb-4">
 						<Checkbox
 							id="interested-projects"
 							checked={interestedInProjects}
-							onCheckedChange={setInterestedInProjects}
+							onCheckedChange={() => setInterestedInProjects((prev) => !prev)}
 						/>
 						<label htmlFor="interested-projects" className="text-sm text-gray-700">
 							Interested in projects
@@ -204,18 +210,18 @@ export default function CommunityMembers() {
 
 				{/* Members Grid */}
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-					{members.map((member) => (
-						<MemberCard
-							key={member.id}
-							tags={member.tags}
-							committeeTag={member.committeeTag}
-							imageSrc={member.imageSrc}
-							name={member.name}
-							organization={member.organization}
-							role={member.role}
-							isFavorite={member.isFavorite}
-							// You can add onFavoriteClick if needed
-						/>
+					{filteredMembers.map((member) => (
+						<Link key={member.id} href={`/community/members/${member.id}`} className="block">
+							<MemberCard
+								tags={member.tags}
+								committeeTag={member.committeeTag}
+								imageSrc={member.imageSrc}
+								name={member.name}
+								organization={member.organization}
+								role={member.role}
+								isFavorite={member.isFavorite}
+							/>
+						</Link>
 					))}
 				</div>
 			</main>
