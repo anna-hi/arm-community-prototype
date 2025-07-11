@@ -28,7 +28,7 @@ export default function Homepage() {
           }}
         ></div>
         <div className="relative max-w-7xl mx-auto px-6">
-          <h1 className="mb-6">
+          <h1 className="text-white pb-6">
             Welcome to the ARM Member Community, Michael!
           </h1>
           <div className="flex space-x-4">

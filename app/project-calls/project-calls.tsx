@@ -1,14 +1,15 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import {  ArrowRight } from "lucide-react"
-import Link from "next/link"
-import NavBar from "@/components/NavBar"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { ArrowRight } from "lucide-react";
+import { OrangeButton } from "@/components/OrangeButton";
+import NavBar from "@/components/NavBar";
+import "@/styles/globals.css";
 
 export default function ProjectCalls() {
   return (
     <div className="min-h-screen bg-white">
-      < NavBar />
+      <NavBar />
       {/* Hero Section */}
       <section className="relative bg-gray-900 text-white py-20">
         <div className="absolute inset-0 bg-black/60"></div>
@@ -19,100 +20,105 @@ export default function ProjectCalls() {
           }}
         ></div>
         <div className="relative max-w-7xl mx-auto px-6">
-          <h1 className="text-5xl font-bold mb-6">Project Calls</h1>
-          <p className="text-xl text-gray-200 max-w-2xl">
-            Browse project calls that offer funding to advance the future of U.S. manufacturing. These opportunities
-            support collaborative proposals from ARM members working to solve critical industry challenges.
+          <h1 className="text-white pb-6">Project Calls</h1>
+          <p className="text-white max-w-2xl">
+            Browse project calls that offer funding to advance the future of
+            U.S. manufacturing. These opportunities support collaborative
+            proposals from ARM members working to solve critical industry
+            challenges.
           </p>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-6 py-12 space-y-12">
+      <div className="max-w-7xl mx-auto px-6 py-12 space-y-16">
         {/* Active Project Calls */}
         <section>
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Active Project Calls</h2>
+          <h1 className="mb-8">Active Project Calls</h1>
           <div className="grid md:grid-cols-2 gap-8">
-            <Card className="border border-gray-200">
+            <Card>
               <CardHeader>
-                <CardTitle className="text-xl font-semibold text-gray-900">
-                  25-01 Core Tech Draft Project Call
+                <CardTitle className="">
+                  25-01 Core Tech Draft Project Call is Out
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-6">
-                <p className="text-gray-600">
-                  The ARM Institute is soliciting submissions that respond to specific needs of the manufacturing
-                  industry and the Department of Defense (DoD). This project call is seeking projects to make focused
-                  investments in the Special Topic Areas (STA).
+              <CardContent>
+                <p>
+                  The ARM Institute is soliciting submissions that respond to
+                  technology needs of the manufacturing industry and the
+                  Department of Defense (DoD). This project call is seeking
+                  projects to make focused investments in the Special Topic
+                  Areas (STAs).
                 </p>
-                <div className="flex items-center justify-between">
-                  <Badge className="bg-green-100 text-green-800 border-green-200">
-                    <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-                    Active
-                  </Badge>
-                  <Link href="/project-calls/25-01-core-tech-draft">
-                    <Button className="bg-orange-500 hover:bg-orange-600 text-white">
-                      Go to Project Call
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
-                  </Link>
-                </div>
               </CardContent>
+              <div className="flex items-center justify-between">
+                <Badge
+                  variant="secondary"
+                  className="bg-green-100 text-green-800"
+                >
+                  Active
+                </Badge>
+                <OrangeButton text="Go to Project Call" />
+              </div>
             </Card>
 
-            <Card className="border border-gray-200">
+            <Card>
               <CardHeader>
-                <CardTitle className="text-xl font-semibold text-gray-900">
+                <CardTitle className="">
                   2024 AI Data Foundry Tech Project Call
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-6">
-                <p className="text-gray-600">
-                  Join us for our 2025 Annual Member Meeting taking place Sept. 3-5 in Pittsburgh! This event is free to
-                  attend and open only to ARM Members. You can expect three days of networking, knowledge sharing,
-                  collaboration, robotics demonstrations, project updates, and more!
+              <CardContent>
+                <p>
+                  Join us for our 2024 Annual Member Meeting taking place Sept.
+                  3-5 in Pittsburgh! This event is free to attend and open only
+                  to ARM Members. You can expect three days of networking,
+                  knowledge sharing, collaboration, robotics demonstrations,
+                  project updates, and more!
                 </p>
-                <div className="flex items-center justify-between">
-                  <Badge className="bg-green-100 text-green-800 border-green-200">
-                    <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-                    Active
-                  </Badge>
-                  <Button className="bg-orange-500 hover:bg-orange-600 text-white">
-                    Go to Project Call
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </div>
               </CardContent>
+              <div className="flex items-center justify-between">
+                <Badge
+                  variant="secondary"
+                  className="bg-green-100 text-green-800"
+                >
+                  Active
+                </Badge>
+                <OrangeButton text="Go to Project Call" />
+              </div>
             </Card>
           </div>
         </section>
 
         {/* Closed Project Calls */}
         <section>
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Closed Project Calls</h2>
+          <h1 className="mb-8">Closed Project Calls</h1>
           <div className="grid md:grid-cols-2 gap-8">
             <Card className="border border-gray-200">
               <CardHeader>
-                <CardTitle className="text-xl font-semibold text-gray-900">
+                <CardTitle className="">
                   Recircled RFI Opportunity: Robotics for the Fashion Industry
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-6">
-                <p className="text-gray-600">
-                  The ARM Institute is soliciting submissions that respond to specific needs of the manufacturing
-                  industry and the Department of Defense (DoD). This project call is seeking projects to make focused
-                  investments in the Special Topic Areas (STA) described below.
+              <CardContent>
+                <p className="">
+                  {/* text-gray-800 */}
+                  The ARM Institute is soliciting submissions that respond to
+                  specific needs of the manufacturing industry and the
+                  Department of Defense (DoD). This project call is seeking
+                  projects to make focused investments in the Special Topic
+                  Areas (STA) described below.
                 </p>
-                <div className="flex items-center justify-between">
-                  <Badge variant="destructive" className="bg-red-100 text-red-800 border-red-200">
-                    <div className="w-2 h-2 bg-red-500 rounded-full mr-2"></div>
-                    Closed
-                  </Badge>
-                  <Button className="bg-orange-500 hover:bg-orange-600 text-white">
-                    Go to Project Call
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </div>
               </CardContent>
+              <div className="flex items-center justify-between">
+                <Badge
+                  variant="destructive"
+                  className="bg-red-100 text-red-800 border-red-200"
+                >
+                  <div className="w-2 h-2 bg-red-500 rounded-full mr-2"></div>
+                  Closed
+                </Badge>
+                <OrangeButton text="Go to Project Call" />
+              </div>
             </Card>
           </div>
         </section>
@@ -130,7 +136,8 @@ export default function ProjectCalls() {
                 <span className="font-semibold">ARM INSTITUTE</span>
               </div>
               <p className="text-gray-400 text-sm">
-                Copyright © 2025 Advanced Robotics for Manufacturing Institute. All rights reserved.
+                Copyright © 2025 Advanced Robotics for Manufacturing Institute.
+                All rights reserved.
               </p>
             </div>
             <div>
@@ -149,11 +156,13 @@ export default function ProjectCalls() {
             </div>
             <div>
               <h4 className="font-semibold mb-4">Need Help?</h4>
-              <Button className="bg-orange-500 hover:bg-orange-600">Contact ARM</Button>
+              <Button className="bg-orange-500 hover:bg-orange-600">
+                Contact ARM
+              </Button>
             </div>
           </div>
         </div>
       </footer>
     </div>
-  )
+  );
 }
