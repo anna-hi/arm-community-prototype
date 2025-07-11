@@ -140,14 +140,14 @@ export default function CoreTechDraftProjectCall() {
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-6 py-8">
+      <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="flex gap-8">
           {/* Main Content */}
           <div className="flex-1">
             {/* Header Section */}
-            <div className="flex items-center mb-8">
+            <div className="flex items-center mb-4">
               <div>
-                <h1 className="text-4xl font-bold text-gray-900 mb-2">25-01 Core Tech Draft Project Call</h1>
+                <h1 className="text-4xl font-bold text-gray-900 mb-4">25-01 Core Tech Draft Project Call</h1>
                 <Badge className="bg-green-100 text-green-800 border-green-200">
                   <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
                   Active
@@ -156,7 +156,7 @@ export default function CoreTechDraftProjectCall() {
             </div>
 
             {/* Description */}
-            <div className="mb-8">
+            <div className="mb-8 pr-16">
               <p className="text-gray-700 text-lg leading-relaxed mb-4">
                 The ARM Institute is soliciting submissions that respond to specific needs of the manufacturing industry
                 and the Department of Defense (DoD). This project call is seeking projects to make focused investments
@@ -170,10 +170,10 @@ export default function CoreTechDraftProjectCall() {
               </p>
             </div>
 
-            {/* Project Call Document */}
+            {/* Project Call Document Button */}
             <div className="mb-8">
-              <div className="flex items-center border border-gray-300 rounded-lg bg-white max-w-fit">
-                <span className="px-6 py-3 text-gray-900 font-medium">Project Call Document</span>
+              <div className="px-3 py-2 flex items-center border border-gray-300 rounded-sm bg-white max-w-fit">
+                <span className="text-base text-gray-900 font-medium">Project Call Document</span>
                 <div className="m-1">
                   <OrangeButton text="" className="" />
                 </div>
@@ -183,10 +183,10 @@ export default function CoreTechDraftProjectCall() {
             {/* Scrollspy Navigation */}
             <div className="w-full">
               <div className="sticky top-0 bg-white z-10 border-gray-200 mb-4 pt-8 pb-4">
-                <div className="flex space-x-8 overflow-x-auto">
+                <div className="flex space-x-8 overflow-x-auto text-base font-medium">
                   <a
                     href="#special-topic-areas"
-                    className={`text-sm font-medium pb-2 whitespace-nowrap transition-colors ${
+                    className={`pb-2 whitespace-nowrap transition-colors ${
                       activeSection === "special-topic-areas"
                         ? "text-gray-950 border-b-2 border-armYellow"
                         : "text-gray-600 hover:text-gray-950"
@@ -196,7 +196,7 @@ export default function CoreTechDraftProjectCall() {
                   </a>
                   <a
                     href="#eligibility"
-                    className={`text-sm font-medium pb-2 whitespace-nowrap transition-colors ${
+                    className={`pb-2 whitespace-nowrap transition-colors ${
                       activeSection === "eligibility"
                         ? "text-gray-950 border-b-2 border-armYellow"
                         : "text-gray-600 hover:text-gray-950"
@@ -206,7 +206,7 @@ export default function CoreTechDraftProjectCall() {
                   </a>
                   <a
                     href="#funding"
-                    className={`text-sm font-medium pb-2 whitespace-nowrap transition-colors ${
+                    className={`pb-2 whitespace-nowrap transition-colors ${
                       activeSection === "funding"
                         ? "text-gray-950 border-b-2 border-armYellow"
                         : "text-gray-600 hover:text-gray-950"
@@ -216,7 +216,7 @@ export default function CoreTechDraftProjectCall() {
                   </a>
                   <a
                     href="#how-to-participate"
-                    className={`text-sm font-medium pb-2 whitespace-nowrap transition-colors ${
+                    className={`pb-2 whitespace-nowrap transition-colors ${
                       activeSection === "how-to-participate"
                         ? "text-gray-950 border-b-2 border-armYellow"
                         : "text-gray-600 hover:text-gray-950"
@@ -226,7 +226,7 @@ export default function CoreTechDraftProjectCall() {
                   </a>
                   <a
                     href="#resources"
-                    className={`text-sm font-medium pb-2 whitespace-nowrap transition-colors ${
+                    className={`pb-2 whitespace-nowrap transition-colors ${
                       activeSection === "resources"
                         ? "text-gray-950 border-b-2 border-armYellow"
                         : "text-gray-600 hover:text-gray-950"
@@ -534,83 +534,93 @@ export default function CoreTechDraftProjectCall() {
 
           {/* Timeline Sidebar */}
           <div className="w-80">
-            <Card className="sticky top-8">
-              <CardContent className="p-6 space-y-6">
+            <Card className="sticky top-8 p-6 !h-auto">
+              <CardContent className="space-y-6">
                 {/* Submit Proposal Button */}
-                <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 text-lg font-semibold">
+                <Button className="body w-full bg-armYellow hover:bg-orange-600 text-gray-950 py-3 font-regular">
                   Submit Proposal
                 </Button>
 
                 {/* Timeline Items */}
-                <div className="space-y-6">
-                  <div className="flex items-center space-x-4">
-                    <div className="flex flex-col items-center">
-                      <div className="bg-orange-100 text-gray-800 rounded-t-lg px-4 py-1 text-sm font-medium border border-gray-300">
+                <div className="space-y-0">
+
+                  <div className="flex items-center space-x-4 bg-white p-4 rounded-lg border border-gray-200">
+                    <div className="flex flex-col items-center border border-gray-950 rounded-lg overflow-hidden">
+                      <div className="w-16 h-7 bg-orange-100 text-sm font-montserrat font-semibold text-gray-950 flex items-center justify-center">
                         May
                       </div>
-                      <div className="bg-gray-800 text-white rounded-b-lg px-4 py-2 text-lg font-bold border border-gray-800">
+                      <div className="w-16 h-9 bg-zinc-800 text-md font-montserrat font-semibold text-white flex items-center justify-center">
                         8
                       </div>
                     </div>
                     <div>
-                      <p className="font-medium text-gray-900">Project Call Opens</p>
+                      <p className="body text-sm font-medium text-gray-900">Project Call Opens</p>
                     </div>
                   </div>
 
                   {/* Orange Arrow */}
-                  <div className="flex justify-center">
-                    <div className="w-0 h-0 border-l-[8px] border-r-[8px] border-t-[12px] border-l-transparent border-r-transparent border-t-orange-500"></div>
+                  <div className="flex flex-col items-center">
+                    {/* Vertical line */}
+                    <div className="w-0.5 h-8 bg-orange-500"></div>
+                    {/* Downward arrow */}
+                    <div className="w-0 h-0 border-l-[6px] border-r-[6px] border-t-[9px] border-l-transparent border-r-transparent border-t-orange-500"></div>
                   </div>
 
-                  <div className="flex items-center space-x-4">
-                    <div className="flex flex-col items-center">
-                      <div className="bg-orange-100 text-gray-800 rounded-t-lg px-4 py-1 text-sm font-medium border border-gray-300">
+                  <div className="flex items-center space-x-4 bg-white p-4 rounded-lg border border-gray-200">
+                    <div className="flex flex-col items-center border border-gray-950 rounded-lg overflow-hidden">
+                      <div className="w-16 h-7 bg-orange-100 text-sm font-montserrat font-semibold text-gray-950 flex items-center justify-center">
                         May
                       </div>
-                      <div className="bg-gray-800 text-white rounded-b-lg px-4 py-2 text-lg font-bold border border-gray-800">
+                      <div className="w-16 h-9 bg-zinc-800 text-md font-montserrat font-semibold text-white flex items-center justify-center">
                         28
                       </div>
                     </div>
                     <div>
-                      <p className="font-medium text-gray-900">Project Call Webinar and Q&A</p>
+                      <p className="body text-sm font-medium text-gray-900">Project Call Webinar and Q&A</p>
                     </div>
                   </div>
 
                   {/* Orange Arrow */}
-                  <div className="flex justify-center">
-                    <div className="w-0 h-0 border-l-[8px] border-r-[8px] border-t-[12px] border-l-transparent border-r-transparent border-t-orange-500"></div>
+                  <div className="flex flex-col items-center">
+                    {/* Vertical line */}
+                    <div className="w-0.5 h-8 bg-orange-500"></div>
+                    {/* Downward arrow */}
+                    <div className="w-0 h-0 border-l-[6px] border-r-[6px] border-t-[9px] border-l-transparent border-r-transparent border-t-orange-500"></div>
                   </div>
 
-                  <div className="flex items-center space-x-4">
-                    <div className="flex flex-col items-center">
-                      <div className="bg-orange-100 text-gray-800 rounded-t-lg px-4 py-1 text-sm font-medium border border-gray-300">
+                  <div className="flex items-center space-x-4 bg-white p-4 rounded-lg border border-gray-200">
+                    <div className="flex flex-col items-center border border-gray-950 rounded-lg overflow-hidden">
+                      <div className="w-16 h-7 bg-orange-100 text-sm font-montserrat font-semibold text-gray-950 flex items-center justify-center">
                         Jun
                       </div>
-                      <div className="bg-gray-800 text-white rounded-b-lg px-4 py-2 text-lg font-bold border border-gray-800">
+                      <div className="w-16 h-9 bg-zinc-800 text-md font-montserrat font-semibold text-white flex items-center justify-center">
                         12
                       </div>
                     </div>
                     <div>
-                      <p className="font-medium text-gray-900">Concept Paper Submission Deadline</p>
+                      <p className="body text-sm font-medium text-gray-900">Concept Paper Submission Deadline</p>
                     </div>
                   </div>
 
                   {/* Orange Arrow */}
-                  <div className="flex justify-center">
-                    <div className="w-0 h-0 border-l-[8px] border-r-[8px] border-t-[12px] border-l-transparent border-r-transparent border-t-orange-500"></div>
+                  <div className="flex flex-col items-center">
+                    {/* Vertical line */}
+                    <div className="w-0.5 h-8 bg-orange-500"></div>
+                    {/* Downward arrow */}
+                    <div className="w-0 h-0 border-l-[6px] border-r-[6px] border-t-[9px] border-l-transparent border-r-transparent border-t-orange-500"></div>
                   </div>
 
-                  <div className="flex items-center space-x-4">
-                    <div className="flex flex-col items-center">
-                      <div className="bg-orange-100 text-gray-800 rounded-t-lg px-4 py-1 text-sm font-medium border border-gray-300">
+                  <div className="flex items-center space-x-4 bg-white p-4 rounded-lg border border-gray-200">
+                    <div className="flex flex-col items-center border border-gray-950 rounded-lg overflow-hidden">
+                      <div className="w-16 h-7 bg-orange-100 text-sm font-montserrat font-semibold text-gray-950 flex items-center justify-center">
                         Jun
                       </div>
-                      <div className="bg-gray-800 text-white rounded-b-lg px-4 py-2 text-lg font-bold border border-gray-800">
+                      <div className="w-16 h-9 bg-zinc-800 text-md font-montserrat font-semibold text-white flex items-center justify-center">
                         28
                       </div>
                     </div>
                     <div>
-                      <p className="font-medium text-gray-900">Invitations for Presentation Submission</p>
+                      <p className="body text-sm font-medium text-gray-900">Invitations for Presentation Submission</p>
                     </div>
                   </div>
                 </div>
