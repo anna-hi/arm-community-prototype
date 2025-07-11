@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { OrangeButton } from "@/components/OrangeButton";
 import NavBar from "@/components/NavBar";
 import "@/styles/globals.css";
@@ -35,31 +35,33 @@ export default function ProjectCalls() {
         <section>
           <h1 className="mb-8">Active Project Calls</h1>
           <div className="grid md:grid-cols-2 gap-8">
-            <Card>
-              <CardHeader>
-                <CardTitle className="">
-                  25-01 Core Tech Draft Project Call is Out
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>
-                  The ARM Institute is soliciting submissions that respond to
-                  technology needs of the manufacturing industry and the
-                  Department of Defense (DoD). This project call is seeking
-                  projects to make focused investments in the Special Topic
-                  Areas (STAs).
-                </p>
-              </CardContent>
-              <div className="flex items-center justify-between">
-                <Badge
-                  variant="secondary"
-                  className="bg-green-100 text-green-800"
-                >
-                  Active
-                </Badge>
-                <OrangeButton text="Go to Project Call" />
-              </div>
-            </Card>
+            <Link href="/project-calls/25-01-core-tech-draft">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="">
+                    25-01 Core Tech Draft Project Call is Out
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>
+                    The ARM Institute is soliciting submissions that respond to
+                    technology needs of the manufacturing industry and the
+                    Department of Defense (DoD). This project call is seeking
+                    projects to make focused investments in the Special Topic
+                    Areas (STAs).
+                  </p>
+                </CardContent>
+                <div className="flex items-center justify-between">
+                  <Badge
+                    variant="secondary"
+                    className="bg-green-100 text-green-800"
+                  >
+                    Active
+                  </Badge>
+                  <OrangeButton text="Go to Project Call" />
+                </div>
+              </Card>
+            </Link>
 
             <Card>
               <CardHeader>
