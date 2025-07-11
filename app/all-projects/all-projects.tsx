@@ -283,60 +283,124 @@ export default function AllProjects() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           {projects.map((project, index) => (
             <Card key={index} className="border border-gray-200 hover:shadow-md transition-shadow">
-              <CardContent className="p-6">
-                {/* Status and Favorite */}
-                <div className="flex items-center justify-between mb-4">
-                  <Badge
-                    variant={project.status === "Performing" ? "default" : "secondary"}
-                    className={
-                      project.status === "Performing" ? "bg-orange-100 text-orange-800" : "bg-green-100 text-green-800"
-                    }
-                  >
-                    {project.status === "Performing" && "●"} {project.status}
-                  </Badge>
-                  {project.isFavorite && <Star className="w-4 h-4 text-orange-500 fill-current" />}
-                </div>
+              {(index === 2 || index === 8) &&
+              project.title === "Fixtureless Robotic Assembly for Manufacturing Environments 2.0" ? (
+                <Link href="/projects/fixtureless-robotic-assembly" className="block">
+                  <CardContent className="p-6">
+                    {/* Status and Favorite */}
+                    <div className="flex items-center justify-between mb-4">
+                      <Badge
+                        variant={project.status === "Performing" ? "default" : "secondary"}
+                        className={
+                          project.status === "Performing"
+                            ? "bg-orange-100 text-orange-800"
+                            : "bg-green-100 text-green-800"
+                        }
+                      >
+                        {project.status === "Performing" && "●"} {project.status}
+                      </Badge>
+                      {project.isFavorite && <Star className="w-4 h-4 text-orange-500 fill-current" />}
+                    </div>
 
-                {/* Project Icon */}
-                <div className="flex justify-center mb-4">
-                  <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center">
-                    <Image
-                      src="/placeholder.svg?height=40&width=40"
-                      alt="Project icon"
-                      width={40}
-                      height={40}
-                      className="opacity-60"
-                    />
-                  </div>
-                </div>
+                    {/* Project Icon */}
+                    <div className="flex justify-center mb-4">
+                      <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center">
+                        <Image
+                          src="/placeholder.svg?height=40&width=40"
+                          alt="Project icon"
+                          width={40}
+                          height={40}
+                          className="opacity-60"
+                        />
+                      </div>
+                    </div>
 
-                {/* Project ID */}
-                <p className="text-sm text-gray-600 mb-2">{project.id}</p>
+                    {/* Project ID */}
+                    <p className="text-sm text-gray-600 mb-2">{project.id}</p>
 
-                {/* Project Title */}
-                <h3 className="font-semibold text-gray-900 mb-4 line-clamp-2">{project.title}</h3>
+                    {/* Project Title */}
+                    <h3 className="font-semibold text-gray-900 mb-4 line-clamp-2">{project.title}</h3>
 
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag, tagIndex) => (
-                    <Badge key={tagIndex} variant="outline" className="text-xs">
-                      {tag}
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tags.map((tag, tagIndex) => (
+                        <Badge key={tagIndex} variant="outline" className="text-xs">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+
+                    {/* Organization Info */}
+                    <div className="space-y-2 text-sm">
+                      <div>
+                        <span className="font-medium text-gray-900">Lead Organization:</span>
+                        <p className="text-gray-600">{project.leadOrg}</p>
+                      </div>
+                      <div>
+                        <span className="font-medium text-gray-900">Principal Investigator:</span>
+                        <p className="text-gray-600">{project.principalInvestigator}</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Link>
+              ) : (
+                <CardContent className="p-6">
+                  {/* Status and Favorite */}
+                  <div className="flex items-center justify-between mb-4">
+                    <Badge
+                      variant={project.status === "Performing" ? "default" : "secondary"}
+                      className={
+                        project.status === "Performing"
+                          ? "bg-orange-100 text-orange-800"
+                          : "bg-green-100 text-green-800"
+                      }
+                    >
+                      {project.status === "Performing" && "●"} {project.status}
                     </Badge>
-                  ))}
-                </div>
+                    {project.isFavorite && <Star className="w-4 h-4 text-orange-500 fill-current" />}
+                  </div>
 
-                {/* Organization Info */}
-                <div className="space-y-2 text-sm">
-                  <div>
-                    <span className="font-medium text-gray-900">Lead Organization:</span>
-                    <p className="text-gray-600">{project.leadOrg}</p>
+                  {/* Project Icon */}
+                  <div className="flex justify-center mb-4">
+                    <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center">
+                      <Image
+                        src="/placeholder.svg?height=40&width=40"
+                        alt="Project icon"
+                        width={40}
+                        height={40}
+                        className="opacity-60"
+                      />
+                    </div>
                   </div>
-                  <div>
-                    <span className="font-medium text-gray-900">Principal Investigator:</span>
-                    <p className="text-gray-600">{project.principalInvestigator}</p>
+
+                  {/* Project ID */}
+                  <p className="text-sm text-gray-600 mb-2">{project.id}</p>
+
+                  {/* Project Title */}
+                  <h3 className="font-semibold text-gray-900 mb-4 line-clamp-2">{project.title}</h3>
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tags.map((tag, tagIndex) => (
+                      <Badge key={tagIndex} variant="outline" className="text-xs">
+                        {tag}
+                      </Badge>
+                    ))}
                   </div>
-                </div>
-              </CardContent>
+
+                  {/* Organization Info */}
+                  <div className="space-y-2 text-sm">
+                    <div>
+                      <span className="font-medium text-gray-900">Lead Organization:</span>
+                      <p className="text-gray-600">{project.leadOrg}</p>
+                    </div>
+                    <div>
+                      <span className="font-medium text-gray-900">Principal Investigator:</span>
+                      <p className="text-gray-600">{project.principalInvestigator}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              )}
             </Card>
           ))}
         </div>
