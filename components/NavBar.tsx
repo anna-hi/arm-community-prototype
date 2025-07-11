@@ -22,7 +22,7 @@ const NavBar: React.FC = () => {
             href="/"
             className="flex items-center justify-center px-10">
               <Image
-                src="/arm-nav-logo.png"
+                src="images/homepage/arm-nav-logo.png"
                 alt="ARM Institute"
                 width={100}
                 height={100}

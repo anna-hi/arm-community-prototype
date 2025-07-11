@@ -1,12 +1,16 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import {  Search, List, Grid3X3, ChevronLeft, ChevronRight, Star } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
-import NavBar from "@/components/NavBar"
+import { Button } from "@/components/ui/button";
+import CDIPCard from "@/components/ui/cdip-card";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Search, List, Grid3X3, ChevronLeft, ChevronRight } from "lucide-react";
+import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 
 export default function AllProjects() {
   const projects = [
@@ -91,7 +95,7 @@ export default function AllProjects() {
       principalInvestigator: "Reyneal Reyes",
       isFavorite: true,
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -99,7 +103,7 @@ export default function AllProjects() {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-6 py-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">All Projects</h1>
+        <h1 className="mb-8">All Projects</h1>
 
         {/* Search and View Toggle */}
         <div className="flex items-center justify-between mb-6">
@@ -118,258 +122,130 @@ export default function AllProjects() {
         </div>
 
         {/* Filters */}
-        <div className="mb-8">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Filters</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <Select>
-              <SelectTrigger>
-                <SelectValue placeholder="Industry" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="aerospace">Aerospace</SelectItem>
-                <SelectItem value="automotive">Automotive</SelectItem>
-                <SelectItem value="textiles">Textiles</SelectItem>
-              </SelectContent>
-            </Select>
+        <div className="">
+          <div className="bg-[#F3F3F3] rounded-lg p-6 mb-8">
+            <h3 className="mb-4">Filters</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              <Select>
+                <SelectTrigger>
+                  <SelectValue placeholder="Industry" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="aerospace">Aerospace</SelectItem>
+                  <SelectItem value="automotive">Automotive</SelectItem>
+                  <SelectItem value="textiles">Textiles</SelectItem>
+                </SelectContent>
+              </Select>
 
-            <Select>
-              <SelectTrigger>
-                <SelectValue placeholder="TRL at Project End" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="trl1">TRL 1</SelectItem>
-                <SelectItem value="trl2">TRL 2</SelectItem>
-                <SelectItem value="trl3">TRL 3</SelectItem>
-              </SelectContent>
-            </Select>
+              <Select>
+                <SelectTrigger>
+                  <SelectValue placeholder="TRL at Project End" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="trl1">TRL 1</SelectItem>
+                  <SelectItem value="trl2">TRL 2</SelectItem>
+                  <SelectItem value="trl3">TRL 3</SelectItem>
+                  <SelectItem value="trl3">TRL 4</SelectItem>
+                  <SelectItem value="trl3">TRL 5</SelectItem>
+                  <SelectItem value="trl3">TRL 6</SelectItem>
+                  <SelectItem value="trl3">TRL 7</SelectItem>
+                </SelectContent>
+              </Select>
 
-            <Select>
-              <SelectTrigger>
-                <SelectValue placeholder="Strategic Focus Area" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="ai">AI & Machine Learning</SelectItem>
-                <SelectItem value="robotics">Robotics</SelectItem>
-                <SelectItem value="automation">Automation</SelectItem>
-              </SelectContent>
-            </Select>
+              <Select>
+                <SelectTrigger>
+                  <SelectValue placeholder="Strategic Focus Area" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="ai">AI & Machine Learning</SelectItem>
+                  <SelectItem value="robotics">Robotics</SelectItem>
+                  <SelectItem value="automation">Automation</SelectItem>
+                </SelectContent>
+              </Select>
 
-            <Select>
-              <SelectTrigger>
-                <SelectValue placeholder="Project Type" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="research">Research</SelectItem>
-                <SelectItem value="development">Development</SelectItem>
-                <SelectItem value="pilot">Pilot</SelectItem>
-              </SelectContent>
-            </Select>
+              <Select>
+                <SelectTrigger>
+                  <SelectValue placeholder="Project Type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="research">Research</SelectItem>
+                  <SelectItem value="development">Development</SelectItem>
+                  <SelectItem value="pilot">Pilot</SelectItem>
+                </SelectContent>
+              </Select>
 
-            <Select>
-              <SelectTrigger>
-                <SelectValue placeholder="Project Status" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="performing">Performing</SelectItem>
-                <SelectItem value="completed">Completed</SelectItem>
-                <SelectItem value="planned">Planned</SelectItem>
-              </SelectContent>
-            </Select>
+              <Select>
+                <SelectTrigger>
+                  <SelectValue placeholder="Project Status" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="performing">Performing</SelectItem>
+                  <SelectItem value="completed">Completed</SelectItem>
+                </SelectContent>
+              </Select>
 
-            <Select>
-              <SelectTrigger>
-                <SelectValue placeholder="Lead Organization" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="henderson">Henderson Sewing Machine Co.</SelectItem>
-                <SelectItem value="aris">ARIS Technology, LLC</SelectItem>
-                <SelectItem value="lockheed">Lockheed Martin Corporation</SelectItem>
-              </SelectContent>
-            </Select>
+              <Select>
+                <SelectTrigger>
+                  <SelectValue placeholder="Lead Organization" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="henderson">
+                    Henderson Sewing Machine Co.
+                  </SelectItem>
+                  <SelectItem value="aris">ARIS Technology, LLC</SelectItem>
+                  <SelectItem value="lockheed">
+                    Lockheed Martin Corporation
+                  </SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
-        </div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          {projects.map((project, index) => (
-            <Card key={index} className="border border-gray-200 hover:shadow-md transition-shadow">
-              {(index === 2 || index === 8) &&
-              project.title === "Fixtureless Robotic Assembly for Manufacturing Environments 2.0" ? (
-                <Link href="/projects/fixtureless-robotic-assembly" className="block">
-                  <CardContent className="p-6">
-                    {/* Status and Favorite */}
-                    <div className="flex items-center justify-between mb-4">
-                      <Badge
-                        variant={project.status === "Performing" ? "default" : "secondary"}
-                        className={
-                          project.status === "Performing"
-                            ? "bg-orange-100 text-orange-800"
-                            : "bg-green-100 text-green-800"
-                        }
-                      >
-                        {project.status === "Performing" && "●"} {project.status}
-                      </Badge>
-                      {project.isFavorite && <Star className="w-4 h-4 text-orange-500 fill-current" />}
-                    </div>
+          {/* Projects Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {projects.map((project, index) => (
+              <CDIPCard
+                key={project.id + index}
+                status={project.status as "Completed" | "Performing"}
+                title={project.title}
+                code={project.id}
+                tags={project.tags}
+                leadOrg={project.leadOrg}
+                principalInvestigator={project.principalInvestigator}
+                imageSrc="/placeholder-logo.png"
+              />
+            ))}
+          </div>
 
-                    {/* Project Icon */}
-                    <div className="flex justify-center mb-4">
-                      <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center">
-                        <Image
-                          src="/placeholder.svg?height=40&width=40"
-                          alt="Project icon"
-                          width={40}
-                          height={40}
-                          className="opacity-60"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Project ID */}
-                    <p className="text-sm text-gray-600 mb-2">{project.id}</p>
-
-                    {/* Project Title */}
-                    <h3 className="font-semibold text-gray-900 mb-4 line-clamp-2">{project.title}</h3>
-
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tags.map((tag, tagIndex) => (
-                        <Badge key={tagIndex} variant="outline" className="text-xs">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-
-                    {/* Organization Info */}
-                    <div className="space-y-2 text-sm">
-                      <div>
-                        <span className="font-medium text-gray-900">Lead Organization:</span>
-                        <p className="text-gray-600">{project.leadOrg}</p>
-                      </div>
-                      <div>
-                        <span className="font-medium text-gray-900">Principal Investigator:</span>
-                        <p className="text-gray-600">{project.principalInvestigator}</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Link>
-              ) : (
-                <CardContent className="p-6">
-                  {/* Status and Favorite */}
-                  <div className="flex items-center justify-between mb-4">
-                    <Badge
-                      variant={project.status === "Performing" ? "default" : "secondary"}
-                      className={
-                        project.status === "Performing"
-                          ? "bg-orange-100 text-orange-800"
-                          : "bg-green-100 text-green-800"
-                      }
-                    >
-                      {project.status === "Performing" && "●"} {project.status}
-                    </Badge>
-                    {project.isFavorite && <Star className="w-4 h-4 text-orange-500 fill-current" />}
-                  </div>
-
-                  {/* Project Icon */}
-                  <div className="flex justify-center mb-4">
-                    <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center">
-                      <Image
-                        src="/placeholder.svg?height=40&width=40"
-                        alt="Project icon"
-                        width={40}
-                        height={40}
-                        className="opacity-60"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Project ID */}
-                  <p className="text-sm text-gray-600 mb-2">{project.id}</p>
-
-                  {/* Project Title */}
-                  <h3 className="font-semibold text-gray-900 mb-4 line-clamp-2">{project.title}</h3>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map((tag, tagIndex) => (
-                      <Badge key={tagIndex} variant="outline" className="text-xs">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-
-                  {/* Organization Info */}
-                  <div className="space-y-2 text-sm">
-                    <div>
-                      <span className="font-medium text-gray-900">Lead Organization:</span>
-                      <p className="text-gray-600">{project.leadOrg}</p>
-                    </div>
-                    <div>
-                      <span className="font-medium text-gray-900">Principal Investigator:</span>
-                      <p className="text-gray-600">{project.principalInvestigator}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              )}
-            </Card>
-          ))}
-        </div>
-
-        {/* Pagination */}
-        <div className="flex items-center justify-center space-x-4">
-          <Button variant="ghost" size="sm" disabled>
-            <ChevronLeft className="w-4 h-4 mr-1" />
-            Prev
-          </Button>
-          <div className="flex items-center space-x-2">
-            <Button variant="default" size="sm" className="bg-orange-500 hover:bg-orange-600">
-              1
+          {/* Pagination */}
+          <div className="flex items-center justify-center space-x-4">
+            <Button variant="ghost" size="sm" disabled>
+              <ChevronLeft className="w-4 h-4 mr-1" />
+              Prev
             </Button>
-            <span className="text-sm text-gray-600">of 6</span>
+            <div className="flex items-center space-x-2">
+              <Button
+                variant="default"
+                size="sm"
+                className="bg-orange-500 hover:bg-orange-600"
+              >
+                1
+              </Button>
+              <span className="text-sm text-gray-600">of 6</span>
+            </div>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-orange-500 hover:text-orange-600"
+            >
+              Next
+              <ChevronRight className="w-4 h-4 ml-1" />
+            </Button>
           </div>
-          <Button variant="ghost" size="sm" className="text-orange-500 hover:text-orange-600">
-            Next
-            <ChevronRight className="w-4 h-4 ml-1" />
-          </Button>
         </div>
       </div>
-
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 mt-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-orange-500 rounded flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">ARM</span>
-                </div>
-                <span className="font-semibold">ARM INSTITUTE</span>
-              </div>
-              <p className="text-gray-400 text-sm">
-                Copyright © 2024 Advanced Robotics for Manufacturing Institute. All rights reserved.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Address</h4>
-              <p className="text-gray-400 text-sm">
-                Mill 19 at Hazelwood Green
-                <br />
-                4720 Technology Dr, Suite 300
-                <br />
-                Pittsburgh, PA 15219
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Phone</h4>
-              <p className="text-gray-400 text-sm">412-785-6544</p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Need Help?</h4>
-              <Button className="bg-orange-500 hover:bg-orange-600">Contact ARM</Button>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
-  )
+  );
 }
