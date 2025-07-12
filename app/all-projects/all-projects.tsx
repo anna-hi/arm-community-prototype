@@ -9,6 +9,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Search, List, Grid3X3, ChevronLeft, ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 export default function AllProjects() {
   const projects = [
@@ -199,18 +200,34 @@ export default function AllProjects() {
 
           {/* Projects Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            {projects.map((project, index) => (
-              <CDIPCard
-                key={project.id + index}
-                status={project.status as "Completed" | "Performing"}
-                title={project.title}
-                code={project.id}
-                tags={project.tags}
-                leadOrg={project.leadOrg}
-                principalInvestigator={project.principalInvestigator}
-                imageSrc="/placeholder-logo.png"
-              />
-            ))}
+            {projects.map((project, index) => {
+              const isFixtureless =
+                project.title ===
+                "Fixtureless Robotic Assembly for Manufacturing Environments 2.0";
+              const card = (
+                <CDIPCard
+                  key={project.id + index}
+                  status={project.status as "Completed" | "Performing"}
+                  title={project.title}
+                  code={project.id}
+                  tags={project.tags}
+                  leadOrg={project.leadOrg}
+                  principalInvestigator={project.principalInvestigator}
+                  imageSrc="/placeholder-logo.png"
+                />
+              );
+              return isFixtureless ? (
+                <Link
+                  key={project.id + index}
+                  href="/projects/fixtureless-robotic-assembly"
+                  className="block"
+                >
+                  {card}
+                </Link>
+              ) : (
+                card
+              );
+            })}
           </div>
 
           {/* Pagination */}
