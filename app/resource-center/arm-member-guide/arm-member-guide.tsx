@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Users, FileText, Newspaper, Play, ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
 import NavBar from "@/components/NavBar"
+import Footer from "@/components/Footer"
 
 export default function ArmMemberGuide() {
   return (
@@ -190,39 +191,7 @@ export default function ArmMemberGuide() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#1c1b1f] text-white py-12">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-orange-500 rounded flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">ARM</span>
-                </div>
-                <span className="font-semibold">INSTITUTE</span>
-              </div>
-              <p className="text-gray-400 text-sm">
-                Copyright © 2025 Advanced Robotics for Manufacturing Institute. All rights reserved.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Address</h4>
-              <p className="text-gray-400 text-sm">
-                Mill 19 at 4501 Lytle St., Suite 500
-                <br />
-                Pittsburgh, PA 15207
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Phone</h4>
-              <p className="text-gray-400 text-sm">412-785-0444</p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Need Help?</h4>
-              <Button className="bg-orange-500 hover:bg-orange-600">Contact ARM</Button>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

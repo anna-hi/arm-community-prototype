@@ -26,20 +26,20 @@ const MemberCard: React.FC<MemberCardProps> = ({
   onFavoriteClick,
 }) => {
   return (
-    <div className="h-72 bg-white rounded-sm border border-gray-200 overflow-hidden p-6 flex flex-col items-start justify-between relative min-w-[323px]">
+    <div className="h-[296px] bg-white rounded-sm border border-gray-200 overflow-hidden p-6 flex flex-col items-start justify-between relative min-w-[323px]">
       {/* Tags */}
       <div className="flex flex-wrap gap-2 w-full mb-2">
         {tags.map((tag, idx) => (
           <span
             key={tag + idx}
-            className="px-3 py-1 rounded border border-blue-200 bg-blue-50 text-gray-900 text-sm font-medium"
+            className="font-medium body-small-bold card-tag"
           >
             {tag}
           </span>
         ))}
         {/* Committee Tag */}
         {committeeTag && (
-          <span className="px-3 py-1 rounded border border-green-200 bg-green-50 text-green-900 text-sm font-medium">
+          <span className="card-tag-special font-medium body-small-bold">
             {committeeTag}
           </span>
         )}
@@ -58,8 +58,8 @@ const MemberCard: React.FC<MemberCardProps> = ({
         </div>
         {/* Name, Organization, Role */}
         <div className="flex flex-col items-start">
-          <div className="text-xl font-montserrat font-bold text-gray-900">{name}</div>
-          <div className="text-xs text-gray-500 font-normal">{organization}</div>
+          <h3 className="">{name}</h3>
+          <div className="text-sm text-gray-500 font-normal">{organization}</div>
           <div className="pt-1 text-sm max-w-[240px] font-medium truncate text-gray-800">{role}</div>
         </div>
       </div>

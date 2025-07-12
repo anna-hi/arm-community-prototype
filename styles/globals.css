@@ -130,9 +130,21 @@ body {
   align-items: center;
   gap: 10px;
   border-radius: 4px;
-  border: 1px solid #abc;
+  /* border: 1px solid #abc; */
 
   background: #e8f3ff;
+}
+
+.card-tag-special {
+  display: flex;
+  padding: 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 4px;
+  /* border: 1px solid #3A8941; */
+
+  background: #DDF9E2;
 }
 
 @layer utilities {

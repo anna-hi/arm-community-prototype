@@ -10,7 +10,7 @@ const Footer: React.FC = () => (
         <div>
           <div className="flex items-center space-x-2 mb-4">
             <Image
-              src="images/homepage/arm-footer-logo.png"
+              src="/images/homepage/arm-footer-logo.png"
               alt="ARM Logo"
               width={193}
               height={75}

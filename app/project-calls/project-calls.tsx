@@ -1,10 +1,9 @@
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { OrangeButton } from "@/components/OrangeButton";
 import NavBar from "@/components/NavBar";
-import "@/styles/globals.css";
+import Footer from "@/components/Footer";
 
 export default function ProjectCalls() {
   return (
@@ -94,10 +93,11 @@ export default function ProjectCalls() {
         </section>
 
         {/* Closed Project Calls */}
-        <section>
+        {/* add bottom margin */}
+        <section className="">
           <h1 className="mb-8">Closed Project Calls</h1>
           <div className="grid md:grid-cols-2 gap-8">
-            <Card className="border border-gray-200">
+            <Card className="">
               <CardHeader>
                 <CardTitle className="">
                   Recircled RFI Opportunity: Robotics for the Fashion Industry
@@ -129,44 +129,7 @@ export default function ProjectCalls() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 mt-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-orange-500 rounded flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">ARM</span>
-                </div>
-                <span className="font-semibold">ARM INSTITUTE</span>
-              </div>
-              <p className="text-gray-400 text-sm">
-                Copyright © 2025 Advanced Robotics for Manufacturing Institute.
-                All rights reserved.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Address</h4>
-              <p className="text-gray-400 text-sm">
-                Mill 19 at Hazelwood Green
-                <br />
-                4720 Technology Dr, Suite 300
-                <br />
-                Pittsburgh, PA 15219
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Phone</h4>
-              <p className="text-gray-400 text-sm">412-785-0444</p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Need Help?</h4>
-              <Button className="bg-orange-500 hover:bg-orange-600">
-                Contact ARM
-              </Button>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

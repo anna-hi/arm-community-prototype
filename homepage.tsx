@@ -19,23 +19,23 @@ export default function Homepage() {
 
       {/* Hero Section */}
       <section className="relative bg-gray-900 text-white py-16">
-        <div className="absolute inset-0 bg-black/50"></div>
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('/placeholder.svg?height=400&width=1200')",
+            backgroundImage: "url('/images/homepage/banner-image.png')",
           }}
-        ></div>
+        >
+          <div className="absolute inset-0 bg-black" style={{ opacity: 0.6 }}></div>
+        </div>
         <div className="relative max-w-7xl mx-auto px-6">
-          <h1 className="text-white pb-6">
+          <h1 className="text-white pb-14">
             Welcome to the ARM Member Community, Michael!
           </h1>
           <div className="flex space-x-4">
-            <div className="pr-8 flex items-center">New to the Portal?</div>
-            <Button className="main-button text-black">
-              Start Here
-              <ArrowRight className="w-4 h-4 gap-2" />
-            </Button>
+            <p className="flex font-bold items-center">New to the Portal?</p>
+            <MainButton text="Start Here"
+                icon={<ArrowRight className="w-4 h-4" />}
+            ></MainButton>
           </div>
         </div>
       </section>
@@ -162,19 +162,19 @@ export default function Homepage() {
           </p>
           <div className="grid md:grid-cols-3 gap-6">
             <NewsEventCard
-              imagePath="/placeholder.svg?height=200&width=300"
+              imagePath="/images/homepage/news-1.png"
               imageAlt="SWORD Robotics"
               title="Soft Demonstrates SWORD™ Robotics Programming Software"
               newsInfo={{ date: "May 30, 2024" }}
             />
             <NewsEventCard
-              imagePath="/placeholder.svg?height=200&width=300"
+              imagePath="/images/homepage/news-2.png"
               imageAlt="Manufacturing Meet-Up"
               title="Join the AMT Meet-Up to Connect to Your Local Manufacturing Network"
               newsInfo={{ date: "May 15, 2024" }}
             />
             <NewsEventCard
-              imagePath="/placeholder.svg?height=200&width=300"
+              imagePath="/images/homepage/news-3.png"
               imageAlt="AI Agents"
               title="Siemens Introduces AI Agents for Industrial Automation"
               newsInfo={{ date: "May 12, 2024" }}
@@ -194,7 +194,7 @@ export default function Homepage() {
           </p>
           <div className="grid md:grid-cols-3 gap-6">
             <NewsEventCard
-              imagePath="/placeholder.svg?height=200&width=300"
+              imagePath="/images/homepage/featured-events-1.png"
               imageAlt="ARM Event"
               caption="ARM Event"
               title="2025 Annual ARM Institute Member Meeting"
@@ -205,7 +205,7 @@ export default function Homepage() {
               }}
             />
             <NewsEventCard
-              imagePath="/placeholder.svg?height=200&width=300"
+              imagePath="/images/homepage/featured-events-2.png"
               imageAlt="AI Webinar"
               caption="AI ARM Event | Webinar"
               title="AI in Manufacturing: The Basics"
@@ -216,7 +216,7 @@ export default function Homepage() {
               }}
             />
             <NewsEventCard
-              imagePath="/placeholder.svg?height=200&width=300"
+              imagePath="/images/homepage/featured-events-3.png"
               imageAlt="Skills Conference"
               caption="ARM Event"
               title="Skills USA National Leadership & Skills Conference"

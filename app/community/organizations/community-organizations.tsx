@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
@@ -6,6 +5,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Search } from "lucide-react"
 import Image from "next/image"
 import NavBar from "@/components/NavBar"
+import Footer from "@/components/Footer"
 
 
 export default function CommunityOrganizations() {
@@ -168,41 +168,7 @@ export default function CommunityOrganizations() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-orange-500 rounded flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">ARM</span>
-                </div>
-                <span className="font-semibold">ARM INSTITUTE</span>
-              </div>
-              <p className="text-gray-400 text-sm">
-                Advancing American Robotics Manufacturing through Innovation, Education and Collaboration
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Address</h4>
-              <p className="text-gray-400 text-sm">
-                Mill 19 at Hazelwood Green
-                <br />
-                4720 Technology Dr, Suite 300
-                <br />
-                Pittsburgh, PA 15219
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Phone</h4>
-              <p className="text-gray-400 text-sm">412.322.7800</p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Need Help?</h4>
-              <Button className="bg-orange-500 hover:bg-orange-600">Contact ARM</Button>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }
