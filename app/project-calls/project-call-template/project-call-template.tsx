@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import {
   Collapsible,
   CollapsibleContent,
@@ -13,6 +13,7 @@ import { useState, useEffect, useRef } from "react";
 import { OrangeButton } from "@/components/OrangeButton";
 import { ActiveBadge } from "./components/badges";
 import NavigationItem from "./components/navigation-item";
+import { MainButton } from "@/components/MainButton";
 
 export default function ProjectCallTemplate({
   title,
@@ -74,14 +75,14 @@ export default function ProjectCallTemplate({
             </div>
 
             {/* Description */}
-            <div className="mb-8 pr-24 text-gray-700 leading-relaxed ">
+            <div className="mb-8 pr-36 text-gray-700 leading-relaxed ">
               {description.map((paragraph) => (
                 <p className="mb-4">{paragraph}</p>
               ))}
             </div>
 
             {/* Project Call Document Button */}
-            <div className="mb-8">
+            <div className="pl-8 mb-8">
               <div className="px-3 py-2 flex items-center border border-gray-300 rounded-sm bg-white max-w-fit">
                 <span className="text-base text-gray-900 font-medium">
                   Project Call Document
@@ -528,13 +529,13 @@ export default function ProjectCallTemplate({
           </div>
 
           {/* Timeline Sidebar */}
-          <div className="w-80">
-            <Card className="sticky top-8 p-6 !h-auto">
-              <CardContent className="space-y-6">
+          <div className="w-[323px]">
+            <div className="bg-[#F9F9F9] sticky top-8 px-6 py-5 !h-auto">
+              <div className="space-y-6">
                 {/* Submit Proposal Button */}
-                <Button className="body w-full bg-armYellow text-gray-950 py-4 font-regular">
-                  Submit Proposal
-                </Button>
+                <MainButton className="main-button w-full"
+                  text="Submit Proposal"
+                />
 
                 {/* Timeline Items */}
                 <div>
@@ -567,8 +568,8 @@ export default function ProjectCallTemplate({
                     </>
                   ))}
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
         </div>
       </div>

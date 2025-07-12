@@ -31,10 +31,12 @@ export default function Homepage() {
           </h1>
           <div className="flex space-x-4">
             <p className="flex font-bold items-center">New to the Portal?</p>
-            <MainButton
-              text="Start Here"
-              icon={<ArrowRight className="w-4 h-4" />}
-            ></MainButton>
+            <Link href="/resource-center/arm-member-guide">
+              <MainButton
+                text="Start Here"
+                icon={<ArrowRight className="w-4 h-4" />}
+              />
+            </Link>
           </div>
         </div>
       </section>
