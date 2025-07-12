@@ -12,6 +12,7 @@ import { OrangeButtonLeft } from "@/components/OrangeButtonLeft"
 import { OrangeButton } from "@/components/OrangeButton"
 import "@/styles/globals.css";
 import { CDIPDataField } from "@/components/ui/cdip-data-field";
+import CDIPCard from "@/components/ui/cdip-card";
 import { useState } from "react";
 
 const allProjectFiles = [
@@ -169,6 +170,7 @@ export default function FixturelessRoboticAssembly() {
       tags: ["Aerospace", "Control", "Modeling"],
       leadOrg: "Siemens Corporation, Corporate Technology",
       principalInvestigator: "Sedat Nazlibilek",
+      isFavorite: true,
     },
     {
       id: "T-24-DDC-11-01",
@@ -177,6 +179,7 @@ export default function FixturelessRoboticAssembly() {
       tags: ["Aerospace", "Control", "Modeling"],
       leadOrg: "ARIS Technology LLC",
       principalInvestigator: "Mingu Kang",
+      isFavorite: true,
     },
   ];
 
@@ -206,9 +209,9 @@ export default function FixturelessRoboticAssembly() {
             <h1 className="text-3xl font-bold text-gray-900 mr-8">
               Fixtureless Robotic Assembly for Manufacturing Environments 2.0
             </h1>
-            <Button className="bg-transparent border border-armYellow hover:bg-yellow-200 text-black rounded-full">
+            <Button className="flex gap-2 bg-transparent border border-armYellow hover:bg-yellow-200 text-black rounded-full">
               Add to Favorite
-              <Star className="w-4 h-4 stroke-armYellow"/>
+              <Star className="w-4 h-4 stroke-armYellow" />
             </Button>
           </div>
           {/* Project Tags */}
@@ -259,7 +262,7 @@ export default function FixturelessRoboticAssembly() {
               <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
                 <Button
                   size="lg"
-                  className="bg-orange-500 hover:bg-orange-600 rounded-full w-16 h-16"
+                  className="flex bg-orange-500 hover:bg-orange-600 rounded-full w-16 h-16"
                 >
                   <Play className="w-8 h-8 text-white" />
                 </Button>
@@ -275,14 +278,14 @@ export default function FixturelessRoboticAssembly() {
             The team will demonstrate a fully integrated system at the Iowa Army Plant.
             </p>
 
-            <div className="flex flex-col items-start space-y-2">
-              <Button className="bg-transparent hover:bg-transparent text-base font-bold text-black px-0">
+            <div className="flex flex-col items-start space-y-4">
+              <Button className="flex gap-4 bg-transparent hover:bg-transparent text-base font-bold text-black px-0">
                 View Project Files (Confluence)
                 <div className="bg-orange-500 rounded-full w-8 h-8 flex items-center justify-center">
                   <img src="/icons/forward_up.svg" alt="Link To Confluence" className="w-3 h-3"/>
                 </div>
               </Button>
-              <Button className="bg-transparent hover:bg-transparent text-base font-bold text-black px-0">
+              <Button className="flex gap-4 bg-transparent hover:bg-transparent text-base font-bold text-black px-0">
                 Request Software Access
                 <div className="bg-orange-500 rounded-full w-8 h-8 flex items-center justify-center">
                   <img src="/icons/code.svg" alt="Link To Github" className="w-3 h-3"/>
@@ -426,7 +429,12 @@ export default function FixturelessRoboticAssembly() {
                     <TableCell className="py-4">
                       <div className="flex items-center space-x-3">
                         {getFileIcon(file.icon)}
-                        <span className="text-gray-900">{file.name}</span>
+                        <span
+                          className="text-blue-700 underline cursor-pointer hover:text-blue-900 transition-colors"
+                          // No href, just visual
+                        >
+                          {file.name}
+                        </span>
                       </div>
                     </TableCell>
                     <TableCell className="text-gray-700">
@@ -460,7 +468,7 @@ export default function FixturelessRoboticAssembly() {
             <div className="p-4 text-center border-t border-gray-200">
               <Button
                 variant="ghost"
-                className="text-gray-600 flex items-center justify-center mx-auto"
+                className="text-gray-600 font-bold flex items-center justify-center mx-auto"
                 onClick={() => setShowAllFiles((prev) => !prev)}
               >
                 {showAllFiles ? "Collapse" : "Show all"}
@@ -505,7 +513,12 @@ export default function FixturelessRoboticAssembly() {
                     <TableCell className="py-4">
                       <div className="flex items-center space-x-3">
                         {getFileIcon(file.icon)}
-                        <span className="text-gray-900">{file.name}</span>
+                        <span
+                          className="text-blue-700 underline cursor-pointer hover:text-blue-900 transition-colors"
+                          // No href, just visual
+                        >
+                          {file.name}
+                        </span>
                       </div>
                     </TableCell>
                     <TableCell className="text-gray-700">
@@ -539,7 +552,7 @@ export default function FixturelessRoboticAssembly() {
             <div className="p-4 text-center border-t border-gray-200">
               <Button
                 variant="ghost"
-                className="text-gray-600 flex items-center justify-center mx-auto"
+                className="text-gray-600 font-bold flex items-center justify-center mx-auto"
                 onClick={() => setShowAllAttachments((prev) => !prev)}
               >
                 {showAllAttachments ? "Collapse" : "Show all"}
@@ -556,67 +569,16 @@ export default function FixturelessRoboticAssembly() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {recommendedProjects.map((project, index) => (
-              <Card
-                key={index}
-                className="border border-gray-200 hover:shadow-md transition-shadow"
-              >
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <Badge className="bg-green-100 text-green-800">
-                      ✓ {project.status}
-                    </Badge>
-                    {project.isFavorite && (
-                      <Star className="w-4 h-4 text-orange-500 fill-current" />
-                    )}
-                  </div>
-
-                  <div className="flex justify-center mb-4">
-                    <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center">
-                      <Image
-                        src="/placeholder.svg?height=40&width=40"
-                        alt="Project icon"
-                        width={40}
-                        height={40}
-                        className="opacity-60"
-                      />
-                    </div>
-                  </div>
-
-                  <p className="text-sm text-gray-600 mb-2">{project.id}</p>
-                  <h3 className="font-semibold text-gray-900 mb-4 line-clamp-2">
-                    {project.title}
-                  </h3>
-
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map((tag, tagIndex) => (
-                      <Badge
-                        key={tagIndex}
-                        variant="outline"
-                        className="text-xs"
-                      >
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-
-                  <div className="space-y-2 text-sm">
-                    <div>
-                      <span className="font-medium text-gray-900">
-                        Lead Organization:
-                      </span>
-                      <p className="text-gray-600">{project.leadOrg}</p>
-                    </div>
-                    <div>
-                      <span className="font-medium text-gray-900">
-                        Principal Investigator:
-                      </span>
-                      <p className="text-gray-600">
-                        {project.principalInvestigator}
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+              <CDIPCard
+                key={project.id + index}
+                status={project.status as "Completed" | "Performing"}
+                title={project.title}
+                code={project.id}
+                tags={project.tags}
+                leadOrg={project.leadOrg}
+                principalInvestigator={project.principalInvestigator}
+                imageSrc="/placeholder.svg"
+              />
             ))}
           </div>
         </div>
