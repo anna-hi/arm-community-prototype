@@ -1,56 +1,55 @@
-"use client"
-import NavBar from "@/components/NavBar";
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
-import { Bell, ChevronDown, ChevronUp, Users, FileText } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
-import { useState, useEffect, useRef } from "react"
-import { OrangeButton } from "@/components/OrangeButton"
+"use client";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import { ChevronDown, ChevronUp, Users, FileText } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useState, useEffect, useRef } from "react";
+import { OrangeButton } from "@/components/OrangeButton";
 
 export default function CoreTechDraftProjectCall() {
-  const [eligibilityOpen, setEligibilityOpen] = useState(true)
-  const [fundingOpen, setFundingOpen] = useState(true)
-  const [participateOpen, setParticipateOpen] = useState(true)
-  const [resourcesOpen, setResourcesOpen] = useState(true)
-  const [specialTopicAreasOpen, setSpecialTopicAreasOpen] = useState(true)
+  const [eligibilityOpen, setEligibilityOpen] = useState(true);
+  const [fundingOpen, setFundingOpen] = useState(true);
+  const [participateOpen, setParticipateOpen] = useState(true);
+  const [resourcesOpen, setResourcesOpen] = useState(true);
+  const [specialTopicAreasOpen, setSpecialTopicAreasOpen] = useState(true);
 
-  const [activeSection, setActiveSection] = useState("special-topic-areas")
+  const [activeSection, setActiveSection] = useState("special-topic-areas");
   const sectionRefs = useRef({
     "special-topic-areas": null,
     eligibility: null,
     funding: null,
     "how-to-participate": null,
     resources: null,
-  })
+  });
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 200 // Offset for sticky header
+      const scrollPosition = window.scrollY + 200; // Offset for sticky header
 
-      const sections = Object.keys(sectionRefs.current)
+      const sections = Object.keys(sectionRefs.current);
       for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i]
-        const element = document.getElementById(section)
+        const section = sections[i];
+        const element = document.getElementById(section);
         if (element && element.offsetTop <= scrollPosition) {
-          setActiveSection(section)
-          break
+          setActiveSection(section);
+          break;
         }
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <div className="min-h-screen bg-white">
-      <NavBar />
-  
+    <>
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="flex gap-8">
           {/* Main Content */}
@@ -58,7 +57,9 @@ export default function CoreTechDraftProjectCall() {
             {/* Header Section */}
             <div className="flex items-center mb-4">
               <div>
-                <h1 className="text-4xl font-bold text-gray-900 mb-4">2024 AI Data Foundry Tech Project Call</h1>
+                <h1 className="text-4xl font-bold text-gray-900 mb-4">
+                  2024 AI Data Foundry Tech Project Call
+                </h1>
                 <Badge className="bg-green-100 text-green-800 border-green-200">
                   <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
                   Active
@@ -69,14 +70,18 @@ export default function CoreTechDraftProjectCall() {
             {/* Description */}
             <div className="mb-8 pr-16">
               <p className="text-gray-700 text-lg leading-relaxed mb-4">
-                The ARM Institute is soliciting submissions that respond to specific needs of the manufacturing industry
-                and the Department of Defense (DoD). This project call is seeking projects to make focused investments
-                in the Special Topic Areas (STA) described below.
+                The ARM Institute is soliciting submissions that respond to
+                specific needs of the manufacturing industry and the Department
+                of Defense (DoD). This project call is seeking projects to make
+                focused investments in the Special Topic Areas (STA) described
+                below.
               </p>
               <p className="text-gray-700 text-lg leading-relaxed">
-                These Special Topic Areas have been derived from the Institute's prior research, with guidance from the
-                Institute's Technology Advisory Committee (TAC) and partners. Project teams are encouraged to leverage
-                successfully completed ARM Institute technology development programs as well as Consortium Developed
+                These Special Topic Areas have been derived from the Institute's
+                prior research, with guidance from the Institute's Technology
+                Advisory Committee (TAC) and partners. Project teams are
+                encouraged to leverage successfully completed ARM Institute
+                technology development programs as well as Consortium Developed
                 Intellectual Property (CDIP) statements.
               </p>
             </div>
@@ -84,7 +89,9 @@ export default function CoreTechDraftProjectCall() {
             {/* Project Call Document Button */}
             <div className="mb-8">
               <div className="px-3 py-2 flex items-center border border-gray-300 rounded-sm bg-white max-w-fit">
-                <span className="text-base text-gray-900 font-medium">Project Call Document</span>
+                <span className="text-base text-gray-900 font-medium">
+                  Project Call Document
+                </span>
                 <div className="m-1">
                   <OrangeButton text="" className="" />
                 </div>
@@ -150,9 +157,14 @@ export default function CoreTechDraftProjectCall() {
 
               {/* Special Topic Areas Section */}
               <section id="special-topic-areas" className="mb-8">
-                <Collapsible open={specialTopicAreasOpen} onOpenChange={setSpecialTopicAreasOpen}>
+                <Collapsible
+                  open={specialTopicAreasOpen}
+                  onOpenChange={setSpecialTopicAreasOpen}
+                >
                   <CollapsibleTrigger className="flex items-center justify-between w-full p-6 bg-gray-50 rounded-lg hover:bg-gray-100">
-                    <h3 className="text-2xl font-bold text-gray-900">Special Topic Areas</h3>
+                    <h3 className="text-2xl font-bold text-gray-900">
+                      Special Topic Areas
+                    </h3>
                     <ChevronUp className="w-5 h-5" />
                   </CollapsibleTrigger>
                   <CollapsibleContent className="mt-4 p-6 bg-gray-50 rounded-lg">
@@ -166,7 +178,9 @@ export default function CoreTechDraftProjectCall() {
                           className="w-full aspect-video object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                          <h4 className="text-white text-xl font-semibold p-4">Rapid Re-Tasking and Robot Agility</h4>
+                          <h4 className="text-white text-xl font-semibold p-4">
+                            Rapid Re-Tasking and Robot Agility
+                          </h4>
                         </div>
                       </Card>
 
@@ -221,23 +235,36 @@ export default function CoreTechDraftProjectCall() {
 
               {/* Eligibility Section */}
               <section id="eligibility" className="mb-8">
-                <Collapsible open={eligibilityOpen} onOpenChange={setEligibilityOpen}>
+                <Collapsible
+                  open={eligibilityOpen}
+                  onOpenChange={setEligibilityOpen}
+                >
                   <CollapsibleTrigger className="flex items-center justify-between w-full p-6 bg-gray-50 rounded-lg hover:bg-gray-100">
-                    <h3 className="text-2xl font-bold text-gray-900">Eligibility</h3>
-                    {eligibilityOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                    <h3 className="text-2xl font-bold text-gray-900">
+                      Eligibility
+                    </h3>
+                    {eligibilityOpen ? (
+                      <ChevronUp className="w-5 h-5" />
+                    ) : (
+                      <ChevronDown className="w-5 h-5" />
+                    )}
                   </CollapsibleTrigger>
                   <CollapsibleContent className="mt-4 p-6 bg-gray-50 rounded-lg">
                     <p className="text-gray-900 text-lg leading-relaxed mb-6">
-                      To address this Project call, ARM Institute encourages proposers to work cooperatively in
-                      presenting integrated solutions.
+                      To address this Project call, ARM Institute encourages
+                      proposers to work cooperatively in presenting integrated
+                      solutions.
                     </p>
                     <p className="text-gray-900 text-lg font-semibold leading-relaxed mb-6">
-                      The lead proposer (or prime) on the project submission is a current Platinum, Gold, Silver or
-                      University/Non-Profit Core ARM Institute member in good standing.
+                      The lead proposer (or prime) on the project submission is
+                      a current Platinum, Gold, Silver or University/Non-Profit
+                      Core ARM Institute member in good standing.
                     </p>
                     <p className="text-gray-900 text-lg font-semibold leading-relaxed">
-                      Teams are required to submit an appendix with their concept paper (not included in page limit)
-                      that lists prior ARM projects and describes the status of technology transition for each.
+                      Teams are required to submit an appendix with their
+                      concept paper (not included in page limit) that lists
+                      prior ARM projects and describes the status of technology
+                      transition for each.
                     </p>
                   </CollapsibleContent>
                 </Collapsible>
@@ -247,26 +274,35 @@ export default function CoreTechDraftProjectCall() {
               <section id="funding" className="mb-8">
                 <Collapsible open={fundingOpen} onOpenChange={setFundingOpen}>
                   <CollapsibleTrigger className="flex items-center justify-between w-full p-6 bg-gray-50 rounded-lg hover:bg-gray-100">
-                    <h3 className="text-2xl font-bold text-gray-900">Funding</h3>
-                    {fundingOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                    <h3 className="text-2xl font-bold text-gray-900">
+                      Funding
+                    </h3>
+                    {fundingOpen ? (
+                      <ChevronUp className="w-5 h-5" />
+                    ) : (
+                      <ChevronDown className="w-5 h-5" />
+                    )}
                   </CollapsibleTrigger>
                   <CollapsibleContent className="mt-4 p-6 bg-gray-50 rounded-lg">
                     <p className="text-gray-900 text-lg leading-relaxed mb-4">
                       <strong>
-                        Individual project budgets must not exceed $500K requested from ARM (smaller budget, shorter
-                        duration projects are also welcome).
+                        Individual project budgets must not exceed $500K
+                        requested from ARM (smaller budget, shorter duration
+                        projects are also welcome).
                       </strong>{" "}
-                      ARM expects that successful proposers will provide cost share of at least 50% of the total project
-                      cost.
+                      ARM expects that successful proposers will provide cost
+                      share of at least 50% of the total project cost.
                     </p>
                     <p className="text-gray-900 text-lg leading-relaxed mb-4">
-                      Cost share may include direct costs, indirect costs, and in-kind contributions. In-kind
-                      contributions should be valued at fair market rates and must be directly related to the project
-                      objectives.
+                      Cost share may include direct costs, indirect costs, and
+                      in-kind contributions. In-kind contributions should be
+                      valued at fair market rates and must be directly related
+                      to the project objectives.
                     </p>
                     <p className="text-gray-900 text-lg leading-relaxed">
-                      Projects are expected to have a duration of 12-18 months from the start date. Longer duration
-                      projects may be considered if adequately justified.
+                      Projects are expected to have a duration of 12-18 months
+                      from the start date. Longer duration projects may be
+                      considered if adequately justified.
                     </p>
                   </CollapsibleContent>
                 </Collapsible>
@@ -274,26 +310,41 @@ export default function CoreTechDraftProjectCall() {
 
               {/* How to Participate Section */}
               <section id="how-to-participate" className="mb-8">
-                <Collapsible open={participateOpen} onOpenChange={setParticipateOpen}>
+                <Collapsible
+                  open={participateOpen}
+                  onOpenChange={setParticipateOpen}
+                >
                   <CollapsibleTrigger className="flex items-center justify-between w-full p-6 bg-gray-50 rounded-lg hover:bg-gray-100">
-                    <h3 className="text-2xl font-bold text-gray-900">How to Participate</h3>
-                    {participateOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                    <h3 className="text-2xl font-bold text-gray-900">
+                      How to Participate
+                    </h3>
+                    {participateOpen ? (
+                      <ChevronUp className="w-5 h-5" />
+                    ) : (
+                      <ChevronDown className="w-5 h-5" />
+                    )}
                   </CollapsibleTrigger>
                   <CollapsibleContent className="mt-4 p-6 bg-gray-50 rounded-lg space-y-8">
                     {/* Step 1 */}
                     <div className="border border-gray-200 rounded-lg p-6 bg-white">
-                      <h4 className="text-lg font-semibold text-gray-900 mb-4">Step 1: Find Potential Collaborators</h4>
+                      <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                        Step 1: Find Potential Collaborators
+                      </h4>
                       <p className="text-gray-700 mb-4">
-                        The first step to entering the project call is building a team. Take a look through our
-                        directory to find potential collaborators with complementary skills and the right membership
-                        level.
+                        The first step to entering the project call is building
+                        a team. Take a look through our directory to find
+                        potential collaborators with complementary skills and
+                        the right membership level.
                       </p>
                       <div className="flex space-x-4">
                         <Button className="bg-blue-600 hover:bg-blue-700 text-white flex items-center space-x-2">
                           <Users className="w-4 h-4" />
                           <span>Connect on Slack</span>
                         </Button>
-                        <Button variant="outline" className="flex items-center space-x-2 bg-transparent">
+                        <Button
+                          variant="outline"
+                          className="flex items-center space-x-2 bg-transparent"
+                        >
                           <span>Search in Directory</span>
                         </Button>
                       </div>
@@ -301,21 +352,29 @@ export default function CoreTechDraftProjectCall() {
 
                     {/* Step 2 */}
                     <div className="border border-gray-200 rounded-lg p-6 bg-white">
-                      <h4 className="text-lg font-semibold text-gray-900 mb-4">Step 2: Concept Paper & Quad Chart</h4>
+                      <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                        Step 2: Concept Paper & Quad Chart
+                      </h4>
                       <p className="text-gray-700 mb-4">
-                        After finding potential collaborators, write your concept paper together. Take a look at the
-                        template down below to submit the paper.
+                        After finding potential collaborators, write your
+                        concept paper together. Take a look at the template down
+                        below to submit the paper.
                       </p>
                       <p className="text-gray-700 mb-4">
                         See the{" "}
-                        <Link href="#" className="text-blue-600 hover:underline">
+                        <Link
+                          href="#"
+                          className="text-blue-600 hover:underline"
+                        >
                           full project call document
                         </Link>{" "}
                         for more details.
                       </p>
 
                       <div className="bg-gray-50 p-4 rounded-lg mb-4">
-                        <h5 className="font-semibold text-gray-900 mb-2">Concept Phase Templates (3)</h5>
+                        <h5 className="font-semibold text-gray-900 mb-2">
+                          Concept Phase Templates (3)
+                        </h5>
                         <div className="space-y-2">
                           <div className="flex items-center space-x-2">
                             <FileText className="w-4 h-4 text-blue-600" />
@@ -325,16 +384,22 @@ export default function CoreTechDraftProjectCall() {
                           </div>
                           <div className="flex items-center space-x-2">
                             <FileText className="w-4 h-4 text-blue-600" />
-                            <span className="text-blue-600 hover:underline cursor-pointer">Template - Quad Chart</span>
+                            <span className="text-blue-600 hover:underline cursor-pointer">
+                              Template - Quad Chart
+                            </span>
                           </div>
                           <div className="flex items-center space-x-2">
                             <FileText className="w-4 h-4 text-blue-600" />
-                            <span className="text-blue-600 hover:underline cursor-pointer">Quad Chart Guidelines</span>
+                            <span className="text-blue-600 hover:underline cursor-pointer">
+                              Quad Chart Guidelines
+                            </span>
                           </div>
                         </div>
                       </div>
 
-                      <Button className="bg-orange-500 hover:bg-orange-600 text-white">Submit Concept Paper</Button>
+                      <Button className="bg-orange-500 hover:bg-orange-600 text-white">
+                        Submit Concept Paper
+                      </Button>
                     </div>
 
                     {/* Step 3 */}
@@ -343,19 +408,27 @@ export default function CoreTechDraftProjectCall() {
                         Step 3: Presentation Process (Invitation only)
                       </h4>
                       <p className="text-gray-700 mb-4">
-                        In the second step in the process, an invited proposer will submit a Presentation in PowerPoint
-                        format (.ppt or .pptx) that describes the proposed project in detail.
+                        In the second step in the process, an invited proposer
+                        will submit a Presentation in PowerPoint format (.ppt or
+                        .pptx) that describes the proposed project in detail.
                       </p>
                       <p className="text-gray-700 mb-4">
-                        If invited to prepare a presentation, the following proposed project supporting documents must
-                        be submitted by the lead proposer through the ARM Community website prior to the presentation
-                        date.
+                        If invited to prepare a presentation, the following
+                        proposed project supporting documents must be submitted
+                        by the lead proposer through the ARM Community website
+                        prior to the presentation date.
                       </p>
 
                       <div className="bg-gray-50 p-4 rounded-lg">
                         <div className="flex items-center justify-between mb-2">
-                          <h5 className="font-semibold text-gray-900">Presentation Phase Templates (9)</h5>
-                          <Button variant="ghost" size="sm" className="text-blue-600">
+                          <h5 className="font-semibold text-gray-900">
+                            Presentation Phase Templates (9)
+                          </h5>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="text-blue-600"
+                          >
                             Show all
                           </Button>
                         </div>
@@ -387,16 +460,31 @@ export default function CoreTechDraftProjectCall() {
 
               {/* Resources Section */}
               <section id="resources" className="mb-8">
-                <Collapsible open={resourcesOpen} onOpenChange={setResourcesOpen}>
+                <Collapsible
+                  open={resourcesOpen}
+                  onOpenChange={setResourcesOpen}
+                >
                   <CollapsibleTrigger className="flex items-center justify-between w-full p-6 bg-gray-50 rounded-lg hover:bg-gray-100">
-                    <h3 className="text-2xl font-bold text-gray-900">Resources</h3>
-                    {resourcesOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                    <h3 className="text-2xl font-bold text-gray-900">
+                      Resources
+                    </h3>
+                    {resourcesOpen ? (
+                      <ChevronUp className="w-5 h-5" />
+                    ) : (
+                      <ChevronDown className="w-5 h-5" />
+                    )}
                   </CollapsibleTrigger>
                   <CollapsibleContent className="mt-4 p-6 bg-gray-50 rounded-lg">
                     <div className="bg-white p-4 rounded-lg">
                       <div className="flex items-center justify-between mb-2">
-                        <h5 className="font-semibold text-gray-900">Reference Materials (6)</h5>
-                        <Button variant="ghost" size="sm" className="text-blue-600">
+                        <h5 className="font-semibold text-gray-900">
+                          Reference Materials (6)
+                        </h5>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="text-blue-600"
+                        >
                           Show all
                         </Button>
                       </div>
@@ -427,7 +515,9 @@ export default function CoreTechDraftProjectCall() {
                         </div>
                         <div className="flex items-center space-x-2">
                           <FileText className="w-4 h-4 text-blue-600" />
-                          <span className="text-blue-600 hover:underline cursor-pointer">Cost Share Guidelines</span>
+                          <span className="text-blue-600 hover:underline cursor-pointer">
+                            Cost Share Guidelines
+                          </span>
                         </div>
                         <div className="flex items-center space-x-2">
                           <FileText className="w-4 h-4 text-blue-600" />
@@ -454,7 +544,6 @@ export default function CoreTechDraftProjectCall() {
 
                 {/* Timeline Items */}
                 <div className="space-y-0">
-
                   <div className="flex items-center space-x-4 bg-white p-4 rounded-lg border border-gray-200">
                     <div className="flex flex-col items-center border border-gray-950 rounded-lg overflow-hidden">
                       <div className="w-16 h-7 bg-orange-100 text-sm font-montserrat font-semibold text-gray-950 flex items-center justify-center">
@@ -465,7 +554,9 @@ export default function CoreTechDraftProjectCall() {
                       </div>
                     </div>
                     <div>
-                      <p className="body text-sm font-medium text-gray-900">Project Call Opens</p>
+                      <p className="body text-sm font-medium text-gray-900">
+                        Project Call Opens
+                      </p>
                     </div>
                   </div>
 
@@ -487,7 +578,9 @@ export default function CoreTechDraftProjectCall() {
                       </div>
                     </div>
                     <div>
-                      <p className="body text-sm font-medium text-gray-900">Project Call Webinar and Q&A</p>
+                      <p className="body text-sm font-medium text-gray-900">
+                        Project Call Webinar and Q&A
+                      </p>
                     </div>
                   </div>
 
@@ -509,7 +602,9 @@ export default function CoreTechDraftProjectCall() {
                       </div>
                     </div>
                     <div>
-                      <p className="body text-sm font-medium text-gray-900">Concept Paper Submission Deadline</p>
+                      <p className="body text-sm font-medium text-gray-900">
+                        Concept Paper Submission Deadline
+                      </p>
                     </div>
                   </div>
 
@@ -531,7 +626,9 @@ export default function CoreTechDraftProjectCall() {
                       </div>
                     </div>
                     <div>
-                      <p className="body text-sm font-medium text-gray-900">Invitations for Presentation Submission</p>
+                      <p className="body text-sm font-medium text-gray-900">
+                        Invitations for Presentation Submission
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -540,43 +637,6 @@ export default function CoreTechDraftProjectCall() {
           </div>
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 mt-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-orange-500 rounded flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">ARM</span>
-                </div>
-                <span className="font-semibold">ARM INSTITUTE</span>
-              </div>
-              <p className="text-gray-400 text-sm">
-                Copyright © 2025 Advanced Robotics for Manufacturing Institute. All rights reserved.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Address</h4>
-              <p className="text-gray-400 text-sm">
-                Mill 19 at Hazelwood Green
-                <br />
-                4720 Technology Dr, Suite 300
-                <br />
-                Pittsburgh, PA 15219
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Phone</h4>
-              <p className="text-gray-400 text-sm">412-785-0444</p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Need Help?</h4>
-              <Button className="bg-orange-500 hover:bg-orange-600">Contact ARM</Button>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
-  )
+    </>
+  );
 }

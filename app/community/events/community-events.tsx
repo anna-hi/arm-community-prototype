@@ -15,9 +15,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
-import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
 import NewsEventCard from "@/components/ui/news-event-card";
 
 const events = [
@@ -200,9 +197,7 @@ export default function CommunityEvents() {
     },
   ];
 
-  return (
-    <div className="min-h-screen bg-white">
-      <NavBar />
+  return (<>
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-6 py-8">
         {/* Upcoming Events Section */}
@@ -506,8 +501,6 @@ export default function CommunityEvents() {
         </section>
       </main>
 
-      {/* Footer */}
-      <Footer />
-    </div>
+      </>
   );
 }

@@ -7,17 +7,12 @@ import Link from "next/link";
 
 import { OrangeButton } from "./components/OrangeButton";
 import { MainButton } from "./components/MainButton";
-import NavBar from "./components/NavBar";
 import NewsEventCard from "./components/ui/news-event-card";
 import CDIPCard from "./components/ui/cdip-card";
-import Footer from "./components/Footer";
 
 export default function Homepage() {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <NavBar />
-
+    <>
       {/* Hero Section */}
       <section className="relative bg-gray-900 text-white py-16">
         <div
@@ -276,9 +271,6 @@ export default function Homepage() {
           </div>
         </section>
       </div>
-
-      {/* Footer */}
-      <Footer />
-    </div>
+    </>
   );
 }

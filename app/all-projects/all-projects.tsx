@@ -9,8 +9,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Search, List, Grid3X3, ChevronLeft, ChevronRight } from "lucide-react";
-import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
 
 export default function AllProjects() {
   const projects = [
@@ -98,9 +96,7 @@ export default function AllProjects() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      <NavBar />
-
+    <>
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-6 py-8">
         <h1 className="mb-8">All Projects</h1>
@@ -244,8 +240,6 @@ export default function AllProjects() {
           </div>
         </div>
       </div>
-      {/* Footer */}
-      <Footer />
-    </div>
+    </>
   );
 }

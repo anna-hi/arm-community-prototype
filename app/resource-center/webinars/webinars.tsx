@@ -1,13 +1,11 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Search, ChevronLeft, ChevronRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import NavBar from "@/components/NavBar"
-import Footer from "@/components/Footer"
+import { useState } from "react";
+import { Search, ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 const webinars = [
   {
@@ -20,7 +18,8 @@ const webinars = [
   },
   {
     id: 2,
-    title: "ARM Exchange Public Webinar: Robotics Innovations to Secure & Re-S...",
+    title:
+      "ARM Exchange Public Webinar: Robotics Innovations to Secure & Re-S...",
     image: "/placeholder.svg?height=200&width=350",
     tags: ["ARM Focus", "Technology", "Webinar", "Member Contributed Content"],
     views: 14,
@@ -36,7 +35,8 @@ const webinars = [
   },
   {
     id: 4,
-    title: "ARM Exchange Public Webinar: Employer Features on RoboticsCareer...",
+    title:
+      "ARM Exchange Public Webinar: Employer Features on RoboticsCareer...",
     image: "/placeholder.svg?height=200&width=350",
     tags: ["ARM Focus", "Education & Workforce Development", "Webinar"],
     views: 14,
@@ -46,7 +46,12 @@ const webinars = [
     id: 5,
     title: "ARM Exchange Public Webinar: Best Practices for the Future of Work",
     image: "/placeholder.svg?height=200&width=350",
-    tags: ["Education & Workforce Development", "Webinar", "ARM Focus", "Member Contributed Content"],
+    tags: [
+      "Education & Workforce Development",
+      "Webinar",
+      "ARM Focus",
+      "Member Contributed Content",
+    ],
     views: 14,
     date: "05-Jun-2025",
   },
@@ -58,18 +63,15 @@ const webinars = [
     views: 14,
     date: "05-Jun-2025",
   },
-]
+];
 
 export default function WebinarsPage() {
-  const [searchQuery, setSearchQuery] = useState("")
-  const [currentPage, setCurrentPage] = useState(1)
-  const totalPages = 6
+  const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 6;
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <NavBar />
-
+    <>
       {/* Main Content */}
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
         {/* Page Title */}
@@ -90,7 +92,10 @@ export default function WebinarsPage() {
         {/* Webinars Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           {webinars.map((webinar) => (
-            <Card key={webinar.id} className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+            <Card
+              key={webinar.id}
+              className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
+            >
               <div className="aspect-video relative">
                 <img
                   src={webinar.image || "/placeholder.svg"}
@@ -99,7 +104,9 @@ export default function WebinarsPage() {
                 />
               </div>
               <CardContent className="p-4">
-                <h3 className="font-semibold text-gray-900 mb-3 line-clamp-2">{webinar.title}</h3>
+                <h3 className="font-semibold text-gray-900 mb-3 line-clamp-2">
+                  {webinar.title}
+                </h3>
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-1 mb-3">
@@ -143,7 +150,9 @@ export default function WebinarsPage() {
 
           <Button
             size="sm"
-            onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+            onClick={() =>
+              setCurrentPage(Math.min(totalPages, currentPage + 1))
+            }
             disabled={currentPage === totalPages}
             className="bg-[#fdb619] hover:bg-[#e6a517] text-white"
           >
@@ -152,9 +161,6 @@ export default function WebinarsPage() {
           </Button>
         </div>
       </main>
-
-      {/* Footer */}
-      <Footer />
-    </div>
-  )
+    </>
+  );
 }

@@ -1,14 +1,11 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Search, ChevronLeft, ChevronRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Badge } from "@/components/ui/badge"
-import { Card, CardContent } from "@/components/ui/card"
-import NavBar from "@/components/NavBar"
-import Footer from "@/components/Footer"
-
+import { useState } from "react";
+import { Search, ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 
 const articles = [
   {
@@ -21,7 +18,8 @@ const articles = [
   },
   {
     id: 2,
-    title: "ARM Exchange Public Webinar: Robotics Innovations to Secure & Re-S...",
+    title:
+      "ARM Exchange Public Webinar: Robotics Innovations to Secure & Re-S...",
     image: "/placeholder.svg?height=200&width=350",
     tags: ["ARM Focus", "Technology", "Webinar", "Member Contributed Content"],
     views: 14,
@@ -37,7 +35,8 @@ const articles = [
   },
   {
     id: 4,
-    title: "ARM Exchange Public Webinar: Employer Features on RoboticsCareer...",
+    title:
+      "ARM Exchange Public Webinar: Employer Features on RoboticsCareer...",
     image: "/placeholder.svg?height=200&width=350",
     tags: ["ARM Focus", "Education & Workforce Development", "Webinar"],
     views: 14,
@@ -47,7 +46,12 @@ const articles = [
     id: 5,
     title: "ARM Exchange Public Webinar: Best Practices for the Future of Work",
     image: "/placeholder.svg?height=200&width=350",
-    tags: ["Education & Workforce Development", "Webinar", "ARM Focus", "Member Contributed Content"],
+    tags: [
+      "Education & Workforce Development",
+      "Webinar",
+      "ARM Focus",
+      "Member Contributed Content",
+    ],
     views: 14,
     date: "05-Jun-2025",
   },
@@ -59,16 +63,13 @@ const articles = [
     views: 14,
     date: "05-Jun-2025",
   },
-]
+];
 
 export default function Articles() {
-  const [searchTerm, setSearchTerm] = useState("")
+  const [searchTerm, setSearchTerm] = useState("");
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <NavBar />
-
+    <>
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-6 py-8">
         {/* Page Header */}
@@ -91,7 +92,10 @@ export default function Articles() {
         {/* Articles Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           {articles.map((article) => (
-            <Card key={article.id} className="overflow-hidden hover:shadow-lg transition-shadow">
+            <Card
+              key={article.id}
+              className="overflow-hidden hover:shadow-lg transition-shadow"
+            >
               <div className="aspect-video relative">
                 <img
                   src={article.image || "/placeholder.svg"}
@@ -100,7 +104,9 @@ export default function Articles() {
                 />
               </div>
               <CardContent className="p-4">
-                <h3 className="font-semibold text-gray-900 mb-3 line-clamp-2">{article.title}</h3>
+                <h3 className="font-semibold text-gray-900 mb-3 line-clamp-2">
+                  {article.title}
+                </h3>
 
                 <div className="flex flex-wrap gap-1 mb-3">
                   {article.tags.map((tag, index) => (
@@ -132,15 +138,15 @@ export default function Articles() {
             <span className="text-sm text-gray-700">6</span>
           </div>
 
-          <Button size="sm" className="flex items-center bg-[#fdb619] hover:bg-[#e6a516]">
+          <Button
+            size="sm"
+            className="flex items-center bg-[#fdb619] hover:bg-[#e6a516]"
+          >
             Next
             <ChevronRight className="h-4 w-4 ml-1" />
           </Button>
         </div>
       </main>
-
-      {/* Footer */}
-      <Footer />
-    </div>
-  )
+    </>
+  );
 }

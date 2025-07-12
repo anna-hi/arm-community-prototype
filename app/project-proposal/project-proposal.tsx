@@ -1,12 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import NavBar from "@/components/NavBar"
 import { MainButton } from "@/components/MainButton"
-import Footer from "@/components/Footer"
 
 export default function ProjectProposal() {
-  return (
-    <div className="min-h-screen bg-white">
-      <NavBar />
+  return (<>
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-6 py-12">
         <h1 className="mb-12">Project Proposal</h1>
@@ -45,8 +41,6 @@ export default function ProjectProposal() {
         </div>
       </div>
 
-      {/* Footer */}
-      <Footer />
-    </div>
+      </>
   )
 }

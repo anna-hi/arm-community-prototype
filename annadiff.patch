@@ -1,0 +1,2875 @@
+diff --git a/app/all-projects/all-projects.tsx b/app/all-projects/all-projects.tsx
+index e04514a..a9c5e79 100644
+--- a/app/all-projects/all-projects.tsx
++++ b/app/all-projects/all-projects.tsx
+@@ -9,8 +9,6 @@ import {
+   SelectValue,
+ } from "@/components/ui/select";
+ import { Search, List, Grid3X3, ChevronLeft, ChevronRight } from "lucide-react";
+-import NavBar from "@/components/NavBar";
+-import Footer from "@/components/Footer";
+ 
+ export default function AllProjects() {
+   const projects = [
+@@ -98,9 +96,7 @@ export default function AllProjects() {
+   ];
+ 
+   return (
+-    <div className="min-h-screen bg-white">
+-      <NavBar />
+-
++    <>
+       {/* Main Content */}
+       <div className="max-w-7xl mx-auto px-6 py-8">
+         <h1 className="mb-8">All Projects</h1>
+@@ -244,8 +240,6 @@ export default function AllProjects() {
+           </div>
+         </div>
+       </div>
+-      {/* Footer */}
+-      <Footer />
+-    </div>
++    </>
+   );
+ }
+diff --git a/app/community/events/community-events.tsx b/app/community/events/community-events.tsx
+index 654f3b4..ec143c2 100644
+--- a/app/community/events/community-events.tsx
++++ b/app/community/events/community-events.tsx
+@@ -15,9 +15,6 @@ import {
+ import { Button } from "@/components/ui/button";
+ import { Input } from "@/components/ui/input";
+ import { Badge } from "@/components/ui/badge";
+-import { Card, CardContent } from "@/components/ui/card";
+-import NavBar from "@/components/NavBar";
+-import Footer from "@/components/Footer";
+ import NewsEventCard from "@/components/ui/news-event-card";
+ 
+ const events = [
+@@ -200,9 +197,7 @@ export default function CommunityEvents() {
+     },
+   ];
+ 
+-  return (
+-    <div className="min-h-screen bg-white">
+-      <NavBar />
++  return (<>
+       {/* Main Content */}
+       <main className="max-w-7xl mx-auto px-6 py-8">
+         {/* Upcoming Events Section */}
+@@ -506,8 +501,6 @@ export default function CommunityEvents() {
+         </section>
+       </main>
+ 
+-      {/* Footer */}
+-      <Footer />
+-    </div>
++      </>
+   );
+ }
+diff --git a/app/community/members/aaron-prather/page.tsx b/app/community/members/aaron-prather/page.tsx
+index 98fa45f..0e65e8a 100644
+--- a/app/community/members/aaron-prather/page.tsx
++++ b/app/community/members/aaron-prather/page.tsx
+@@ -1,14 +1,11 @@
+-import NavBar from "@/components/NavBar"
+-import { ArrowLeft, Star } from "lucide-react"
+-import Link from "next/link"
+-import Image from "next/image"
+-import { Badge } from "@/components/ui/badge"
++import { ArrowLeft, Star } from "lucide-react";
++import Link from "next/link";
++import Image from "next/image";
++import { Badge } from "@/components/ui/badge";
+ 
+ export default function AaronPratherProfile() {
+   return (
+-    <div className="min-h-screen bg-[#f9f9f9]">
+-      <NavBar />
+-
++    <div className="bg-[#f9f9f9]">
+       {/* Breadcrumb */}
+       <div className="bg-white px-6 py-4 border-b">
+         <div className="max-w-7xl mx-auto">
+@@ -48,7 +45,9 @@ export default function AaronPratherProfile() {
+ 
+               {/* Name and Title */}
+               <div className="text-center mb-6">
+-                <h1 className="text-2xl font-bold text-[#222222] mb-2">Aaron Prather</h1>
++                <h1 className="text-2xl font-bold text-[#222222] mb-2">
++                  Aaron Prather
++                </h1>
+                 <p className="text-[#ef7100] font-semibold mb-2">ASTM</p>
+                 <p className="text-[#747474] text-sm leading-relaxed">
+                   Director, Robotics & Autonomous Systems Programs
+@@ -80,36 +79,62 @@ export default function AaronPratherProfile() {
+             <div className="bg-white rounded-lg p-6 shadow-sm">
+               {/* About Me Section */}
+               <div className="mb-8">
+-                <h2 className="text-xl font-bold text-[#222222] mb-4">About Me</h2>
++                <h2 className="text-xl font-bold text-[#222222] mb-4">
++                  About Me
++                </h2>
+                 <p className="text-[#747474] leading-relaxed">
+-                  Leads ASTM efforts in the field of Robotics and Autonomous Systems. From Standards Development to
+-                  Workforce Training to R&D, ASTM has a lot of tools to offer.
++                  Leads ASTM efforts in the field of Robotics and Autonomous
++                  Systems. From Standards Development to Workforce Training to
++                  R&D, ASTM has a lot of tools to offer.
+                 </p>
+               </div>
+ 
+               {/* Knowledgeable About Section */}
+               <div className="mb-8">
+-                <h3 className="text-lg font-bold text-[#222222] mb-4">Knowledgeable about</h3>
++                <h3 className="text-lg font-bold text-[#222222] mb-4">
++                  Knowledgeable about
++                </h3>
+                 <div className="flex flex-wrap gap-2 mb-4">
+-                  <Badge variant="outline" className="bg-[#e8f3ff] text-[#222222] border-[#aabbcc]">
++                  <Badge
++                    variant="outline"
++                    className="bg-[#e8f3ff] text-[#222222] border-[#aabbcc]"
++                  >
+                     Automation
+                   </Badge>
+-                  <Badge variant="outline" className="bg-[#e8f3ff] text-[#222222] border-[#aabbcc]">
++                  <Badge
++                    variant="outline"
++                    className="bg-[#e8f3ff] text-[#222222] border-[#aabbcc]"
++                  >
+                     Autonomous Vehicles
+                   </Badge>
+-                  <Badge variant="outline" className="bg-[#e8f3ff] text-[#222222] border-[#aabbcc]">
++                  <Badge
++                    variant="outline"
++                    className="bg-[#e8f3ff] text-[#222222] border-[#aabbcc]"
++                  >
+                     Collaborative Robots
+                   </Badge>
+-                  <Badge variant="outline" className="bg-[#e8f3ff] text-[#222222] border-[#aabbcc]">
++                  <Badge
++                    variant="outline"
++                    className="bg-[#e8f3ff] text-[#222222] border-[#aabbcc]"
++                  >
+                     Drones
+                   </Badge>
+-                  <Badge variant="outline" className="bg-[#e8f3ff] text-[#222222] border-[#aabbcc]">
++                  <Badge
++                    variant="outline"
++                    className="bg-[#e8f3ff] text-[#222222] border-[#aabbcc]"
++                  >
+                     Industrial Robots
+                   </Badge>
+-                  <Badge variant="outline" className="bg-[#e8f3ff] text-[#222222] border-[#aabbcc]">
++                  <Badge
++                    variant="outline"
++                    className="bg-[#e8f3ff] text-[#222222] border-[#aabbcc]"
++                  >
+                     Mobile Robots
+                   </Badge>
+-                  <Badge variant="outline" className="bg-[#e8f3ff] text-[#222222] border-[#aabbcc]">
++                  <Badge
++                    variant="outline"
++                    className="bg-[#e8f3ff] text-[#222222] border-[#aabbcc]"
++                  >
+                     Public Speaking
+                   </Badge>
+                 </div>
+@@ -121,15 +146,25 @@ export default function AaronPratherProfile() {
+               {/* Membership Info */}
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                 <div>
+-                  <h4 className="text-lg font-bold text-[#222222] mb-3">Membership Level</h4>
+-                  <Badge variant="outline" className="bg-[#ffe9bc] text-[#222222] border-[#ffb621]">
++                  <h4 className="text-lg font-bold text-[#222222] mb-3">
++                    Membership Level
++                  </h4>
++                  <Badge
++                    variant="outline"
++                    className="bg-[#ffe9bc] text-[#222222] border-[#ffb621]"
++                  >
+                     Supporting
+                   </Badge>
+                 </div>
+ 
+                 <div>
+-                  <h4 className="text-lg font-bold text-[#222222] mb-3">Membership Role</h4>
+-                  <Badge variant="outline" className="bg-[#ddf9e2] text-[#222222] border-[#3a8941]">
++                  <h4 className="text-lg font-bold text-[#222222] mb-3">
++                    Membership Role
++                  </h4>
++                  <Badge
++                    variant="outline"
++                    className="bg-[#ddf9e2] text-[#222222] border-[#3a8941]"
++                  >
+                     TAC Committee Member
+                   </Badge>
+                 </div>
+@@ -138,50 +173,6 @@ export default function AaronPratherProfile() {
+           </div>
+         </div>
+       </div>
+-
+-      {/* Footer */}
+-      <footer className="bg-[#181818] text-white py-12">
+-        <div className="max-w-7xl mx-auto px-6">
+-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+-            {/* Logo and Copyright */}
+-            <div className="md:col-span-2">
+-              <div className="flex items-center gap-3 mb-4">
+-                <Image src="/arm-nav-logo.png" alt="ARM Institute" width={40} height={40} className="w-10 h-10" />
+-                <div>
+-                  <div className="text-xl font-bold">ARM</div>
+-                  <div className="text-sm text-[#a0a0a0]">INSTITUTE</div>
+-                </div>
+-              </div>
+-              <p className="text-sm text-[#a0a0a0] leading-relaxed">
+-                Copyright © 2025 Advanced Robotics for Manufacturing Institute. All rights reserved.
+-              </p>
+-            </div>
+-
+-            {/* Address */}
+-            <div>
+-              <h4 className="font-semibold mb-3 text-white">Address</h4>
+-              <p className="text-sm text-[#a0a0a0] leading-relaxed">
+-                Mill 19 A 4501 Lytle St., Suite 200
+-                <br />
+-                Pittsburgh, PA 15207
+-              </p>
+-            </div>
+-
+-            {/* Contact */}
+-            <div>
+-              <h4 className="font-semibold mb-3 text-white">Phone</h4>
+-              <p className="text-sm text-[#a0a0a0] mb-4">412-785-0444</p>
+-
+-              <div>
+-                <p className="font-semibold mb-3 text-white">Need Help?</p>
+-                <button className="bg-[#ffb621] hover:bg-[#ef7100] text-[#181818] px-4 py-2 rounded font-medium text-sm transition-colors">
+-                  Contact ARM
+-                </button>
+-              </div>
+-            </div>
+-          </div>
+-        </div>
+-      </footer>
+     </div>
+-  )
++  );
+ }
+diff --git a/app/community/members/community-members.tsx b/app/community/members/community-members.tsx
+index 0e04947..9dbde6d 100644
+--- a/app/community/members/community-members.tsx
++++ b/app/community/members/community-members.tsx
+@@ -1,233 +1,241 @@
+-"use client"
+-
+-import { useState } from "react"
+-import { Search } from "lucide-react"
+-import { Input } from "@/components/ui/input"
+-import { Checkbox } from "@/components/ui/checkbox"
+-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+-import NavBar from "@/components/NavBar"
+-import MemberCard from "@/components/ui/member-card"
+-import Link from "next/link"
+-import Footer from "@/components/Footer"
++"use client";
++
++import { useState } from "react";
++import { Search } from "lucide-react";
++import { Input } from "@/components/ui/input";
++import { Checkbox } from "@/components/ui/checkbox";
++import {
++	Select,
++	SelectContent,
++	SelectItem,
++	SelectTrigger,
++	SelectValue,
++} from "@/components/ui/select";
++import MemberCard from "@/components/ui/member-card";
++import Link from "next/link";
+ 
+ const members = [
+-	{
+-		id: "aaron-prather",
+-		name: "Aaron Prather",
+-		organization: "ASTM",
+-		role: "Director, Robotics & Autonomous Systems Programs",
+-		imageSrc: "/images/members/aaron-prather.jpeg",
+-		tags: ["Automation", "Autonomous Vehicles"],
+-		committeeTag: "TAC Committee Member",
+-		isFavorite: true,
+-	},
+-	{
+-		id: 2,
+-		name: "Aaron Williams",
+-		organization: "HartX",
+-		role: "(No Title Provided)",
+-		imageSrc: "/placeholder.svg?height=64&width=64",
+-		tags: ["Classroom Training", "VR/AR", "Curricula Development"],
+-		committeeTag: undefined,
+-		isFavorite: false,
+-	},
+-	{
+-		id: 3,
+-		name: "Adam Newberry",
+-		organization: "On the Road Companies",
+-		role: "(No Title Provided)",
+-		imageSrc: "/placeholder.svg?height=64&width=64",
+-		tags: [],
+-		committeeTag: undefined,
+-		isFavorite: false,
+-	},
+-	{
+-		id: 4,
+-		name: "Amir Barati Farimani",
+-		organization: "Carnegie Mellon University",
+-		role: "(No Title Provided)",
+-		imageSrc: "/placeholder.svg?height=64&width=64",
+-		tags: ["AI", "Automation", "Drones"],
+-		committeeTag: undefined,
+-		isFavorite: false,
+-	},
+-	{
+-		id: 5,
+-		name: "John Smith",
+-		organization: "ASTM",
+-		role: "Director, Robotics & Autonomous...",
+-		imageSrc: "/placeholder.svg?height=64&width=64",
+-		tags: ["Automation", "Autonomous Vehicles"],
+-		committeeTag: "TAC Committee Member",
+-		isFavorite: false,
+-	},
+-	{
+-		id: 6,
+-		name: "Abdullah Alturki",
+-		organization: "University of Pittsburgh",
+-		role: "(No Title Provided)",
+-		imageSrc: "/placeholder.svg?height=64&width=64",
+-		tags: [],
+-		committeeTag: undefined,
+-		isFavorite: false,
+-	},
+-	{
+-		id: 7,
+-		name: "Amir Sharif",
+-		organization: "3Laws Dynamics Safety",
+-		role: "(No Title Provided)",
+-		imageSrc: "/placeholder.svg?height=64&width=64",
+-		tags: ["Automation", "Cyber Security", "Fundraising"],
+-		committeeTag: undefined,
+-		isFavorite: false,
+-	},
+-	{
+-		id: 8,
+-		name: "John Smith",
+-		organization: "ASTM",
+-		role: "Director, Robotics & Autonomous...",
+-		imageSrc: "/placeholder.svg?height=64&width=64",
+-		tags: ["Automation", "Autonomous Vehicles"],
+-		committeeTag: "TAC Committee Member",
+-		isFavorite: false,
+-	},
+-	{
+-		id: 9,
+-		name: "Aaron Perkins",
+-		organization: "Fairmont Robotics Team",
+-		role: "(No Title Provided)",
+-		imageSrc: "/placeholder.svg?height=64&width=64",
+-		tags: [],
+-		committeeTag: undefined,
+-		isFavorite: false,
+-	},
+-]
++  {
++    id: "aaron-prather",
++    name: "Aaron Prather",
++    organization: "ASTM",
++    role: "Director, Robotics & Autonomous Systems Programs",
++    imageSrc: "/images/members/aaron-prather.jpeg",
++    tags: ["Automation", "Autonomous Vehicles"],
++    committeeTag: "TAC Committee Member",
++    isFavorite: true,
++  },
++  {
++    id: 2,
++    name: "Aaron Williams",
++    organization: "HartX",
++    role: "(No Title Provided)",
++    imageSrc: "/placeholder.svg?height=64&width=64",
++    tags: ["Classroom Training", "VR/AR", "Curricula Development"],
++    committeeTag: undefined,
++    isFavorite: false,
++  },
++  {
++    id: 3,
++    name: "Adam Newberry",
++    organization: "On the Road Companies",
++    role: "(No Title Provided)",
++    imageSrc: "/placeholder.svg?height=64&width=64",
++    tags: [],
++    committeeTag: undefined,
++    isFavorite: false,
++  },
++  {
++    id: 4,
++    name: "Amir Barati Farimani",
++    organization: "Carnegie Mellon University",
++    role: "(No Title Provided)",
++    imageSrc: "/placeholder.svg?height=64&width=64",
++    tags: ["AI", "Automation", "Drones"],
++    committeeTag: undefined,
++    isFavorite: false,
++  },
++  {
++    id: 5,
++    name: "John Smith",
++    organization: "ASTM",
++    role: "Director, Robotics & Autonomous...",
++    imageSrc: "/placeholder.svg?height=64&width=64",
++    tags: ["Automation", "Autonomous Vehicles"],
++    committeeTag: "TAC Committee Member",
++    isFavorite: false,
++  },
++  {
++    id: 6,
++    name: "Abdullah Alturki",
++    organization: "University of Pittsburgh",
++    role: "(No Title Provided)",
++    imageSrc: "/placeholder.svg?height=64&width=64",
++    tags: [],
++    committeeTag: undefined,
++    isFavorite: false,
++  },
++  {
++    id: 7,
++    name: "Amir Sharif",
++    organization: "3Laws Dynamics Safety",
++    role: "(No Title Provided)",
++    imageSrc: "/placeholder.svg?height=64&width=64",
++    tags: ["Automation", "Cyber Security", "Fundraising"],
++    committeeTag: undefined,
++    isFavorite: false,
++  },
++  {
++    id: 8,
++    name: "John Smith",
++    organization: "ASTM",
++    role: "Director, Robotics & Autonomous...",
++    imageSrc: "/placeholder.svg?height=64&width=64",
++    tags: ["Automation", "Autonomous Vehicles"],
++    committeeTag: "TAC Committee Member",
++    isFavorite: false,
++  },
++  {
++    id: 9,
++    name: "Aaron Perkins",
++    organization: "Fairmont Robotics Team",
++    role: "(No Title Provided)",
++    imageSrc: "/placeholder.svg?height=64&width=64",
++    tags: [],
++    committeeTag: undefined,
++    isFavorite: false,
++  },
++];
+ 
+ export default function CommunityMembers() {
+-	const [searchTerm, setSearchTerm] = useState("")
+-	const [interestedInProjects, setInterestedInProjects] = useState(false)
+-
+-	// Filter members based on checkbox
+-	const filteredMembers = interestedInProjects
+-		? members.filter((member) => member.name === "Aaron Prather")
+-		: members
+-
+-	return (
+-		<div className="min-h-screen bg-white">
+-			<NavBar />
+-
+-			{/* Main Content */}
+-			<main className="max-w-7xl mx-auto px-6 py-8">
+-				{/* Page Title */}
+-				<h1 className="mb-8">Member Directory</h1>
+-
+-				{/* Search Bar */}
+-				<div className="relative max-w-md mb-8">
+-					<Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+-					<Input
+-						type="text"
+-						placeholder="Search for Members..."
+-						value={searchTerm}
+-						onChange={(e) => setSearchTerm(e.target.value)}
+-						className="pl-10"
+-					/>
+-				</div>
+-
+-				{/* Filters Section */}
+-				<div className="bg-gray-50 rounded-lg p-6 mb-8">
+-					<h2 className="text-lg font-semibold text-gray-900 mb-4">Filters</h2>
+-
+-					{/* Interested in projects checkbox */}
+-					<div className="flex justify-end items-center space-x-2 mb-4">
+-						<Checkbox
+-							id="interested-projects"
+-							checked={interestedInProjects}
+-							onCheckedChange={() => setInterestedInProjects((prev) => !prev)}
+-						/>
+-						<label htmlFor="interested-projects" className="text-sm text-gray-700">
+-							Interested in projects
+-						</label>
+-					</div>
+-
+-					{/* Filter Dropdowns */}
+-					<div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+-						<Select>
+-							<SelectTrigger>
+-								<SelectValue placeholder="Industry" />
+-							</SelectTrigger>
+-							<SelectContent>
+-								<SelectItem value="automotive">Automotive</SelectItem>
+-								<SelectItem value="aerospace">Aerospace</SelectItem>
+-								<SelectItem value="manufacturing">Manufacturing</SelectItem>
+-							</SelectContent>
+-						</Select>
+-
+-						<Select>
+-							<SelectTrigger>
+-								<SelectValue placeholder="Membership Level" />
+-							</SelectTrigger>
+-							<SelectContent>
+-								<SelectItem value="tier1">Tier 1</SelectItem>
+-								<SelectItem value="tier2">Tier 2</SelectItem>
+-								<SelectItem value="tier3">Tier 3</SelectItem>
+-							</SelectContent>
+-						</Select>
+-
+-						<Select>
+-							<SelectTrigger>
+-								<SelectValue placeholder="Knowledgeable Skills" />
+-							</SelectTrigger>
+-							<SelectContent>
+-								<SelectItem value="automation">Automation</SelectItem>
+-								<SelectItem value="ai">AI</SelectItem>
+-								<SelectItem value="robotics">Robotics</SelectItem>
+-							</SelectContent>
+-						</Select>
+-
+-						<Select>
+-							<SelectTrigger>
+-								<SelectValue placeholder="Committee" />
+-							</SelectTrigger>
+-							<SelectContent>
+-								<SelectItem value="tac">TAC Committee</SelectItem>
+-								<SelectItem value="education">Education Committee</SelectItem>
+-								<SelectItem value="workforce">Workforce Committee</SelectItem>
+-							</SelectContent>
+-						</Select>
+-
+-						<Select>
+-							<SelectTrigger>
+-								<SelectValue placeholder="Lead Organization" />
+-							</SelectTrigger>
+-							<SelectContent>
+-								<SelectItem value="astm">ASTM</SelectItem>
+-								<SelectItem value="cmu">Carnegie Mellon University</SelectItem>
+-								<SelectItem value="university">University of Pittsburgh</SelectItem>
+-							</SelectContent>
+-						</Select>
+-					</div>
+-				</div>
+-
+-				{/* Members Grid */}
+-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+-					{filteredMembers.map((member) => (
+-						<Link key={member.id} href={`/community/members/${member.id}`} className="block">
+-							<MemberCard
+-								tags={member.tags}
+-								committeeTag={member.committeeTag}
+-								imageSrc={member.imageSrc}
+-								name={member.name}
+-								organization={member.organization}
+-								role={member.role}
+-								isFavorite={member.isFavorite}
+-							/>
+-						</Link>
+-					))}
+-				</div>
+-			</main>
+-
+-			{/* Footer */}
+-			<Footer />
+-		</div>
+-	)
++  const [searchTerm, setSearchTerm] = useState("");
++  const [interestedInProjects, setInterestedInProjects] = useState(false);
++
++  // Filter members based on checkbox
++  const filteredMembers = interestedInProjects
++    ? members.filter((member) => member.name === "Aaron Prather")
++    : members;
++
++  return (
++    <>
++      {/* Main Content */}
++      <main className="max-w-7xl mx-auto px-6 py-8">
++        {/* Page Title */}
++        <h1 className="mb-8">Member Directory</h1>
++
++        {/* Search Bar */}
++        <div className="relative max-w-md mb-8">
++          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
++          <Input
++            type="text"
++            placeholder="Search for Members..."
++            value={searchTerm}
++            onChange={(e) => setSearchTerm(e.target.value)}
++            className="pl-10"
++          />
++        </div>
++
++        {/* Filters Section */}
++        <div className="bg-gray-50 rounded-lg p-6 mb-8">
++          <h2 className="text-lg font-semibold text-gray-900 mb-4">Filters</h2>
++
++          {/* Interested in projects checkbox */}
++          <div className="flex justify-end items-center space-x-2 mb-4">
++            <Checkbox
++              id="interested-projects"
++              checked={interestedInProjects}
++              onCheckedChange={() => setInterestedInProjects((prev) => !prev)}
++            />
++            <label
++              htmlFor="interested-projects"
++              className="text-sm text-gray-700"
++            >
++              Interested in projects
++            </label>
++          </div>
++
++          {/* Filter Dropdowns */}
++          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
++            <Select>
++              <SelectTrigger>
++                <SelectValue placeholder="Industry" />
++              </SelectTrigger>
++              <SelectContent>
++                <SelectItem value="automotive">Automotive</SelectItem>
++                <SelectItem value="aerospace">Aerospace</SelectItem>
++                <SelectItem value="manufacturing">Manufacturing</SelectItem>
++              </SelectContent>
++            </Select>
++
++            <Select>
++              <SelectTrigger>
++                <SelectValue placeholder="Membership Level" />
++              </SelectTrigger>
++              <SelectContent>
++                <SelectItem value="tier1">Tier 1</SelectItem>
++                <SelectItem value="tier2">Tier 2</SelectItem>
++                <SelectItem value="tier3">Tier 3</SelectItem>
++              </SelectContent>
++            </Select>
++
++            <Select>
++              <SelectTrigger>
++                <SelectValue placeholder="Knowledgeable Skills" />
++              </SelectTrigger>
++              <SelectContent>
++                <SelectItem value="automation">Automation</SelectItem>
++                <SelectItem value="ai">AI</SelectItem>
++                <SelectItem value="robotics">Robotics</SelectItem>
++              </SelectContent>
++            </Select>
++
++            <Select>
++              <SelectTrigger>
++                <SelectValue placeholder="Committee" />
++              </SelectTrigger>
++              <SelectContent>
++                <SelectItem value="tac">TAC Committee</SelectItem>
++                <SelectItem value="education">Education Committee</SelectItem>
++                <SelectItem value="workforce">Workforce Committee</SelectItem>
++              </SelectContent>
++            </Select>
++
++            <Select>
++              <SelectTrigger>
++                <SelectValue placeholder="Lead Organization" />
++              </SelectTrigger>
++              <SelectContent>
++                <SelectItem value="astm">ASTM</SelectItem>
++                <SelectItem value="cmu">Carnegie Mellon University</SelectItem>
++                <SelectItem value="university">
++                  University of Pittsburgh
++                </SelectItem>
++              </SelectContent>
++            </Select>
++          </div>
++        </div>
++
++        {/* Members Grid */}
++        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
++          {filteredMembers.map((member) => (
++            <Link
++              key={member.id}
++              href={`/community/members/${member.id}`}
++              className="block"
++            >
++              <MemberCard
++                tags={member.tags}
++                committeeTag={member.committeeTag}
++                imageSrc={member.imageSrc}
++                name={member.name}
++                organization={member.organization}
++                role={member.role}
++                isFavorite={member.isFavorite}
++              />
++            </Link>
++          ))}
++        </div>
++      </main>
++    </>
++  );
+ }
+diff --git a/app/community/organizations/community-organizations.tsx b/app/community/organizations/community-organizations.tsx
+index 0e75b0d..0d462fc 100644
+--- a/app/community/organizations/community-organizations.tsx
++++ b/app/community/organizations/community-organizations.tsx
+@@ -4,8 +4,6 @@ import { Input } from "@/components/ui/input"
+ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+ import { Search } from "lucide-react"
+ import Image from "next/image"
+-import NavBar from "@/components/NavBar"
+-import Footer from "@/components/Footer"
+ 
+ 
+ export default function CommunityOrganizations() {
+@@ -60,9 +58,7 @@ export default function CommunityOrganizations() {
+     },
+   ]
+ 
+-  return (
+-    <div className="min-h-screen bg-white">
+-      <NavBar />
++  return (<>
+ 
+       {/* Main Content */}
+       <div className="max-w-7xl mx-auto px-6 py-12">
+@@ -167,8 +163,6 @@ export default function CommunityOrganizations() {
+         </div>
+       </div>
+ 
+-      {/* Footer */}
+-      <Footer />
+-    </div>
++      </>
+   )
+ }
+diff --git a/app/layout.tsx b/app/layout.tsx
+index f5a0fc7..d19e5cf 100644
+--- a/app/layout.tsx
++++ b/app/layout.tsx
+@@ -1,33 +1,41 @@
+-import type React from "react"
+-import type { Metadata } from "next"
+-import { Montserrat, Roboto } from "next/font/google"
+-import "@/styles/globals.css"
++import type React from "react";
++import type { Metadata } from "next";
++import { Montserrat, Roboto } from "next/font/google";
++import "@/styles/globals.css";
++import NavBar from "@/components/NavBar";
++import Footer from "@/components/Footer";
+ 
+ const montserrat = Montserrat({
+   subsets: ["latin"],
+   variable: "--font-montserrat",
+-})
++});
+ 
+ const roboto = Roboto({
+   weight: ["300", "400", "500", "700"],
+   subsets: ["latin"],
+   variable: "--font-roboto",
+-})
++});
+ 
+ export const metadata: Metadata = {
+   title: "v0 App",
+   description: "Created with v0",
+   generator: "v0.dev",
+-}
++};
+ 
+ export default function RootLayout({
+   children,
+ }: Readonly<{
+-  children: React.ReactNode
++  children: React.ReactNode;
+ }>) {
+   return (
+     <html lang="en">
+-      <body className={`${montserrat.variable} ${roboto.variable}`}>{children}</body>
++      <body
++        className={`min-h-screen bg-white ${montserrat.variable} ${roboto.variable}`}
++      >
++        <NavBar />
++        {children}
++        <Footer />
++      </body>
+     </html>
+-  )
++  );
+ }
+diff --git a/app/project-calls/25-01-core-tech-draft/core-tech-draft-project-call.tsx b/app/project-calls/25-01-core-tech-draft/core-tech-draft-project-call.tsx
+index 41c61bd..5710849 100644
+--- a/app/project-calls/25-01-core-tech-draft/core-tech-draft-project-call.tsx
++++ b/app/project-calls/25-01-core-tech-draft/core-tech-draft-project-call.tsx
+@@ -1,56 +1,55 @@
+-"use client"
+-import NavBar from "@/components/NavBar";
+-import { Button } from "@/components/ui/button"
+-import { Card, CardContent } from "@/components/ui/card"
+-import { Badge } from "@/components/ui/badge"
+-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
+-import { Bell, ChevronDown, ChevronUp, Users, FileText } from "lucide-react"
+-import Image from "next/image"
+-import Link from "next/link"
+-import { useState, useEffect, useRef } from "react"
+-import { OrangeButton } from "@/components/OrangeButton"
++"use client";
++import { Button } from "@/components/ui/button";
++import { Card, CardContent } from "@/components/ui/card";
++import { Badge } from "@/components/ui/badge";
++import {
++  Collapsible,
++  CollapsibleContent,
++  CollapsibleTrigger,
++} from "@/components/ui/collapsible";
++import { ChevronDown, ChevronUp, Users, FileText } from "lucide-react";
++import Image from "next/image";
++import Link from "next/link";
++import { useState, useEffect, useRef } from "react";
++import { OrangeButton } from "@/components/OrangeButton";
+ 
+ export default function CoreTechDraftProjectCall() {
+-  const [eligibilityOpen, setEligibilityOpen] = useState(true)
+-  const [fundingOpen, setFundingOpen] = useState(true)
+-  const [participateOpen, setParticipateOpen] = useState(true)
+-  const [resourcesOpen, setResourcesOpen] = useState(true)
+-  const [specialTopicAreasOpen, setSpecialTopicAreasOpen] = useState(true)
++  const [eligibilityOpen, setEligibilityOpen] = useState(true);
++  const [fundingOpen, setFundingOpen] = useState(true);
++  const [participateOpen, setParticipateOpen] = useState(true);
++  const [resourcesOpen, setResourcesOpen] = useState(true);
++  const [specialTopicAreasOpen, setSpecialTopicAreasOpen] = useState(true);
+ 
+-  const [activeSection, setActiveSection] = useState("special-topic-areas")
++  const [activeSection, setActiveSection] = useState("special-topic-areas");
+   const sectionRefs = useRef({
+     "special-topic-areas": null,
+     eligibility: null,
+     funding: null,
+     "how-to-participate": null,
+     resources: null,
+-  })
++  });
+ 
+   useEffect(() => {
+     const handleScroll = () => {
+-      const scrollPosition = window.scrollY + 200 // Offset for sticky header
++      const scrollPosition = window.scrollY + 200; // Offset for sticky header
+ 
+-      const sections = Object.keys(sectionRefs.current)
++      const sections = Object.keys(sectionRefs.current);
+       for (let i = sections.length - 1; i >= 0; i--) {
+-        const section = sections[i]
+-        const element = document.getElementById(section)
++        const section = sections[i];
++        const element = document.getElementById(section);
+         if (element && element.offsetTop <= scrollPosition) {
+-          setActiveSection(section)
+-          break
++          setActiveSection(section);
++          break;
+         }
+       }
+-    }
++    };
+ 
+-    window.addEventListener("scroll", handleScroll)
+-    return () => window.removeEventListener("scroll", handleScroll)
+-  }, [])
++    window.addEventListener("scroll", handleScroll);
++    return () => window.removeEventListener("scroll", handleScroll);
++  }, []);
+ 
+   return (
+-    <div className="min-h-screen bg-white">
+-      <NavBar />
+-  
++    <>
+       <div className="max-w-7xl mx-auto px-6 py-12">
+         <div className="flex gap-8">
+           {/* Main Content */}
+@@ -58,7 +57,9 @@ export default function CoreTechDraftProjectCall() {
+             {/* Header Section */}
+             <div className="flex items-center mb-4">
+               <div>
+-                <h1 className="text-4xl font-bold text-gray-900 mb-4">25-01 Core Tech Draft Project Call</h1>
++                <h1 className="text-4xl font-bold text-gray-900 mb-4">
++                  25-01 Core Tech Draft Project Call
++                </h1>
+                 <Badge className="bg-green-100 text-green-800 border-green-200">
+                   <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                   Active
+@@ -69,14 +70,18 @@ export default function CoreTechDraftProjectCall() {
+             {/* Description */}
+             <div className="mb-8 pr-16">
+               <p className="text-gray-700 text-lg leading-relaxed mb-4">
+-                The ARM Institute is soliciting submissions that respond to specific needs of the manufacturing industry
+-                and the Department of Defense (DoD). This project call is seeking projects to make focused investments
+-                in the Special Topic Areas (STA) described below.
++                The ARM Institute is soliciting submissions that respond to
++                specific needs of the manufacturing industry and the Department
++                of Defense (DoD). This project call is seeking projects to make
++                focused investments in the Special Topic Areas (STA) described
++                below.
+               </p>
+               <p className="text-gray-700 text-lg leading-relaxed">
+-                These Special Topic Areas have been derived from the Institute's prior research, with guidance from the
+-                Institute's Technology Advisory Committee (TAC) and partners. Project teams are encouraged to leverage
+-                successfully completed ARM Institute technology development programs as well as Consortium Developed
++                These Special Topic Areas have been derived from the Institute's
++                prior research, with guidance from the Institute's Technology
++                Advisory Committee (TAC) and partners. Project teams are
++                encouraged to leverage successfully completed ARM Institute
++                technology development programs as well as Consortium Developed
+                 Intellectual Property (CDIP) statements.
+               </p>
+             </div>
+@@ -84,7 +89,9 @@ export default function CoreTechDraftProjectCall() {
+             {/* Project Call Document Button */}
+             <div className="mb-8">
+               <div className="px-3 py-2 flex items-center border border-gray-300 rounded-sm bg-white max-w-fit">
+-                <span className="text-base text-gray-900 font-medium">Project Call Document</span>
++                <span className="text-base text-gray-900 font-medium">
++                  Project Call Document
++                </span>
+                 <div className="m-1">
+                   <OrangeButton text="" className="" />
+                 </div>
+@@ -150,9 +157,14 @@ export default function CoreTechDraftProjectCall() {
+ 
+               {/* Special Topic Areas Section */}
+               <section id="special-topic-areas" className="mb-8">
+-                <Collapsible open={specialTopicAreasOpen} onOpenChange={setSpecialTopicAreasOpen}>
++                <Collapsible
++                  open={specialTopicAreasOpen}
++                  onOpenChange={setSpecialTopicAreasOpen}
++                >
+                   <CollapsibleTrigger className="flex items-center justify-between w-full p-6 bg-gray-50 rounded-lg hover:bg-gray-100">
+-                    <h3 className="text-2xl font-bold text-gray-900">Special Topic Areas</h3>
++                    <h3 className="text-2xl font-bold text-gray-900">
++                      Special Topic Areas
++                    </h3>
+                     <ChevronUp className="w-5 h-5" />
+                   </CollapsibleTrigger>
+                   <CollapsibleContent className="mt-4 p-6 bg-gray-50 rounded-lg">
+@@ -166,7 +178,9 @@ export default function CoreTechDraftProjectCall() {
+                           className="w-full aspect-video object-cover"
+                         />
+                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+-                          <h4 className="text-white text-xl font-semibold p-4">Rapid Re-Tasking and Robot Agility</h4>
++                          <h4 className="text-white text-xl font-semibold p-4">
++                            Rapid Re-Tasking and Robot Agility
++                          </h4>
+                         </div>
+                       </Card>
+ 
+@@ -221,23 +235,36 @@ export default function CoreTechDraftProjectCall() {
+ 
+               {/* Eligibility Section */}
+               <section id="eligibility" className="mb-8">
+-                <Collapsible open={eligibilityOpen} onOpenChange={setEligibilityOpen}>
++                <Collapsible
++                  open={eligibilityOpen}
++                  onOpenChange={setEligibilityOpen}
++                >
+                   <CollapsibleTrigger className="flex items-center justify-between w-full p-6 bg-gray-50 rounded-lg hover:bg-gray-100">
+-                    <h3 className="text-2xl font-bold text-gray-900">Eligibility</h3>
+-                    {eligibilityOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
++                    <h3 className="text-2xl font-bold text-gray-900">
++                      Eligibility
++                    </h3>
++                    {eligibilityOpen ? (
++                      <ChevronUp className="w-5 h-5" />
++                    ) : (
++                      <ChevronDown className="w-5 h-5" />
++                    )}
+                   </CollapsibleTrigger>
+                   <CollapsibleContent className="mt-4 p-6 bg-gray-50 rounded-lg">
+                     <p className="text-gray-900 text-lg leading-relaxed mb-6">
+-                      To address this Project call, ARM Institute encourages proposers to work cooperatively in
+-                      presenting integrated solutions.
++                      To address this Project call, ARM Institute encourages
++                      proposers to work cooperatively in presenting integrated
++                      solutions.
+                     </p>
+                     <p className="text-gray-900 text-lg font-semibold leading-relaxed mb-6">
+-                      The lead proposer (or prime) on the project submission is a current Platinum, Gold, Silver or
+-                      University/Non-Profit Core ARM Institute member in good standing.
++                      The lead proposer (or prime) on the project submission is
++                      a current Platinum, Gold, Silver or University/Non-Profit
++                      Core ARM Institute member in good standing.
+                     </p>
+                     <p className="text-gray-900 text-lg font-semibold leading-relaxed">
+-                      Teams are required to submit an appendix with their concept paper (not included in page limit)
+-                      that lists prior ARM projects and describes the status of technology transition for each.
++                      Teams are required to submit an appendix with their
++                      concept paper (not included in page limit) that lists
++                      prior ARM projects and describes the status of technology
++                      transition for each.
+                     </p>
+                   </CollapsibleContent>
+                 </Collapsible>
+@@ -247,26 +274,35 @@ export default function CoreTechDraftProjectCall() {
+               <section id="funding" className="mb-8">
+                 <Collapsible open={fundingOpen} onOpenChange={setFundingOpen}>
+                   <CollapsibleTrigger className="flex items-center justify-between w-full p-6 bg-gray-50 rounded-lg hover:bg-gray-100">
+-                    <h3 className="text-2xl font-bold text-gray-900">Funding</h3>
+-                    {fundingOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
++                    <h3 className="text-2xl font-bold text-gray-900">
++                      Funding
++                    </h3>
++                    {fundingOpen ? (
++                      <ChevronUp className="w-5 h-5" />
++                    ) : (
++                      <ChevronDown className="w-5 h-5" />
++                    )}
+                   </CollapsibleTrigger>
+                   <CollapsibleContent className="mt-4 p-6 bg-gray-50 rounded-lg">
+                     <p className="text-gray-900 text-lg leading-relaxed mb-4">
+                       <strong>
+-                        Individual project budgets must not exceed $500K requested from ARM (smaller budget, shorter
+-                        duration projects are also welcome).
++                        Individual project budgets must not exceed $500K
++                        requested from ARM (smaller budget, shorter duration
++                        projects are also welcome).
+                       </strong>{" "}
+-                      ARM expects that successful proposers will provide cost share of at least 50% of the total project
+-                      cost.
++                      ARM expects that successful proposers will provide cost
++                      share of at least 50% of the total project cost.
+                     </p>
+                     <p className="text-gray-900 text-lg leading-relaxed mb-4">
+-                      Cost share may include direct costs, indirect costs, and in-kind contributions. In-kind
+-                      contributions should be valued at fair market rates and must be directly related to the project
+-                      objectives.
++                      Cost share may include direct costs, indirect costs, and
++                      in-kind contributions. In-kind contributions should be
++                      valued at fair market rates and must be directly related
++                      to the project objectives.
+                     </p>
+                     <p className="text-gray-900 text-lg leading-relaxed">
+-                      Projects are expected to have a duration of 12-18 months from the start date. Longer duration
+-                      projects may be considered if adequately justified.
++                      Projects are expected to have a duration of 12-18 months
++                      from the start date. Longer duration projects may be
++                      considered if adequately justified.
+                     </p>
+                   </CollapsibleContent>
+                 </Collapsible>
+@@ -274,26 +310,41 @@ export default function CoreTechDraftProjectCall() {
+ 
+               {/* How to Participate Section */}
+               <section id="how-to-participate" className="mb-8">
+-                <Collapsible open={participateOpen} onOpenChange={setParticipateOpen}>
++                <Collapsible
++                  open={participateOpen}
++                  onOpenChange={setParticipateOpen}
++                >
+                   <CollapsibleTrigger className="flex items-center justify-between w-full p-6 bg-gray-50 rounded-lg hover:bg-gray-100">
+-                    <h3 className="text-2xl font-bold text-gray-900">How to Participate</h3>
+-                    {participateOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
++                    <h3 className="text-2xl font-bold text-gray-900">
++                      How to Participate
++                    </h3>
++                    {participateOpen ? (
++                      <ChevronUp className="w-5 h-5" />
++                    ) : (
++                      <ChevronDown className="w-5 h-5" />
++                    )}
+                   </CollapsibleTrigger>
+                   <CollapsibleContent className="mt-4 p-6 bg-gray-50 rounded-lg space-y-8">
+                     {/* Step 1 */}
+                     <div className="border border-gray-200 rounded-lg p-6 bg-white">
+-                      <h4 className="text-lg font-semibold text-gray-900 mb-4">Step 1: Find Potential Collaborators</h4>
++                      <h4 className="text-lg font-semibold text-gray-900 mb-4">
++                        Step 1: Find Potential Collaborators
++                      </h4>
+                       <p className="text-gray-700 mb-4">
+-                        The first step to entering the project call is building a team. Take a look through our
+-                        directory to find potential collaborators with complementary skills and the right membership
+-                        level.
++                        The first step to entering the project call is building
++                        a team. Take a look through our directory to find
++                        potential collaborators with complementary skills and
++                        the right membership level.
+                       </p>
+                       <div className="flex space-x-4">
+                         <Button className="bg-blue-600 hover:bg-blue-700 text-white flex items-center space-x-2">
+                           <Users className="w-4 h-4" />
+                           <span>Connect on Slack</span>
+                         </Button>
+-                        <Button variant="outline" className="flex items-center space-x-2 bg-transparent">
++                        <Button
++                          variant="outline"
++                          className="flex items-center space-x-2 bg-transparent"
++                        >
+                           <span>Search in Directory</span>
+                         </Button>
+                       </div>
+@@ -301,21 +352,29 @@ export default function CoreTechDraftProjectCall() {
+ 
+                     {/* Step 2 */}
+                     <div className="border border-gray-200 rounded-lg p-6 bg-white">
+-                      <h4 className="text-lg font-semibold text-gray-900 mb-4">Step 2: Concept Paper & Quad Chart</h4>
++                      <h4 className="text-lg font-semibold text-gray-900 mb-4">
++                        Step 2: Concept Paper & Quad Chart
++                      </h4>
+                       <p className="text-gray-700 mb-4">
+-                        After finding potential collaborators, write your concept paper together. Take a look at the
+-                        template down below to submit the paper.
++                        After finding potential collaborators, write your
++                        concept paper together. Take a look at the template down
++                        below to submit the paper.
+                       </p>
+                       <p className="text-gray-700 mb-4">
+                         See the{" "}
+-                        <Link href="#" className="text-blue-600 hover:underline">
++                        <Link
++                          href="#"
++                          className="text-blue-600 hover:underline"
++                        >
+                           full project call document
+                         </Link>{" "}
+                         for more details.
+                       </p>
+ 
+                       <div className="bg-gray-50 p-4 rounded-lg mb-4">
+-                        <h5 className="font-semibold text-gray-900 mb-2">Concept Phase Templates (3)</h5>
++                        <h5 className="font-semibold text-gray-900 mb-2">
++                          Concept Phase Templates (3)
++                        </h5>
+                         <div className="space-y-2">
+                           <div className="flex items-center space-x-2">
+                             <FileText className="w-4 h-4 text-blue-600" />
+@@ -325,16 +384,22 @@ export default function CoreTechDraftProjectCall() {
+                           </div>
+                           <div className="flex items-center space-x-2">
+                             <FileText className="w-4 h-4 text-blue-600" />
+-                            <span className="text-blue-600 hover:underline cursor-pointer">Template - Quad Chart</span>
++                            <span className="text-blue-600 hover:underline cursor-pointer">
++                              Template - Quad Chart
++                            </span>
+                           </div>
+                           <div className="flex items-center space-x-2">
+                             <FileText className="w-4 h-4 text-blue-600" />
+-                            <span className="text-blue-600 hover:underline cursor-pointer">Quad Chart Guidelines</span>
++                            <span className="text-blue-600 hover:underline cursor-pointer">
++                              Quad Chart Guidelines
++                            </span>
+                           </div>
+                         </div>
+                       </div>
+ 
+-                      <Button className="bg-orange-500 hover:bg-orange-600 text-white">Submit Concept Paper</Button>
++                      <Button className="bg-orange-500 hover:bg-orange-600 text-white">
++                        Submit Concept Paper
++                      </Button>
+                     </div>
+ 
+                     {/* Step 3 */}
+@@ -343,19 +408,27 @@ export default function CoreTechDraftProjectCall() {
+                         Step 3: Presentation Process (Invitation only)
+                       </h4>
+                       <p className="text-gray-700 mb-4">
+-                        In the second step in the process, an invited proposer will submit a Presentation in PowerPoint
+-                        format (.ppt or .pptx) that describes the proposed project in detail.
++                        In the second step in the process, an invited proposer
++                        will submit a Presentation in PowerPoint format (.ppt or
++                        .pptx) that describes the proposed project in detail.
+                       </p>
+                       <p className="text-gray-700 mb-4">
+-                        If invited to prepare a presentation, the following proposed project supporting documents must
+-                        be submitted by the lead proposer through the ARM Community website prior to the presentation
+-                        date.
++                        If invited to prepare a presentation, the following
++                        proposed project supporting documents must be submitted
++                        by the lead proposer through the ARM Community website
++                        prior to the presentation date.
+                       </p>
+ 
+                       <div className="bg-gray-50 p-4 rounded-lg">
+                         <div className="flex items-center justify-between mb-2">
+-                          <h5 className="font-semibold text-gray-900">Presentation Phase Templates (9)</h5>
+-                          <Button variant="ghost" size="sm" className="text-blue-600">
++                          <h5 className="font-semibold text-gray-900">
++                            Presentation Phase Templates (9)
++                          </h5>
++                          <Button
++                            variant="ghost"
++                            size="sm"
++                            className="text-blue-600"
++                          >
+                             Show all
+                           </Button>
+                         </div>
+@@ -387,16 +460,31 @@ export default function CoreTechDraftProjectCall() {
+ 
+               {/* Resources Section */}
+               <section id="resources" className="mb-8">
+-                <Collapsible open={resourcesOpen} onOpenChange={setResourcesOpen}>
++                <Collapsible
++                  open={resourcesOpen}
++                  onOpenChange={setResourcesOpen}
++                >
+                   <CollapsibleTrigger className="flex items-center justify-between w-full p-6 bg-gray-50 rounded-lg hover:bg-gray-100">
+-                    <h3 className="text-2xl font-bold text-gray-900">Resources</h3>
+-                    {resourcesOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
++                    <h3 className="text-2xl font-bold text-gray-900">
++                      Resources
++                    </h3>
++                    {resourcesOpen ? (
++                      <ChevronUp className="w-5 h-5" />
++                    ) : (
++                      <ChevronDown className="w-5 h-5" />
++                    )}
+                   </CollapsibleTrigger>
+                   <CollapsibleContent className="mt-4 p-6 bg-gray-50 rounded-lg">
+                     <div className="bg-white p-4 rounded-lg">
+                       <div className="flex items-center justify-between mb-2">
+-                        <h5 className="font-semibold text-gray-900">Reference Materials (6)</h5>
+-                        <Button variant="ghost" size="sm" className="text-blue-600">
++                        <h5 className="font-semibold text-gray-900">
++                          Reference Materials (6)
++                        </h5>
++                        <Button
++                          variant="ghost"
++                          size="sm"
++                          className="text-blue-600"
++                        >
+                           Show all
+                         </Button>
+                       </div>
+@@ -427,7 +515,9 @@ export default function CoreTechDraftProjectCall() {
+                         </div>
+                         <div className="flex items-center space-x-2">
+                           <FileText className="w-4 h-4 text-blue-600" />
+-                          <span className="text-blue-600 hover:underline cursor-pointer">Cost Share Guidelines</span>
++                          <span className="text-blue-600 hover:underline cursor-pointer">
++                            Cost Share Guidelines
++                          </span>
+                         </div>
+                         <div className="flex items-center space-x-2">
+                           <FileText className="w-4 h-4 text-blue-600" />
+@@ -454,7 +544,6 @@ export default function CoreTechDraftProjectCall() {
+ 
+                 {/* Timeline Items */}
+                 <div className="space-y-0">
+-
+                   <div className="flex items-center space-x-4 bg-white p-4 rounded-lg border border-gray-200">
+                     <div className="flex flex-col items-center border border-gray-950 rounded-lg overflow-hidden">
+                       <div className="w-16 h-7 bg-orange-100 text-sm font-montserrat font-semibold text-gray-950 flex items-center justify-center">
+@@ -465,7 +554,9 @@ export default function CoreTechDraftProjectCall() {
+                       </div>
+                     </div>
+                     <div>
+-                      <p className="body text-sm font-medium text-gray-900">Project Call Opens</p>
++                      <p className="body text-sm font-medium text-gray-900">
++                        Project Call Opens
++                      </p>
+                     </div>
+                   </div>
+ 
+@@ -487,7 +578,9 @@ export default function CoreTechDraftProjectCall() {
+                       </div>
+                     </div>
+                     <div>
+-                      <p className="body text-sm font-medium text-gray-900">Project Call Webinar and Q&A</p>
++                      <p className="body text-sm font-medium text-gray-900">
++                        Project Call Webinar and Q&A
++                      </p>
+                     </div>
+                   </div>
+ 
+@@ -509,7 +602,9 @@ export default function CoreTechDraftProjectCall() {
+                       </div>
+                     </div>
+                     <div>
+-                      <p className="body text-sm font-medium text-gray-900">Concept Paper Submission Deadline</p>
++                      <p className="body text-sm font-medium text-gray-900">
++                        Concept Paper Submission Deadline
++                      </p>
+                     </div>
+                   </div>
+ 
+@@ -531,7 +626,9 @@ export default function CoreTechDraftProjectCall() {
+                       </div>
+                     </div>
+                     <div>
+-                      <p className="body text-sm font-medium text-gray-900">Invitations for Presentation Submission</p>
++                      <p className="body text-sm font-medium text-gray-900">
++                        Invitations for Presentation Submission
++                      </p>
+                     </div>
+                   </div>
+                 </div>
+@@ -540,43 +637,6 @@ export default function CoreTechDraftProjectCall() {
+           </div>
+         </div>
+       </div>
+-
+-      {/* Footer */}
+-      <footer className="bg-gray-900 text-white py-12 mt-16">
+-        <div className="max-w-7xl mx-auto px-6">
+-          <div className="grid md:grid-cols-4 gap-8">
+-            <div>
+-              <div className="flex items-center space-x-2 mb-4">
+-                <div className="w-8 h-8 bg-orange-500 rounded flex items-center justify-center">
+-                  <span className="text-white font-bold text-sm">ARM</span>
+-                </div>
+-                <span className="font-semibold">ARM INSTITUTE</span>
+-              </div>
+-              <p className="text-gray-400 text-sm">
+-                Copyright © 2025 Advanced Robotics for Manufacturing Institute. All rights reserved.
+-              </p>
+-            </div>
+-            <div>
+-              <h4 className="font-semibold mb-4">Address</h4>
+-              <p className="text-gray-400 text-sm">
+-                Mill 19 at Hazelwood Green
+-                <br />
+-                4720 Technology Dr, Suite 300
+-                <br />
+-                Pittsburgh, PA 15219
+-              </p>
+-            </div>
+-            <div>
+-              <h4 className="font-semibold mb-4">Phone</h4>
+-              <p className="text-gray-400 text-sm">412-785-0444</p>
+-            </div>
+-            <div>
+-              <h4 className="font-semibold mb-4">Need Help?</h4>
+-              <Button className="bg-orange-500 hover:bg-orange-600">Contact ARM</Button>
+-            </div>
+-          </div>
+-        </div>
+-      </footer>
+-    </div>
+-  )
++    </>
++  );
+ }
+diff --git a/app/project-calls/ai-data-foundry-tech-project-call/ai-data-foundry-tech-project-call.tsx b/app/project-calls/ai-data-foundry-tech-project-call/ai-data-foundry-tech-project-call.tsx
+index 3d203aa..cfeab81 100644
+--- a/app/project-calls/ai-data-foundry-tech-project-call/ai-data-foundry-tech-project-call.tsx
++++ b/app/project-calls/ai-data-foundry-tech-project-call/ai-data-foundry-tech-project-call.tsx
+@@ -1,56 +1,55 @@
+-"use client"
+-import NavBar from "@/components/NavBar";
+-import { Button } from "@/components/ui/button"
+-import { Card, CardContent } from "@/components/ui/card"
+-import { Badge } from "@/components/ui/badge"
+-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
+-import { Bell, ChevronDown, ChevronUp, Users, FileText } from "lucide-react"
+-import Image from "next/image"
+-import Link from "next/link"
+-import { useState, useEffect, useRef } from "react"
+-import { OrangeButton } from "@/components/OrangeButton"
++"use client";
++import { Button } from "@/components/ui/button";
++import { Card, CardContent } from "@/components/ui/card";
++import { Badge } from "@/components/ui/badge";
++import {
++  Collapsible,
++  CollapsibleContent,
++  CollapsibleTrigger,
++} from "@/components/ui/collapsible";
++import { ChevronDown, ChevronUp, Users, FileText } from "lucide-react";
++import Image from "next/image";
++import Link from "next/link";
++import { useState, useEffect, useRef } from "react";
++import { OrangeButton } from "@/components/OrangeButton";
+ 
+ export default function CoreTechDraftProjectCall() {
+-  const [eligibilityOpen, setEligibilityOpen] = useState(true)
+-  const [fundingOpen, setFundingOpen] = useState(true)
+-  const [participateOpen, setParticipateOpen] = useState(true)
+-  const [resourcesOpen, setResourcesOpen] = useState(true)
+-  const [specialTopicAreasOpen, setSpecialTopicAreasOpen] = useState(true)
++  const [eligibilityOpen, setEligibilityOpen] = useState(true);
++  const [fundingOpen, setFundingOpen] = useState(true);
++  const [participateOpen, setParticipateOpen] = useState(true);
++  const [resourcesOpen, setResourcesOpen] = useState(true);
++  const [specialTopicAreasOpen, setSpecialTopicAreasOpen] = useState(true);
+ 
+-  const [activeSection, setActiveSection] = useState("special-topic-areas")
++  const [activeSection, setActiveSection] = useState("special-topic-areas");
+   const sectionRefs = useRef({
+     "special-topic-areas": null,
+     eligibility: null,
+     funding: null,
+     "how-to-participate": null,
+     resources: null,
+-  })
++  });
+ 
+   useEffect(() => {
+     const handleScroll = () => {
+-      const scrollPosition = window.scrollY + 200 // Offset for sticky header
++      const scrollPosition = window.scrollY + 200; // Offset for sticky header
+ 
+-      const sections = Object.keys(sectionRefs.current)
++      const sections = Object.keys(sectionRefs.current);
+       for (let i = sections.length - 1; i >= 0; i--) {
+-        const section = sections[i]
+-        const element = document.getElementById(section)
++        const section = sections[i];
++        const element = document.getElementById(section);
+         if (element && element.offsetTop <= scrollPosition) {
+-          setActiveSection(section)
+-          break
++          setActiveSection(section);
++          break;
+         }
+       }
+-    }
++    };
+ 
+-    window.addEventListener("scroll", handleScroll)
+-    return () => window.removeEventListener("scroll", handleScroll)
+-  }, [])
++    window.addEventListener("scroll", handleScroll);
++    return () => window.removeEventListener("scroll", handleScroll);
++  }, []);
+ 
+   return (
+-    <div className="min-h-screen bg-white">
+-      <NavBar />
+-  
++    <>
+       <div className="max-w-7xl mx-auto px-6 py-12">
+         <div className="flex gap-8">
+           {/* Main Content */}
+@@ -58,7 +57,9 @@ export default function CoreTechDraftProjectCall() {
+             {/* Header Section */}
+             <div className="flex items-center mb-4">
+               <div>
+-                <h1 className="text-4xl font-bold text-gray-900 mb-4">2024 AI Data Foundry Tech Project Call</h1>
++                <h1 className="text-4xl font-bold text-gray-900 mb-4">
++                  2024 AI Data Foundry Tech Project Call
++                </h1>
+                 <Badge className="bg-green-100 text-green-800 border-green-200">
+                   <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                   Active
+@@ -69,14 +70,18 @@ export default function CoreTechDraftProjectCall() {
+             {/* Description */}
+             <div className="mb-8 pr-16">
+               <p className="text-gray-700 text-lg leading-relaxed mb-4">
+-                The ARM Institute is soliciting submissions that respond to specific needs of the manufacturing industry
+-                and the Department of Defense (DoD). This project call is seeking projects to make focused investments
+-                in the Special Topic Areas (STA) described below.
++                The ARM Institute is soliciting submissions that respond to
++                specific needs of the manufacturing industry and the Department
++                of Defense (DoD). This project call is seeking projects to make
++                focused investments in the Special Topic Areas (STA) described
++                below.
+               </p>
+               <p className="text-gray-700 text-lg leading-relaxed">
+-                These Special Topic Areas have been derived from the Institute's prior research, with guidance from the
+-                Institute's Technology Advisory Committee (TAC) and partners. Project teams are encouraged to leverage
+-                successfully completed ARM Institute technology development programs as well as Consortium Developed
++                These Special Topic Areas have been derived from the Institute's
++                prior research, with guidance from the Institute's Technology
++                Advisory Committee (TAC) and partners. Project teams are
++                encouraged to leverage successfully completed ARM Institute
++                technology development programs as well as Consortium Developed
+                 Intellectual Property (CDIP) statements.
+               </p>
+             </div>
+@@ -84,7 +89,9 @@ export default function CoreTechDraftProjectCall() {
+             {/* Project Call Document Button */}
+             <div className="mb-8">
+               <div className="px-3 py-2 flex items-center border border-gray-300 rounded-sm bg-white max-w-fit">
+-                <span className="text-base text-gray-900 font-medium">Project Call Document</span>
++                <span className="text-base text-gray-900 font-medium">
++                  Project Call Document
++                </span>
+                 <div className="m-1">
+                   <OrangeButton text="" className="" />
+                 </div>
+@@ -150,9 +157,14 @@ export default function CoreTechDraftProjectCall() {
+ 
+               {/* Special Topic Areas Section */}
+               <section id="special-topic-areas" className="mb-8">
+-                <Collapsible open={specialTopicAreasOpen} onOpenChange={setSpecialTopicAreasOpen}>
++                <Collapsible
++                  open={specialTopicAreasOpen}
++                  onOpenChange={setSpecialTopicAreasOpen}
++                >
+                   <CollapsibleTrigger className="flex items-center justify-between w-full p-6 bg-gray-50 rounded-lg hover:bg-gray-100">
+-                    <h3 className="text-2xl font-bold text-gray-900">Special Topic Areas</h3>
++                    <h3 className="text-2xl font-bold text-gray-900">
++                      Special Topic Areas
++                    </h3>
+                     <ChevronUp className="w-5 h-5" />
+                   </CollapsibleTrigger>
+                   <CollapsibleContent className="mt-4 p-6 bg-gray-50 rounded-lg">
+@@ -166,7 +178,9 @@ export default function CoreTechDraftProjectCall() {
+                           className="w-full aspect-video object-cover"
+                         />
+                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+-                          <h4 className="text-white text-xl font-semibold p-4">Rapid Re-Tasking and Robot Agility</h4>
++                          <h4 className="text-white text-xl font-semibold p-4">
++                            Rapid Re-Tasking and Robot Agility
++                          </h4>
+                         </div>
+                       </Card>
+ 
+@@ -221,23 +235,36 @@ export default function CoreTechDraftProjectCall() {
+ 
+               {/* Eligibility Section */}
+               <section id="eligibility" className="mb-8">
+-                <Collapsible open={eligibilityOpen} onOpenChange={setEligibilityOpen}>
++                <Collapsible
++                  open={eligibilityOpen}
++                  onOpenChange={setEligibilityOpen}
++                >
+                   <CollapsibleTrigger className="flex items-center justify-between w-full p-6 bg-gray-50 rounded-lg hover:bg-gray-100">
+-                    <h3 className="text-2xl font-bold text-gray-900">Eligibility</h3>
+-                    {eligibilityOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
++                    <h3 className="text-2xl font-bold text-gray-900">
++                      Eligibility
++                    </h3>
++                    {eligibilityOpen ? (
++                      <ChevronUp className="w-5 h-5" />
++                    ) : (
++                      <ChevronDown className="w-5 h-5" />
++                    )}
+                   </CollapsibleTrigger>
+                   <CollapsibleContent className="mt-4 p-6 bg-gray-50 rounded-lg">
+                     <p className="text-gray-900 text-lg leading-relaxed mb-6">
+-                      To address this Project call, ARM Institute encourages proposers to work cooperatively in
+-                      presenting integrated solutions.
++                      To address this Project call, ARM Institute encourages
++                      proposers to work cooperatively in presenting integrated
++                      solutions.
+                     </p>
+                     <p className="text-gray-900 text-lg font-semibold leading-relaxed mb-6">
+-                      The lead proposer (or prime) on the project submission is a current Platinum, Gold, Silver or
+-                      University/Non-Profit Core ARM Institute member in good standing.
++                      The lead proposer (or prime) on the project submission is
++                      a current Platinum, Gold, Silver or University/Non-Profit
++                      Core ARM Institute member in good standing.
+                     </p>
+                     <p className="text-gray-900 text-lg font-semibold leading-relaxed">
+-                      Teams are required to submit an appendix with their concept paper (not included in page limit)
+-                      that lists prior ARM projects and describes the status of technology transition for each.
++                      Teams are required to submit an appendix with their
++                      concept paper (not included in page limit) that lists
++                      prior ARM projects and describes the status of technology
++                      transition for each.
+                     </p>
+                   </CollapsibleContent>
+                 </Collapsible>
+@@ -247,26 +274,35 @@ export default function CoreTechDraftProjectCall() {
+               <section id="funding" className="mb-8">
+                 <Collapsible open={fundingOpen} onOpenChange={setFundingOpen}>
+                   <CollapsibleTrigger className="flex items-center justify-between w-full p-6 bg-gray-50 rounded-lg hover:bg-gray-100">
+-                    <h3 className="text-2xl font-bold text-gray-900">Funding</h3>
+-                    {fundingOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
++                    <h3 className="text-2xl font-bold text-gray-900">
++                      Funding
++                    </h3>
++                    {fundingOpen ? (
++                      <ChevronUp className="w-5 h-5" />
++                    ) : (
++                      <ChevronDown className="w-5 h-5" />
++                    )}
+                   </CollapsibleTrigger>
+                   <CollapsibleContent className="mt-4 p-6 bg-gray-50 rounded-lg">
+                     <p className="text-gray-900 text-lg leading-relaxed mb-4">
+                       <strong>
+-                        Individual project budgets must not exceed $500K requested from ARM (smaller budget, shorter
+-                        duration projects are also welcome).
++                        Individual project budgets must not exceed $500K
++                        requested from ARM (smaller budget, shorter duration
++                        projects are also welcome).
+                       </strong>{" "}
+-                      ARM expects that successful proposers will provide cost share of at least 50% of the total project
+-                      cost.
++                      ARM expects that successful proposers will provide cost
++                      share of at least 50% of the total project cost.
+                     </p>
+                     <p className="text-gray-900 text-lg leading-relaxed mb-4">
+-                      Cost share may include direct costs, indirect costs, and in-kind contributions. In-kind
+-                      contributions should be valued at fair market rates and must be directly related to the project
+-                      objectives.
++                      Cost share may include direct costs, indirect costs, and
++                      in-kind contributions. In-kind contributions should be
++                      valued at fair market rates and must be directly related
++                      to the project objectives.
+                     </p>
+                     <p className="text-gray-900 text-lg leading-relaxed">
+-                      Projects are expected to have a duration of 12-18 months from the start date. Longer duration
+-                      projects may be considered if adequately justified.
++                      Projects are expected to have a duration of 12-18 months
++                      from the start date. Longer duration projects may be
++                      considered if adequately justified.
+                     </p>
+                   </CollapsibleContent>
+                 </Collapsible>
+@@ -274,26 +310,41 @@ export default function CoreTechDraftProjectCall() {
+ 
+               {/* How to Participate Section */}
+               <section id="how-to-participate" className="mb-8">
+-                <Collapsible open={participateOpen} onOpenChange={setParticipateOpen}>
++                <Collapsible
++                  open={participateOpen}
++                  onOpenChange={setParticipateOpen}
++                >
+                   <CollapsibleTrigger className="flex items-center justify-between w-full p-6 bg-gray-50 rounded-lg hover:bg-gray-100">
+-                    <h3 className="text-2xl font-bold text-gray-900">How to Participate</h3>
+-                    {participateOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
++                    <h3 className="text-2xl font-bold text-gray-900">
++                      How to Participate
++                    </h3>
++                    {participateOpen ? (
++                      <ChevronUp className="w-5 h-5" />
++                    ) : (
++                      <ChevronDown className="w-5 h-5" />
++                    )}
+                   </CollapsibleTrigger>
+                   <CollapsibleContent className="mt-4 p-6 bg-gray-50 rounded-lg space-y-8">
+                     {/* Step 1 */}
+                     <div className="border border-gray-200 rounded-lg p-6 bg-white">
+-                      <h4 className="text-lg font-semibold text-gray-900 mb-4">Step 1: Find Potential Collaborators</h4>
++                      <h4 className="text-lg font-semibold text-gray-900 mb-4">
++                        Step 1: Find Potential Collaborators
++                      </h4>
+                       <p className="text-gray-700 mb-4">
+-                        The first step to entering the project call is building a team. Take a look through our
+-                        directory to find potential collaborators with complementary skills and the right membership
+-                        level.
++                        The first step to entering the project call is building
++                        a team. Take a look through our directory to find
++                        potential collaborators with complementary skills and
++                        the right membership level.
+                       </p>
+                       <div className="flex space-x-4">
+                         <Button className="bg-blue-600 hover:bg-blue-700 text-white flex items-center space-x-2">
+                           <Users className="w-4 h-4" />
+                           <span>Connect on Slack</span>
+                         </Button>
+-                        <Button variant="outline" className="flex items-center space-x-2 bg-transparent">
++                        <Button
++                          variant="outline"
++                          className="flex items-center space-x-2 bg-transparent"
++                        >
+                           <span>Search in Directory</span>
+                         </Button>
+                       </div>
+@@ -301,21 +352,29 @@ export default function CoreTechDraftProjectCall() {
+ 
+                     {/* Step 2 */}
+                     <div className="border border-gray-200 rounded-lg p-6 bg-white">
+-                      <h4 className="text-lg font-semibold text-gray-900 mb-4">Step 2: Concept Paper & Quad Chart</h4>
++                      <h4 className="text-lg font-semibold text-gray-900 mb-4">
++                        Step 2: Concept Paper & Quad Chart
++                      </h4>
+                       <p className="text-gray-700 mb-4">
+-                        After finding potential collaborators, write your concept paper together. Take a look at the
+-                        template down below to submit the paper.
++                        After finding potential collaborators, write your
++                        concept paper together. Take a look at the template down
++                        below to submit the paper.
+                       </p>
+                       <p className="text-gray-700 mb-4">
+                         See the{" "}
+-                        <Link href="#" className="text-blue-600 hover:underline">
++                        <Link
++                          href="#"
++                          className="text-blue-600 hover:underline"
++                        >
+                           full project call document
+                         </Link>{" "}
+                         for more details.
+                       </p>
+ 
+                       <div className="bg-gray-50 p-4 rounded-lg mb-4">
+-                        <h5 className="font-semibold text-gray-900 mb-2">Concept Phase Templates (3)</h5>
++                        <h5 className="font-semibold text-gray-900 mb-2">
++                          Concept Phase Templates (3)
++                        </h5>
+                         <div className="space-y-2">
+                           <div className="flex items-center space-x-2">
+                             <FileText className="w-4 h-4 text-blue-600" />
+@@ -325,16 +384,22 @@ export default function CoreTechDraftProjectCall() {
+                           </div>
+                           <div className="flex items-center space-x-2">
+                             <FileText className="w-4 h-4 text-blue-600" />
+-                            <span className="text-blue-600 hover:underline cursor-pointer">Template - Quad Chart</span>
++                            <span className="text-blue-600 hover:underline cursor-pointer">
++                              Template - Quad Chart
++                            </span>
+                           </div>
+                           <div className="flex items-center space-x-2">
+                             <FileText className="w-4 h-4 text-blue-600" />
+-                            <span className="text-blue-600 hover:underline cursor-pointer">Quad Chart Guidelines</span>
++                            <span className="text-blue-600 hover:underline cursor-pointer">
++                              Quad Chart Guidelines
++                            </span>
+                           </div>
+                         </div>
+                       </div>
+ 
+-                      <Button className="bg-orange-500 hover:bg-orange-600 text-white">Submit Concept Paper</Button>
++                      <Button className="bg-orange-500 hover:bg-orange-600 text-white">
++                        Submit Concept Paper
++                      </Button>
+                     </div>
+ 
+                     {/* Step 3 */}
+@@ -343,19 +408,27 @@ export default function CoreTechDraftProjectCall() {
+                         Step 3: Presentation Process (Invitation only)
+                       </h4>
+                       <p className="text-gray-700 mb-4">
+-                        In the second step in the process, an invited proposer will submit a Presentation in PowerPoint
+-                        format (.ppt or .pptx) that describes the proposed project in detail.
++                        In the second step in the process, an invited proposer
++                        will submit a Presentation in PowerPoint format (.ppt or
++                        .pptx) that describes the proposed project in detail.
+                       </p>
+                       <p className="text-gray-700 mb-4">
+-                        If invited to prepare a presentation, the following proposed project supporting documents must
+-                        be submitted by the lead proposer through the ARM Community website prior to the presentation
+-                        date.
++                        If invited to prepare a presentation, the following
++                        proposed project supporting documents must be submitted
++                        by the lead proposer through the ARM Community website
++                        prior to the presentation date.
+                       </p>
+ 
+                       <div className="bg-gray-50 p-4 rounded-lg">
+                         <div className="flex items-center justify-between mb-2">
+-                          <h5 className="font-semibold text-gray-900">Presentation Phase Templates (9)</h5>
+-                          <Button variant="ghost" size="sm" className="text-blue-600">
++                          <h5 className="font-semibold text-gray-900">
++                            Presentation Phase Templates (9)
++                          </h5>
++                          <Button
++                            variant="ghost"
++                            size="sm"
++                            className="text-blue-600"
++                          >
+                             Show all
+                           </Button>
+                         </div>
+@@ -387,16 +460,31 @@ export default function CoreTechDraftProjectCall() {
+ 
+               {/* Resources Section */}
+               <section id="resources" className="mb-8">
+-                <Collapsible open={resourcesOpen} onOpenChange={setResourcesOpen}>
++                <Collapsible
++                  open={resourcesOpen}
++                  onOpenChange={setResourcesOpen}
++                >
+                   <CollapsibleTrigger className="flex items-center justify-between w-full p-6 bg-gray-50 rounded-lg hover:bg-gray-100">
+-                    <h3 className="text-2xl font-bold text-gray-900">Resources</h3>
+-                    {resourcesOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
++                    <h3 className="text-2xl font-bold text-gray-900">
++                      Resources
++                    </h3>
++                    {resourcesOpen ? (
++                      <ChevronUp className="w-5 h-5" />
++                    ) : (
++                      <ChevronDown className="w-5 h-5" />
++                    )}
+                   </CollapsibleTrigger>
+                   <CollapsibleContent className="mt-4 p-6 bg-gray-50 rounded-lg">
+                     <div className="bg-white p-4 rounded-lg">
+                       <div className="flex items-center justify-between mb-2">
+-                        <h5 className="font-semibold text-gray-900">Reference Materials (6)</h5>
+-                        <Button variant="ghost" size="sm" className="text-blue-600">
++                        <h5 className="font-semibold text-gray-900">
++                          Reference Materials (6)
++                        </h5>
++                        <Button
++                          variant="ghost"
++                          size="sm"
++                          className="text-blue-600"
++                        >
+                           Show all
+                         </Button>
+                       </div>
+@@ -427,7 +515,9 @@ export default function CoreTechDraftProjectCall() {
+                         </div>
+                         <div className="flex items-center space-x-2">
+                           <FileText className="w-4 h-4 text-blue-600" />
+-                          <span className="text-blue-600 hover:underline cursor-pointer">Cost Share Guidelines</span>
++                          <span className="text-blue-600 hover:underline cursor-pointer">
++                            Cost Share Guidelines
++                          </span>
+                         </div>
+                         <div className="flex items-center space-x-2">
+                           <FileText className="w-4 h-4 text-blue-600" />
+@@ -454,7 +544,6 @@ export default function CoreTechDraftProjectCall() {
+ 
+                 {/* Timeline Items */}
+                 <div className="space-y-0">
+-
+                   <div className="flex items-center space-x-4 bg-white p-4 rounded-lg border border-gray-200">
+                     <div className="flex flex-col items-center border border-gray-950 rounded-lg overflow-hidden">
+                       <div className="w-16 h-7 bg-orange-100 text-sm font-montserrat font-semibold text-gray-950 flex items-center justify-center">
+@@ -465,7 +554,9 @@ export default function CoreTechDraftProjectCall() {
+                       </div>
+                     </div>
+                     <div>
+-                      <p className="body text-sm font-medium text-gray-900">Project Call Opens</p>
++                      <p className="body text-sm font-medium text-gray-900">
++                        Project Call Opens
++                      </p>
+                     </div>
+                   </div>
+ 
+@@ -487,7 +578,9 @@ export default function CoreTechDraftProjectCall() {
+                       </div>
+                     </div>
+                     <div>
+-                      <p className="body text-sm font-medium text-gray-900">Project Call Webinar and Q&A</p>
++                      <p className="body text-sm font-medium text-gray-900">
++                        Project Call Webinar and Q&A
++                      </p>
+                     </div>
+                   </div>
+ 
+@@ -509,7 +602,9 @@ export default function CoreTechDraftProjectCall() {
+                       </div>
+                     </div>
+                     <div>
+-                      <p className="body text-sm font-medium text-gray-900">Concept Paper Submission Deadline</p>
++                      <p className="body text-sm font-medium text-gray-900">
++                        Concept Paper Submission Deadline
++                      </p>
+                     </div>
+                   </div>
+ 
+@@ -531,7 +626,9 @@ export default function CoreTechDraftProjectCall() {
+                       </div>
+                     </div>
+                     <div>
+-                      <p className="body text-sm font-medium text-gray-900">Invitations for Presentation Submission</p>
++                      <p className="body text-sm font-medium text-gray-900">
++                        Invitations for Presentation Submission
++                      </p>
+                     </div>
+                   </div>
+                 </div>
+@@ -540,43 +637,6 @@ export default function CoreTechDraftProjectCall() {
+           </div>
+         </div>
+       </div>
+-
+-      {/* Footer */}
+-      <footer className="bg-gray-900 text-white py-12 mt-16">
+-        <div className="max-w-7xl mx-auto px-6">
+-          <div className="grid md:grid-cols-4 gap-8">
+-            <div>
+-              <div className="flex items-center space-x-2 mb-4">
+-                <div className="w-8 h-8 bg-orange-500 rounded flex items-center justify-center">
+-                  <span className="text-white font-bold text-sm">ARM</span>
+-                </div>
+-                <span className="font-semibold">ARM INSTITUTE</span>
+-              </div>
+-              <p className="text-gray-400 text-sm">
+-                Copyright © 2025 Advanced Robotics for Manufacturing Institute. All rights reserved.
+-              </p>
+-            </div>
+-            <div>
+-              <h4 className="font-semibold mb-4">Address</h4>
+-              <p className="text-gray-400 text-sm">
+-                Mill 19 at Hazelwood Green
+-                <br />
+-                4720 Technology Dr, Suite 300
+-                <br />
+-                Pittsburgh, PA 15219
+-              </p>
+-            </div>
+-            <div>
+-              <h4 className="font-semibold mb-4">Phone</h4>
+-              <p className="text-gray-400 text-sm">412-785-0444</p>
+-            </div>
+-            <div>
+-              <h4 className="font-semibold mb-4">Need Help?</h4>
+-              <Button className="bg-orange-500 hover:bg-orange-600">Contact ARM</Button>
+-            </div>
+-          </div>
+-        </div>
+-      </footer>
+-    </div>
+-  )
++    </>
++  );
+ }
+diff --git a/app/project-calls/project-calls.tsx b/app/project-calls/project-calls.tsx
+index 1d27ccd..88affbf 100644
+--- a/app/project-calls/project-calls.tsx
++++ b/app/project-calls/project-calls.tsx
+@@ -2,13 +2,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+ import { Badge } from "@/components/ui/badge";
+ import Link from "next/link";
+ import { OrangeButton } from "@/components/OrangeButton";
+-import NavBar from "@/components/NavBar";
+-import Footer from "@/components/Footer";
+ 
+ export default function ProjectCalls() {
+-  return (
+-    <div className="min-h-screen bg-white">
+-      <NavBar />
++  return (<>
+       {/* Hero Section */}
+       <section className="relative bg-gray-900 text-white py-20">
+         <div className="absolute inset-0 bg-black/60"></div>
+@@ -130,8 +126,6 @@ export default function ProjectCalls() {
+         </section>
+       </div>
+ 
+-      {/* Footer */}
+-      <Footer />
+-    </div>
++      </>
+   );
+ }
+diff --git a/app/project-proposal/project-proposal.tsx b/app/project-proposal/project-proposal.tsx
+index b20aa6e..1531c9e 100644
+--- a/app/project-proposal/project-proposal.tsx
++++ b/app/project-proposal/project-proposal.tsx
+@@ -1,12 +1,8 @@
+ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+-import NavBar from "@/components/NavBar"
+ import { MainButton } from "@/components/MainButton"
+-import Footer from "@/components/Footer"
+ 
+ export default function ProjectProposal() {
+-  return (
+-    <div className="min-h-screen bg-white">
+-      <NavBar />
++  return (<>
+       {/* Main Content */}
+       <div className="max-w-7xl mx-auto px-6 py-12">
+         <h1 className="mb-12">Project Proposal</h1>
+@@ -45,8 +41,6 @@ export default function ProjectProposal() {
+         </div>
+       </div>
+ 
+-      {/* Footer */}
+-      <Footer />
+-    </div>
++      </>
+   )
+ }
+diff --git a/app/projects/fixtureless-robotic-assembly/fixtureless-robotic-assembly.tsx b/app/projects/fixtureless-robotic-assembly/fixtureless-robotic-assembly.tsx
+index 0e15625..42c6660 100644
+--- a/app/projects/fixtureless-robotic-assembly/fixtureless-robotic-assembly.tsx
++++ b/app/projects/fixtureless-robotic-assembly/fixtureless-robotic-assembly.tsx
+@@ -1,10 +1,26 @@
+-import { Button } from "@/components/ui/button"
+-import { Card, CardContent } from "@/components/ui/card"
+-import { Badge } from "@/components/ui/badge"
+-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+-import { ChevronDown, Star, Play, Building, User, Lock, ExternalLink, Download, Eye } from "lucide-react"
+-import Image from "next/image"
+-import NavBar from "@/components/NavBar"
++import { Button } from "@/components/ui/button";
++import { Card, CardContent } from "@/components/ui/card";
++import { Badge } from "@/components/ui/badge";
++import {
++  Table,
++  TableBody,
++  TableCell,
++  TableHead,
++  TableHeader,
++  TableRow,
++} from "@/components/ui/table";
++import {
++  ChevronDown,
++  Star,
++  Play,
++  Building,
++  User,
++  Lock,
++  ExternalLink,
++  Download,
++  Eye,
++} from "lucide-react";
++import Image from "next/image";
+ 
+ export default function FixturelessRoboticAssembly() {
+   const projectFiles = [
+@@ -32,7 +48,7 @@ export default function FixturelessRoboticAssembly() {
+       uploadDate: "2024-03-10",
+       icon: "pdf",
+     },
+-  ]
++  ];
+ 
+   const proposalAttachments = [
+     {
+@@ -59,7 +75,7 @@ export default function FixturelessRoboticAssembly() {
+       uploadDate: "2024-03-15",
+       icon: "pdf",
+     },
+-  ]
++  ];
+ 
+   const recommendedProjects = [
+     {
+@@ -87,12 +103,10 @@ export default function FixturelessRoboticAssembly() {
+       leadOrg: "ARIS Technology LLC",
+       principalInvestigator: "Mingu Kang",
+     },
+-  ]
++  ];
+ 
+   return (
+-    <div className="min-h-screen bg-white">
+-      <NavBar />
+-
++    <>
+       {/* Main Content */}
+       <div className="max-w-7xl mx-auto px-6 py-6">
+         {/* Breadcrumb */}
+@@ -136,7 +150,9 @@ export default function FixturelessRoboticAssembly() {
+             <p className="text-sm text-gray-600">Lead Organization</p>
+             <div className="flex items-center space-x-2">
+               <Building className="w-4 h-4 text-gray-600" />
+-              <p className="font-medium text-gray-900">Lockheed Martin Corporation</p>
++              <p className="font-medium text-gray-900">
++                Lockheed Martin Corporation
++              </p>
+             </div>
+           </div>
+           <div className="space-y-2">
+@@ -160,13 +176,17 @@ export default function FixturelessRoboticAssembly() {
+                 className="object-cover"
+               />
+               <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+-                <Button size="lg" className="bg-orange-500 hover:bg-orange-600 rounded-full w-16 h-16">
++                <Button
++                  size="lg"
++                  className="bg-orange-500 hover:bg-orange-600 rounded-full w-16 h-16"
++                >
+                   <Play className="w-8 h-8 text-white" />
+                 </Button>
+               </div>
+               <div className="absolute bottom-4 left-4 right-4">
+                 <h3 className="text-white font-bold text-lg mb-2">
+-                  Fixtureless Robotic Assembly and Manufacturing Environments 2.0 (FRAME 2.0)
++                  Fixtureless Robotic Assembly and Manufacturing Environments
++                  2.0 (FRAME 2.0)
+                 </h3>
+                 <div className="flex items-center space-x-4 text-sm text-gray-300">
+                   <span>Project T-24-C19-01-10</span>
+@@ -180,9 +200,10 @@ export default function FixturelessRoboticAssembly() {
+           {/* Description Section */}
+           <div className="space-y-6">
+             <p className="text-gray-700 leading-relaxed">
+-              ARIS Technology will replace manual hard gauging with Robotically Automated Non-Contact 3D Scanning,
+-              qualifying parts with data versus physical tooling. This team will demonstrate as a fully integrated
+-              system at the Iowa Army Depot.
++              ARIS Technology will replace manual hard gauging with Robotically
++              Automated Non-Contact 3D Scanning, qualifying parts with data
++              versus physical tooling. This team will demonstrate as a fully
++              integrated system at the Iowa Army Depot.
+             </p>
+ 
+             <div className="space-y-4">
+@@ -208,19 +229,25 @@ export default function FixturelessRoboticAssembly() {
+               <span className="text-white text-sm">◆</span>
+             </div>
+             <h2 className="text-xl font-bold text-gray-900">Project Summary</h2>
+-            <span className="text-sm text-gray-600">sponsored by Advantage AI</span>
++            <span className="text-sm text-gray-600">
++              sponsored by Advantage AI
++            </span>
+           </div>
+ 
+           <div className="space-y-4 text-gray-700">
+             <p>
+-              The proposed project, Fixtureless Robotic Assembly for Manufacturing Environments 2.0, led by Lockheed
+-              Martin in collaboration with CMU, LDC, and Yorktown builds on a prior system (FRAME 1.0) to improve
+-              automation in high-mix, low-volume (HMLV) manufacturing settings.
++              The proposed project, Fixtureless Robotic Assembly for
++              Manufacturing Environments 2.0, led by Lockheed Martin in
++              collaboration with CMU, LDC, and Yorktown builds on a prior system
++              (FRAME 1.0) to improve automation in high-mix, low-volume (HMLV)
++              manufacturing settings.
+             </p>
+ 
+             <p>
+-              Its goal is to develop a flexible, reconfigurable robotic cell that minimizes manual labor and setup time
+-              while increasing automation capabilities across a wider range of manufacturing configurations.
++              Its goal is to develop a flexible, reconfigurable robotic cell
++              that minimizes manual labor and setup time while increasing
++              automation capabilities across a wider range of manufacturing
++              configurations.
+             </p>
+ 
+             <div className="mt-6">
+@@ -229,42 +256,50 @@ export default function FixturelessRoboticAssembly() {
+                 <li className="flex items-start space-x-2">
+                   <span className="text-orange-500 font-bold">•</span>
+                   <span>
+-                    <strong>Fixtureless assembly:</strong> using advanced computer vision for object
+-                    detection/localization.
++                    <strong>Fixtureless assembly:</strong> using advanced
++                    computer vision for object detection/localization.
+                   </span>
+                 </li>
+                 <li className="flex items-start space-x-2">
+                   <span className="text-orange-500 font-bold">•</span>
+                   <span>
+-                    <strong>Contact-rich motion planning</strong> and precomputed robotic behaviors.
++                    <strong>Contact-rich motion planning</strong> and
++                    precomputed robotic behaviors.
+                   </span>
+                 </li>
+                 <li className="flex items-start space-x-2">
+                   <span className="text-orange-500 font-bold">•</span>
+                   <span>
+-                    <strong>LLM-powered contingency management</strong> to handle skill and support capabilities.
++                    <strong>LLM-powered contingency management</strong> to
++                    handle skill and support capabilities.
+                   </span>
+                 </li>
+                 <li className="flex items-start space-x-2">
+                   <span className="text-orange-500 font-bold">•</span>
+                   <span>
+-                    <strong>Collaborative multi-robot, multi-human task execution.</strong>
++                    <strong>
++                      Collaborative multi-robot, multi-human task execution.
++                    </strong>
+                   </span>
+                 </li>
+               </ul>
+             </div>
+ 
+             <p className="mt-4">
+-              The project targets higher return on investment, reduced reconfiguration/setup times, and easier
+-              deployment in aerospace manufacturing. It aims to reach a TRL 7MRL 7 level, enabling real-world pilot
+-              production integration, especially within Lockheed Martin's Space and Aerospace divisions.
++              The project targets higher return on investment, reduced
++              reconfiguration/setup times, and easier deployment in aerospace
++              manufacturing. It aims to reach a TRL 7MRL 7 level, enabling
++              real-world pilot production integration, especially within
++              Lockheed Martin's Space and Aerospace divisions.
+             </p>
+           </div>
+         </div>
+ 
+         {/* Project Details */}
+         <div className="mb-12">
+-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Project Details</h2>
++          <h2 className="text-2xl font-bold text-gray-900 mb-6">
++            Project Details
++          </h2>
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+             <div className="space-y-6">
+               <div>
+@@ -272,60 +307,89 @@ export default function FixturelessRoboticAssembly() {
+                 <p className="text-gray-700">Manufacturing</p>
+               </div>
+               <div>
+-                <h3 className="font-semibold text-gray-900 mb-3">Project Start Date</h3>
++                <h3 className="font-semibold text-gray-900 mb-3">
++                  Project Start Date
++                </h3>
+                 <p className="text-gray-700">9/1/2024</p>
+               </div>
+               <div>
+-                <h3 className="font-semibold text-gray-900 mb-3">Total Project Budget</h3>
++                <h3 className="font-semibold text-gray-900 mb-3">
++                  Total Project Budget
++                </h3>
+                 <p className="text-gray-700">$999,689</p>
+               </div>
+               <div>
+-                <h3 className="font-semibold text-gray-900 mb-3">Manufacturing Operations</h3>
++                <h3 className="font-semibold text-gray-900 mb-3">
++                  Manufacturing Operations
++                </h3>
+                 <p className="text-gray-700">Human-Robot Interaction</p>
+               </div>
+             </div>
+ 
+             <div className="space-y-6">
+               <div>
+-                <h3 className="font-semibold text-gray-900 mb-3">TRL at Project End</h3>
++                <h3 className="font-semibold text-gray-900 mb-3">
++                  TRL at Project End
++                </h3>
+                 <p className="text-gray-700">Human-Robot Interaction</p>
+               </div>
+               <div>
+-                <h3 className="font-semibold text-gray-900 mb-3">Project End Date</h3>
++                <h3 className="font-semibold text-gray-900 mb-3">
++                  Project End Date
++                </h3>
+                 <p className="text-gray-700">9/1/2025</p>
+               </div>
+               <div>
+-                <h3 className="font-semibold text-gray-900 mb-3">Project Manager</h3>
++                <h3 className="font-semibold text-gray-900 mb-3">
++                  Project Manager
++                </h3>
+                 <div className="flex items-center space-x-2">
+                   <User className="w-4 h-4 text-gray-600" />
+                   <p className="text-gray-700">Patrick Rosen</p>
+                 </div>
+               </div>
+               <div>
+-                <h3 className="font-semibold text-gray-900 mb-3">Key Enabling Technology</h3>
++                <h3 className="font-semibold text-gray-900 mb-3">
++                  Key Enabling Technology
++                </h3>
+                 <p className="text-gray-700">Human-Robot Interaction</p>
+               </div>
+             </div>
+ 
+             <div className="space-y-6">
+               <div>
+-                <h3 className="font-semibold text-gray-900 mb-3">Strategic Focus Area</h3>
++                <h3 className="font-semibold text-gray-900 mb-3">
++                  Strategic Focus Area
++                </h3>
+                 <p className="text-gray-700">Human-Robot Interaction</p>
+               </div>
+               <div>
+-                <h3 className="font-semibold text-gray-900 mb-3">Project Status</h3>
++                <h3 className="font-semibold text-gray-900 mb-3">
++                  Project Status
++                </h3>
+                 <p className="text-gray-700">Performing</p>
+               </div>
+               <div>
+-                <h3 className="font-semibold text-gray-900 mb-3">Robotics System Architecture</h3>
++                <h3 className="font-semibold text-gray-900 mb-3">
++                  Robotics System Architecture
++                </h3>
+                 <div className="flex flex-wrap gap-2">
+-                  <Badge variant="outline" className="bg-orange-100 text-orange-800">
++                  <Badge
++                    variant="outline"
++                    className="bg-orange-100 text-orange-800"
++                  >
+                     Sensing
+                   </Badge>
+-                  <Badge variant="outline" className="bg-orange-100 text-orange-800">
++                  <Badge
++                    variant="outline"
++                    className="bg-orange-100 text-orange-800"
++                  >
+                     Mobility
+                   </Badge>
+-                  <Badge variant="outline" className="bg-orange-100 text-orange-800">
++                  <Badge
++                    variant="outline"
++                    className="bg-orange-100 text-orange-800"
++                  >
+                     Control
+                   </Badge>
+                 </div>
+@@ -336,17 +400,31 @@ export default function FixturelessRoboticAssembly() {
+ 
+         {/* Project Files */}
+         <div className="mb-12">
+-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Project Files (6)</h2>
++          <h2 className="text-2xl font-bold text-gray-900 mb-6">
++            Project Files (6)
++          </h2>
+           <div className="bg-gray-50 rounded-lg overflow-hidden">
+             <Table>
+               <TableHeader>
+                 <TableRow className="bg-gray-200">
+-                  <TableHead className="font-semibold text-gray-900">File Name</TableHead>
+-                  <TableHead className="font-semibold text-gray-900">Description</TableHead>
+-                  <TableHead className="font-semibold text-gray-900">Status</TableHead>
+-                  <TableHead className="font-semibold text-gray-900">File Size</TableHead>
+-                  <TableHead className="font-semibold text-gray-900">Upload Date</TableHead>
+-                  <TableHead className="font-semibold text-gray-900">Actions</TableHead>
++                  <TableHead className="font-semibold text-gray-900">
++                    File Name
++                  </TableHead>
++                  <TableHead className="font-semibold text-gray-900">
++                    Description
++                  </TableHead>
++                  <TableHead className="font-semibold text-gray-900">
++                    Status
++                  </TableHead>
++                  <TableHead className="font-semibold text-gray-900">
++                    File Size
++                  </TableHead>
++                  <TableHead className="font-semibold text-gray-900">
++                    Upload Date
++                  </TableHead>
++                  <TableHead className="font-semibold text-gray-900">
++                    Actions
++                  </TableHead>
+                 </TableRow>
+               </TableHeader>
+               <TableBody>
+@@ -355,17 +433,27 @@ export default function FixturelessRoboticAssembly() {
+                     <TableCell className="py-4">
+                       <div className="flex items-center space-x-3">
+                         <div className="w-8 h-8 bg-red-100 rounded flex items-center justify-center">
+-                          <span className="text-red-600 text-xs font-bold">PDF</span>
++                          <span className="text-red-600 text-xs font-bold">
++                            PDF
++                          </span>
+                         </div>
+                         <span className="text-gray-900">{file.name}</span>
+                       </div>
+                     </TableCell>
+-                    <TableCell className="text-gray-700">{file.description}</TableCell>
++                    <TableCell className="text-gray-700">
++                      {file.description}
++                    </TableCell>
+                     <TableCell>
+-                      <Badge className="bg-green-100 text-green-800">Approved</Badge>
++                      <Badge className="bg-green-100 text-green-800">
++                        Approved
++                      </Badge>
++                    </TableCell>
++                    <TableCell className="text-gray-700">
++                      {file.fileSize}
++                    </TableCell>
++                    <TableCell className="text-gray-700">
++                      {file.uploadDate}
+                     </TableCell>
+-                    <TableCell className="text-gray-700">{file.fileSize}</TableCell>
+-                    <TableCell className="text-gray-700">{file.uploadDate}</TableCell>
+                     <TableCell>
+                       <div className="flex items-center space-x-2">
+                         <Button variant="ghost" size="sm">
+@@ -391,17 +479,31 @@ export default function FixturelessRoboticAssembly() {
+ 
+         {/* Proposal Attachment */}
+         <div className="mb-12">
+-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Proposal Attachment (9)</h2>
++          <h2 className="text-2xl font-bold text-gray-900 mb-6">
++            Proposal Attachment (9)
++          </h2>
+           <div className="bg-gray-50 rounded-lg overflow-hidden">
+             <Table>
+               <TableHeader>
+                 <TableRow className="bg-gray-200">
+-                  <TableHead className="font-semibold text-gray-900">File Name</TableHead>
+-                  <TableHead className="font-semibold text-gray-900">Description</TableHead>
+-                  <TableHead className="font-semibold text-gray-900">Status</TableHead>
+-                  <TableHead className="font-semibold text-gray-900">File Size</TableHead>
+-                  <TableHead className="font-semibold text-gray-900">Upload Date</TableHead>
+-                  <TableHead className="font-semibold text-gray-900">Actions</TableHead>
++                  <TableHead className="font-semibold text-gray-900">
++                    File Name
++                  </TableHead>
++                  <TableHead className="font-semibold text-gray-900">
++                    Description
++                  </TableHead>
++                  <TableHead className="font-semibold text-gray-900">
++                    Status
++                  </TableHead>
++                  <TableHead className="font-semibold text-gray-900">
++                    File Size
++                  </TableHead>
++                  <TableHead className="font-semibold text-gray-900">
++                    Upload Date
++                  </TableHead>
++                  <TableHead className="font-semibold text-gray-900">
++                    Actions
++                  </TableHead>
+                 </TableRow>
+               </TableHeader>
+               <TableBody>
+@@ -410,17 +512,27 @@ export default function FixturelessRoboticAssembly() {
+                     <TableCell className="py-4">
+                       <div className="flex items-center space-x-3">
+                         <div className="w-8 h-8 bg-red-100 rounded flex items-center justify-center">
+-                          <span className="text-red-600 text-xs font-bold">PDF</span>
++                          <span className="text-red-600 text-xs font-bold">
++                            PDF
++                          </span>
+                         </div>
+                         <span className="text-gray-900">{file.name}</span>
+                       </div>
+                     </TableCell>
+-                    <TableCell className="text-gray-700">{file.description}</TableCell>
++                    <TableCell className="text-gray-700">
++                      {file.description}
++                    </TableCell>
+                     <TableCell>
+-                      <Badge className="bg-green-100 text-green-800">Approved</Badge>
++                      <Badge className="bg-green-100 text-green-800">
++                        Approved
++                      </Badge>
++                    </TableCell>
++                    <TableCell className="text-gray-700">
++                      {file.fileSize}
++                    </TableCell>
++                    <TableCell className="text-gray-700">
++                      {file.uploadDate}
+                     </TableCell>
+-                    <TableCell className="text-gray-700">{file.fileSize}</TableCell>
+-                    <TableCell className="text-gray-700">{file.uploadDate}</TableCell>
+                     <TableCell>
+                       <div className="flex items-center space-x-2">
+                         <Button variant="ghost" size="sm">
+@@ -446,14 +558,23 @@ export default function FixturelessRoboticAssembly() {
+ 
+         {/* Recommended Projects */}
+         <div className="mb-12">
+-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Recommended Projects</h2>
++          <h2 className="text-2xl font-bold text-gray-900 mb-6">
++            Recommended Projects
++          </h2>
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+             {recommendedProjects.map((project, index) => (
+-              <Card key={index} className="border border-gray-200 hover:shadow-md transition-shadow">
++              <Card
++                key={index}
++                className="border border-gray-200 hover:shadow-md transition-shadow"
++              >
+                 <CardContent className="p-6">
+                   <div className="flex items-center justify-between mb-4">
+-                    <Badge className="bg-green-100 text-green-800">✓ {project.status}</Badge>
+-                    {project.isFavorite && <Star className="w-4 h-4 text-orange-500 fill-current" />}
++                    <Badge className="bg-green-100 text-green-800">
++                      ✓ {project.status}
++                    </Badge>
++                    {project.isFavorite && (
++                      <Star className="w-4 h-4 text-orange-500 fill-current" />
++                    )}
+                   </div>
+ 
+                   <div className="flex justify-center mb-4">
+@@ -469,11 +590,17 @@ export default function FixturelessRoboticAssembly() {
+                   </div>
+ 
+                   <p className="text-sm text-gray-600 mb-2">{project.id}</p>
+-                  <h3 className="font-semibold text-gray-900 mb-4 line-clamp-2">{project.title}</h3>
++                  <h3 className="font-semibold text-gray-900 mb-4 line-clamp-2">
++                    {project.title}
++                  </h3>
+ 
+                   <div className="flex flex-wrap gap-2 mb-4">
+                     {project.tags.map((tag, tagIndex) => (
+-                      <Badge key={tagIndex} variant="outline" className="text-xs">
++                      <Badge
++                        key={tagIndex}
++                        variant="outline"
++                        className="text-xs"
++                      >
+                         {tag}
+                       </Badge>
+                     ))}
+@@ -481,12 +608,18 @@ export default function FixturelessRoboticAssembly() {
+ 
+                   <div className="space-y-2 text-sm">
+                     <div>
+-                      <span className="font-medium text-gray-900">Lead Organization:</span>
++                      <span className="font-medium text-gray-900">
++                        Lead Organization:
++                      </span>
+                       <p className="text-gray-600">{project.leadOrg}</p>
+                     </div>
+                     <div>
+-                      <span className="font-medium text-gray-900">Principal Investigator:</span>
+-                      <p className="text-gray-600">{project.principalInvestigator}</p>
++                      <span className="font-medium text-gray-900">
++                        Principal Investigator:
++                      </span>
++                      <p className="text-gray-600">
++                        {project.principalInvestigator}
++                      </p>
+                     </div>
+                   </div>
+                 </CardContent>
+@@ -495,43 +628,6 @@ export default function FixturelessRoboticAssembly() {
+           </div>
+         </div>
+       </div>
+-
+-      {/* Footer */}
+-      <footer className="bg-gray-900 text-white py-12">
+-        <div className="max-w-7xl mx-auto px-6">
+-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+-            <div>
+-              <div className="flex items-center space-x-2 mb-4">
+-                <div className="w-8 h-8 bg-orange-500 rounded flex items-center justify-center">
+-                  <span className="text-white font-bold text-sm">ARM</span>
+-                </div>
+-                <span className="font-semibold">ARM INSTITUTE</span>
+-              </div>
+-              <p className="text-gray-400 text-sm">
+-                Copyright © 2024 Advanced Robotics for Manufacturing Institute. All rights reserved.
+-              </p>
+-            </div>
+-            <div>
+-              <h4 className="font-semibold mb-4">Address</h4>
+-              <p className="text-gray-400 text-sm">
+-                Mill 19 at Hazelwood Green
+-                <br />
+-                4720 Technology Dr, Suite 300
+-                <br />
+-                Pittsburgh, PA 15219
+-              </p>
+-            </div>
+-            <div>
+-              <h4 className="font-semibold mb-4">Phone</h4>
+-              <p className="text-gray-400 text-sm">412-785-6544</p>
+-            </div>
+-            <div>
+-              <h4 className="font-semibold mb-4">Need Help?</h4>
+-              <Button className="bg-orange-500 hover:bg-orange-600">Contact ARM</Button>
+-            </div>
+-          </div>
+-        </div>
+-      </footer>
+-    </div>
+-  )
++    </>
++  );
+ }
+diff --git a/app/resource-center/arm-member-guide/arm-member-guide.tsx b/app/resource-center/arm-member-guide/arm-member-guide.tsx
+index 2426976..2a553de 100644
+--- a/app/resource-center/arm-member-guide/arm-member-guide.tsx
++++ b/app/resource-center/arm-member-guide/arm-member-guide.tsx
+@@ -2,13 +2,9 @@ import { Button } from "@/components/ui/button"
+ import { Card, CardContent } from "@/components/ui/card"
+ import { Users, FileText, Newspaper, Play, ChevronLeft, ChevronRight } from "lucide-react"
+ import Image from "next/image"
+-import NavBar from "@/components/NavBar"
+-import Footer from "@/components/Footer"
+ 
+ export default function ArmMemberGuide() {
+-  return (
+-    <div className="min-h-screen bg-white">
+-      <NavBar />
++  return (<>
+ 
+       {/* Hero Section */}
+       <section className="bg-white py-16">
+@@ -190,8 +186,6 @@ export default function ArmMemberGuide() {
+         </div>
+       </section>
+ 
+-      {/* Footer */}
+-      <Footer />
+-    </div>
++      </>
+   )
+ }
+diff --git a/app/resource-center/articles/articles.tsx b/app/resource-center/articles/articles.tsx
+index aa7edeb..1171493 100644
+--- a/app/resource-center/articles/articles.tsx
++++ b/app/resource-center/articles/articles.tsx
+@@ -1,14 +1,11 @@
+-"use client"
+-
+-import { useState } from "react"
+-import { Search, ChevronLeft, ChevronRight } from "lucide-react"
+-import { Button } from "@/components/ui/button"
+-import { Input } from "@/components/ui/input"
+-import { Badge } from "@/components/ui/badge"
+-import { Card, CardContent } from "@/components/ui/card"
+-import NavBar from "@/components/NavBar"
+-import Footer from "@/components/Footer"
++"use client";
+ 
++import { useState } from "react";
++import { Search, ChevronLeft, ChevronRight } from "lucide-react";
++import { Button } from "@/components/ui/button";
++import { Input } from "@/components/ui/input";
++import { Badge } from "@/components/ui/badge";
++import { Card, CardContent } from "@/components/ui/card";
+ 
+ const articles = [
+   {
+@@ -21,7 +18,8 @@ const articles = [
+   },
+   {
+     id: 2,
+-    title: "ARM Exchange Public Webinar: Robotics Innovations to Secure & Re-S...",
++    title:
++      "ARM Exchange Public Webinar: Robotics Innovations to Secure & Re-S...",
+     image: "/placeholder.svg?height=200&width=350",
+     tags: ["ARM Focus", "Technology", "Webinar", "Member Contributed Content"],
+     views: 14,
+@@ -37,7 +35,8 @@ const articles = [
+   },
+   {
+     id: 4,
+-    title: "ARM Exchange Public Webinar: Employer Features on RoboticsCareer...",
++    title:
++      "ARM Exchange Public Webinar: Employer Features on RoboticsCareer...",
+     image: "/placeholder.svg?height=200&width=350",
+     tags: ["ARM Focus", "Education & Workforce Development", "Webinar"],
+     views: 14,
+@@ -47,7 +46,12 @@ const articles = [
+     id: 5,
+     title: "ARM Exchange Public Webinar: Best Practices for the Future of Work",
+     image: "/placeholder.svg?height=200&width=350",
+-    tags: ["Education & Workforce Development", "Webinar", "ARM Focus", "Member Contributed Content"],
++    tags: [
++      "Education & Workforce Development",
++      "Webinar",
++      "ARM Focus",
++      "Member Contributed Content",
++    ],
+     views: 14,
+     date: "05-Jun-2025",
+   },
+@@ -59,16 +63,13 @@ const articles = [
+     views: 14,
+     date: "05-Jun-2025",
+   },
+-]
++];
+ 
+ export default function Articles() {
+-  const [searchTerm, setSearchTerm] = useState("")
++  const [searchTerm, setSearchTerm] = useState("");
+ 
+   return (
+-    <div className="min-h-screen bg-white">
+-      {/* Header */}
+-      <NavBar />
+-
++    <>
+       {/* Main Content */}
+       <main className="max-w-7xl mx-auto px-6 py-8">
+         {/* Page Header */}
+@@ -91,7 +92,10 @@ export default function Articles() {
+         {/* Articles Grid */}
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+           {articles.map((article) => (
+-            <Card key={article.id} className="overflow-hidden hover:shadow-lg transition-shadow">
++            <Card
++              key={article.id}
++              className="overflow-hidden hover:shadow-lg transition-shadow"
++            >
+               <div className="aspect-video relative">
+                 <img
+                   src={article.image || "/placeholder.svg"}
+@@ -100,7 +104,9 @@ export default function Articles() {
+                 />
+               </div>
+               <CardContent className="p-4">
+-                <h3 className="font-semibold text-gray-900 mb-3 line-clamp-2">{article.title}</h3>
++                <h3 className="font-semibold text-gray-900 mb-3 line-clamp-2">
++                  {article.title}
++                </h3>
+ 
+                 <div className="flex flex-wrap gap-1 mb-3">
+                   {article.tags.map((tag, index) => (
+@@ -132,15 +138,15 @@ export default function Articles() {
+             <span className="text-sm text-gray-700">6</span>
+           </div>
+ 
+-          <Button size="sm" className="flex items-center bg-[#fdb619] hover:bg-[#e6a516]">
++          <Button
++            size="sm"
++            className="flex items-center bg-[#fdb619] hover:bg-[#e6a516]"
++          >
+             Next
+             <ChevronRight className="h-4 w-4 ml-1" />
+           </Button>
+         </div>
+       </main>
+-
+-      {/* Footer */}
+-      <Footer />
+-    </div>
+-  )
++    </>
++  );
+ }
+diff --git a/app/resource-center/webinars/webinars.tsx b/app/resource-center/webinars/webinars.tsx
+index 97e3c0a..404a4d4 100644
+--- a/app/resource-center/webinars/webinars.tsx
++++ b/app/resource-center/webinars/webinars.tsx
+@@ -1,13 +1,11 @@
+-"use client"
++"use client";
+ 
+-import { useState } from "react"
+-import { Search, ChevronLeft, ChevronRight } from "lucide-react"
+-import { Button } from "@/components/ui/button"
+-import { Input } from "@/components/ui/input"
+-import { Card, CardContent } from "@/components/ui/card"
+-import { Badge } from "@/components/ui/badge"
+-import NavBar from "@/components/NavBar"
+-import Footer from "@/components/Footer"
++import { useState } from "react";
++import { Search, ChevronLeft, ChevronRight } from "lucide-react";
++import { Button } from "@/components/ui/button";
++import { Input } from "@/components/ui/input";
++import { Card, CardContent } from "@/components/ui/card";
++import { Badge } from "@/components/ui/badge";
+ 
+ const webinars = [
+   {
+@@ -20,7 +18,8 @@ const webinars = [
+   },
+   {
+     id: 2,
+-    title: "ARM Exchange Public Webinar: Robotics Innovations to Secure & Re-S...",
++    title:
++      "ARM Exchange Public Webinar: Robotics Innovations to Secure & Re-S...",
+     image: "/placeholder.svg?height=200&width=350",
+     tags: ["ARM Focus", "Technology", "Webinar", "Member Contributed Content"],
+     views: 14,
+@@ -36,7 +35,8 @@ const webinars = [
+   },
+   {
+     id: 4,
+-    title: "ARM Exchange Public Webinar: Employer Features on RoboticsCareer...",
++    title:
++      "ARM Exchange Public Webinar: Employer Features on RoboticsCareer...",
+     image: "/placeholder.svg?height=200&width=350",
+     tags: ["ARM Focus", "Education & Workforce Development", "Webinar"],
+     views: 14,
+@@ -46,7 +46,12 @@ const webinars = [
+     id: 5,
+     title: "ARM Exchange Public Webinar: Best Practices for the Future of Work",
+     image: "/placeholder.svg?height=200&width=350",
+-    tags: ["Education & Workforce Development", "Webinar", "ARM Focus", "Member Contributed Content"],
++    tags: [
++      "Education & Workforce Development",
++      "Webinar",
++      "ARM Focus",
++      "Member Contributed Content",
++    ],
+     views: 14,
+     date: "05-Jun-2025",
+   },
+@@ -58,18 +63,15 @@ const webinars = [
+     views: 14,
+     date: "05-Jun-2025",
+   },
+-]
++];
+ 
+ export default function WebinarsPage() {
+-  const [searchQuery, setSearchQuery] = useState("")
+-  const [currentPage, setCurrentPage] = useState(1)
+-  const totalPages = 6
++  const [searchQuery, setSearchQuery] = useState("");
++  const [currentPage, setCurrentPage] = useState(1);
++  const totalPages = 6;
+ 
+   return (
+-    <div className="min-h-screen bg-white">
+-      {/* Header */}
+-      <NavBar />
+-
++    <>
+       {/* Main Content */}
+       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+         {/* Page Title */}
+@@ -90,7 +92,10 @@ export default function WebinarsPage() {
+         {/* Webinars Grid */}
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+           {webinars.map((webinar) => (
+-            <Card key={webinar.id} className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
++            <Card
++              key={webinar.id}
++              className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
++            >
+               <div className="aspect-video relative">
+                 <img
+                   src={webinar.image || "/placeholder.svg"}
+@@ -99,7 +104,9 @@ export default function WebinarsPage() {
+                 />
+               </div>
+               <CardContent className="p-4">
+-                <h3 className="font-semibold text-gray-900 mb-3 line-clamp-2">{webinar.title}</h3>
++                <h3 className="font-semibold text-gray-900 mb-3 line-clamp-2">
++                  {webinar.title}
++                </h3>
+ 
+                 {/* Tags */}
+                 <div className="flex flex-wrap gap-1 mb-3">
+@@ -143,7 +150,9 @@ export default function WebinarsPage() {
+ 
+           <Button
+             size="sm"
+-            onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
++            onClick={() =>
++              setCurrentPage(Math.min(totalPages, currentPage + 1))
++            }
+             disabled={currentPage === totalPages}
+             className="bg-[#fdb619] hover:bg-[#e6a517] text-white"
+           >
+@@ -152,9 +161,6 @@ export default function WebinarsPage() {
+           </Button>
+         </div>
+       </main>
+-
+-      {/* Footer */}
+-      <Footer />
+-    </div>
+-  )
++    </>
++  );
+ }
+diff --git a/homepage.tsx b/homepage.tsx
+index 97ddb57..b85dc76 100644
+--- a/homepage.tsx
++++ b/homepage.tsx
+@@ -7,17 +7,12 @@ import Link from "next/link";
+ 
+ import { OrangeButton } from "./components/OrangeButton";
+ import { MainButton } from "./components/MainButton";
+-import NavBar from "./components/NavBar";
+ import NewsEventCard from "./components/ui/news-event-card";
+ import CDIPCard from "./components/ui/cdip-card";
+-import Footer from "./components/Footer";
+ 
+ export default function Homepage() {
+   return (
+-    <div className="min-h-screen bg-white">
+-      {/* Header */}
+-      <NavBar />
+-
++    <>
+       {/* Hero Section */}
+       <section className="relative bg-gray-900 text-white py-16">
+         <div
+@@ -276,9 +271,6 @@ export default function Homepage() {
+           </div>
+         </section>
+       </div>
+-
+-      {/* Footer */}
+-      <Footer />
+-    </div>
++    </>
+   );
+ }

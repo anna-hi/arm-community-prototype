@@ -4,8 +4,6 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Search } from "lucide-react"
 import Image from "next/image"
-import NavBar from "@/components/NavBar"
-import Footer from "@/components/Footer"
 
 
 export default function CommunityOrganizations() {
@@ -60,9 +58,7 @@ export default function CommunityOrganizations() {
     },
   ]
 
-  return (
-    <div className="min-h-screen bg-white">
-      <NavBar />
+  return (<>
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-6 py-12">
@@ -167,8 +163,6 @@ export default function CommunityOrganizations() {
         </div>
       </div>
 
-      {/* Footer */}
-      <Footer />
-    </div>
+      </>
   )
 }

@@ -2,13 +2,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Users, FileText, Newspaper, Play, ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
-import NavBar from "@/components/NavBar"
-import Footer from "@/components/Footer"
 
 export default function ArmMemberGuide() {
-  return (
-    <div className="min-h-screen bg-white">
-      <NavBar />
+  return (<>
 
       {/* Hero Section */}
       <section className="bg-white py-16">
@@ -190,8 +186,6 @@ export default function ArmMemberGuide() {
         </div>
       </section>
 
-      {/* Footer */}
-      <Footer />
-    </div>
+      </>
   )
 }

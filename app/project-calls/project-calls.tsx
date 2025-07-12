@@ -2,13 +2,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { OrangeButton } from "@/components/OrangeButton";
-import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
 
 export default function ProjectCalls() {
-  return (
-    <div className="min-h-screen bg-white">
-      <NavBar />
+  return (<>
       {/* Hero Section */}
       <section className="relative bg-gray-900 text-white py-20">
         <div className="absolute inset-0 bg-black/60"></div>
@@ -130,8 +126,6 @@ export default function ProjectCalls() {
         </section>
       </div>
 
-      {/* Footer */}
-      <Footer />
-    </div>
+      </>
   );
 }

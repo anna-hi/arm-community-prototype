@@ -1,10 +1,26 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { ChevronDown, Star, Play, Building, User, Lock, ExternalLink, Download, Eye } from "lucide-react"
-import Image from "next/image"
-import NavBar from "@/components/NavBar"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import {
+  ChevronDown,
+  Star,
+  Play,
+  Building,
+  User,
+  Lock,
+  ExternalLink,
+  Download,
+  Eye,
+} from "lucide-react";
+import Image from "next/image";
 
 export default function FixturelessRoboticAssembly() {
   const projectFiles = [
@@ -32,7 +48,7 @@ export default function FixturelessRoboticAssembly() {
       uploadDate: "2024-03-10",
       icon: "pdf",
     },
-  ]
+  ];
 
   const proposalAttachments = [
     {
@@ -59,7 +75,7 @@ export default function FixturelessRoboticAssembly() {
       uploadDate: "2024-03-15",
       icon: "pdf",
     },
-  ]
+  ];
 
   const recommendedProjects = [
     {
@@ -87,12 +103,10 @@ export default function FixturelessRoboticAssembly() {
       leadOrg: "ARIS Technology LLC",
       principalInvestigator: "Mingu Kang",
     },
-  ]
+  ];
 
   return (
-    <div className="min-h-screen bg-white">
-      <NavBar />
-
+    <>
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-6 py-6">
         {/* Breadcrumb */}
@@ -136,7 +150,9 @@ export default function FixturelessRoboticAssembly() {
             <p className="text-sm text-gray-600">Lead Organization</p>
             <div className="flex items-center space-x-2">
               <Building className="w-4 h-4 text-gray-600" />
-              <p className="font-medium text-gray-900">Lockheed Martin Corporation</p>
+              <p className="font-medium text-gray-900">
+                Lockheed Martin Corporation
+              </p>
             </div>
           </div>
           <div className="space-y-2">
@@ -160,13 +176,17 @@ export default function FixturelessRoboticAssembly() {
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                <Button size="lg" className="bg-orange-500 hover:bg-orange-600 rounded-full w-16 h-16">
+                <Button
+                  size="lg"
+                  className="bg-orange-500 hover:bg-orange-600 rounded-full w-16 h-16"
+                >
                   <Play className="w-8 h-8 text-white" />
                 </Button>
               </div>
               <div className="absolute bottom-4 left-4 right-4">
                 <h3 className="text-white font-bold text-lg mb-2">
-                  Fixtureless Robotic Assembly and Manufacturing Environments 2.0 (FRAME 2.0)
+                  Fixtureless Robotic Assembly and Manufacturing Environments
+                  2.0 (FRAME 2.0)
                 </h3>
                 <div className="flex items-center space-x-4 text-sm text-gray-300">
                   <span>Project T-24-C19-01-10</span>
@@ -180,9 +200,10 @@ export default function FixturelessRoboticAssembly() {
           {/* Description Section */}
           <div className="space-y-6">
             <p className="text-gray-700 leading-relaxed">
-              ARIS Technology will replace manual hard gauging with Robotically Automated Non-Contact 3D Scanning,
-              qualifying parts with data versus physical tooling. This team will demonstrate as a fully integrated
-              system at the Iowa Army Depot.
+              ARIS Technology will replace manual hard gauging with Robotically
+              Automated Non-Contact 3D Scanning, qualifying parts with data
+              versus physical tooling. This team will demonstrate as a fully
+              integrated system at the Iowa Army Depot.
             </p>
 
             <div className="space-y-4">
@@ -208,19 +229,25 @@ export default function FixturelessRoboticAssembly() {
               <span className="text-white text-sm">◆</span>
             </div>
             <h2 className="text-xl font-bold text-gray-900">Project Summary</h2>
-            <span className="text-sm text-gray-600">sponsored by Advantage AI</span>
+            <span className="text-sm text-gray-600">
+              sponsored by Advantage AI
+            </span>
           </div>
 
           <div className="space-y-4 text-gray-700">
             <p>
-              The proposed project, Fixtureless Robotic Assembly for Manufacturing Environments 2.0, led by Lockheed
-              Martin in collaboration with CMU, LDC, and Yorktown builds on a prior system (FRAME 1.0) to improve
-              automation in high-mix, low-volume (HMLV) manufacturing settings.
+              The proposed project, Fixtureless Robotic Assembly for
+              Manufacturing Environments 2.0, led by Lockheed Martin in
+              collaboration with CMU, LDC, and Yorktown builds on a prior system
+              (FRAME 1.0) to improve automation in high-mix, low-volume (HMLV)
+              manufacturing settings.
             </p>
 
             <p>
-              Its goal is to develop a flexible, reconfigurable robotic cell that minimizes manual labor and setup time
-              while increasing automation capabilities across a wider range of manufacturing configurations.
+              Its goal is to develop a flexible, reconfigurable robotic cell
+              that minimizes manual labor and setup time while increasing
+              automation capabilities across a wider range of manufacturing
+              configurations.
             </p>
 
             <div className="mt-6">
@@ -229,42 +256,50 @@ export default function FixturelessRoboticAssembly() {
                 <li className="flex items-start space-x-2">
                   <span className="text-orange-500 font-bold">•</span>
                   <span>
-                    <strong>Fixtureless assembly:</strong> using advanced computer vision for object
-                    detection/localization.
+                    <strong>Fixtureless assembly:</strong> using advanced
+                    computer vision for object detection/localization.
                   </span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <span className="text-orange-500 font-bold">•</span>
                   <span>
-                    <strong>Contact-rich motion planning</strong> and precomputed robotic behaviors.
+                    <strong>Contact-rich motion planning</strong> and
+                    precomputed robotic behaviors.
                   </span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <span className="text-orange-500 font-bold">•</span>
                   <span>
-                    <strong>LLM-powered contingency management</strong> to handle skill and support capabilities.
+                    <strong>LLM-powered contingency management</strong> to
+                    handle skill and support capabilities.
                   </span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <span className="text-orange-500 font-bold">•</span>
                   <span>
-                    <strong>Collaborative multi-robot, multi-human task execution.</strong>
+                    <strong>
+                      Collaborative multi-robot, multi-human task execution.
+                    </strong>
                   </span>
                 </li>
               </ul>
             </div>
 
             <p className="mt-4">
-              The project targets higher return on investment, reduced reconfiguration/setup times, and easier
-              deployment in aerospace manufacturing. It aims to reach a TRL 7MRL 7 level, enabling real-world pilot
-              production integration, especially within Lockheed Martin's Space and Aerospace divisions.
+              The project targets higher return on investment, reduced
+              reconfiguration/setup times, and easier deployment in aerospace
+              manufacturing. It aims to reach a TRL 7MRL 7 level, enabling
+              real-world pilot production integration, especially within
+              Lockheed Martin's Space and Aerospace divisions.
             </p>
           </div>
         </div>
 
         {/* Project Details */}
         <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Project Details</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            Project Details
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="space-y-6">
               <div>
@@ -272,60 +307,89 @@ export default function FixturelessRoboticAssembly() {
                 <p className="text-gray-700">Manufacturing</p>
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-3">Project Start Date</h3>
+                <h3 className="font-semibold text-gray-900 mb-3">
+                  Project Start Date
+                </h3>
                 <p className="text-gray-700">9/1/2024</p>
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-3">Total Project Budget</h3>
+                <h3 className="font-semibold text-gray-900 mb-3">
+                  Total Project Budget
+                </h3>
                 <p className="text-gray-700">$999,689</p>
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-3">Manufacturing Operations</h3>
+                <h3 className="font-semibold text-gray-900 mb-3">
+                  Manufacturing Operations
+                </h3>
                 <p className="text-gray-700">Human-Robot Interaction</p>
               </div>
             </div>
 
             <div className="space-y-6">
               <div>
-                <h3 className="font-semibold text-gray-900 mb-3">TRL at Project End</h3>
+                <h3 className="font-semibold text-gray-900 mb-3">
+                  TRL at Project End
+                </h3>
                 <p className="text-gray-700">Human-Robot Interaction</p>
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-3">Project End Date</h3>
+                <h3 className="font-semibold text-gray-900 mb-3">
+                  Project End Date
+                </h3>
                 <p className="text-gray-700">9/1/2025</p>
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-3">Project Manager</h3>
+                <h3 className="font-semibold text-gray-900 mb-3">
+                  Project Manager
+                </h3>
                 <div className="flex items-center space-x-2">
                   <User className="w-4 h-4 text-gray-600" />
                   <p className="text-gray-700">Patrick Rosen</p>
                 </div>
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-3">Key Enabling Technology</h3>
+                <h3 className="font-semibold text-gray-900 mb-3">
+                  Key Enabling Technology
+                </h3>
                 <p className="text-gray-700">Human-Robot Interaction</p>
               </div>
             </div>
 
             <div className="space-y-6">
               <div>
-                <h3 className="font-semibold text-gray-900 mb-3">Strategic Focus Area</h3>
+                <h3 className="font-semibold text-gray-900 mb-3">
+                  Strategic Focus Area
+                </h3>
                 <p className="text-gray-700">Human-Robot Interaction</p>
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-3">Project Status</h3>
+                <h3 className="font-semibold text-gray-900 mb-3">
+                  Project Status
+                </h3>
                 <p className="text-gray-700">Performing</p>
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-3">Robotics System Architecture</h3>
+                <h3 className="font-semibold text-gray-900 mb-3">
+                  Robotics System Architecture
+                </h3>
                 <div className="flex flex-wrap gap-2">
-                  <Badge variant="outline" className="bg-orange-100 text-orange-800">
+                  <Badge
+                    variant="outline"
+                    className="bg-orange-100 text-orange-800"
+                  >
                     Sensing
                   </Badge>
-                  <Badge variant="outline" className="bg-orange-100 text-orange-800">
+                  <Badge
+                    variant="outline"
+                    className="bg-orange-100 text-orange-800"
+                  >
                     Mobility
                   </Badge>
-                  <Badge variant="outline" className="bg-orange-100 text-orange-800">
+                  <Badge
+                    variant="outline"
+                    className="bg-orange-100 text-orange-800"
+                  >
                     Control
                   </Badge>
                 </div>
@@ -336,17 +400,31 @@ export default function FixturelessRoboticAssembly() {
 
         {/* Project Files */}
         <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Project Files (6)</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            Project Files (6)
+          </h2>
           <div className="bg-gray-50 rounded-lg overflow-hidden">
             <Table>
               <TableHeader>
                 <TableRow className="bg-gray-200">
-                  <TableHead className="font-semibold text-gray-900">File Name</TableHead>
-                  <TableHead className="font-semibold text-gray-900">Description</TableHead>
-                  <TableHead className="font-semibold text-gray-900">Status</TableHead>
-                  <TableHead className="font-semibold text-gray-900">File Size</TableHead>
-                  <TableHead className="font-semibold text-gray-900">Upload Date</TableHead>
-                  <TableHead className="font-semibold text-gray-900">Actions</TableHead>
+                  <TableHead className="font-semibold text-gray-900">
+                    File Name
+                  </TableHead>
+                  <TableHead className="font-semibold text-gray-900">
+                    Description
+                  </TableHead>
+                  <TableHead className="font-semibold text-gray-900">
+                    Status
+                  </TableHead>
+                  <TableHead className="font-semibold text-gray-900">
+                    File Size
+                  </TableHead>
+                  <TableHead className="font-semibold text-gray-900">
+                    Upload Date
+                  </TableHead>
+                  <TableHead className="font-semibold text-gray-900">
+                    Actions
+                  </TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -355,17 +433,27 @@ export default function FixturelessRoboticAssembly() {
                     <TableCell className="py-4">
                       <div className="flex items-center space-x-3">
                         <div className="w-8 h-8 bg-red-100 rounded flex items-center justify-center">
-                          <span className="text-red-600 text-xs font-bold">PDF</span>
+                          <span className="text-red-600 text-xs font-bold">
+                            PDF
+                          </span>
                         </div>
                         <span className="text-gray-900">{file.name}</span>
                       </div>
                     </TableCell>
-                    <TableCell className="text-gray-700">{file.description}</TableCell>
-                    <TableCell>
-                      <Badge className="bg-green-100 text-green-800">Approved</Badge>
+                    <TableCell className="text-gray-700">
+                      {file.description}
                     </TableCell>
-                    <TableCell className="text-gray-700">{file.fileSize}</TableCell>
-                    <TableCell className="text-gray-700">{file.uploadDate}</TableCell>
+                    <TableCell>
+                      <Badge className="bg-green-100 text-green-800">
+                        Approved
+                      </Badge>
+                    </TableCell>
+                    <TableCell className="text-gray-700">
+                      {file.fileSize}
+                    </TableCell>
+                    <TableCell className="text-gray-700">
+                      {file.uploadDate}
+                    </TableCell>
                     <TableCell>
                       <div className="flex items-center space-x-2">
                         <Button variant="ghost" size="sm">
@@ -391,17 +479,31 @@ export default function FixturelessRoboticAssembly() {
 
         {/* Proposal Attachment */}
         <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Proposal Attachment (9)</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            Proposal Attachment (9)
+          </h2>
           <div className="bg-gray-50 rounded-lg overflow-hidden">
             <Table>
               <TableHeader>
                 <TableRow className="bg-gray-200">
-                  <TableHead className="font-semibold text-gray-900">File Name</TableHead>
-                  <TableHead className="font-semibold text-gray-900">Description</TableHead>
-                  <TableHead className="font-semibold text-gray-900">Status</TableHead>
-                  <TableHead className="font-semibold text-gray-900">File Size</TableHead>
-                  <TableHead className="font-semibold text-gray-900">Upload Date</TableHead>
-                  <TableHead className="font-semibold text-gray-900">Actions</TableHead>
+                  <TableHead className="font-semibold text-gray-900">
+                    File Name
+                  </TableHead>
+                  <TableHead className="font-semibold text-gray-900">
+                    Description
+                  </TableHead>
+                  <TableHead className="font-semibold text-gray-900">
+                    Status
+                  </TableHead>
+                  <TableHead className="font-semibold text-gray-900">
+                    File Size
+                  </TableHead>
+                  <TableHead className="font-semibold text-gray-900">
+                    Upload Date
+                  </TableHead>
+                  <TableHead className="font-semibold text-gray-900">
+                    Actions
+                  </TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -410,17 +512,27 @@ export default function FixturelessRoboticAssembly() {
                     <TableCell className="py-4">
                       <div className="flex items-center space-x-3">
                         <div className="w-8 h-8 bg-red-100 rounded flex items-center justify-center">
-                          <span className="text-red-600 text-xs font-bold">PDF</span>
+                          <span className="text-red-600 text-xs font-bold">
+                            PDF
+                          </span>
                         </div>
                         <span className="text-gray-900">{file.name}</span>
                       </div>
                     </TableCell>
-                    <TableCell className="text-gray-700">{file.description}</TableCell>
-                    <TableCell>
-                      <Badge className="bg-green-100 text-green-800">Approved</Badge>
+                    <TableCell className="text-gray-700">
+                      {file.description}
                     </TableCell>
-                    <TableCell className="text-gray-700">{file.fileSize}</TableCell>
-                    <TableCell className="text-gray-700">{file.uploadDate}</TableCell>
+                    <TableCell>
+                      <Badge className="bg-green-100 text-green-800">
+                        Approved
+                      </Badge>
+                    </TableCell>
+                    <TableCell className="text-gray-700">
+                      {file.fileSize}
+                    </TableCell>
+                    <TableCell className="text-gray-700">
+                      {file.uploadDate}
+                    </TableCell>
                     <TableCell>
                       <div className="flex items-center space-x-2">
                         <Button variant="ghost" size="sm">
@@ -446,14 +558,23 @@ export default function FixturelessRoboticAssembly() {
 
         {/* Recommended Projects */}
         <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Recommended Projects</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            Recommended Projects
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {recommendedProjects.map((project, index) => (
-              <Card key={index} className="border border-gray-200 hover:shadow-md transition-shadow">
+              <Card
+                key={index}
+                className="border border-gray-200 hover:shadow-md transition-shadow"
+              >
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <Badge className="bg-green-100 text-green-800">✓ {project.status}</Badge>
-                    {project.isFavorite && <Star className="w-4 h-4 text-orange-500 fill-current" />}
+                    <Badge className="bg-green-100 text-green-800">
+                      ✓ {project.status}
+                    </Badge>
+                    {project.isFavorite && (
+                      <Star className="w-4 h-4 text-orange-500 fill-current" />
+                    )}
                   </div>
 
                   <div className="flex justify-center mb-4">
@@ -469,11 +590,17 @@ export default function FixturelessRoboticAssembly() {
                   </div>
 
                   <p className="text-sm text-gray-600 mb-2">{project.id}</p>
-                  <h3 className="font-semibold text-gray-900 mb-4 line-clamp-2">{project.title}</h3>
+                  <h3 className="font-semibold text-gray-900 mb-4 line-clamp-2">
+                    {project.title}
+                  </h3>
 
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.tags.map((tag, tagIndex) => (
-                      <Badge key={tagIndex} variant="outline" className="text-xs">
+                      <Badge
+                        key={tagIndex}
+                        variant="outline"
+                        className="text-xs"
+                      >
                         {tag}
                       </Badge>
                     ))}
@@ -481,12 +608,18 @@ export default function FixturelessRoboticAssembly() {
 
                   <div className="space-y-2 text-sm">
                     <div>
-                      <span className="font-medium text-gray-900">Lead Organization:</span>
+                      <span className="font-medium text-gray-900">
+                        Lead Organization:
+                      </span>
                       <p className="text-gray-600">{project.leadOrg}</p>
                     </div>
                     <div>
-                      <span className="font-medium text-gray-900">Principal Investigator:</span>
-                      <p className="text-gray-600">{project.principalInvestigator}</p>
+                      <span className="font-medium text-gray-900">
+                        Principal Investigator:
+                      </span>
+                      <p className="text-gray-600">
+                        {project.principalInvestigator}
+                      </p>
                     </div>
                   </div>
                 </CardContent>
@@ -495,43 +628,6 @@ export default function FixturelessRoboticAssembly() {
           </div>
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-orange-500 rounded flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">ARM</span>
-                </div>
-                <span className="font-semibold">ARM INSTITUTE</span>
-              </div>
-              <p className="text-gray-400 text-sm">
-                Copyright © 2024 Advanced Robotics for Manufacturing Institute. All rights reserved.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Address</h4>
-              <p className="text-gray-400 text-sm">
-                Mill 19 at Hazelwood Green
-                <br />
-                4720 Technology Dr, Suite 300
-                <br />
-                Pittsburgh, PA 15219
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Phone</h4>
-              <p className="text-gray-400 text-sm">412-785-6544</p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Need Help?</h4>
-              <Button className="bg-orange-500 hover:bg-orange-600">Contact ARM</Button>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
-  )
+    </>
+  );
 }
