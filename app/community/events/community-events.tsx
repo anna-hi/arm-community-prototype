@@ -197,7 +197,8 @@ export default function CommunityEvents() {
     },
   ];
 
-  return (<>
+  return (
+    <div className="min-h-screen bg-white">
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-6 py-8">
         {/* Upcoming Events Section */}
@@ -501,6 +502,6 @@ export default function CommunityEvents() {
         </section>
       </main>
 
-      </>
+    </div>
   );
 }

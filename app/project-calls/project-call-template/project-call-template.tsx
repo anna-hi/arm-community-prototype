@@ -1,7 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import {
   Collapsible,
   CollapsibleContent,
@@ -60,14 +59,14 @@ export default function ProjectCallTemplate({
 
   return (
     <>
-      <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="max-w-7xl mx-[127px] px-6 py-12">
         <div className="flex gap-8">
           {/* Main Content */}
           <div className="flex-1">
             {/* Header Section */}
             <div className="flex items-center mb-4">
               <div>
-                <h1 className="text-4xl font-bold text-gray-900 mb-4">
+                <h1 className="mb-4">
                   {title}
                 </h1>
                 <ActiveBadge />
@@ -75,7 +74,7 @@ export default function ProjectCallTemplate({
             </div>
 
             {/* Description */}
-            <div className="mb-8 pr-16 text-gray-700 text-lg leading-relaxed ">
+            <div className="mb-8 pr-24 text-gray-700 leading-relaxed ">
               {description.map((paragraph) => (
                 <p className="mb-4">{paragraph}</p>
               ))}
@@ -95,8 +94,8 @@ export default function ProjectCallTemplate({
 
             {/* Scrollspy Navigation */}
             <div className="w-full">
-              <div className="sticky top-0 bg-white z-10 border-gray-200 mb-4 pt-8 pb-4">
-                <div className="flex space-x-8 overflow-x-auto text-base font-medium">
+              <div className="sticky top-0 bg-white z-10 border-gray-200 ml-4 mb-4 pt-8 pb-4">
+                <div className="flex overflow-x-auto text-base font-medium">
                   <NavigationItem
                     sectionId="special-topic-areas"
                     title="Special Topic Areas"
@@ -533,7 +532,7 @@ export default function ProjectCallTemplate({
             <Card className="sticky top-8 p-6 !h-auto">
               <CardContent className="space-y-6">
                 {/* Submit Proposal Button */}
-                <Button className="body w-full bg-armYellow hover:bg-orange-600 text-gray-950 py-3 font-regular">
+                <Button className="body w-full bg-armYellow text-gray-950 py-4 font-regular">
                   Submit Proposal
                 </Button>
 

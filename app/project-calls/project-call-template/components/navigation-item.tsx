@@ -28,10 +28,10 @@ function NavigationItem({
     <a
       href={`#${sectionId}`}
       onClick={handleClick}
-      className={`pb-2 whitespace-nowrap transition-colors ${
+      className={`pb-2 whitespace-nowrap transition-colors px-7 ${
         activeSection === sectionId
-          ? "text-gray-950 border-b-2 border-armYellow"
-          : "text-gray-600 hover:text-gray-950"
+          ? "text-gray-950 border-b-4 border-armYellow"
+          : "text-gray-600 border-b-4 border-[#F2F2F2] hover:text-gray-950"
       }`}
     >
       {title}

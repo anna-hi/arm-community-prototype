@@ -1,14 +1,13 @@
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Play } from "lucide-react";
-import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 import { OrangeButton } from "./components/OrangeButton";
 import { MainButton } from "./components/MainButton";
 import NewsEventCard from "./components/ui/news-event-card";
 import CDIPCard from "./components/ui/cdip-card";
+import MemberSpotlightSection from "./components/ui/member-spotlight/member-spotlight-section";
 
 export default function Homepage() {
   return (
@@ -116,42 +115,7 @@ export default function Homepage() {
         </section>
 
         {/* Member Spotlight */}
-        <section>
-          <h1 className="mb-6">Member Spotlight</h1>
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="relative">
-              <Image
-                src="/placeholder.svg?height=300&width=400"
-                alt="HEBI Robotics manufacturing"
-                width={400}
-                height={300}
-                className="rounded-lg"
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Button
-                  size="lg"
-                  className="rounded-full w-16 h-16 bg-orange-500 hover:bg-orange-600"
-                >
-                  <Play className="w-6 h-6" />
-                </Button>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
-                Meet HEBI Robotics Inc.
-              </h3>
-              <p className="text-gray-600 mb-6">
-                Watch HEBI Robotics Inc. & impact work on driving smart
-                manufacturing through AI automation.
-              </p>
-              <MainButton
-                text="View Profile"
-                icon={<ArrowRight className="w-4 h-4" />}
-              ></MainButton>
-            </div>
-          </div>
-        </section>
-
+        <MemberSpotlightSection />
         {/* News */}
         <section>
           <div className="flex items-center justify-between mb-6">

@@ -12,7 +12,7 @@ import {
 const NavBar: React.FC = () => {
   return (
     <header className="bg-white border-b border-gray-200 py-3">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <div className="max-w-7xl ml-[134px] mr-[144px] flex items-center justify-between">
         <div className="flex items-center space-x-12">
           {/* Logo placeholder - left blank for separate upload */}
 
@@ -20,7 +20,7 @@ const NavBar: React.FC = () => {
           <nav className="hidden md:flex items-center nav-links space-x-8">
             <Link 
             href="/"
-            className="flex items-center justify-center px-10">
+            className="flex items-center justify-center">
               <Image
                 src="/images/homepage/arm-nav-logo.png"
                 alt="ARM Institute"
