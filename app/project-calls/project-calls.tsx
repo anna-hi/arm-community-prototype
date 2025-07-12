@@ -15,9 +15,11 @@ export default function ProjectCalls() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('/placeholder.svg?height=400&width=1200')",
+            backgroundImage: "url('/images/homepage/banner-image.png')",
           }}
-        ></div>
+        >
+           <div className="absolute inset-0 bg-black" style={{ opacity: 0.6 }}></div>
+        </div>
         <div className="relative max-w-7xl mx-auto px-6">
           <h1 className="text-white pb-6">Project Calls</h1>
           <p className="text-white max-w-2xl">

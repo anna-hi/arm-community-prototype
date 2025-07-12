@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Play } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 import { OrangeButton } from "./components/OrangeButton";
 import { MainButton } from "./components/MainButton";
@@ -25,7 +26,10 @@ export default function Homepage() {
             backgroundImage: "url('/images/homepage/banner-image.png')",
           }}
         >
-          <div className="absolute inset-0 bg-black" style={{ opacity: 0.6 }}></div>
+          <div
+            className="absolute inset-0 bg-black"
+            style={{ opacity: 0.6 }}
+          ></div>
         </div>
         <div className="relative max-w-7xl mx-auto px-6">
           <h1 className="text-white pb-14">
@@ -33,8 +37,9 @@ export default function Homepage() {
           </h1>
           <div className="flex space-x-4">
             <p className="flex font-bold items-center">New to the Portal?</p>
-            <MainButton text="Start Here"
-                icon={<ArrowRight className="w-4 h-4" />}
+            <MainButton
+              text="Start Here"
+              icon={<ArrowRight className="w-4 h-4" />}
             ></MainButton>
           </div>
         </div>
@@ -45,31 +50,33 @@ export default function Homepage() {
         <section>
           <h1 className="mb-8">ARM Announcements</h1>
           <div className="grid md:grid-cols-2 gap-8">
-            <Card>
-              <CardHeader>
-                <CardTitle className="">
-                  25-01 Core Tech Draft Project Call is Out
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>
-                  The ARM Institute is soliciting submissions that respond to
-                  technology needs of the manufacturing industry and the
-                  Department of Defense (DoD). This project call is seeking
-                  projects to make focused investments in the Special Topic
-                  Areas (STAs).
-                </p>
-              </CardContent>
-              <div className="flex items-center justify-between">
-                <Badge
-                  variant="secondary"
-                  className="bg-green-100 text-green-800"
-                >
-                  Active
-                </Badge>
-                <OrangeButton text="Go to Project Call" />
-              </div>
-            </Card>
+            <Link href="/project-calls/25-01-core-tech-draft">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="">
+                    25-01 Core Tech Draft Project Call is Out
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>
+                    The ARM Institute is soliciting submissions that respond to
+                    technology needs of the manufacturing industry and the
+                    Department of Defense (DoD). This project call is seeking
+                    projects to make focused investments in the Special Topic
+                    Areas (STAs).
+                  </p>
+                </CardContent>
+                <div className="flex items-center justify-between">
+                  <Badge
+                    variant="secondary"
+                    className="bg-green-100 text-green-800"
+                  >
+                    Active
+                  </Badge>
+                  <OrangeButton text="Go to Project Call" />
+                </div>
+              </Card>
+            </Link>
 
             <Card>
               <CardHeader>
