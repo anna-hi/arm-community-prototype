@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { OrangeButton } from "@/components/OrangeButton";
+import { ActiveBadge } from "./project-call-template/components/badges";
 
 export default function ProjectCalls() {
   return (<>
@@ -49,12 +50,7 @@ export default function ProjectCalls() {
                   </p>
                 </CardContent>
                 <div className="flex items-center justify-between">
-                  <Badge
-                    variant="secondary"
-                    className="bg-green-100 text-green-800"
-                  >
-                    Active
-                  </Badge>
+                  <ActiveBadge />
                   <OrangeButton text="Go to Project Call" />
                 </div>
               </Card>
@@ -77,12 +73,7 @@ export default function ProjectCalls() {
                   </p>
                 </CardContent>
                 <div className="flex items-center justify-between">
-                  <Badge
-                    variant="secondary"
-                    className="bg-green-100 text-green-800"
-                  >
-                    Active
-                  </Badge>
+                  <ActiveBadge />
                   <OrangeButton text="Go to Project Call" />
                 </div>
               </Card>
@@ -114,7 +105,7 @@ export default function ProjectCalls() {
               <div className="flex items-center justify-between">
                 <Badge
                   variant="destructive"
-                  className="bg-red-100 text-red-800 border-red-200"
+                  className="bg-red-100 text-red-800 "
                 >
                   <div className="w-2 h-2 bg-red-500 rounded-full mr-2"></div>
                   Closed
