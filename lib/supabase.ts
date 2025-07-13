@@ -4,17 +4,17 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
 // Create a singleton client for client-side usage
-let supabaseClient: ReturnType<typeof createClient> | null = null
+let supabaseInstance: ReturnType<typeof createClient> | null = null
 
-export function getSupabaseClient() {
-  if (!supabaseClient) {
-    supabaseClient = createClient(supabaseUrl, supabaseAnonKey)
+export function getSupabase() {
+  if (!supabaseInstance) {
+    supabaseInstance = createClient(supabaseUrl, supabaseAnonKey)
   }
-  return supabaseClient
+  return supabaseInstance
 }
 
 // Export the client for direct usage
-export const supabase = getSupabaseClient()
+export const supabase = getSupabase()
 
 // Types for our database
 export interface Member {

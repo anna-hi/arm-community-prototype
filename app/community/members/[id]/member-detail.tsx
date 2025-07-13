@@ -1,111 +1,148 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { ArrowLeft, Mail, Phone, MapPin, Star } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useParams, useRouter } from "next/navigation"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Separator } from "@/components/ui/separator"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { fetchMemberById, toggleMemberFavorite, type Member } from "@/lib/supabase"
-import { useRouter } from "next/navigation"
-import { cn } from "@/lib/utils"
+import { ArrowLeft, Mail, Phone, Linkedin, MapPin, Star } from "lucide-react"
+import { supabase } from "@/lib/supabase"
 
-interface MemberDetailProps {
-  memberId: string
+interface Member {
+  id: string
+  name: string
+  title: string
+  company: string
+  location: string
+  email: string
+  phone?: string
+  linkedin?: string
+  bio: string
+  expertise: string[]
+  committee: string[]
+  knowledgeable_skills: string[]
+  is_favorite: boolean
+  profile_image?: string
 }
 
-export default function MemberDetail({ memberId }: MemberDetailProps) {
+export default function MemberDetail() {
+  const params = useParams()
+  const router = useRouter()
   const [member, setMember] = useState<Member | null>(null)
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
   const [isFavorite, setIsFavorite] = useState(false)
-  const [isUpdating, setIsUpdating] = useState(false)
-  const router = useRouter()
+
+  const memberId = params.id as string
+
+  const fetchMember = async () => {
+    try {
+      setLoading(true)
+      setError(null)
+
+      const { data, error: fetchError } = await supabase.from("members").select("*").eq("id", memberId).single()
+
+      if (fetchError) {
+        throw fetchError
+      }
+
+      if (!data) {
+        throw new Error("Member not found")
+      }
+
+      // Ensure arrays are properly initialized
+      const processedMember = {
+        ...data,
+        expertise: Array.isArray(data.expertise) ? data.expertise : [],
+        committee: Array.isArray(data.committee) ? data.committee : [],
+        knowledgeable_skills: Array.isArray(data.knowledgeable_skills) ? data.knowledgeable_skills : [],
+        is_favorite: Boolean(data.is_favorite),
+      }
+
+      setMember(processedMember)
+      setIsFavorite(processedMember.is_favorite)
+    } catch (err) {
+      console.error("Error fetching member:", err)
+      setError("Failed to load member details. Please try again later.")
+    } finally {
+      setLoading(false)
+    }
+  }
 
   useEffect(() => {
-    async function loadMember() {
-      try {
-        const data = await fetchMemberById(memberId)
-        if (data) {
-          setMember(data)
-          setIsFavorite(data.is_favorite)
-        }
-      } catch (error) {
-        console.error("Error loading member:", error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
     if (memberId) {
-      loadMember()
+      fetchMember()
     }
   }, [memberId])
 
-  const handleFavoriteClick = async () => {
-    if (!member || isUpdating) return
+  const handleToggleFavorite = async () => {
+    if (!member) return
 
-    setIsUpdating(true)
-    const newFavoriteStatus = !isFavorite
-    const success = await toggleMemberFavorite(member.id, newFavoriteStatus)
+    try {
+      const newFavoriteState = !isFavorite
 
-    if (success) {
-      setIsFavorite(newFavoriteStatus)
+      const { error } = await supabase.from("members").update({ is_favorite: newFavoriteState }).eq("id", member.id)
+
+      if (error) {
+        throw error
+      }
+
+      setIsFavorite(newFavoriteState)
+      setMember((prev) => (prev ? { ...prev, is_favorite: newFavoriteState } : null))
+    } catch (err) {
+      console.error("Error updating favorite status:", err)
     }
-    setIsUpdating(false)
-  }
-
-  const handleBack = () => {
-    router.push("/community/members")
   }
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 py-8">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">Loading member details...</div>
-        </div>
-      </div>
-    )
-  }
-
-  if (!member) {
-    return (
-      <div className="min-h-screen bg-gray-50 py-8">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex items-center justify-center min-h-[400px]">
           <div className="text-center">
-            <h1 className="text-2xl font-bold text-gray-900 mb-4">Member not found</h1>
-            <Button onClick={handleBack} variant="outline">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Members
-            </Button>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p className="text-gray-600">Loading member details...</p>
           </div>
         </div>
       </div>
     )
   }
 
-  // Safely handle arrays
-  const skills = Array.isArray(member.knowledgeable_skills) ? member.knowledgeable_skills : []
-  const committees = Array.isArray(member.committee) ? member.committee : []
+  if (error || !member) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex items-center justify-center min-h-[400px]">
+          <div className="text-center">
+            <p className="text-red-600 mb-4">{error || "Member not found"}</p>
+            <Button onClick={() => router.back()}>Go Back</Button>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Back button */}
-        <Button onClick={handleBack} variant="outline" className="mb-6 bg-transparent">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to Members
-        </Button>
+    <div className="container mx-auto px-4 py-8 max-w-4xl">
+      {/* Back Button */}
+      <Button
+        variant="ghost"
+        onClick={() => router.back()}
+        className="mb-6 p-0 h-auto font-normal text-blue-600 hover:text-blue-800"
+      >
+        <ArrowLeft className="w-4 h-4 mr-2" />
+        Back to Members
+      </Button>
 
-        {/* Member profile card */}
-        <Card className="mb-8">
-          <CardContent className="p-8">
-            <div className="flex flex-col md:flex-row gap-8">
-              {/* Profile image and basic info */}
-              <div className="flex flex-col items-center md:items-start">
-                <Avatar className="h-32 w-32 mb-4">
-                  <AvatarImage src={member.profile_image_url || "/placeholder-user.jpg"} alt={member.name} />
-                  <AvatarFallback className="text-2xl font-semibold">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Left Column - Profile Card */}
+        <div className="lg:col-span-1">
+          <Card>
+            <CardContent className="p-6 text-center">
+              <div className="relative inline-block mb-4">
+                <Avatar className="w-32 h-32 mx-auto">
+                  <AvatarImage src={member.profile_image || "/placeholder-user.jpg"} alt={member.name} />
+                  <AvatarFallback className="text-2xl font-semibold bg-gray-200">
                     {member.name
                       .split(" ")
                       .map((n) => n[0])
@@ -113,82 +150,93 @@ export default function MemberDetail({ memberId }: MemberDetailProps) {
                       .toUpperCase()}
                   </AvatarFallback>
                 </Avatar>
-
-                <Button
-                  onClick={handleFavoriteClick}
-                  disabled={isUpdating}
-                  variant="outline"
-                  size="sm"
-                  className={cn("transition-colors duration-200", isUpdating && "opacity-50 cursor-not-allowed")}
+                <button
+                  onClick={handleToggleFavorite}
+                  className="absolute -top-2 -right-2 p-2 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow"
+                  aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
                 >
                   <Star
-                    className={cn("mr-2 h-4 w-4", isFavorite ? "fill-yellow-400 text-yellow-400" : "text-gray-400")}
+                    className={`w-5 h-5 ${
+                      isFavorite ? "fill-yellow-400 text-yellow-400" : "text-gray-300 hover:text-yellow-400"
+                    }`}
                   />
-                  {isFavorite ? "Favorited" : "Add to Favorites"}
-                </Button>
+                </button>
               </div>
 
-              {/* Member details */}
-              <div className="flex-1">
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <h1 className="text-3xl font-bold text-gray-900 mb-2">{member.name}</h1>
-                    <p className="text-xl text-gray-600 font-medium mb-1">{member.title}</p>
-                    <p className="text-lg text-gray-500 mb-4">{member.company}</p>
-                  </div>
+              <h1 className="text-2xl font-bold text-gray-900 mb-2">{member.name}</h1>
+              <p className="text-lg text-gray-600 mb-1">{member.title}</p>
+              <p className="text-base text-gray-500 mb-4">{member.company}</p>
+
+              <div className="flex items-center justify-center text-gray-500 mb-6">
+                <MapPin className="w-4 h-4 mr-1" />
+                <span className="text-sm">{member.location}</span>
+              </div>
+
+              <Separator className="my-6" />
+
+              {/* Contact Information */}
+              <div className="space-y-3">
+                <div className="flex items-center justify-center">
+                  <Mail className="w-4 h-4 mr-2 text-gray-400" />
+                  <a href={`mailto:${member.email}`} className="text-blue-600 hover:text-blue-800 text-sm">
+                    {member.email}
+                  </a>
                 </div>
 
-                {/* Contact information */}
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-center text-gray-600">
-                    <MapPin className="h-5 w-5 mr-3 text-gray-400" />
-                    <span>{member.location}</span>
-                  </div>
-                  <div className="flex items-center text-gray-600">
-                    <Mail className="h-5 w-5 mr-3 text-gray-400" />
-                    <a href={`mailto:${member.email}`} className="hover:text-blue-600 transition-colors">
-                      {member.email}
+                {member.phone && (
+                  <div className="flex items-center justify-center">
+                    <Phone className="w-4 h-4 mr-2 text-gray-400" />
+                    <a href={`tel:${member.phone}`} className="text-blue-600 hover:text-blue-800 text-sm">
+                      {member.phone}
                     </a>
                   </div>
-                  {member.phone && (
-                    <div className="flex items-center text-gray-600">
-                      <Phone className="h-5 w-5 mr-3 text-gray-400" />
-                      <a href={`tel:${member.phone}`} className="hover:text-blue-600 transition-colors">
-                        {member.phone}
-                      </a>
-                    </div>
-                  )}
-                </div>
+                )}
 
-                {/* Bio */}
-                {member.bio && (
-                  <div className="mb-6">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-3">About</h3>
-                    <p className="text-gray-600 leading-relaxed">{member.bio}</p>
+                {member.linkedin && (
+                  <div className="flex items-center justify-center">
+                    <Linkedin className="w-4 h-4 mr-2 text-gray-400" />
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:text-blue-800 text-sm"
+                    >
+                      LinkedIn Profile
+                    </a>
                   </div>
                 )}
               </div>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </div>
 
-        {/* Skills and committees */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Skills */}
-          {skills.length > 0 && (
+        {/* Right Column - Details */}
+        <div className="lg:col-span-2 space-y-6">
+          {/* Bio Section */}
+          <Card>
+            <CardHeader>
+              <CardTitle>About</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-700 leading-relaxed">{member.bio}</p>
+            </CardContent>
+          </Card>
+
+          {/* Expertise Section */}
+          {member.expertise.length > 0 && (
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">Areas of Expertise</CardTitle>
+                <CardTitle>Areas of Expertise</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
-                  {skills.map((skill, index) => (
+                  {member.expertise.map((item, index) => (
                     <Badge
-                      key={`skill-${index}`}
+                      key={`expertise-${index}`}
                       variant="secondary"
-                      className="bg-blue-100 text-blue-800 hover:bg-blue-200"
+                      className="px-3 py-1 bg-blue-100 text-blue-800"
                     >
-                      {skill}
+                      {item}
                     </Badge>
                   ))}
                 </div>
@@ -196,21 +244,43 @@ export default function MemberDetail({ memberId }: MemberDetailProps) {
             </Card>
           )}
 
-          {/* Committees */}
-          {committees.length > 0 && (
+          {/* Committee Involvement */}
+          {member.committee.length > 0 && (
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">Committee Involvement</CardTitle>
+                <CardTitle>Committee Involvement</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
-                  {committees.map((committee, index) => (
+                  {member.committee.map((item, index) => (
                     <Badge
                       key={`committee-${index}`}
                       variant="secondary"
-                      className="bg-green-100 text-green-800 hover:bg-green-200"
+                      className="px-3 py-1 bg-green-100 text-green-800"
                     >
-                      {committee}
+                      {item}
+                    </Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Skills & Knowledge */}
+          {member.knowledgeable_skills.length > 0 && (
+            <Card>
+              <CardHeader>
+                <CardTitle>Skills & Knowledge</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  {member.knowledgeable_skills.map((item, index) => (
+                    <Badge
+                      key={`skill-${index}`}
+                      variant="secondary"
+                      className="px-3 py-1 bg-purple-100 text-purple-800"
+                    >
+                      {item}
                     </Badge>
                   ))}
                 </div>

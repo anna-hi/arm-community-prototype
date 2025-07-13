@@ -2,104 +2,107 @@
 
 import type React from "react"
 
-import { useState } from "react"
-import { Star } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { Star } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { toggleMemberFavorite, type Member } from "@/lib/supabase"
-import { cn } from "@/lib/utils"
+import Link from "next/link"
+import { useState } from "react"
+
+interface Member {
+  id: string
+  name: string
+  title: string
+  company: string
+  location: string
+  email: string
+  phone?: string
+  linkedin?: string
+  bio: string
+  expertise: string[]
+  committee: string[]
+  knowledgeable_skills: string[]
+  is_favorite: boolean
+  profile_image?: string
+}
 
 interface MemberCardProps {
   member: Member
-  onClick?: () => void
+  onToggleFavorite?: (id: string, isFavorite: boolean) => void
 }
 
-export function MemberCard({ member, onClick }: MemberCardProps) {
+export function MemberCard({ member, onToggleFavorite }: MemberCardProps) {
   const [isFavorite, setIsFavorite] = useState(member.is_favorite)
-  const [isUpdating, setIsUpdating] = useState(false)
 
-  const handleFavoriteClick = async (e: React.MouseEvent) => {
+  const handleToggleFavorite = (e: React.MouseEvent) => {
+    e.preventDefault()
     e.stopPropagation()
-    if (isUpdating) return
-
-    setIsUpdating(true)
-    const newFavoriteStatus = !isFavorite
-    const success = await toggleMemberFavorite(member.id, newFavoriteStatus)
-
-    if (success) {
-      setIsFavorite(newFavoriteStatus)
-    }
-    setIsUpdating(false)
+    const newFavoriteState = !isFavorite
+    setIsFavorite(newFavoriteState)
+    onToggleFavorite?.(member.id, newFavoriteState)
   }
 
-  // Safely handle arrays
-  const skills = Array.isArray(member.knowledgeable_skills) ? member.knowledgeable_skills : []
-  const committees = Array.isArray(member.committee) ? member.committee : []
-  const allTags = [...skills, ...committees]
+  // Safely handle arrays that might be null or undefined
+  const safeExpertise = Array.isArray(member.expertise) ? member.expertise : []
+  const safeCommittee = Array.isArray(member.committee) ? member.committee : []
+  const safeSkills = Array.isArray(member.knowledgeable_skills) ? member.knowledgeable_skills : []
+
+  // Combine all tags and take first 3
+  const allTags = [...safeExpertise, ...safeCommittee, ...safeSkills]
+  const displayTags = allTags.slice(0, 3)
 
   return (
-    <Card className="cursor-pointer hover:shadow-lg transition-shadow duration-200 relative" onClick={onClick}>
-      <CardContent className="p-6">
-        {/* Tags at the top */}
-        <div className="flex flex-wrap gap-2 mb-4 min-h-[32px]">
-          {allTags.slice(0, 3).map((tag, index) => (
-            <Badge
-              key={`${tag}-${index}`}
-              variant="secondary"
-              className="text-xs bg-blue-100 text-blue-800 hover:bg-blue-200"
+    <Link href={`/community/members/${member.id}`}>
+      <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer relative group">
+        <CardContent className="p-6 flex flex-col h-full">
+          {/* Tags at the top */}
+          <div className="flex flex-wrap gap-2 mb-4 min-h-[2rem]">
+            {displayTags.map((tag, index) => (
+              <Badge
+                key={`${tag}-${index}`}
+                variant="secondary"
+                className="text-xs px-2 py-1 bg-blue-100 text-blue-800"
+              >
+                {tag}
+              </Badge>
+            ))}
+          </div>
+
+          {/* Centered profile section */}
+          <div className="flex flex-col items-center text-center flex-1 justify-center">
+            <Avatar className="w-20 h-20 mb-4">
+              <AvatarImage src={member.profile_image || "/placeholder-user.jpg"} alt={member.name} />
+              <AvatarFallback className="text-lg font-semibold bg-gray-200">
+                {member.name
+                  .split(" ")
+                  .map((n) => n[0])
+                  .join("")
+                  .toUpperCase()}
+              </AvatarFallback>
+            </Avatar>
+
+            <h3 className="font-semibold text-lg mb-1">{member.name}</h3>
+            <p className="text-sm text-gray-600 mb-1">{member.title}</p>
+            <p className="text-sm text-gray-500 mb-2">{member.company}</p>
+            <p className="text-xs text-gray-400">{member.location}</p>
+          </div>
+
+          {/* Star at bottom-right */}
+          <div className="absolute bottom-4 right-4">
+            <button
+              onClick={handleToggleFavorite}
+              className="p-1 rounded-full hover:bg-gray-100 transition-colors"
+              aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
             >
-              {tag}
-            </Badge>
-          ))}
-          {allTags.length > 3 && (
-            <Badge variant="secondary" className="text-xs bg-gray-100 text-gray-600">
-              +{allTags.length - 3}
-            </Badge>
-          )}
-        </div>
-
-        {/* Centered profile photo */}
-        <div className="flex justify-center mb-4">
-          <Avatar className="h-20 w-20">
-            <AvatarImage src={member.profile_image_url || "/placeholder-user.jpg"} alt={member.name} />
-            <AvatarFallback className="text-lg font-semibold">
-              {member.name
-                .split(" ")
-                .map((n) => n[0])
-                .join("")
-                .toUpperCase()}
-            </AvatarFallback>
-          </Avatar>
-        </div>
-
-        {/* Member info */}
-        <div className="text-center space-y-1">
-          <h3 className="font-semibold text-lg text-gray-900 leading-tight">{member.name}</h3>
-          <p className="text-sm text-gray-600 font-medium">{member.title}</p>
-          <p className="text-sm text-gray-500">{member.company}</p>
-          <p className="text-xs text-gray-400">{member.location}</p>
-        </div>
-
-        {/* Star at bottom-right */}
-        <button
-          onClick={handleFavoriteClick}
-          disabled={isUpdating}
-          className={cn(
-            "absolute bottom-4 right-4 p-1 rounded-full transition-colors duration-200",
-            "hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2",
-            isUpdating && "opacity-50 cursor-not-allowed",
-          )}
-          aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
-        >
-          <Star
-            className={cn(
-              "h-5 w-5 transition-colors duration-200",
-              isFavorite ? "fill-yellow-400 text-yellow-400" : "text-gray-300 hover:text-yellow-400",
-            )}
-          />
-        </button>
-      </CardContent>
-    </Card>
+              <Star
+                className={`w-5 h-5 ${
+                  isFavorite ? "fill-yellow-400 text-yellow-400" : "text-gray-300 hover:text-yellow-400"
+                }`}
+              />
+            </button>
+          </div>
+        </CardContent>
+      </Card>
+    </Link>
   )
 }
