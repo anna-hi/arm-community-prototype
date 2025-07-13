@@ -1,261 +1,223 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useParams } from "next/navigation"
-import { ArrowLeft, Star, Mail, Phone, MapPin, Building, Users, Award, Briefcase } from "lucide-react"
-import Link from "next/link"
+import { ArrowLeft, Mail, Phone, MapPin, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { supabase, type Member } from "@/lib/supabase"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { fetchMemberById, toggleMemberFavorite, type Member } from "@/lib/supabase"
+import { useRouter } from "next/navigation"
+import { cn } from "@/lib/utils"
 
-export default function MemberDetail() {
-  const params = useParams()
+interface MemberDetailProps {
+  memberId: string
+}
+
+export default function MemberDetail({ memberId }: MemberDetailProps) {
   const [member, setMember] = useState<Member | null>(null)
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const [isFavorite, setIsFavorite] = useState(false)
+  const [isUpdating, setIsUpdating] = useState(false)
+  const router = useRouter()
 
   useEffect(() => {
-    if (params.id) {
-      fetchMember(params.id as string)
-    }
-  }, [params.id])
-
-  const fetchMember = async (id: string) => {
-    try {
-      setLoading(true)
-      setError(null)
-
-      const { data, error: fetchError } = await supabase.from("members").select("*").eq("id", id).single()
-
-      if (fetchError) {
-        throw fetchError
+    async function loadMember() {
+      try {
+        const data = await fetchMemberById(memberId)
+        if (data) {
+          setMember(data)
+          setIsFavorite(data.is_favorite)
+        }
+      } catch (error) {
+        console.error("Error loading member:", error)
+      } finally {
+        setLoading(false)
       }
-
-      setMember(data)
-    } catch (err) {
-      console.error("Error fetching member:", err)
-      setError("Failed to load member details")
-    } finally {
-      setLoading(false)
     }
+
+    if (memberId) {
+      loadMember()
+    }
+  }, [memberId])
+
+  const handleFavoriteClick = async () => {
+    if (!member || isUpdating) return
+
+    setIsUpdating(true)
+    const newFavoriteStatus = !isFavorite
+    const success = await toggleMemberFavorite(member.id, newFavoriteStatus)
+
+    if (success) {
+      setIsFavorite(newFavoriteStatus)
+    }
+    setIsUpdating(false)
   }
 
-  const handleToggleFavorite = async () => {
-    if (!member) return
-
-    try {
-      const newFavoriteStatus = !member.is_favorite
-
-      const { error } = await supabase.from("members").update({ is_favorite: newFavoriteStatus }).eq("id", member.id)
-
-      if (error) {
-        throw error
-      }
-
-      setMember({ ...member, is_favorite: newFavoriteStatus })
-    } catch (err) {
-      console.error("Error updating favorite status:", err)
-    }
+  const handleBack = () => {
+    router.push("/community/members")
   }
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 p-6">
-        <div className="max-w-4xl mx-auto">
-          <div className="animate-pulse">
-            <div className="h-8 bg-gray-200 rounded w-32 mb-6"></div>
-            <div className="bg-white rounded-lg p-8">
-              <div className="flex items-center space-x-6 mb-8">
-                <div className="w-32 h-32 bg-gray-200 rounded-full"></div>
-                <div className="flex-1">
-                  <div className="h-8 bg-gray-200 rounded w-64 mb-2"></div>
-                  <div className="h-6 bg-gray-200 rounded w-48 mb-2"></div>
-                  <div className="h-6 bg-gray-200 rounded w-56"></div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div className="min-h-screen bg-gray-50 py-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">Loading member details...</div>
         </div>
       </div>
     )
   }
 
-  if (error || !member) {
+  if (!member) {
     return (
-      <div className="min-h-screen bg-gray-50 p-6">
-        <div className="max-w-4xl mx-auto">
-          <Link href="/community/members">
-            <Button variant="ghost" className="mb-6">
-              <ArrowLeft className="w-4 h-4 mr-2" />
+      <div className="min-h-screen bg-gray-50 py-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold text-gray-900 mb-4">Member not found</h1>
+            <Button onClick={handleBack} variant="outline">
+              <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Members
             </Button>
-          </Link>
-          <div className="text-center py-12">
-            <div className="text-lg text-red-600">{error || "Member not found"}</div>
           </div>
         </div>
       </div>
     )
   }
 
-  return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <div className="max-w-4xl mx-auto">
-        {/* Back Button */}
-        <Link href="/community/members">
-          <Button variant="ghost" className="mb-6">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Members
-          </Button>
-        </Link>
+  // Safely handle arrays
+  const skills = Array.isArray(member.knowledgeable_skills) ? member.knowledgeable_skills : []
+  const committees = Array.isArray(member.committee) ? member.committee : []
 
-        {/* Member Profile Card */}
+  return (
+    <div className="min-h-screen bg-gray-50 py-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Back button */}
+        <Button onClick={handleBack} variant="outline" className="mb-6 bg-transparent">
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Back to Members
+        </Button>
+
+        {/* Member profile card */}
         <Card className="mb-8">
           <CardContent className="p-8">
-            <div className="flex items-start justify-between mb-8">
-              <div className="flex items-center space-x-6">
-                <div className="w-32 h-32 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center">
-                  {member.profile_image_url ? (
-                    <img
-                      src={member.profile_image_url || "/placeholder.svg"}
-                      alt={member.name}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <div className="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center">
-                      <span className="text-2xl font-bold text-gray-600">
-                        {member.name
-                          .split(" ")
-                          .map((n) => n[0])
-                          .join("")}
-                      </span>
+            <div className="flex flex-col md:flex-row gap-8">
+              {/* Profile image and basic info */}
+              <div className="flex flex-col items-center md:items-start">
+                <Avatar className="h-32 w-32 mb-4">
+                  <AvatarImage src={member.profile_image_url || "/placeholder-user.jpg"} alt={member.name} />
+                  <AvatarFallback className="text-2xl font-semibold">
+                    {member.name
+                      .split(" ")
+                      .map((n) => n[0])
+                      .join("")
+                      .toUpperCase()}
+                  </AvatarFallback>
+                </Avatar>
+
+                <Button
+                  onClick={handleFavoriteClick}
+                  disabled={isUpdating}
+                  variant="outline"
+                  size="sm"
+                  className={cn("transition-colors duration-200", isUpdating && "opacity-50 cursor-not-allowed")}
+                >
+                  <Star
+                    className={cn("mr-2 h-4 w-4", isFavorite ? "fill-yellow-400 text-yellow-400" : "text-gray-400")}
+                  />
+                  {isFavorite ? "Favorited" : "Add to Favorites"}
+                </Button>
+              </div>
+
+              {/* Member details */}
+              <div className="flex-1">
+                <div className="flex justify-between items-start mb-4">
+                  <div>
+                    <h1 className="text-3xl font-bold text-gray-900 mb-2">{member.name}</h1>
+                    <p className="text-xl text-gray-600 font-medium mb-1">{member.title}</p>
+                    <p className="text-lg text-gray-500 mb-4">{member.company}</p>
+                  </div>
+                </div>
+
+                {/* Contact information */}
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center text-gray-600">
+                    <MapPin className="h-5 w-5 mr-3 text-gray-400" />
+                    <span>{member.location}</span>
+                  </div>
+                  <div className="flex items-center text-gray-600">
+                    <Mail className="h-5 w-5 mr-3 text-gray-400" />
+                    <a href={`mailto:${member.email}`} className="hover:text-blue-600 transition-colors">
+                      {member.email}
+                    </a>
+                  </div>
+                  {member.phone && (
+                    <div className="flex items-center text-gray-600">
+                      <Phone className="h-5 w-5 mr-3 text-gray-400" />
+                      <a href={`tel:${member.phone}`} className="hover:text-blue-600 transition-colors">
+                        {member.phone}
+                      </a>
                     </div>
                   )}
                 </div>
-                <div className="flex-1">
-                  <h1 className="text-3xl font-bold text-gray-900 mb-2">{member.name}</h1>
-                  <p className="text-xl text-gray-600 mb-2">{member.member_company}</p>
-                  <p className="text-lg text-gray-700">{member.designation || "(No Title Provided)"}</p>
-                </div>
-              </div>
-              <Button variant="ghost" size="lg" onClick={handleToggleFavorite} className="p-2">
-                <Star
-                  className={`w-8 h-8 ${
-                    member.is_favorite ? "fill-yellow-400 text-yellow-400" : "text-gray-300 hover:text-yellow-400"
-                  }`}
-                />
-              </Button>
-            </div>
 
-            {/* Contact Information */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              {member.email && (
-                <div className="flex items-center space-x-3">
-                  <Mail className="w-5 h-5 text-gray-400" />
-                  <span className="text-gray-700">{member.email}</span>
-                </div>
-              )}
-              {member.phone && (
-                <div className="flex items-center space-x-3">
-                  <Phone className="w-5 h-5 text-gray-400" />
-                  <span className="text-gray-700">{member.phone}</span>
-                </div>
-              )}
-              {member.address && (
-                <div className="flex items-center space-x-3">
-                  <MapPin className="w-5 h-5 text-gray-400" />
-                  <span className="text-gray-700">{member.address}</span>
-                </div>
-              )}
-              {member.membership_level && (
-                <div className="flex items-center space-x-3">
-                  <Award className="w-5 h-5 text-gray-400" />
-                  <span className="text-gray-700">{member.membership_level} Member</span>
-                </div>
-              )}
-            </div>
-
-            {/* About Me */}
-            {member.about_me && (
-              <div className="mb-8">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">About</h3>
-                <p className="text-gray-700 leading-relaxed">{member.about_me}</p>
+                {/* Bio */}
+                {member.bio && (
+                  <div className="mb-6">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-3">About</h3>
+                    <p className="text-gray-600 leading-relaxed">{member.bio}</p>
+                  </div>
+                )}
               </div>
-            )}
+            </div>
           </CardContent>
         </Card>
 
-        {/* Skills and Expertise */}
-        {member.knowledgeable_about && member.knowledgeable_about.length > 0 && (
-          <Card className="mb-8">
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <Briefcase className="w-5 h-5 mr-2" />
-                Skills & Expertise
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-2">
-                {member.knowledgeable_about.map((skill, index) => (
-                  <Badge
-                    key={`skill-${index}`}
-                    variant="secondary"
-                    className="bg-blue-100 text-blue-800 border-blue-200"
-                  >
-                    {skill}
-                  </Badge>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        )}
+        {/* Skills and committees */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Skills */}
+          {skills.length > 0 && (
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">Areas of Expertise</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  {skills.map((skill, index) => (
+                    <Badge
+                      key={`skill-${index}`}
+                      variant="secondary"
+                      className="bg-blue-100 text-blue-800 hover:bg-blue-200"
+                    >
+                      {skill}
+                    </Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          )}
 
-        {/* Committee Memberships */}
-        {member.committee_tags && member.committee_tags.length > 0 && (
-          <Card className="mb-8">
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <Users className="w-5 h-5 mr-2" />
-                Committee Memberships
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-2">
-                {member.committee_tags.map((committee, index) => (
-                  <Badge
-                    key={`committee-${index}`}
-                    variant="secondary"
-                    className="bg-green-100 text-green-800 border-green-200"
-                  >
-                    {committee}
-                  </Badge>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        )}
-
-        {/* Industry Focus */}
-        {member.industry && member.industry.length > 0 && (
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <Building className="w-5 h-5 mr-2" />
-                Industry Focus
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-2">
-                {member.industry.map((ind, index) => (
-                  <Badge key={`industry-${index}`} variant="outline" className="border-gray-300">
-                    {ind}
-                  </Badge>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        )}
+          {/* Committees */}
+          {committees.length > 0 && (
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">Committee Involvement</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  {committees.map((committee, index) => (
+                    <Badge
+                      key={`committee-${index}`}
+                      variant="secondary"
+                      className="bg-green-100 text-green-800 hover:bg-green-200"
+                    >
+                      {committee}
+                    </Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          )}
+        </div>
       </div>
     </div>
   )

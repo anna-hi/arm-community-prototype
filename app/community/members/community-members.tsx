@@ -1,383 +1,167 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
-import { Checkbox } from "@/components/ui/checkbox"
+import { MultiSelectFilter } from "@/components/ui/multi-select-filter"
 import { MemberCard } from "@/components/ui/member-card"
-import { MultiSelectFilter, type FilterOption, type FilterCategory } from "@/components/ui/multi-select-filter"
-import { supabase, type Member, FILTER_OPTIONS } from "@/lib/supabase"
-
-const industryOptions: FilterOption[] = FILTER_OPTIONS.industry
-
-const membershipLevelCategories: FilterCategory[] = [
-  {
-    title: "",
-    options: [
-      {
-        value: "platinum-gold-silver",
-        label: "Platinum, Gold, and Silver",
-      },
-      {
-        value: "core",
-        label: "Core",
-        description: "Organizations at these membership levels can lead projects.",
-      },
-    ],
-  },
-  {
-    title: "",
-    options: [
-      { value: "bronze", label: "Bronze" },
-      { value: "steel", label: "Steel" },
-      { value: "start-up", label: "Start-up" },
-      { value: "supporting", label: "Supporting" },
-      { value: "partner", label: "Partner" },
-      { value: "ffrdc-national-lab", label: "FFRDC; National Lab" },
-    ],
-  },
-]
-
-const committeeCategories: FilterCategory[] = [
-  {
-    title: "",
-    options: [
-      { value: "tac", label: "Technology Advisory Committee (TAC)" },
-      { value: "ewac", label: "Education & Workforce Advisory Committee (EWAC)" },
-      { value: "sec", label: "Stakeholder Executive Committee (SEC)" },
-    ],
-  },
-]
-
-const knowledgeableSkillsCategories: FilterCategory[] = [
-  {
-    title: "Robotics",
-    options: [
-      { value: "robotics", label: "Robotics" },
-      { value: "industrial-robots", label: "Industrial Robots" },
-      { value: "mobile-robots", label: "Mobile Robots" },
-      { value: "collaborative-robots", label: "Collaborative Robots" },
-      { value: "grippers", label: "Grippers" },
-      { value: "ros", label: "Robot Operating System (ROS)" },
-      { value: "robotic-safety", label: "Robotic Safety Standard" },
-      { value: "robotics-competition", label: "Robotics Competition" },
-    ],
-  },
-  {
-    title: "Workforce Development",
-    options: [
-      { value: "workforce-development", label: "Workforce Development" },
-      { value: "recruiting-job-planning", label: "Recruiting or Job Planning" },
-      { value: "displaced-workers", label: "Displaced Workers" },
-      { value: "veteran-needs", label: "Veteran Needs" },
-      { value: "handicapped-needs", label: "Handicapped Needs" },
-    ],
-  },
-  {
-    title: "Education & Training",
-    options: [
-      { value: "online-education", label: "Online Education" },
-      { value: "classroom-training", label: "Classroom Training" },
-      { value: "curricula-development", label: "Curricula Development" },
-      { value: "certification-testing", label: "Certification & Testing" },
-      { value: "steam", label: "STEAM" },
-    ],
-  },
-  {
-    title: "Technology & Automation",
-    options: [
-      { value: "automation", label: "Automation" },
-      { value: "ai", label: "AI" },
-      { value: "vr-ar", label: "VR/AR" },
-      { value: "cyber-security", label: "Cyber Security" },
-      { value: "drones", label: "Drones" },
-      { value: "autonomous-vehicles", label: "Autonomous Vehicles" },
-      { value: "software", label: "Software" },
-      { value: "vision-motion", label: "Vision & Motion" },
-    ],
-  },
-  {
-    title: "Research",
-    options: [{ value: "research", label: "Research" }],
-  },
-  {
-    title: "Manufacturing & Logistics",
-    options: [
-      { value: "manufacturing-operations", label: "Manufacturing Operations" },
-      { value: "warehouse-logistics", label: "Warehouse & Logistics" },
-    ],
-  },
-  {
-    title: "Strategic Support & Infrastructure",
-    options: [
-      { value: "start-ups", label: "Start-ups" },
-      { value: "project-management", label: "Project Management" },
-      { value: "fundraising", label: "Fundraising" },
-      { value: "government-funding", label: "Government Funding" },
-      { value: "public-private-partnerships", label: "Public-Private Partnerships" },
-      { value: "public-speaking", label: "Public Speaking" },
-    ],
-  },
-]
-
-const leadOrganizationOptions: FilterOption[] = FILTER_OPTIONS.leadOrganization
+import { fetchMembers, type Member } from "@/lib/supabase"
+import { useRouter } from "next/navigation"
 
 export default function CommunityMembers() {
   const [members, setMembers] = useState<Member[]>([])
-  const [filteredMembers, setFilteredMembers] = useState<Member[]>([])
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-
-  // Filter states
   const [searchTerm, setSearchTerm] = useState("")
-  const [interestedInProjects, setInterestedInProjects] = useState(false)
-  const [selectedIndustries, setSelectedIndustries] = useState<string[]>([])
-  const [selectedMembershipLevels, setSelectedMembershipLevels] = useState<string[]>([])
   const [selectedSkills, setSelectedSkills] = useState<string[]>([])
   const [selectedCommittees, setSelectedCommittees] = useState<string[]>([])
-  const [selectedOrganizations, setSelectedOrganizations] = useState<string[]>([])
-
-  const fetchMembers = async () => {
-    try {
-      setLoading(true)
-      setError(null)
-
-      const { data, error: fetchError } = await supabase.from("members").select("*").order("name")
-
-      if (fetchError) {
-        throw fetchError
-      }
-
-      const processedData = (data || []).map((member) => ({
-        ...member,
-        knowledgeable_about: member.knowledgeable_about || [],
-        committee_memberships: member.committee_memberships || [],
-        committee_tags: member.committee_tags || [],
-        industry: member.industry || [],
-      }))
-
-      setMembers(processedData)
-    } catch (err) {
-      console.error("Error fetching members:", err)
-      setError("Failed to load members. Please try again.")
-    } finally {
-      setLoading(false)
-    }
-  }
+  const [selectedLocations, setSelectedLocations] = useState<string[]>([])
+  const router = useRouter()
 
   useEffect(() => {
-    fetchMembers()
+    async function loadMembers() {
+      try {
+        const data = await fetchMembers()
+        setMembers(data)
+      } catch (error) {
+        console.error("Error loading members:", error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadMembers()
   }, [])
 
-  useEffect(() => {
-    let filtered = members
+  // Extract unique options for filters
+  const filterOptions = useMemo(() => {
+    const skills = new Set<string>()
+    const committees = new Set<string>()
+    const locations = new Set<string>()
 
-    // Apply search filter
-    if (searchTerm) {
-      filtered = filtered.filter(
-        (member) =>
-          member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          member.member_company?.toLowerCase().includes(searchTerm.toLowerCase()),
-      )
+    members.forEach((member) => {
+      // Safely handle arrays
+      const memberSkills = Array.isArray(member.knowledgeable_skills) ? member.knowledgeable_skills : []
+      const memberCommittees = Array.isArray(member.committee) ? member.committee : []
+
+      memberSkills.forEach((skill) => skills.add(skill))
+      memberCommittees.forEach((committee) => committees.add(committee))
+      if (member.location) locations.add(member.location)
+    })
+
+    return {
+      skills: Array.from(skills).sort(),
+      committees: Array.from(committees).sort(),
+      locations: Array.from(locations).sort(),
     }
+  }, [members])
 
-    // Apply interested in projects filter
-    if (interestedInProjects) {
-      filtered = filtered.filter((member) => member.interested_in_projects)
-    }
+  // Filter members based on search and filters
+  const filteredMembers = useMemo(() => {
+    return members.filter((member) => {
+      // Search filter
+      const matchesSearch =
+        searchTerm === "" ||
+        member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        member.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        member.company.toLowerCase().includes(searchTerm.toLowerCase())
 
-    // Apply industry filter
-    if (selectedIndustries.length > 0) {
-      filtered = filtered.filter((member) =>
-        selectedIndustries.some((industry) => {
-          const industryLabel = FILTER_OPTIONS.industry.find((opt) => opt.value === industry)?.label
-          return (member.industry || []).includes(industryLabel || industry)
-        }),
-      )
-    }
+      // Skills filter
+      const memberSkills = Array.isArray(member.knowledgeable_skills) ? member.knowledgeable_skills : []
+      const matchesSkills = selectedSkills.length === 0 || selectedSkills.some((skill) => memberSkills.includes(skill))
 
-    // Apply membership level filter
-    if (selectedMembershipLevels.length > 0) {
-      filtered = filtered.filter((member) => {
-        const memberLevel = member.membership_level?.toLowerCase().replace(/\s+/g, "-")
-        return selectedMembershipLevels.includes(memberLevel || "")
-      })
-    }
+      // Committee filter
+      const memberCommittees = Array.isArray(member.committee) ? member.committee : []
+      const matchesCommittees =
+        selectedCommittees.length === 0 || selectedCommittees.some((committee) => memberCommittees.includes(committee))
 
-    // Apply skills filter
-    if (selectedSkills.length > 0) {
-      filtered = filtered.filter((member) =>
-        selectedSkills.some((skill) => {
-          const skillLabel = FILTER_OPTIONS.knowledgeableSkills.find((opt) => opt.value === skill)?.label
-          return (member.knowledgeable_about || []).includes(skillLabel || skill)
-        }),
-      )
-    }
+      // Location filter
+      const matchesLocation = selectedLocations.length === 0 || selectedLocations.includes(member.location)
 
-    // Apply committee filter
-    if (selectedCommittees.length > 0) {
-      filtered = filtered.filter((member) =>
-        selectedCommittees.some((committee) => {
-          const committeeLabel = FILTER_OPTIONS.committee.find((opt) => opt.value === committee)?.label
-          return (member.committee_tags || []).includes(committeeLabel || committee)
-        }),
-      )
-    }
+      return matchesSearch && matchesSkills && matchesCommittees && matchesLocation
+    })
+  }, [members, searchTerm, selectedSkills, selectedCommittees, selectedLocations])
 
-    // Apply organization filter
-    if (selectedOrganizations.length > 0) {
-      filtered = filtered.filter((member) => {
-        const orgLabel = FILTER_OPTIONS.leadOrganization.find((opt) => opt.value === selectedOrganizations[0])?.label
-        return member.member_company === orgLabel || selectedOrganizations.includes(member.member_company || "")
-      })
-    }
-
-    setFilteredMembers(filtered)
-  }, [
-    members,
-    searchTerm,
-    interestedInProjects,
-    selectedIndustries,
-    selectedMembershipLevels,
-    selectedSkills,
-    selectedCommittees,
-    selectedOrganizations,
-  ])
-
-  const handleFavoriteToggle = async (memberId: string, isFavorite: boolean) => {
-    try {
-      const { error } = await supabase.from("members").update({ is_favorite: !isFavorite }).eq("id", memberId)
-
-      if (error) {
-        throw error
-      }
-
-      // Update local state
-      setMembers((prev) =>
-        prev.map((member) => (member.id === memberId ? { ...member, is_favorite: !isFavorite } : member)),
-      )
-    } catch (err) {
-      console.error("Error updating favorite status:", err)
-    }
+  const handleMemberClick = (memberId: string) => {
+    router.push(`/community/members/${memberId}`)
   }
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 p-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-center h-64">
-            <div className="text-lg text-gray-600">Loading members...</div>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen bg-gray-50 p-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col items-center justify-center h-64 space-y-4">
-            <div className="text-lg text-red-600">{error}</div>
-            <button onClick={fetchMembers} className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-              Try Again
-            </button>
-          </div>
+      <div className="min-h-screen bg-gray-50 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">Loading members...</div>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <div className="max-w-7xl mx-auto space-y-6">
+    <div className="min-h-screen bg-gray-50 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="space-y-4">
-          <h1 className="text-3xl font-bold text-gray-900">Member Directory</h1>
-
-          {/* Search Bar */}
-          <div className="relative max-w-md">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-            <Input
-              type="text"
-              placeholder="Search for Members..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 bg-white border-gray-300"
-            />
-          </div>
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Community Members</h1>
+          <p className="text-gray-600">Connect with ARM community members and explore their expertise</p>
         </div>
 
         {/* Filters */}
-        <div className="space-y-4">
-          <h2 className="text-lg font-medium text-gray-900">Filters</h2>
-
-          {/* Interested in projects checkbox */}
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <div className="flex items-center space-x-2">
-              <Checkbox
-                id="interested-in-projects"
-                checked={interestedInProjects}
-                onCheckedChange={(checked) => setInterestedInProjects(checked as boolean)}
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {/* Search */}
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+              <Input
+                placeholder="Search members..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10 bg-white border-gray-300 text-gray-900 text-sm h-10"
               />
-              <label htmlFor="interested-in-projects" className="text-sm text-gray-700">
-                Interested in projects
-              </label>
             </div>
-          </div>
 
-          {/* Filter dropdowns */}
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+            {/* Skills Filter */}
             <MultiSelectFilter
-              title="Industry"
-              placeholder="Industry"
-              options={industryOptions}
-              value={selectedIndustries}
-              onValueChange={setSelectedIndustries}
-            />
-            <MultiSelectFilter
-              title="Membership Level"
-              placeholder="Membership Level"
-              categories={membershipLevelCategories}
-              value={selectedMembershipLevels}
-              onValueChange={setSelectedMembershipLevels}
-            />
-            <MultiSelectFilter
-              title="Knowledgeable Skills"
-              placeholder="Knowledgeable Skills"
-              categories={knowledgeableSkillsCategories}
+              options={filterOptions.skills}
               value={selectedSkills}
-              onValueChange={setSelectedSkills}
-              multiColumn={true}
+              onChange={setSelectedSkills}
+              placeholder="Filter by skills"
             />
+
+            {/* Committee Filter */}
             <MultiSelectFilter
-              title="Committee"
-              placeholder="Committee"
-              categories={committeeCategories}
+              options={filterOptions.committees}
               value={selectedCommittees}
-              onValueChange={setSelectedCommittees}
-              showSelectAll={true}
+              onChange={setSelectedCommittees}
+              placeholder="Filter by committee"
             />
+
+            {/* Location Filter */}
             <MultiSelectFilter
-              title="Lead Organization"
-              placeholder="Lead Organization"
-              options={leadOrganizationOptions}
-              value={selectedOrganizations}
-              onValueChange={setSelectedOrganizations}
+              options={filterOptions.locations}
+              value={selectedLocations}
+              onChange={setSelectedLocations}
+              placeholder="Filter by location"
             />
           </div>
         </div>
 
-        {/* Member Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredMembers.map((member) => (
-            <MemberCard key={member.id} member={member} onFavoriteChange={handleFavoriteToggle} />
-          ))}
+        {/* Results count */}
+        <div className="mb-6">
+          <p className="text-gray-600">
+            Showing {filteredMembers.length} of {members.length} members
+          </p>
         </div>
 
-        {filteredMembers.length === 0 && (
+        {/* Members grid */}
+        {filteredMembers.length === 0 ? (
           <div className="text-center py-12">
-            <div className="text-gray-500">No members found matching your criteria.</div>
+            <p className="text-gray-500 text-lg">No members found matching your criteria.</p>
+            <p className="text-gray-400 mt-2">Try adjusting your search or filters.</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {filteredMembers.map((member) => (
+              <MemberCard key={member.id} member={member} onClick={() => handleMemberClick(member.id)} />
+            ))}
           </div>
         )}
       </div>
