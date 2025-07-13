@@ -1,6 +1,5 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import {
   Collapsible,
   CollapsibleContent,
@@ -14,6 +13,7 @@ import { OrangeButton } from "@/components/OrangeButton";
 import { ActiveBadge } from "./components/badges";
 import NavigationItem from "./components/navigation-item";
 import { MainButton } from "@/components/MainButton";
+import FileTable from "./components/file-table";
 
 export default function ProjectCallTemplate({
   title,
@@ -38,6 +38,65 @@ export default function ProjectCallTemplate({
     "how-to-participate": null,
     resources: null,
   });
+
+  const specialTopicAreas = [
+    {
+      image:
+        "/images/special-topic-area/rapid-re-tasking-and-robot-agility.png",
+      title: "Rapid Re-Tasking and Robot Agility",
+    },
+    {
+      image:
+        "/images/special-topic-area/multi-modal-inputs-for-ai-robotics-in-manufacturing.png",
+      title: "Multi-modal Inputs for AI Robotics in Manufacturing",
+    },
+    {
+      image:
+        "/images/special-topic-area/adaptive-real-time-path-planning-and-control.png",
+      title: "Adaptive Real-Time Path Planning and Control",
+    },
+    {
+      image:
+        "/images/special-topic-area/multirobot-multihuman-collaboration.png",
+      title: "Multi-Robot, Multi-Human Collaboration",
+    },
+  ];
+
+  const conceptPhaseTemplateFiles = {
+    title: "Concept Phase Templates",
+    files: [
+      { name: "Template - Concept Paper" },
+      { name: "Template - Quad Chart" },
+      { name: "Quad Chart Guidelines" },
+    ],
+  };
+
+  const presentationPhaseTemplateFiles = {
+    title: "Presentation Phase Templates",
+    files: [
+      { name: "Template - Statement of Work" },
+      { name: "Template - Intellectual Property Management Plan" },
+      { name: "Form - FFATA Information Request" },
+      { name: "Template - Project Schedule" },
+      { name: "Template - Budget Justification" },
+      { name: "Template - Cost Share Commitment Letter" },
+      { name: "Template - Project Evaluation Plan" },
+      { name: "Template - Project Reporting Requirements" },
+      { name: "Template - Project Communication Plan" },
+    ],
+  };
+
+  const referenceMaterialsFiles = {
+    title: "Reference Materials",
+    files: [
+      { name: "Template - Statement of Work" },
+      { name: "ARM Institute Technology Roadmap" },
+      { name: "Intellectual Property Guidelines" },
+      { name: "Project Reporting Requirements" },
+      { name: "Cost Share Guidelines" },
+      { name: "Project Evaluation Criteria" },
+    ],
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -129,7 +188,10 @@ export default function ProjectCallTemplate({
               </div>
 
               {/* Special Topic Areas Section */}
-              <section id="special-topic-areas" className="p-8 bg-gray-50 mb-8 rounded-lg">
+              <section
+                id="special-topic-areas"
+                className="p-8 bg-gray-50 mb-8 rounded-lg"
+              >
                 <Collapsible
                   open={specialTopicAreasOpen}
                   onOpenChange={setSpecialTopicAreasOpen}
@@ -144,72 +206,37 @@ export default function ProjectCallTemplate({
                   </CollapsibleTrigger>
                   <CollapsibleContent className="p-6 bg-gray-50 rounded-b-lg collapsible-content">
                     <div className="grid md:grid-cols-2 gap-6">
-                      <Card className="relative overflow-hidden">
-                        <Image
-                          src="/images/special-topic-area/rapid-re-tasking-and-robot-agility.png"
-                          alt="Rapid Re-Tasking and Robot Agility"
-                          width={400}
-                          height={225}
-                          className="w-full aspect-video object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                          <h4 className="text-white text-xl font-semibold p-4">
-                            Rapid Re-Tasking and Robot Agility
-                          </h4>
+                      {specialTopicAreas.map((area, index) => (
+                        <div
+                          key={index}
+                          className={
+                            "relative overflow-hidden rounded-lg shadow-lg aspect-[22/9]"
+                          }
+                        >
+                          <Image
+                            src={area.image}
+                            alt={area.title}
+                            width={400}
+                            height={225}
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-black/40 flex items-center justify-center text-center">
+                            <h4 className="text-white text-base font-semibold py-4 px-10">
+                              {area.title}
+                            </h4>
+                          </div>
                         </div>
-                      </Card>
-
-                      <Card className="relative overflow-hidden">
-                        <Image
-                          src="/images/special-topic-area/multi-modal-inputs-for-ai-robotics-in-manufacturing.png"
-                          alt="Multi-modal Inputs for All Robotics in Manufacturing"
-                          width={400}
-                          height={225}
-                          className="w-full aspect-video object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                          <h4 className="text-white text-xl font-semibold p-4">
-                            Multi-modal Inputs for AI Robotics in Manufacturing
-                          </h4>
-                        </div>
-                      </Card>
-
-                      <Card className="relative overflow-hidden">
-                        <Image
-                          src="/images/special-topic-area/adaptive-real-time-path-planning-and-control.png"
-                          alt="Adaptive Real-Time Path Planning and Control"
-                          width={400}
-                          height={225}
-                          className="w-full aspect-video object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                          <h4 className="text-white text-xl font-semibold p-4">
-                            Adaptive Real-Time Path Planning and Control
-                          </h4>
-                        </div>
-                      </Card>
-
-                      <Card className="relative overflow-hidden">
-                        <Image
-                          src="/images/special-topic-area/multirobot-multihuman-collaboration.png"
-                          alt="Multi-Robot, Multi-Human Collaboration"
-                          width={400}
-                          height={225}
-                          className="w-full aspect-video object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                          <h4 className="text-white text-xl font-semibold p-4">
-                            Multi-Robot, Multi-Human Collaboration
-                          </h4>
-                        </div>
-                      </Card>
+                      ))}
                     </div>
                   </CollapsibleContent>
                 </Collapsible>
               </section>
 
               {/* Eligibility Section */}
-              <section id="eligibility" className="p-8 bg-gray-50 mb-8 rounded-lg">
+              <section
+                id="eligibility"
+                className="p-8 bg-gray-50 mb-8 rounded-lg"
+              >
                 <Collapsible
                   open={eligibilityOpen}
                   onOpenChange={setEligibilityOpen}
@@ -219,7 +246,6 @@ export default function ProjectCallTemplate({
                       eligibilityOpen ? "rounded-t-lg" : "rounded-lg"
                     }`}
                   >
-                    
                     <h3 className="mb-5 small-title">Eligibility</h3>
                     {eligibilityOpen ? (
                       <ChevronUp className="w-5 h-5" />
@@ -256,9 +282,7 @@ export default function ProjectCallTemplate({
                       fundingOpen ? "rounded-t-lg" : "rounded-lg"
                     }`}
                   >
-                    <h3 className="mb-5 small-title">
-                      Funding
-                    </h3>
+                    <h3 className="mb-5 small-title">Funding</h3>
                     {fundingOpen ? (
                       <ChevronUp className="w-5 h-5" />
                     ) : (
@@ -291,7 +315,10 @@ export default function ProjectCallTemplate({
               </section>
 
               {/* How to Participate Section */}
-              <section id="how-to-participate" className="p-8 bg-gray-50 mb-8 rounded-lg">
+              <section
+                id="how-to-participate"
+                className="p-8 bg-gray-50 mb-8 rounded-lg"
+              >
                 <Collapsible
                   open={participateOpen}
                   onOpenChange={setParticipateOpen}
@@ -357,33 +384,9 @@ export default function ProjectCallTemplate({
                         for more details.
                       </p>
 
-                      <div className="bg-gray-50 p-4 rounded-lg mb-4">
-                        <h5 className="font-semibold text-gray-900 mb-2">
-                          Concept Phase Templates (3)
-                        </h5>
-                        <div className="space-y-2">
-                          <div className="flex items-center space-x-2">
-                            <FileText className="w-4 h-4 text-blue-600" />
-                            <span className="text-blue-600 hover:underline cursor-pointer">
-                              Template - Concept Paper
-                            </span>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <FileText className="w-4 h-4 text-blue-600" />
-                            <span className="text-blue-600 hover:underline cursor-pointer">
-                              Template - Quad Chart
-                            </span>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <FileText className="w-4 h-4 text-blue-600" />
-                            <span className="text-blue-600 hover:underline cursor-pointer">
-                              Quad Chart Guidelines
-                            </span>
-                          </div>
-                        </div>
-                      </div>
+                      <FileTable {...conceptPhaseTemplateFiles} />
 
-                      <Button className="bg-orange-500 hover:bg-orange-600 text-white">
+                      <Button className="mt-4 bg-orange-500 hover:bg-orange-600 text-white">
                         Submit Concept Paper
                       </Button>
                     </div>
@@ -405,47 +408,17 @@ export default function ProjectCallTemplate({
                         prior to the presentation date.
                       </p>
 
-                      <div className="bg-gray-50 p-4 rounded-lg">
-                        <div className="flex items-center justify-between mb-2">
-                          <h5 className="font-semibold text-gray-900">
-                            Presentation Phase Templates (9)
-                          </h5>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            className="text-blue-600"
-                          >
-                            Show all
-                          </Button>
-                        </div>
-                        <div className="space-y-2">
-                          <div className="flex items-center space-x-2">
-                            <FileText className="w-4 h-4 text-blue-600" />
-                            <span className="text-blue-600 hover:underline cursor-pointer">
-                              Template - Statement of Work
-                            </span>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <FileText className="w-4 h-4 text-blue-600" />
-                            <span className="text-blue-600 hover:underline cursor-pointer">
-                              Template - Intellectual Property Management Plan
-                            </span>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <FileText className="w-4 h-4 text-blue-600" />
-                            <span className="text-blue-600 hover:underline cursor-pointer">
-                              Form - FFATA Information Request
-                            </span>
-                          </div>
-                        </div>
-                      </div>
+                      <FileTable {...presentationPhaseTemplateFiles} />
                     </div>
                   </CollapsibleContent>
                 </Collapsible>
               </section>
 
               {/* Resources Section */}
-              <section id="resources" className="p-6 bg-gray-50 mb-8 rounded-lg">
+              <section
+                id="resources"
+                className="p-6 bg-gray-50 mb-8 rounded-lg"
+              >
                 <Collapsible
                   open={resourcesOpen}
                   onOpenChange={setResourcesOpen}
@@ -465,58 +438,7 @@ export default function ProjectCallTemplate({
                     )}
                   </CollapsibleTrigger>
                   <CollapsibleContent className="p-6 bg-gray-50 rounded-b-lg collapsible-content">
-                    <div className="bg-white p-4 rounded-lg">
-                      <div className="flex items-center justify-between mb-2">
-                        <h5 className="font-semibold text-gray-900">
-                          Reference Materials (6)
-                        </h5>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          className="text-blue-600"
-                        >
-                          Show all
-                        </Button>
-                      </div>
-                      <div className="space-y-2">
-                        <div className="flex items-center space-x-2">
-                          <FileText className="w-4 h-4 text-blue-600" />
-                          <span className="text-blue-600 hover:underline cursor-pointer">
-                            Template - Statement of Work
-                          </span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <FileText className="w-4 h-4 text-blue-600" />
-                          <span className="text-blue-600 hover:underline cursor-pointer">
-                            ARM Institute Technology Roadmap
-                          </span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <FileText className="w-4 h-4 text-blue-600" />
-                          <span className="text-blue-600 hover:underline cursor-pointer">
-                            Intellectual Property Guidelines
-                          </span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <FileText className="w-4 h-4 text-blue-600" />
-                          <span className="text-blue-600 hover:underline cursor-pointer">
-                            Project Reporting Requirements
-                          </span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <FileText className="w-4 h-4 text-blue-600" />
-                          <span className="text-blue-600 hover:underline cursor-pointer">
-                            Cost Share Guidelines
-                          </span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <FileText className="w-4 h-4 text-blue-600" />
-                          <span className="text-blue-600 hover:underline cursor-pointer">
-                            Project Evaluation Criteria
-                          </span>
-                        </div>
-                      </div>
-                    </div>
+                    <FileTable {...referenceMaterialsFiles} shownFiles={6}/>
                   </CollapsibleContent>
                 </Collapsible>
               </section>
@@ -555,7 +477,7 @@ export default function ProjectCallTemplate({
                           {/* Orange Arrow */}
                           <div className="flex flex-col items-center">
                             {/* Vertical line */}
-                            <div className="w-0 h-8 mb-[-2px] border arm-yellow"></div>
+                            <div className="w-0 h-8 mb-[-2px] border border-armYellow"></div>
                             {/* upside arrow */}
                             <div className="w-0 h-0 border-x-[6px] border-b-[9px] border-l-transparent border-r-transparent border-b-armYellow"></div>
                           </div>

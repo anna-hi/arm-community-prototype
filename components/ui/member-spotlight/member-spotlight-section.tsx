@@ -51,20 +51,22 @@ function MemberSpotlightSection() {
   return (
     <section>
       <h1 className="mb-6">Member Spotlight</h1>
-      <div className="grid md:grid-cols-2 gap-8 items-center">
-        <SpotlightCarousel
-          items={items}
-          activeIndex={activeIndex}
-          setActiveIndex={setActiveIndex}
-        />
-        <div>
+      <div className="grid md:grid-cols-5 gap-8 items-center">
+        <div className="md:col-span-3">
+          <SpotlightCarousel
+            items={items}
+            activeIndex={activeIndex}
+            setActiveIndex={setActiveIndex}
+          />
+        </div>
+        <div className="md:col-span-2">
           <h3 className="text-xl font-bold text-gray-900 mb-4">{title}</h3>
           <p className="text-gray-600 mb-6">{description}</p>
           <MainButton
             text="View Profile"
             icon={<ArrowRight className="w-4 h-4" />}
             className="small-main-button"
-          ></MainButton>
+          />
         </div>
       </div>
     </section>

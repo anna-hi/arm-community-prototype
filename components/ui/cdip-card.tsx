@@ -35,20 +35,12 @@ const CDIPCard: React.FC<CDIPCardProps> = ({
       <div className="flex items-center justify-between p-6 pb-0">
         <div className="flex items-center gap-2">
           {status === "Completed" && (
-            <CheckCircle
-              className="text-green-600 w-6 h-6"
-              aria-label="Completed"
-            />
+            <span className="w-3 h-3 rounded-full bg-[#2E844A] inline-block"></span>
           )}
           {status === "Performing" && (
-            <CheckCircle className="yellow w-6 h-6" aria-label="Performing" />
+            <span className="w-3 h-3 rounded-full bg-armYellow inline-block"></span>
           )}
-          <span
-            className="text-lg font-medium text-black"
-            style={{ fontFamily: "var(--font-roboto)" }}
-          >
-            {status}
-          </span>
+          <span className="caption">{status}</span>
         </div>
       </div>
       <div className="flex justify-center items-center pt-2 pb-4">
@@ -64,11 +56,11 @@ const CDIPCard: React.FC<CDIPCardProps> = ({
       </div>
       <div className="cdip-card-text">
         <div>
-          <div className="flex items-center w-full justify-between">
-            <div className="body-small font-bold">{code}</div>
-            <Star className="text-green-600 w-6 h-6" aria-label="Completed" />
+          <div className="py-2 flex items-center w-full justify-between">
+            <div className="body-small font-bold ">{code}</div>
+            <Star className="arm-yellow w-6 h-6" aria-label="Completed" />
           </div>
-          <h3 className="pb-4 text-left w-full">{title}</h3>
+          <h3 className="pr-4 pb-4 text-left w-full">{title}</h3>
           {tags && tags.length > 0 && (
             <div className="flex justify-start gap-2 pb-4 w-full flex-wrap">
               {tags.map((cat, idx) => (

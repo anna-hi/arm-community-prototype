@@ -24,7 +24,7 @@ export function SpotlightCarousel({
   activeIndex,
   setActiveIndex,
 }: SpotlightCarouselProps) {
-  const activeItemWidth = 100 - (items.length - 1) * 10; // 100% minus the width of the other items (10% each)
+  const activeItemWidth = 100 - (items.length - 1) * 15; // 100% minus the width of the other items (15% each)
 
   return (
     <div>
@@ -34,7 +34,7 @@ export function SpotlightCarousel({
             <motion.div
               layoutId={`carouselItem${item.id}`}
               key={item.id}
-              className={`relative w-[${activeItemWidth}%]`}
+              className={`relative w-[${activeItemWidth}%] aspect-video`}
             >
               <Image
                 src={item.image}
@@ -46,7 +46,7 @@ export function SpotlightCarousel({
               <div className="absolute inset-0 flex items-center justify-center">
                 <Button
                   size="lg"
-                  className="rounded-full w-16 h-16 bg-orange-500 hover:bg-orange-600"
+                  className="rounded-full w-16 h-16 flex items-center justify-center bg-orange-500 hover:bg-orange-600"
                 >
                   <Play className="w-6 h-6" />
                 </Button>
@@ -56,7 +56,7 @@ export function SpotlightCarousel({
             <motion.div
               key={item.id}
               layoutId={`carouselItem${item.id}`}
-              className="w-[10%] min-w-8 cursor-pointer"
+              className="w-[15%] min-w-8 cursor-pointer"
               onClick={() => setActiveIndex(index)}
             >
               <Image

@@ -1,15 +1,12 @@
 "use client";
 
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { ChevronDown, Star, Play, Building, User, Lock, ExternalLink, Download, Eye} from "lucide-react"
+import { ChevronDown, Star, Play, Building, User, Download, Eye} from "lucide-react"
 import Image from "next/image"
-import NavBar from "@/components/NavBar"
 import Link from "next/link"
 import { OrangeButtonLeft } from "@/components/OrangeButtonLeft"
-import { OrangeButton } from "@/components/OrangeButton"
 import "@/styles/globals.css";
 import { CDIPDataField } from "@/components/ui/cdip-data-field";
 import CDIPCard from "@/components/ui/cdip-card";
