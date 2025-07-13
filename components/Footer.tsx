@@ -38,11 +38,11 @@ const Footer: React.FC = () => (
             <p className="text-sm">412.322.7800</p>
           </div>
         </div>
-        <div>
+        <div className="w-64">
           <h4 className="font-semibold mb-4">Need Help?</h4>
           <MainButton
             text="Contact ARM"
-            className="text-black px-4 py-2 rounded"
+            className="small-main-button w-full"
           ></MainButton>
         </div>
       </div>

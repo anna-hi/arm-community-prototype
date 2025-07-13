@@ -1,6 +1,4 @@
 "use client";
-import Image from "next/image";
-import { Button } from "../button";
 import { ArrowRight, Play } from "lucide-react";
 import { MainButton } from "@/components/MainButton";
 import { useState } from "react";
@@ -65,6 +63,7 @@ function MemberSpotlightSection() {
           <MainButton
             text="View Profile"
             icon={<ArrowRight className="w-4 h-4" />}
+            className="small-main-button"
           ></MainButton>
         </div>
       </div>

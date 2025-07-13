@@ -60,29 +60,27 @@ export default function ProjectCallTemplate({
 
   return (
     <>
-      <div className="max-w-7xl mx-[127px] px-6 py-12">
+      <div className="max-w-7xl mx-[127px] py-12">
         <div className="flex gap-8">
           {/* Main Content */}
           <div className="flex-1">
             {/* Header Section */}
-            <div className="flex items-center mb-4">
+            <div className="pl-6 flex items-center mb-4">
               <div>
-                <h1 className="mb-4">
-                  {title}
-                </h1>
+                <h1 className="mb-4">{title}</h1>
                 <ActiveBadge />
               </div>
             </div>
 
             {/* Description */}
-            <div className="mb-8 pr-36 text-gray-700 leading-relaxed ">
+            <div className="pl-6 mb-8 pr-36 leading-relaxed ">
               {description.map((paragraph) => (
                 <p className="mb-4">{paragraph}</p>
               ))}
             </div>
 
             {/* Project Call Document Button */}
-            <div className="pl-8 mb-8">
+            <div className="pl-6 mb-8">
               <div className="px-3 py-2 flex items-center border border-gray-300 rounded-sm bg-white max-w-fit">
                 <span className="text-base text-gray-900 font-medium">
                   Project Call Document
@@ -95,7 +93,7 @@ export default function ProjectCallTemplate({
 
             {/* Scrollspy Navigation */}
             <div className="w-full">
-              <div className="sticky top-0 bg-white z-10 border-gray-200 ml-4 mb-4 pt-8 pb-4">
+              <div className="sticky top-0 bg-white z-10 border-gray-200 ml-2 mb-4 pt-8 pb-2">
                 <div className="flex overflow-x-auto text-base font-medium">
                   <NavigationItem
                     sectionId="special-topic-areas"
@@ -131,19 +129,17 @@ export default function ProjectCallTemplate({
               </div>
 
               {/* Special Topic Areas Section */}
-              <section id="special-topic-areas" className="mb-8">
+              <section id="special-topic-areas" className="p-8 bg-gray-50 mb-8 rounded-lg">
                 <Collapsible
                   open={specialTopicAreasOpen}
                   onOpenChange={setSpecialTopicAreasOpen}
                 >
                   <CollapsibleTrigger
-                    className={`flex items-center justify-between w-full p-6 bg-gray-50 hover:bg-gray-100 ${
+                    className={`flex items-start justify-between w-full ${
                       specialTopicAreasOpen ? "rounded-t-lg" : "rounded-lg"
                     }`}
                   >
-                    <h3 className="text-2xl font-bold text-gray-900">
-                      Special Topic Areas
-                    </h3>
+                    <p className="small-title">Special Topic Areas</p>
                     <ChevronUp className="w-5 h-5" />
                   </CollapsibleTrigger>
                   <CollapsibleContent className="p-6 bg-gray-50 rounded-b-lg collapsible-content">
@@ -213,37 +209,36 @@ export default function ProjectCallTemplate({
               </section>
 
               {/* Eligibility Section */}
-              <section id="eligibility" className="mb-8">
+              <section id="eligibility" className="p-8 bg-gray-50 mb-8 rounded-lg">
                 <Collapsible
                   open={eligibilityOpen}
                   onOpenChange={setEligibilityOpen}
                 >
                   <CollapsibleTrigger
-                    className={`flex items-center justify-between w-full p-6 bg-gray-50 hover:bg-gray-100 ${
+                    className={`flex items-start justify-between w-full ${
                       eligibilityOpen ? "rounded-t-lg" : "rounded-lg"
                     }`}
                   >
-                    <h3 className="text-2xl font-bold text-gray-900">
-                      Eligibility
-                    </h3>
+                    
+                    <h3 className="mb-5 small-title">Eligibility</h3>
                     {eligibilityOpen ? (
                       <ChevronUp className="w-5 h-5" />
                     ) : (
                       <ChevronDown className="w-5 h-5" />
                     )}
                   </CollapsibleTrigger>
-                  <CollapsibleContent className="p-6 bg-gray-50 rounded-b-lg collapsible-content">
-                    <p className="text-gray-900 text-lg leading-relaxed mb-6">
+                  <CollapsibleContent className="pr-24 rounded-b-lg collapsible-content">
+                    <p className="mb-6">
                       To address this Project call, ARM Institute encourages
                       proposers to work cooperatively in presenting integrated
                       solutions.
                     </p>
-                    <p className="text-gray-900 text-lg font-semibold leading-relaxed mb-6">
+                    <p className="mb-6">
                       The lead proposer (or prime) on the project submission is
                       a current Platinum, Gold, Silver or University/Non-Profit
                       Core ARM Institute member in good standing.
                     </p>
-                    <p className="text-gray-900 text-lg font-semibold leading-relaxed">
+                    <p className="">
                       Teams are required to submit an appendix with their
                       concept paper (not included in page limit) that lists
                       prior ARM projects and describes the status of technology
@@ -254,14 +249,14 @@ export default function ProjectCallTemplate({
               </section>
 
               {/* Funding Section */}
-              <section id="funding" className="mb-8">
+              <section id="funding" className="p-8 bg-gray-50 mb-8 rounded-lg">
                 <Collapsible open={fundingOpen} onOpenChange={setFundingOpen}>
                   <CollapsibleTrigger
-                    className={`flex items-center justify-between w-full p-6 bg-gray-50 hover:bg-gray-100 ${
+                    className={`flex items-start justify-between w-full ${
                       fundingOpen ? "rounded-t-lg" : "rounded-lg"
                     }`}
                   >
-                    <h3 className="text-2xl font-bold text-gray-900">
+                    <h3 className="mb-5 small-title">
                       Funding
                     </h3>
                     {fundingOpen ? (
@@ -270,8 +265,8 @@ export default function ProjectCallTemplate({
                       <ChevronDown className="w-5 h-5" />
                     )}
                   </CollapsibleTrigger>
-                  <CollapsibleContent className="p-6 bg-gray-50 rounded-b-lg collapsible-content">
-                    <p className="text-gray-900 text-lg leading-relaxed mb-4">
+                  <CollapsibleContent className="pr-24 rounded-b-lg collapsible-content">
+                    <p className=" mb-4">
                       <strong>
                         Individual project budgets must not exceed $500K
                         requested from ARM (smaller budget, shorter duration
@@ -280,13 +275,13 @@ export default function ProjectCallTemplate({
                       ARM expects that successful proposers will provide cost
                       share of at least 50% of the total project cost.
                     </p>
-                    <p className="text-gray-900 text-lg leading-relaxed mb-4">
+                    <p className=" mb-4">
                       Cost share may include direct costs, indirect costs, and
                       in-kind contributions. In-kind contributions should be
                       valued at fair market rates and must be directly related
                       to the project objectives.
                     </p>
-                    <p className="text-gray-900 text-lg leading-relaxed">
+                    <p className="">
                       Projects are expected to have a duration of 12-18 months
                       from the start date. Longer duration projects may be
                       considered if adequately justified.
@@ -296,17 +291,17 @@ export default function ProjectCallTemplate({
               </section>
 
               {/* How to Participate Section */}
-              <section id="how-to-participate" className="mb-8">
+              <section id="how-to-participate" className="p-8 bg-gray-50 mb-8 rounded-lg">
                 <Collapsible
                   open={participateOpen}
                   onOpenChange={setParticipateOpen}
                 >
                   <CollapsibleTrigger
-                    className={`flex items-center justify-between w-full p-6 bg-gray-50 hover:bg-gray-100 ${
+                    className={`flex items-start justify-between w-full ${
                       participateOpen ? "rounded-t-lg" : "rounded-lg"
                     }`}
                   >
-                    <h3 className="text-2xl font-bold text-gray-900">
+                    <h3 className="mb-5 small-title">
                       How to Participate
                     </h3>
                     {participateOpen ? (
@@ -315,7 +310,7 @@ export default function ProjectCallTemplate({
                       <ChevronDown className="w-5 h-5" />
                     )}
                   </CollapsibleTrigger>
-                  <CollapsibleContent className="p-6 bg-gray-50 rounded-b-lg space-y-8 collapsible-content">
+                  <CollapsibleContent className="rounded-b-lg space-y-8 collapsible-content">
                     {/* Step 1 */}
                     <div className="border border-gray-200 rounded-lg p-6 bg-white">
                       <h4 className="text-lg font-semibold text-gray-900 mb-4">
@@ -450,17 +445,17 @@ export default function ProjectCallTemplate({
               </section>
 
               {/* Resources Section */}
-              <section id="resources" className="mb-8">
+              <section id="resources" className="p-6 bg-gray-50 mb-8 rounded-lg">
                 <Collapsible
                   open={resourcesOpen}
                   onOpenChange={setResourcesOpen}
                 >
                   <CollapsibleTrigger
-                    className={`flex items-center justify-between w-full p-6 bg-gray-50 hover:bg-gray-100 ${
+                    className={`flex items-start justify-between w-full ${
                       resourcesOpen ? "rounded-t-lg" : "rounded-lg"
                     }`}
                   >
-                    <h3 className="text-2xl font-bold text-gray-900">
+                    <h3 className="mb-5 small-title">
                       Resources
                     </h3>
                     {resourcesOpen ? (
@@ -533,7 +528,8 @@ export default function ProjectCallTemplate({
             <div className="bg-[#F9F9F9] sticky top-8 px-6 py-5 !h-auto">
               <div className="space-y-6">
                 {/* Submit Proposal Button */}
-                <MainButton className="main-button w-full"
+                <MainButton
+                  className="main-button w-full"
                   text="Submit Proposal"
                 />
 
@@ -559,7 +555,7 @@ export default function ProjectCallTemplate({
                           {/* Orange Arrow */}
                           <div className="flex flex-col items-center">
                             {/* Vertical line */}
-                            <div className="w-0 h-8 mb-[-2px] border border-armYellow"></div>
+                            <div className="w-0 h-8 mb-[-2px] border arm-yellow"></div>
                             {/* upside arrow */}
                             <div className="w-0 h-0 border-x-[6px] border-b-[9px] border-l-transparent border-r-transparent border-b-armYellow"></div>
                           </div>

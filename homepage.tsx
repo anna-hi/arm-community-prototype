@@ -35,6 +35,7 @@ export default function Homepage() {
               <MainButton
                 text="Start Here"
                 icon={<ArrowRight className="w-4 h-4" />}
+                className="small-main-button"
               />
             </Link>
           </div>
