@@ -203,7 +203,7 @@ export default function FixturelessRoboticAssembly() {
           </span>
           {/* Project Title */}
           <div className="flex items-start justify-between">
-            <h1 className="text-3xl font-bold text-gray-900 mr-8">
+            <h1 className="text-gray-900 mr-12 leading-9">
               Fixtureless Robotic Assembly for Manufacturing Environments 2.0
             </h1>
             <Button className="flex gap-2 bg-transparent border border-armYellow hover:bg-yellow-200 text-black rounded-full">
@@ -574,7 +574,7 @@ export default function FixturelessRoboticAssembly() {
                 tags={project.tags}
                 leadOrg={project.leadOrg}
                 principalInvestigator={project.principalInvestigator}
-                imageSrc="/placeholder.svg"
+                imageSrc="/images/cdip/cdip-image.png"
               />
             ))}
           </div>

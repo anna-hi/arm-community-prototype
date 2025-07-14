@@ -65,7 +65,7 @@ export default function CommunityOrganizations() {
   return (
     <>
       {/* Main Content */}
-      <div className="max-w-5xl mx-auto px-6 py-12">
+      <div className="max-w-7xl mx-auto px-6 py-12">
         {/* Page Title */}
         <h1 className="text-3xl font-bold text-gray-900 mb-8">
           Organization Member Directory

@@ -20,7 +20,7 @@ import NewsEventCard from "@/components/ui/news-event-card";
 const events = [
   {
     id: 1,
-    imagePath: "/placeholder.svg?height=200&width=350",
+    imagePath: "/images/events/ai-in-manufacturing-webinar.png",
     imageAlt: "AI in Manufacturing: The Basics",
     caption: "AI | ARM Event | Webinar",
     title: "AI in Manufacturing: The Basics",
@@ -32,7 +32,7 @@ const events = [
   },
   {
     id: 2,
-    imagePath: "/placeholder.svg?height=200&width=350",
+    imagePath: "/images/events/skills-usa-conference.png",
     imageAlt: "Skills USA National Leadership & Skills Conference",
     caption: "ARM Event",
     title: "Skills USA National Leadership & Skills Conference",
@@ -43,7 +43,7 @@ const events = [
   },
   {
     id: 3,
-    imagePath: "/placeholder.svg?height=200&width=350",
+    imagePath: "/images/events/hitec2025-banner.webp",
     imageAlt: "HI-TEC: High Impact Technology Exchange Conference 2025",
     caption: "Public Event",
     title: "HI-TEC: High Impact Technology Exchange Conference 2025",
@@ -54,7 +54,7 @@ const events = [
   },
   {
     id: 4,
-    imagePath: "/placeholder.svg?height=200&width=350",
+    imagePath: "/images/events/robotic-grinding-finishing-conference.png",
     imageAlt: "Robotic Grinding & Finishing Conference",
     caption: "Public Event",
     title: "Robotic Grinding & Finishing Conference",
@@ -65,7 +65,7 @@ const events = [
   },
   {
     id: 5,
-    imagePath: "/placeholder.svg?height=200&width=350",
+    imagePath: "/images/events/manufacturing-momentum.png",
     imageAlt:
       "Manufacturing Momentum Goes to the Motor City: A National Workforce Summit",
     caption: "ARM Event",
@@ -78,7 +78,7 @@ const events = [
   },
   {
     id: 6,
-    imagePath: "/placeholder.svg?height=200&width=350",
+    imagePath: "/images/events/arm-member-meeting.png",
     imageAlt: "2025 Annual ARM Institute Member Meeting",
     caption: "ARM Event",
     title: "2025 Annual ARM Institute Member Meeting",
