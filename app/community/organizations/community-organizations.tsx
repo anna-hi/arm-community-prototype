@@ -67,7 +67,7 @@ export default function CommunityOrganizations() {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-6 py-12">
         {/* Page Title */}
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">
+        <h1 className="text-gray-900 mb-8">
           Organization Member Directory
         </h1>
 
@@ -116,8 +116,8 @@ export default function CommunityOrganizations() {
               <SelectContent>
                 <SelectItem value="0-5">0-5 Projects</SelectItem>
                 <SelectItem value="6-10">6-10 Projects</SelectItem>
-                <SelectItem value="11-20">11-20 Projects</SelectItem>
-                <SelectItem value="20+">20+ Projects</SelectItem>
+                <SelectItem value="11-15">11-15 Projects</SelectItem>
+                <SelectItem value="15+">15+ Projects</SelectItem>
               </SelectContent>
             </Select>
 
@@ -164,7 +164,7 @@ export default function CommunityOrganizations() {
                     item && (
                       <div
                         key={index}
-                        className="border border-[#A9C4E0] bg-[#F1F8FF] rounded-sm px-2 py-1 text-sm font-medium"
+                        className="bg-[#e8f3ff] rounded-sm px-2 py-1 text-sm font-medium"
                       >
                         {item}
                       </div>

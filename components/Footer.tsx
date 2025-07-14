@@ -2,6 +2,8 @@ import React from "react";
 import { MainButton } from "./MainButton";
 import "@/styles/globals.css";
 import Image from "next/image";
+import { FaLocationDot } from "react-icons/fa6";
+import { FaPhoneAlt } from "react-icons/fa";
 
 const Footer: React.FC = () => (
   <footer className="bg-[#222] text-white py-12">
@@ -23,26 +25,32 @@ const Footer: React.FC = () => (
           </p>
         </div>
         <div className="flex flex-row w-full">
-          <div className="mr-8">
-            <h6 className="mb-1.5">Address</h6>
-            <p className=" text-sm">
-              Mill 19 at Hazelwood Green
-              <br />
-              4720 Technology Dr, Suite 300
-              <br />
-              Pittsburgh, PA 15219
-            </p>
+          <div className="mr-8 flex items-start gap-2">
+            <FaLocationDot className="arm-yellow" />
+            <div>
+              <h6 className="mb-1.5">Address</h6>
+              <p className=" text-sm">
+                Mill 19 at Hazelwood Green
+                <br />
+                4720 Technology Dr, Suite 300
+                <br />
+                Pittsburgh, PA 15219
+              </p>
+            </div>
           </div>
-          <div className="">
-            <h6 className="font-semibold mb-1.5">Phone</h6>
-            <p className="text-sm">412.322.7800</p>
+          <div className="flex items-start gap-2">
+            <FaPhoneAlt className="arm-yellow" />
+            <div>
+              <h6 className="font-semibold mb-1.5">Phone</h6>
+              <p className="text-sm">412.322.7800</p>
+            </div>
           </div>
         </div>
         <div className="w-64">
           <h6 className="font-semibold mb-4">Need Help?</h6>
           <MainButton
             text="Contact ARM"
-            className="small-main-button w-full"
+            className="small-main-button w-full mb-2"
           ></MainButton>
         </div>
       </div>
