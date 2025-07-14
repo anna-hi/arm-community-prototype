@@ -59,17 +59,19 @@ export default function ArmMemberGuide() {
               </Card>
             </Link>
 
-            <Card className="!bg-[#e8f8fd] border-none">
-              <CardContent className="flex flex-col gap-8 p-4">
-                <div className="w-12 h-12 flex items-center justify-center mb-6">
-                  <HiDocumentSearch className="w-10 h-10 text-sky-600" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">Access exclusive ARM research.</h3>
-                  <p className="text-gray-600">Explore exclusive project outputs created by members.</p>
-                </div>
-              </CardContent>
-            </Card>
+            <Link href="/all-projects" className="block">
+              <Card className="!bg-[#e8f8fd] border-none">
+                <CardContent className="flex flex-col gap-8 p-4">
+                  <div className="w-12 h-12 flex items-center justify-center mb-6">
+                    <HiDocumentSearch className="w-10 h-10 text-sky-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-4">Access exclusive ARM research.</h3>
+                    <p className="text-gray-600">Explore exclusive project outputs created by members.</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
 
             <Card className="!bg-[#eafaeb] border-none">
               <CardContent className="flex flex-col gap-8 p-4">
