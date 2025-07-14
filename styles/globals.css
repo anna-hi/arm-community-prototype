@@ -50,6 +50,18 @@ body {
   align-items: center;
 }
 
+.secondary-button {
+  display: flex;
+  height: 51px;
+  padding: 16px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 4px;
+  border: 2px solid #fdb619;
+  background: #fff;
+}
+
 .arm-yellow {
   color: var(--ARM-Yellow, #ffb621);
 }
@@ -81,7 +93,8 @@ h3 {
   color: black;
 }
 
-h4 {
+
+h6 {
   font-family: Montserrat;
   font-size: 14px;
   font-style: normal;

@@ -13,6 +13,7 @@ import { OrangeButton } from "@/components/OrangeButton";
 import { ActiveBadge } from "./components/badges";
 import NavigationItem from "./components/navigation-item";
 import { MainButton } from "@/components/MainButton";
+import { SecondaryButton } from "@/components/SecondaryButton";
 import FileTable from "./components/file-table";
 
 export default function ProjectCallTemplate({
@@ -218,12 +219,14 @@ export default function ProjectCallTemplate({
                             alt={area.title}
                             width={400}
                             height={225}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover opacity-70"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-black/40 flex items-center justify-center text-center">
-                            <h4 className="text-white text-base font-semibold py-4 px-10">
+                          {/* 55% black overlay */}
+                          <div className="absolute inset-0 bg-black opacity-55"></div>
+                          <div className="absolute inset-0 flex items-center justify-center text-center">
+                            <h3 className="text-white text-base font-semibold py-4 px-10 leading-normal">
                               {area.title}
-                            </h4>
+                            </h3>
                           </div>
                         </div>
                       ))}
@@ -328,9 +331,7 @@ export default function ProjectCallTemplate({
                       participateOpen ? "rounded-t-lg" : "rounded-lg"
                     }`}
                   >
-                    <h3 className="mb-5 small-title">
-                      How to Participate
-                    </h3>
+                    <h3 className="mb-5 small-title">How to Participate</h3>
                     {participateOpen ? (
                       <ChevronUp className="w-5 h-5" />
                     ) : (
@@ -340,7 +341,7 @@ export default function ProjectCallTemplate({
                   <CollapsibleContent className="rounded-b-lg space-y-8 collapsible-content">
                     {/* Step 1 */}
                     <div className="border border-gray-200 rounded-lg p-6 bg-white">
-                      <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                      <h4 className="text-lg font-medium text-gray-900 mb-4">
                         Step 1: Find Potential Collaborators
                       </h4>
                       <p className="text-gray-700 mb-4">
@@ -350,22 +351,28 @@ export default function ProjectCallTemplate({
                         the right membership level.
                       </p>
                       <div className="flex space-x-4">
-                        <Button className="bg-blue-600 hover:bg-blue-700 text-white flex items-center space-x-2">
-                          <Users className="w-4 h-4" />
-                          <span>Connect on Slack</span>
-                        </Button>
-                        <Button
-                          variant="outline"
-                          className="flex items-center space-x-2 bg-transparent"
-                        >
-                          <span>Search in Directory</span>
-                        </Button>
+                        <SecondaryButton
+                          className=""
+                          text="Connect on Slack"
+                          icon={
+                            <Image
+                              src={"/images/project-call/slack.png"}
+                              alt={"Slack Icon"}
+                              width={28}
+                              height={28}
+                            />
+                          }
+                        />
+                        <SecondaryButton
+                          className=""
+                          text="Search in Directory"
+                        />
                       </div>
                     </div>
 
                     {/* Step 2 */}
                     <div className="border border-gray-200 rounded-lg p-6 bg-white">
-                      <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                      <h4 className="text-lg font-medium text-gray-900 mb-4">
                         Step 2: Concept Paper & Quad Chart
                       </h4>
                       <p className="text-gray-700 mb-4">
@@ -386,14 +393,12 @@ export default function ProjectCallTemplate({
 
                       <FileTable {...conceptPhaseTemplateFiles} />
 
-                      <Button className="mt-4 bg-orange-500 hover:bg-orange-600 text-white">
-                        Submit Concept Paper
-                      </Button>
+                      <SecondaryButton text="Submit Concept Paper" className="mt-6"/>
                     </div>
 
                     {/* Step 3 */}
                     <div className="border border-gray-200 rounded-lg p-6 bg-white">
-                      <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                      <h4 className="text-lg font-medium text-gray-900 mb-4">
                         Step 3: Presentation Process (Invitation only)
                       </h4>
                       <p className="text-gray-700 mb-4">
@@ -428,9 +433,7 @@ export default function ProjectCallTemplate({
                       resourcesOpen ? "rounded-t-lg" : "rounded-lg"
                     }`}
                   >
-                    <h3 className="mb-5 small-title">
-                      Resources
-                    </h3>
+                    <h3 className="mb-5 small-title">Resources</h3>
                     {resourcesOpen ? (
                       <ChevronUp className="w-5 h-5" />
                     ) : (
@@ -438,7 +441,7 @@ export default function ProjectCallTemplate({
                     )}
                   </CollapsibleTrigger>
                   <CollapsibleContent className="p-6 bg-gray-50 rounded-b-lg collapsible-content">
-                    <FileTable {...referenceMaterialsFiles} shownFiles={6}/>
+                    <FileTable {...referenceMaterialsFiles} shownFiles={6} />
                   </CollapsibleContent>
                 </Collapsible>
               </section>

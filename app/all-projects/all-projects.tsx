@@ -213,7 +213,7 @@ export default function AllProjects() {
                   tags={project.tags}
                   leadOrg={project.leadOrg}
                   principalInvestigator={project.principalInvestigator}
-                  imageSrc="/placeholder-logo.png"
+                  imageSrc="/images/cdip/cdip-image.png"
                 />
               );
               return isFixtureless ? (

@@ -211,7 +211,7 @@ export default function Homepage() {
             <CDIPCard
               status="Completed"
               title="Fixtureless Robotic Workcell for Manufacturing Environments 2.0"
-              imageSrc="/placeholder-logo.png" // or your actual image path
+              imageSrc="/images/cdip/cdip-image.png" // or your actual image path
               tags={["Automotive", "Technology", "Human-Robot Interaction"]}
               code="T3-04-01-16"
               leadOrg="Siemens Corporation"
@@ -220,7 +220,7 @@ export default function Homepage() {
             <CDIPCard
               status="Completed"
               title="Automatic T-Shirt Assembly System"
-              imageSrc="/placeholder-logo.png" // or your actual image path
+              imageSrc="/images/cdip/cdip-image.png" // or your actual image path
               tags={["Textiles", "Cobots", "Modeling"]}
               code="T3-04-01-01"
               leadOrg="Henderson Sewing Machine Co."
@@ -229,7 +229,7 @@ export default function Homepage() {
             <CDIPCard
               status="Performing"
               title="Robotic Non-Contact 3D Inspection Replacing Hard Gaging"
-              imageSrc="/placeholder-logo.png" // or your actual image path
+              imageSrc="/images/cdip/cdip-image.png" // or your actual image path
               tags={["Automotive", "Inspection", "Robotics"]}
               code="T3-04-DEC-1-01"
               leadOrg="ARM Technology LLC"

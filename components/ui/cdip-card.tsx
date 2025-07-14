@@ -28,37 +28,35 @@ const CDIPCard: React.FC<CDIPCardProps> = ({
 }) => {
   return (
     <div
-      className="bg-white h-[540px] rounded-xl flex flex-col relative border border-gray-200 overflow-hidden"
+      className="bg-white h-[540px] flex flex-col relative border border-gray-200 overflow-hidden"
       style={{ minWidth: 323 }}
     >
-      {/* Top section: status + image */}
-      <div className="flex items-center justify-between p-6 pb-0">
-        <div className="flex items-center gap-2">
-          {status === "Completed" && (
-            <span className="w-3 h-3 rounded-full bg-[#2E844A] inline-block"></span>
-          )}
-          {status === "Performing" && (
-            <span className="w-3 h-3 rounded-full bg-armYellow inline-block"></span>
-          )}
-          <span className="caption">{status}</span>
-        </div>
-      </div>
-      <div className="flex justify-center items-center pt-2 pb-4">
+      <div className="relative flex justify-center items-center">
         {imageSrc && (
           <Image
             src={imageSrc}
             alt={imageAlt}
-            width={120}
+            width={323}
             height={150}
-            className="object-contain"
+            className="object-contain w-full"
           />
         )}
+        {/* Status text and icon on top left of image */}
+        <div className="absolute p-2 top-2 left-2 flex items-center gap-2 z-10">
+          {status === "Completed" && (
+            <span className="w-3 h-3 rounded-full bg-[#2E844A]"></span>
+          )}
+          {status === "Performing" && (
+            <span className="w-3 h-3 rounded-full bg-armYellow"></span>
+          )}
+          <span className="caption bg-white/80 px-2 py-0.5 rounded font-semibold text-xs">{status}</span>
+        </div>
       </div>
       <div className="cdip-card-text">
         <div>
           <div className="py-2 flex items-center w-full justify-between">
             <div className="body-small font-bold ">{code}</div>
-            <Star className="arm-yellow w-6 h-6" aria-label="Completed" />
+            <Star className="arm-yellow w-6 h-6" aria-label="Performing" />
           </div>
           <h3 className="pr-4 pb-4 text-left w-full">{title}</h3>
           {tags && tags.length > 0 && (

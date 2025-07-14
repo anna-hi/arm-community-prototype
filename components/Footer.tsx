@@ -24,7 +24,7 @@ const Footer: React.FC = () => (
         </div>
         <div className="flex flex-row w-full">
           <div className="mr-8">
-            <h4 className="mb-1.5">Address</h4>
+            <h6 className="mb-1.5">Address</h6>
             <p className=" text-sm">
               Mill 19 at Hazelwood Green
               <br />
@@ -34,12 +34,12 @@ const Footer: React.FC = () => (
             </p>
           </div>
           <div className="">
-            <h4 className="font-semibold mb-1.5">Phone</h4>
+            <h6 className="font-semibold mb-1.5">Phone</h6>
             <p className="text-sm">412.322.7800</p>
           </div>
         </div>
         <div className="w-64">
-          <h4 className="font-semibold mb-4">Need Help?</h4>
+          <h6 className="font-semibold mb-4">Need Help?</h6>
           <MainButton
             text="Contact ARM"
             className="small-main-button w-full"
