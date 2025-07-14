@@ -95,6 +95,9 @@ importers:
       '@radix-ui/react-tooltip':
         specifier: latest
         version: 1.2.7(@types/react-dom@19.0.0)(@types/react@19.0.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@salesforce-ux/design-system':
+        specifier: ^2.27.2
+        version: 2.27.2(postcss@8.5.0)
       '@supabase/supabase-js':
         specifier: latest
         version: 2.50.5
@@ -1106,6 +1109,11 @@ packages:
 
   '@rushstack/eslint-patch@1.12.0':
     resolution: {integrity: sha512-5EwMtOqvJMMa3HbmxLlF74e+3/HhwBTMcvt3nqVJgGCozO6hzIPOBlwm8mGVNR9SN2IJpxSnlxczyDjcn7qIyw==}
+
+  '@salesforce-ux/design-system@2.27.2':
+    resolution: {integrity: sha512-Vco/SNBLkpZDoVnuf+AwmGH+5vm0Qb5rtRiJ7gPJgWbIu5aYAGnWF2arFH5+91cNkWOu3wC1H3bf1XLw4qvVNg==}
+    peerDependencies:
+      postcss: ^8.3.5
 
   '@standard-schema/spec@1.0.0':
     resolution: {integrity: sha512-m2bOd0f2RT9k8QJx1JN85cZYyH1RqFBdlwtkSlf4tBDYLCiiZnv1fIIwacK6cqwXavOydf0NPToMQgpKq+dVlA==}
@@ -4235,6 +4243,10 @@ snapshots:
   '@rtsao/scc@1.1.0': {}
 
   '@rushstack/eslint-patch@1.12.0': {}
+
+  '@salesforce-ux/design-system@2.27.2(postcss@8.5.0)':
+    dependencies:
+      postcss: 8.5.0
 
   '@standard-schema/spec@1.0.0': {}
 

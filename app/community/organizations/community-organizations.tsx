@@ -1,10 +1,14 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Search } from "lucide-react"
-import Image from "next/image"
-
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Search } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function CommunityOrganizations() {
   const organizations = [
@@ -12,7 +16,7 @@ export default function CommunityOrganizations() {
       id: 1,
       name: "Siemens Corporation",
       location: "Princeton, New Jersey",
-      logo: "/placeholder.svg?height=80&width=80",
+      logo: "/images/organizations/siemens.png",
       membershipLevel: "Platinum",
       projectsCount: "23 Projects Completed/Performing",
     },
@@ -20,7 +24,7 @@ export default function CommunityOrganizations() {
       id: 2,
       name: "ABB Inc.",
       location: "Auburn Hills, North Carolina",
-      logo: "/placeholder.svg?height=80&width=80",
+      logo: "/images/organizations/abb.png",
       membershipLevel: "Platinum",
       projectsCount: "6 Projects Completed/Performing",
     },
@@ -28,7 +32,7 @@ export default function CommunityOrganizations() {
       id: 3,
       name: "3Laws Dynamic Safety",
       location: "Princeton, New Jersey",
-      logo: "/placeholder.svg?height=80&width=80",
+      logo: "/images/organizations/3-laws-robotics.png",
       membershipLevel: "Platinum",
       projectsCount: null,
     },
@@ -36,7 +40,7 @@ export default function CommunityOrganizations() {
       id: 4,
       name: "AeroShield Materials",
       location: "Boston, MA",
-      logo: "/placeholder.svg?height=80&width=80",
+      logo: "/images/organizations/aeroshield.png",
       membershipLevel: "Platinum",
       projectsCount: null,
     },
@@ -44,31 +48,37 @@ export default function CommunityOrganizations() {
       id: 5,
       name: "Carnegie Mellon University",
       location: "Pittsburgh, PA",
-      logo: "/placeholder.svg?height=80&width=80",
-      membershipLevel: null,
-      projectsCount: null,
+      logo: "/images/organizations/carnegie-mellon.png",
+      membershipLevel: "Platinum",
+      projectsCount: "4 Projects Completed/Performing",
     },
     {
       id: 6,
       name: "Edgecase Research",
       location: "Pittsburgh, PA",
-      logo: "/placeholder.svg?height=80&width=80",
-      membershipLevel: null,
+      logo: "/images/organizations/edge-case-research.png",
+      membershipLevel: "Platinum",
       projectsCount: null,
     },
-  ]
+  ];
 
-  return (<>
-
+  return (
+    <>
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="max-w-5xl mx-auto px-6 py-12">
         {/* Page Title */}
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">Organization Member Directory</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-8">
+          Organization Member Directory
+        </h1>
 
         {/* Search Bar */}
         <div className="relative mb-8">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-          <Input type="text" placeholder="Search for Organizations..." className="pl-10 w-full max-w-md" />
+          <Input
+            type="text"
+            placeholder="Search for Organizations..."
+            className="pl-10 w-full max-w-md"
+          />
         </div>
 
         {/* Filters */}
@@ -128,41 +138,76 @@ export default function CommunityOrganizations() {
         {/* Organizations Grid */}
         <div className="grid md:grid-cols-2 gap-6">
           {organizations.map((org) => (
-            <Card key={org.id} className="hover:shadow-lg transition-shadow cursor-pointer">
-              <CardContent className="p-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-20 h-20 flex-shrink-0">
-                    <Image
-                      src={org.logo || "/placeholder.svg"}
-                      alt={`${org.name} logo`}
-                      width={80}
-                      height={80}
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-1">{org.name}</h3>
-                    <p className="text-gray-600 mb-3">{org.location}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {org.membershipLevel && (
-                        <Badge variant="secondary" className="bg-gray-100 text-gray-800">
-                          {org.membershipLevel}
-                        </Badge>
-                      )}
-                      {org.projectsCount && (
-                        <Badge variant="outline" className="border-gray-300 text-gray-700">
-                          {org.projectsCount}
-                        </Badge>
-                      )}
-                    </div>
-                  </div>
+            <Link
+              href="#"
+              key={org.id}
+              className="border border-[#D1D1D1] bg-[#FDFDFD] p-4 flex flex-col justify-between space-y-6 rounded-sm"
+            >
+              <div className="flex items-center space-x-4">
+                <Image
+                  src={org.logo || "/placeholder.svg"}
+                  alt={`${org.name} logo`}
+                  width={80}
+                  height={80}
+                  className="w-[100px] aspect-square object-contain"
+                />
+                <div>
+                  <h3 className="text-xl font-semibold mb-0.5">{org.name}</h3>
+                  <p className="text-gray-500 text-sm font-normal">
+                    {org.location}
+                  </p>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+              <div className="flex items-center space-x-2">
+                {[org.membershipLevel, org.projectsCount].map((item, index) => {
+                  return (
+                    item && (
+                      <div
+                        key={index}
+                        className="border border-[#A9C4E0] bg-[#F1F8FF] rounded-sm px-2 py-1 text-sm font-medium"
+                      >
+                        {item}
+                      </div>
+                    )
+                  );
+                })}
+              </div>
+            </Link>
+
+            // <Card key={org.id} className="hover:shadow-lg transition-shadow cursor-pointer">
+            //   <CardContent className="p-6">
+            //     <div className="flex items-start space-x-4">
+            //       <div className="w-20 h-20 flex-shrink-0">
+            //         <Image
+            //           src={org.logo || "/placeholder.svg"}
+            //           alt={`${org.name} logo`}
+            //           width={80}
+            //           height={80}
+            //           className="w-full h-full object-contain"
+            //         />
+            //       </div>
+            //       <div className="flex-1">
+            //         <h3 className="text-xl font-semibold text-gray-900 mb-1">{org.name}</h3>
+            //         <p className="text-gray-600 mb-3">{org.location}</p>
+            //         <div className="flex flex-wrap gap-2">
+            //           {org.membershipLevel && (
+            //             <Badge variant="secondary" className="bg-gray-100 text-gray-800">
+            //               {org.membershipLevel}
+            //             </Badge>
+            //           )}
+            //           {org.projectsCount && (
+            //             <Badge variant="outline" className="border-gray-300 text-gray-700">
+            //               {org.projectsCount}
+            //             </Badge>
+            //           )}
+            //         </div>
+            //       </div>
+            //     </div>
+            //   </CardContent>
+            // </Card>
           ))}
         </div>
       </div>
-
-      </>
-  )
+    </>
+  );
 }
