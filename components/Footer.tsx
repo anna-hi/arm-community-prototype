@@ -7,9 +7,9 @@ import { FaPhoneAlt } from "react-icons/fa";
 
 const Footer: React.FC = () => (
   <footer className="bg-[#222] text-white py-12">
-    <div className="max-w-7xl mx-auto">
-      <div className="flex flex-row gap-8 items-end">
-        <div>
+    <div className="max-w-7xl mx-auto px-4">
+      <div className="flex flex-col md:flex-row gap-8 items-start md:items-end">
+        <div className="mb-8 md:mb-0">
           <div className="flex items-center space-x-2 mb-4">
             <Image
               src="/images/homepage/arm-footer-logo.png"
@@ -24,12 +24,12 @@ const Footer: React.FC = () => (
             rights reserved.
           </p>
         </div>
-        <div className="flex flex-row w-full">
-          <div className="mr-8 flex items-start gap-2">
+        <div className="flex flex-col sm:flex-row w-full gap-6 md:gap-0">
+          <div className="mr-0 md:mr-8 flex items-start gap-2 mb-6 sm:mb-0">
             <FaLocationDot className="arm-yellow" />
             <div>
               <h6 className="mb-1.5">Address</h6>
-              <p className=" text-sm">
+              <p className="text-sm">
                 Mill 19 at Hazelwood Green
                 <br />
                 4720 Technology Dr, Suite 300
@@ -38,7 +38,7 @@ const Footer: React.FC = () => (
               </p>
             </div>
           </div>
-          <div className="flex items-start gap-2">
+          <div className="flex items-start gap-2 mb-6 sm:mb-0">
             <FaPhoneAlt className="arm-yellow" />
             <div>
               <h6 className="font-semibold mb-1.5">Phone</h6>
@@ -46,11 +46,11 @@ const Footer: React.FC = () => (
             </div>
           </div>
         </div>
-        <div className="w-64">
+        <div className="w-full md:w-64">
           <h6 className="font-semibold mb-4">Need Help?</h6>
           <MainButton
             text="Contact ARM"
-            className="small-main-button w-full mb-2"
+            className="small-main-button mb-2"
           ></MainButton>
         </div>
       </div>

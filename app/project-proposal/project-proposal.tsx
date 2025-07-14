@@ -9,7 +9,7 @@ export default function ProjectProposal() {
 
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           {/* New Proposal */}
-          <Card className="border-gray-200">
+          <Card className= "border-gray-200">
             <CardHeader>
               <CardTitle className="text-xl font-semibold text-gray-900">New Proposal</CardTitle>
             </CardHeader>

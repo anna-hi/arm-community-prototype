@@ -7,7 +7,7 @@ import { ActiveBadge } from "./project-call-template/components/badges";
 export default function ProjectCalls() {
   return (<>
       {/* Hero Section */}
-      <section className="relative bg-gray-900 text-white py-20">
+      <section className="relative bg-gray-900 text-white py-16">
         <div className="absolute inset-0 bg-black/60"></div>
         <div
           className="absolute inset-0 bg-cover bg-center"
@@ -28,7 +28,7 @@ export default function ProjectCalls() {
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-6 py-12 space-y-16">
+      <div className="md:mx-[100px] mx-auto px-6 py-12 space-y-16">
         {/* Active Project Calls */}
         <section>
           <h1 className="mb-8">Active Project Calls</h1>
