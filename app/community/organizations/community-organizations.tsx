@@ -139,7 +139,11 @@ export default function CommunityOrganizations() {
         <div className="grid md:grid-cols-2 gap-6">
           {organizations.map((org) => (
             <Link
-              href="#"
+              href={
+                org.name === "Siemens Corporation"
+                  ? "organizations/siemens-corporation"
+                  : "#"
+              }
               key={org.id}
               className="border border-[#D1D1D1] bg-[#FDFDFD] p-4 flex flex-col justify-between space-y-6 rounded-sm"
             >
@@ -173,38 +177,6 @@ export default function CommunityOrganizations() {
                 })}
               </div>
             </Link>
-
-            // <Card key={org.id} className="hover:shadow-lg transition-shadow cursor-pointer">
-            //   <CardContent className="p-6">
-            //     <div className="flex items-start space-x-4">
-            //       <div className="w-20 h-20 flex-shrink-0">
-            //         <Image
-            //           src={org.logo || "/placeholder.svg"}
-            //           alt={`${org.name} logo`}
-            //           width={80}
-            //           height={80}
-            //           className="w-full h-full object-contain"
-            //         />
-            //       </div>
-            //       <div className="flex-1">
-            //         <h3 className="text-xl font-semibold text-gray-900 mb-1">{org.name}</h3>
-            //         <p className="text-gray-600 mb-3">{org.location}</p>
-            //         <div className="flex flex-wrap gap-2">
-            //           {org.membershipLevel && (
-            //             <Badge variant="secondary" className="bg-gray-100 text-gray-800">
-            //               {org.membershipLevel}
-            //             </Badge>
-            //           )}
-            //           {org.projectsCount && (
-            //             <Badge variant="outline" className="border-gray-300 text-gray-700">
-            //               {org.projectsCount}
-            //             </Badge>
-            //           )}
-            //         </div>
-            //       </div>
-            //     </div>
-            //   </CardContent>
-            // </Card>
           ))}
         </div>
       </div>
