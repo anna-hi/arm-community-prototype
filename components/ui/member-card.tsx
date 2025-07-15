@@ -8,6 +8,7 @@ import { Star } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import Link from "next/link"
 import { useState } from "react"
+import { FaLocationDot } from "react-icons/fa6";
 
 interface Member {
   id: string
@@ -23,7 +24,7 @@ interface Member {
   committee: string[]
   knowledgeable_skills: string[]
   is_favorite: boolean
-  profile_image?: string
+  profile_image_url?: string
 }
 
 interface MemberCardProps {
@@ -53,15 +54,15 @@ export function MemberCard({ member, onToggleFavorite }: MemberCardProps) {
 
   return (
     <Link href={`/community/members/${member.id}`}>
-      <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer relative group">
-        <CardContent className="p-6 flex flex-col h-full">
+      <Card className="!bg-white rounded border border-gray-200 hover:shadow-lg cursor-pointer relative group">
+        <CardContent className="flex flex-col justify-between h-full">
           {/* Tags at the top */}
           <div className="flex flex-wrap gap-2 mb-4 min-h-[2rem]">
             {displayTags.map((tag, index) => (
               <Badge
                 key={`${tag}-${index}`}
                 variant="secondary"
-                className="text-xs px-2 py-1 bg-blue-100 text-blue-800"
+                className="card-tag"
               >
                 {tag}
               </Badge>
@@ -69,9 +70,9 @@ export function MemberCard({ member, onToggleFavorite }: MemberCardProps) {
           </div>
 
           {/* Centered profile section */}
-          <div className="flex flex-col items-center text-center flex-1 justify-center">
-            <Avatar className="w-20 h-20 mb-4">
-              <AvatarImage src={member.profile_image || "/placeholder-user.jpg"} alt={member.name} />
+          <div className="flex flex-col items-start text-center">
+            <Avatar className="w-20 h-20 mb-4 border border-gray-200">
+              <AvatarImage src={member.profile_image_url || "/placeholder-user.jpg"} alt={member.name}/>
               <AvatarFallback className="text-lg font-semibold bg-gray-200">
                 {member.name
                   .split(" ")
@@ -81,22 +82,27 @@ export function MemberCard({ member, onToggleFavorite }: MemberCardProps) {
               </AvatarFallback>
             </Avatar>
 
-            <h3 className="font-semibold text-lg mb-1">{member.name}</h3>
-            <p className="text-sm text-gray-600 mb-1">{member.title}</p>
-            <p className="text-sm text-gray-500 mb-2">{member.company}</p>
-            <p className="text-xs text-gray-400">{member.location}</p>
+            <div className="flex flex-col items-start gap-1">
+              <div className="text-xl font-montserrat font-bold text-gray-900">{member.name}</div>
+              <div className="text-xs text-gray-500 font-normal">{member.company}</div>
+              {/* <div className="flex items-start gap-1">
+                <FaLocationDot className="text-gray-400 w-4 h-4" />
+                <p className="text-xs text-gray-400">{member.location}</p>
+              </div> */}
+              <div className="pt-1 text-sm max-w-[240px] font-medium truncate text-gray-800">{member.title}</div>
+            </div>
           </div>
 
           {/* Star at bottom-right */}
-          <div className="absolute bottom-4 right-4">
+          <div className="absolute bottom-6 right-6">
             <button
               onClick={handleToggleFavorite}
-              className="p-1 rounded-full hover:bg-gray-100 transition-colors"
+              className="w-10 h-10 rounded-full hover:bg-yellow-200 transition-colors flex items-center justify-center"
               aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
             >
               <Star
-                className={`w-5 h-5 ${
-                  isFavorite ? "fill-yellow-400 text-yellow-400" : "text-gray-300 hover:text-yellow-400"
+                className={`w-7 h-7 ${
+                  isFavorite ? "fill-yellow-400 text-yellow-400" : "text-armYellow"
                 }`}
               />
             </button>

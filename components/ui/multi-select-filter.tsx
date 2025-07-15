@@ -49,11 +49,11 @@ export function MultiSelectFilter({
             variant="outline"
             role="combobox"
             aria-expanded={open}
-            className="w-full justify-between h-10 px-3 py-2 text-sm border border-gray-300 rounded-md bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="flex gap-4 text-base rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           >
-            <div className="flex flex-wrap gap-1 flex-1 min-w-0">
+            <div className="flex gap-1 flex-1">
               {selected.length === 0 ? (
-                <span className="text-gray-500 truncate">{placeholder}</span>
+                <span className="text-gray-900 text-sm truncate">{placeholder}</span>
               ) : (
                 <>
                   {selected.slice(0, 2).map((item) => (
@@ -78,7 +78,7 @@ export function MultiSelectFilter({
                 </>
               )}
             </div>
-            <div className="flex items-center gap-1 ml-2 flex-shrink-0">
+            <div className="flex gap-1">
               {selected.length > 0 && (
                 <X
                   className="h-4 w-4 text-gray-400 hover:text-gray-600 cursor-pointer"
@@ -88,7 +88,7 @@ export function MultiSelectFilter({
                   }}
                 />
               )}
-              <ChevronDown className="h-4 w-4 text-gray-400" />
+              <ChevronDown className="h-4 w-4 text-gray-500" />
             </div>
           </Button>
         </PopoverTrigger>

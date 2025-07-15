@@ -6,6 +6,7 @@ import { MultiSelectFilter } from "@/components/ui/multi-select-filter"
 import { MemberCard } from "@/components/ui/member-card"
 import { Search } from "lucide-react"
 import { supabase } from "@/lib/supabase"
+import { Checkbox } from "@/components/ui/checkbox"
 
 interface Member {
   id: string
@@ -179,46 +180,59 @@ export default function CommunityMembers() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="mx-auto max-w-7xl mx-[127px] px-12 py-12">
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Community Members</h1>
-        <p className="text-gray-600">Connect with ARM community members and explore their expertise</p>
-      </div>
+        <h1 className="text-3xl font-semibold text-gray-900 mb-8">Member Directory</h1>
 
       {/* Search and Filters */}
       <div className="mb-8 space-y-4">
         {/* Search */}
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+        <div className="relative max-w-md mb-8">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
           <Input
             placeholder="Search members by name, title, company, or expertise..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10 h-12 text-base"
+            className="pl-10"
           />
         </div>
 
-        {/* Filters */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <MultiSelectFilter
-            options={expertiseOptions}
-            selected={selectedExpertise}
-            onChange={setSelectedExpertise}
-            placeholder="Filter by expertise..."
-          />
-          <MultiSelectFilter
-            options={committeeOptions}
-            selected={selectedCommittees}
-            onChange={setSelectedCommittees}
-            placeholder="Filter by committee..."
-          />
-          <MultiSelectFilter
-            options={skillsOptions}
-            selected={selectedSkills}
-            onChange={setSelectedSkills}
-            placeholder="Filter by skills..."
-          />
+        {/* Filters Section*/}
+        <h2 className="text-lg font-semibold text-gray-900 mb-4">Filters</h2>
+        
+        <div className="rounded-lg bg-gray-100 p-4 mb-6">
+          {/* Interested in projects checkbox */}
+          <div className="flex items-center space-x-2 mb-4">
+            <Checkbox id="interested-projects" />
+            <label htmlFor="interested-projects" className="text-sm text-gray-700">
+              Interested in projects
+            </label>
+          </div>
+
+          {/* Expertise, Committee, and Skills Filters */}
+          <div className="flex item-start gap-4">
+            <MultiSelectFilter
+              options={expertiseOptions}
+              selected={selectedExpertise}
+              onChange={setSelectedExpertise}
+              placeholder="Expertise"
+              className="flex text-base text-green-700"
+            />
+            <MultiSelectFilter
+              options={committeeOptions}
+              selected={selectedCommittees}
+              onChange={setSelectedCommittees}
+              placeholder="Committee"
+              className="flex"
+            />
+            <MultiSelectFilter
+              options={skillsOptions}
+              selected={selectedSkills}
+              onChange={setSelectedSkills}
+              placeholder="Skills"
+              className="flex"
+            />
+          </div>
         </div>
       </div>
 
@@ -236,7 +250,7 @@ export default function CommunityMembers() {
           <p className="text-gray-400">Try adjusting your search or filters</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredMembers.map((member) => (
             <MemberCard key={member.id} member={member} onToggleFavorite={handleToggleFavorite} />
           ))}

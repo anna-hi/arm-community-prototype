@@ -65,7 +65,7 @@ export default function CommunityOrganizations() {
   return (
     <>
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="max-w-7xl mx-auto px-12 py-12">
         {/* Page Title */}
         <h1 className="text-gray-900 mb-8">
           Organization Member Directory
@@ -76,14 +76,14 @@ export default function CommunityOrganizations() {
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
           <Input
             type="text"
-            placeholder="Search for Organizations..."
+            placeholder="Search organizations..."
             className="pl-10 w-full max-w-md"
           />
         </div>
 
         {/* Filters */}
-        <div className="bg-gray-50 p-6 rounded-lg mb-8">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Filters</h3>
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Filters</h3>
+        <div className="bg-gray-100 p-6 rounded-lg mb-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <Select>
               <SelectTrigger>
