@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import NewsEventCard from "@/components/ui/news-event-card";
+import { OrangeButton } from "@/components/OrangeButton";
 
 const events = [
   {
@@ -198,14 +199,14 @@ export default function CommunityEvents() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white gap-12">
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-6 py-8">
+      <main className="flex flex-col max-w-7xl mx-[127px] px-6 py-12 gap-12">
         {/* Upcoming Events Section */}
+        <h1 className="text-4xl font-bold text-gray-900 mb-8">
+          Upcoming Events
+        </h1>
         <section className="mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-8">
-            Upcoming Events
-          </h1>
 
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div>
@@ -231,30 +232,17 @@ export default function CommunityEvents() {
                 </div>
               </div>
 
-              <Button className="bg-[#fdb619] hover:bg-[#e6a516] text-black font-medium">
-                Check Event Details
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
+              <OrangeButton text="Check Event Details" />
             </div>
 
             <div className="relative">
               <Image
-                src="/placeholder.svg?height=400&width=600"
+                src="/images/events/arm-member-meeting.png"
                 alt="Annual ARM Institute Member Meeting"
                 width={600}
                 height={400}
                 className="rounded-lg w-full"
               />
-              <div className="absolute inset-0 bg-black/40 rounded-lg flex items-center justify-center">
-                <div className="text-center text-white">
-                  <h3 className="text-2xl font-bold mb-2">
-                    Annual ARM Institute Member Meeting
-                  </h3>
-                  <p className="text-xl text-[#fdb619]">
-                    Sept. 3-5 in Pittsburgh, PA
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
         </section>

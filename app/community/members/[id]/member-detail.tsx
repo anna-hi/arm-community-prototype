@@ -2,13 +2,13 @@
 
 import { useState, useEffect } from "react"
 import { useParams, useRouter } from "next/navigation"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { ArrowLeft, Mail, Phone, Linkedin, MapPin, Star } from "lucide-react"
-import { supabase } from "@/lib/supabase"
+import { ArrowLeft, Mail, Phone, Star } from "lucide-react"
+import { OrangeButtonLeft } from "@/components/OrangeButtonLeft"
+import Link from "next/link"
 
 interface Member {
   id: string
@@ -18,13 +18,13 @@ interface Member {
   location: string
   email: string
   phone?: string
-  linkedin?: string
+  address?: string
   bio: string
-  expertise: string[]
-  committee: string[]
   knowledgeable_skills: string[]
+  membership_level?: string
+  membership_role?: string
   is_favorite: boolean
-  profile_image?: string
+  profile_image_url?: string
 }
 
 export default function MemberDetail() {
@@ -34,66 +34,54 @@ export default function MemberDetail() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [isFavorite, setIsFavorite] = useState(false)
+  const [showAllSkills, setShowAllSkills] = useState(false)
 
   const memberId = params.id as string
 
-  const fetchMember = async () => {
-    try {
+  useEffect(() => {
+    // Replace with your actual fetch logic
+    async function fetchMember() {
       setLoading(true)
       setError(null)
-
-      const { data, error: fetchError } = await supabase.from("members").select("*").eq("id", memberId).single()
-
-      if (fetchError) {
-        throw fetchError
-      }
-
-      if (!data) {
-        throw new Error("Member not found")
-      }
-
-      // Ensure arrays are properly initialized
-      const processedMember = {
-        ...data,
-        expertise: Array.isArray(data.expertise) ? data.expertise : [],
-        committee: Array.isArray(data.committee) ? data.committee : [],
-        knowledgeable_skills: Array.isArray(data.knowledgeable_skills) ? data.knowledgeable_skills : [],
-        is_favorite: Boolean(data.is_favorite),
-      }
-
-      setMember(processedMember)
-      setIsFavorite(processedMember.is_favorite)
-    } catch (err) {
-      console.error("Error fetching member:", err)
-      setError("Failed to load member details. Please try again later.")
-    } finally {
-      setLoading(false)
+      // Simulate fetch
+      setTimeout(() => {
+        // Example member data
+        const data: Member = {
+          id: memberId,
+          name: "Aaron Prather",
+          title: "Director, Robotics & Autonomous Systems Programs",
+          company: "ASTM",
+          location: "",
+          email: "aprather@astm.com",
+          phone: "(123) 456-7890",
+          address: "(Not Provided)",
+          bio:
+            "Leads ASTM efforts in the field of Robotics and Autonomous Systems. From Standards Development to Workforce Training to R&D, ASTM has a lot of tools to offer.",
+          knowledgeable_skills: [
+            "Automation",
+            "Autonomous Vehicles",
+            "Collaborative Robots",
+            "Drones",
+            "Industrial Robots",
+            "Mobile Robots",
+            "Public Speaking",
+          ],
+          membership_level: "Supporting",
+          membership_role: "TAC Committee Member",
+          is_favorite: true,
+          profile_image_url: "/images/members/aaron-prather.jpeg",
+        }
+        setMember(data)
+        setIsFavorite(data.is_favorite)
+        setLoading(false)
+      }, 500)
     }
-  }
-
-  useEffect(() => {
-    if (memberId) {
-      fetchMember()
-    }
+    if (memberId) fetchMember()
   }, [memberId])
 
-  const handleToggleFavorite = async () => {
-    if (!member) return
-
-    try {
-      const newFavoriteState = !isFavorite
-
-      const { error } = await supabase.from("members").update({ is_favorite: newFavoriteState }).eq("id", member.id)
-
-      if (error) {
-        throw error
-      }
-
-      setIsFavorite(newFavoriteState)
-      setMember((prev) => (prev ? { ...prev, is_favorite: newFavoriteState } : null))
-    } catch (err) {
-      console.error("Error updating favorite status:", err)
-    }
+  const handleToggleFavorite = () => {
+    setIsFavorite((prev) => !prev)
+    setMember((prev) => (prev ? { ...prev, is_favorite: !prev.is_favorite } : null))
   }
 
   if (loading) {
@@ -122,173 +110,133 @@ export default function MemberDetail() {
     )
   }
 
+  // Show only first 7 skills unless "Show More" is clicked
+  const skillsToShow = showAllSkills ? member.knowledgeable_skills : member.knowledgeable_skills.slice(0, 7)
+
   return (
-    <div className="container mx-auto px-4 py-8 max-w-4xl">
-      {/* Back Button */}
-      <Button
-        variant="ghost"
-        onClick={() => router.back()}
-        className="mb-6 p-0 h-auto font-normal text-blue-600 hover:text-blue-800"
-      >
-        <ArrowLeft className="w-4 h-4 mr-2" />
-        Back to Members
-      </Button>
+    <>
+      <main className="bg-[#fafafa] min-h-screen">
+        <div className="flex flex-col max-w-7xl mx-[127px] px-6 py-10 gap-8">
+          {/* Back Button */}
+          <Link href="/community/members">
+            <OrangeButtonLeft text="Member Directory" />
+          </Link>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Left Column - Profile Card */}
-        <div className="lg:col-span-1">
-          <Card>
-            <CardContent className="p-6 text-center">
-              <div className="relative inline-block mb-4">
-                <Avatar className="w-32 h-32 mx-auto">
-                  <AvatarImage src={member.profile_image || "/placeholder-user.jpg"} alt={member.name} />
-                  <AvatarFallback className="text-2xl font-semibold bg-gray-200">
-                    {member.name
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")
-                      .toUpperCase()}
-                  </AvatarFallback>
-                </Avatar>
-                <button
-                  onClick={handleToggleFavorite}
-                  className="absolute -top-2 -right-2 p-2 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow"
-                  aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
-                >
-                  <Star
-                    className={`w-5 h-5 ${
-                      isFavorite ? "fill-yellow-400 text-yellow-400" : "text-gray-300 hover:text-yellow-400"
-                    }`}
-                  />
-                </button>
-              </div>
-
-              <h1 className="text-2xl font-bold text-gray-900 mb-2">{member.name}</h1>
-              <p className="text-lg text-gray-600 mb-1">{member.title}</p>
-              <p className="text-base text-gray-500 mb-4">{member.company}</p>
-
-              <div className="flex items-center justify-center text-gray-500 mb-6">
-                <MapPin className="w-4 h-4 mr-1" />
-                <span className="text-sm">{member.location}</span>
-              </div>
-
-              <Separator className="my-6" />
-
-              {/* Contact Information */}
-              <div className="space-y-3">
-                <div className="flex items-center justify-center">
-                  <Mail className="w-4 h-4 mr-2 text-gray-400" />
-                  <a href={`mailto:${member.email}`} className="text-blue-600 hover:text-blue-800 text-sm">
-                    {member.email}
-                  </a>
-                </div>
-
-                {member.phone && (
-                  <div className="flex items-center justify-center">
-                    <Phone className="w-4 h-4 mr-2 text-gray-400" />
-                    <a href={`tel:${member.phone}`} className="text-blue-600 hover:text-blue-800 text-sm">
-                      {member.phone}
-                    </a>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Left Card */}
+            <div>
+              <Card className="!h-auto rounded-lg !bg-white">
+                <CardContent className="flex flex-col items-center">
+                  <div className="w-full flex justify-end">
+                    <button
+                      onClick={handleToggleFavorite}
+                      className="p-2 rounded-full bg-orange-100 transition"
+                      aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
+                    >
+                      <Star
+                        className={`w-6 h-6 ${
+                          isFavorite ? "fill-yellow-400 text-yellow-400" : "text-armYellow"
+                        }`}
+                      />
+                    </button>
                   </div>
-                )}
-
-                {member.linkedin && (
-                  <div className="flex items-center justify-center">
-                    <Linkedin className="w-4 h-4 mr-2 text-gray-400" />
-                    <a
-                      href={member.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-600 hover:text-blue-800 text-sm"
-                    >
-                      LinkedIn Profile
-                    </a>
+                  <div className="relative mb-4">
+                    <Avatar className="w-24 h-24 mx-auto">
+                      <AvatarImage src={member.profile_image_url || "/placeholder-user.jpg"} alt={member.name} />
+                      <AvatarFallback className="text-2xl font-semibold bg-gray-200">
+                        {member.name
+                          .split(" ")
+                          .map((n) => n[0])
+                          .join("")
+                          .toUpperCase()}
+                      </AvatarFallback>
+                    </Avatar>
                   </div>
-                )}
-              </div>
-            </CardContent>
-          </Card>
+                  <div className="text-center">
+                    <div className="font-semibold text-lg font-montserrat text-gray-900">{member.name}</div>
+                    <div className="text-sm text-gray-500 mb-6">{member.company}</div>
+                    <div className="text-sm text-gray-900 mb-4">{member.title}</div>
+                  </div>
+                  <div className="w-full border-t border-gray-200 my-4" />
+                  <div className="w-full text-left text-sm space-y-4">
+                    <div>
+                      <span className="font-medium text-gray-400">Email</span>
+                      <br />
+                      <a href={`mailto:${member.email}`} className="font-medium text-gray-950 underline">
+                        {member.email}
+                      </a>
+                    </div>
+                    <div>
+                      <span className="font-medium text-gray-400">Phone</span>
+                      <br />
+                      <span className="text-gray-950">{member.phone || "(Not Provided)"}</span>
+                    </div>
+                    <div>
+                      <span className="font-medium text-gray-400">Address</span>
+                      <br />
+                      <span className="text-gray-600">{member.address || "(Not Provided)"}</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Right Details */}
+            <div className="md:col-span-2 flex flex-col gap-6">
+              {/* About Me */}
+              <Card className="!h-auto rounded-lg !bg-white">
+                <CardContent className="">
+                  <div className="font-bold text-lg text-gray-900 mb-2">About Me</div>
+                  <p className="text-gray-700">{member.bio}</p>
+                </CardContent>
+              </Card>
+
+              {/* Knowledgeable About */}
+              <Card className="!h-auto rounded-lg !bg-white">
+                <CardContent className="">
+                  <div className="font-bold text-lg text-gray-900 mb-2">Knowledgeable about</div>
+                  <div className="flex flex-wrap gap-2 mb-2">
+                    {skillsToShow.map((skill, idx) => (
+                      <Badge
+                        key={idx}
+                        className="bg-blue-100 text-gray-950 px-3 py-1 rounded text-sm font-normal"
+                      >
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
+                  {member.knowledgeable_skills.length > 7 && (
+                    <button
+                      className="text-armOrange text-sm font-medium underline"
+                      onClick={() => setShowAllSkills((prev) => !prev)}
+                    >
+                      {showAllSkills ? "Show Less" : "Show More"}
+                    </button>
+                  )}
+                </CardContent>
+              </Card>
+
+              {/* Membership Level & Role */}
+              <Card className="!h-auto rounded-lg !bg-white">
+                <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <div className="font-bold text-lg text-gray-900 mb-2">Membership Level</div>
+                    <Badge className="bg-[#fff4dc] text-gray-900 px-3 py-1 rounded text-sm font-normal">
+                      {member.membership_level || "(Not Provided)"}
+                    </Badge>
+                  </div>
+                  <div>
+                    <div className="font-bold text-lg text-gray-900 mb-2">Membership Role</div>
+                    <Badge className="bg-[#e8f8e4] text-gray-900 px-3 py-1 rounded text-sm font-normal">
+                      {member.membership_role || "(Not Provided)"}
+                    </Badge>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
         </div>
-
-        {/* Right Column - Details */}
-        <div className="lg:col-span-2 space-y-6">
-          {/* Bio Section */}
-          <Card>
-            <CardHeader>
-              <CardTitle>About</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-700 leading-relaxed">{member.bio}</p>
-            </CardContent>
-          </Card>
-
-          {/* Expertise Section */}
-          {member.expertise.length > 0 && (
-            <Card>
-              <CardHeader>
-                <CardTitle>Areas of Expertise</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {member.expertise.map((item, index) => (
-                    <Badge
-                      key={`expertise-${index}`}
-                      variant="secondary"
-                      className="px-3 py-1 bg-blue-100 text-blue-800"
-                    >
-                      {item}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          )}
-
-          {/* Committee Involvement */}
-          {member.committee.length > 0 && (
-            <Card>
-              <CardHeader>
-                <CardTitle>Committee Involvement</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {member.committee.map((item, index) => (
-                    <Badge
-                      key={`committee-${index}`}
-                      variant="secondary"
-                      className="px-3 py-1 bg-green-100 text-green-800"
-                    >
-                      {item}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          )}
-
-          {/* Skills & Knowledge */}
-          {member.knowledgeable_skills.length > 0 && (
-            <Card>
-              <CardHeader>
-                <CardTitle>Skills & Knowledge</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {member.knowledgeable_skills.map((item, index) => (
-                    <Badge
-                      key={`skill-${index}`}
-                      variant="secondary"
-                      className="px-3 py-1 bg-purple-100 text-purple-800"
-                    >
-                      {item}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          )}
-        </div>
-      </div>
-    </div>
+      </main>
+    </>
   )
 }
