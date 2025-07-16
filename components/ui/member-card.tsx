@@ -8,7 +8,6 @@ import { Star } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import Link from "next/link"
 import { useState } from "react"
-import { FaLocationDot } from "react-icons/fa6";
 
 interface Member {
   id: string
@@ -62,7 +61,7 @@ export function MemberCard({ member, onToggleFavorite }: MemberCardProps) {
               <Badge
                 key={`${tag}-${index}`}
                 variant="secondary"
-                className="card-tag"
+                className="font-medium body-small-bold card-tag"
               >
                 {tag}
               </Badge>
@@ -83,7 +82,7 @@ export function MemberCard({ member, onToggleFavorite }: MemberCardProps) {
             </Avatar>
 
             <div className="flex flex-col items-start gap-1">
-              <div className="text-xl font-montserrat font-bold text-gray-900">{member.name}</div>
+              <h3 className="text-gray-900">{member.name}</h3>
               <div className="text-xs text-gray-500 font-normal">{member.company}</div>
               {/* <div className="flex items-start gap-1">
                 <FaLocationDot className="text-gray-400 w-4 h-4" />
