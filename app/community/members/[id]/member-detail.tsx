@@ -115,7 +115,7 @@ export default function MemberDetail() {
 
   return (
     <>
-      <main className="bg-[#fafafa] min-h-screen">
+      <main className="bg-[#f9f9f9] min-h-screen">
         <div className="flex flex-col max-w-7xl mx-[127px] px-6 py-10 gap-8">
           {/* Back Button */}
           <Link href="/community/members">
@@ -153,8 +153,8 @@ export default function MemberDetail() {
                     </Avatar>
                   </div>
                   <div className="text-center">
-                    <div className="font-semibold text-lg font-montserrat text-gray-900">{member.name}</div>
-                    <div className="text-sm text-gray-500 mb-6">{member.company}</div>
+                    <h3>{member.name}</h3>
+                    <div className="text-sm text-gray-500 mb-2">{member.company}</div>
                     <div className="text-sm text-gray-900 mb-4">{member.title}</div>
                   </div>
                   <div className="w-full border-t border-gray-200 my-4" />
@@ -186,7 +186,7 @@ export default function MemberDetail() {
               {/* About Me */}
               <Card className="!h-auto rounded-lg !bg-white">
                 <CardContent className="">
-                  <div className="font-bold text-lg text-gray-900 mb-2">About Me</div>
+                  <div className="font-medium text-lg text-gray-900 mb-2">About Me</div>
                   <p className="text-gray-700">{member.bio}</p>
                 </CardContent>
               </Card>
@@ -194,7 +194,7 @@ export default function MemberDetail() {
               {/* Knowledgeable About */}
               <Card className="!h-auto rounded-lg !bg-white">
                 <CardContent className="">
-                  <div className="font-bold text-lg text-gray-900 mb-2">Knowledgeable about</div>
+                  <div className="font-medium text-lg text-gray-900 mb-2">Knowledgeable about</div>
                   <div className="flex flex-wrap gap-2 mb-2">
                     {skillsToShow.map((skill, idx) => (
                       <Badge
@@ -220,13 +220,13 @@ export default function MemberDetail() {
               <Card className="!h-auto rounded-lg !bg-white">
                 <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <div className="font-bold text-lg text-gray-900 mb-2">Membership Level</div>
+                    <div className="font-medium text-lg text-gray-900 mb-2">Membership Level</div>
                     <Badge className="bg-[#fff4dc] text-gray-900 px-3 py-1 rounded text-sm font-normal">
                       {member.membership_level || "(Not Provided)"}
                     </Badge>
                   </div>
                   <div>
-                    <div className="font-bold text-lg text-gray-900 mb-2">Membership Role</div>
+                    <div className="font-medium text-lg text-gray-900 mb-2">Membership Role</div>
                     <Badge className="bg-[#e8f8e4] text-gray-900 px-3 py-1 rounded text-sm font-normal">
                       {member.membership_role || "(Not Provided)"}
                     </Badge>
