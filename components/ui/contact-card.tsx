@@ -4,7 +4,7 @@ import { IoMdMail } from "react-icons/io";
 
 export default function ContactCard({ member }: { member: any }) {
   return (
-    <Card className="!h-60 !bg-white rounded border border-gray-200 cursor-pointer relative group">
+    <Card className="!h-72 !bg-white rounded border border-gray-200 cursor-pointer relative group">
       <CardContent className="flex items-end justify-between h-full">
         <div className="flex flex-col items-start gap-2">
             <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center">
@@ -14,7 +14,7 @@ export default function ContactCard({ member }: { member: any }) {
                 </svg>
             </div>
             <div className="flex flex-col items-start">
-                <div className="text-xl font-montserrat font-bold text-gray-900">{member.name}</div>
+                <div className="text-xl font-montserrat font-semibold">{member.name}</div>
                 <div className="text-xs text-gray-500 font-normal">{member.company}</div>
                 <div className="pt-1 text-sm max-w-[240px] font-medium truncate text-gray-800">{member.title}</div>
             </div>

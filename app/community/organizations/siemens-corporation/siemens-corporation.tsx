@@ -16,7 +16,7 @@ const projects = [
 		tags: ["Surface Preparation", "Multi-Robot", "Modeling"],
 		leadOrg: "Siemens Corporation",
 		principalInvestigator: "Sudhir Rajagopalan",
-		imageSrc: "/placeholder-logo.png",
+		imageSrc: "/images/cdip/cdip-image.png",
 		isFavorite: true,
 	},
 	{
@@ -26,7 +26,7 @@ const projects = [
 		tags: ["Robot Integration", "Multi-Robot", "Robot Control"],
 		leadOrg: "Siemens Corporation",
 		principalInvestigator: "Shashank Tamaskar",
-		imageSrc: "/placeholder-logo.png",
+		imageSrc: "/images/cdip/cdip-image.png",
 		isFavorite: true,
 	},
 	{
@@ -36,7 +36,7 @@ const projects = [
 		tags: ["Robotics", "Application System", "Robot Control"],
 		leadOrg: "Siemens Corporation",
 		principalInvestigator: "Mark Burhop",
-		imageSrc: "/placeholder-logo.png",
+		imageSrc: "/images/cdip/cdip-image.png",
 		isFavorite: true,
 	},
 ];
