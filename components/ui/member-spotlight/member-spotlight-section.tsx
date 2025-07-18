@@ -15,7 +15,7 @@ type SpotlightItem = {
 const items: SpotlightItem[] = [
   {
     id: 1,
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/images/homepage/member-spotlight-1.png",
     imageAlt: "HEBI Robotics manufacturing",
     title: "Meet HEBI Robotics Inc.",
     description:
@@ -24,7 +24,7 @@ const items: SpotlightItem[] = [
   },
   {
     id: 2,
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/images/homepage/member-spotlight-2.png",
     imageAlt: "HEBI Robotics manufacturing",
     title: "Meet HEBI 2 Robotics Inc.",
     description:
@@ -33,7 +33,7 @@ const items: SpotlightItem[] = [
   },
   {
     id: 3,
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/images/homepage/member-spotlight-3.png",
     imageAlt: "HEBI Robotics manufacturing",
     title: "Meet HEBI 3 Robotics Inc.",
     description:
