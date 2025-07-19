@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { ActiveBadge } from "./app/project-calls/project-call-template/components/badges";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
@@ -64,12 +65,7 @@ export default function Homepage() {
                   </p>
                 </CardContent>
                 <div className="flex items-center justify-between">
-                  <Badge
-                    variant="secondary"
-                    className="bg-green-100 text-green-800"
-                  >
-                    Active
-                  </Badge>
+                  <ActiveBadge />
                   <OrangeButton text="Go to Project Call" />
                 </div>
               </Card>
@@ -91,12 +87,7 @@ export default function Homepage() {
                 </p>
               </CardContent>
               <div className="flex items-center justify-between">
-                <Badge
-                  variant="secondary"
-                  className="bg-green-100 text-green-800"
-                >
-                  Active
-                </Badge>
+                <ActiveBadge />
                 <OrangeButton text="Go to Project Call" />
               </div>
             </Card>

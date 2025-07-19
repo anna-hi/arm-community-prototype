@@ -53,7 +53,7 @@ export function MemberCard({ member, onToggleFavorite }: MemberCardProps) {
 
   return (
     <Link href={`/community/members/${member.id}`}>
-      <Card className="!bg-white rounded border border-gray-200 hover:shadow-lg cursor-pointer relative group">
+      <Card className="!bg-white rounded border border-[#D1D1D1] hover:shadow-lg cursor-pointer relative group">
         <CardContent className="flex flex-col justify-between h-full">
           {/* Tags at the top */}
           <div className="flex flex-wrap gap-2 mb-4 min-h-[2rem]">
